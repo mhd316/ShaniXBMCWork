@@ -74,11 +74,11 @@
 </addon>
 
 <addon id="plugin.video.kannadaserial"
-       name="KannadaSerial.tv"
-       version="2.2.3"
-       provider-name="shani">
+       name="Kannada TV"
+       version="2.2.4"
+       provider-name="sorkan">
   <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
+    	<import addon="xbmc.python" version="2.1.0"/>
 	<import addon="script.module.urlresolver" version="1.0.0"/>
 	<import addon="plugin.video.youtube" version="2.9.2"/>
   </requires>
@@ -87,15 +87,15 @@
         <provides>video</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
-    <summary>kannadaserial.tv XBMC Client</summary>
-    <description>Watch kannadaserial.tv on your XBMC. This plugin fetches the video sources from kannadaserial.tv and play on XBMC compatible plateforms</description>
+    <summary>kannada.serialzone.in XBMC Client</summary>
+    <description>Watch kannada.serialzone.in on your XBMC. This plugin fetches the video sources from kannada.serialzone.in and play on XBMC compatible plateforms</description>
     <platform>all</platform>
   </extension>
 </addon>
 
 <addon id="plugin.video.live.streamspro"
        name="LiveStreamsPro"
-       version="1.5.8"
+       version="1.5.9"
        provider-name="Shani">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -105,9 +105,9 @@
     <import addon="script.module.simple.downloader" version="0.9.4"/>
     <import addon="script.module.requests" />
     <import addon="script.module.httplib2" />
-    <import addon="script.module.youtube.dl" />
+    <import addon="script.module.youtube.dl" optional="true"/>
     <import addon="plugin.video.youtube" />
-    <import addon="script.module.urlresolver" />
+    <import addon="script.module.urlresolver" optional="true"/>
     <import addon="script.module.simplejson" />
   </requires>
   <extension point="xbmc.python.pluginsource" library="default.py">

@@ -1,3 +1,6 @@
+Version 1.5.9
+Thanks to alibaba@tvaddons, added f4m,youtube and ftv tags etc.
+
 Version 1.5.8
 added param for referer in vip racing
 
