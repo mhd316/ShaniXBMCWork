@@ -1,5 +1,13 @@
 <channels>
 <channel>
+    <cname>Majan</cname>
+    <imageurl>http://www.lyngsat-logo.com/logo/tv/mm/majan_tv.png</imageurl>
+    <enabled>True</enabled>
+    <assignedcategory>
+    <category>gulf</category>
+    </assignedcategory>
+</channel>
+<channel>
     <cname>ElMoled</cname>
     <imageurl>http://s17.postimg.org/fj2dpk9a3/El_Moled.png</imageurl>
     <enabled>True</enabled>
