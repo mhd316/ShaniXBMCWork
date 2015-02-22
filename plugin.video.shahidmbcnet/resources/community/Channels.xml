@@ -1,5 +1,13 @@
 <channels>
 <channel>
+    <cname>AlMada</cname>
+    <imageurl>http://www.lyngsat-logo.com/hires/aa/almada_tv_iq.png</imageurl>
+    <enabled>True</enabled>
+    <assignedcategory>
+    <category>Iraq</category>
+    </assignedcategory>
+</channel>
+<channel>
     <cname>AlHayat Tawazon</cname>
     <imageurl>http://s4.postimg.org/s4y9dge6h/photo_jpg.png</imageurl>
     <enabled>True</enabled>
