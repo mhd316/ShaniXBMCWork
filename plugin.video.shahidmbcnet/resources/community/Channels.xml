@@ -1,5 +1,13 @@
 <channels>
-
+<channel>
+    <cname>ElMoled</cname>
+    <imageurl>http://s17.postimg.org/fj2dpk9a3/El_Moled.png</imageurl>
+    <enabled>True</enabled>
+    <assignedcategory>
+    <category>egypt</category>
+    <category>sham</category>
+    </assignedcategory>
+</channel>
 <channel>
     <cname>Star2000</cname>
     <imageurl>http://s11.postimg.org/ryhjm9nxv/Stra2000.jpg</imageurl>
@@ -4297,7 +4305,7 @@
 	
 	<channel>
         <cname>SHAABIYAT</cname>
-        <imageurl>https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/t1.0-1/c29.0.320.320/p320x320/1209063_427223027379685_669342624_n.jpg</imageurl>
+        <imageurl>http://s10.postimg.org/ingzui7m1/chaabiyat.jpg</imageurl>
         <enabled>True</enabled>
         <assignedcategory>
             <category>music</category>
