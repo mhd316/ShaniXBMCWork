@@ -1,5 +1,22 @@
 <channels>
 <channel>
+    <cname>Tiji</cname>
+    <imageurl>http://www.lyngsat-logo.com/hires/tt/tiji.png</imageurl>
+    <enabled>True</enabled>
+    <assignedcategory>
+    <category>french</category>
+    <category>kids</category>
+    </assignedcategory>
+</channel>
+<channel>
+    <cname>Notele</cname>
+    <imageurl>http://www.lyngsat-logo.com/logo/tv/nn/notele_tv_be.png</imageurl>
+    <enabled>True</enabled>
+    <assignedcategory>
+    <category>french</category>
+    </assignedcategory>
+</channel>
+<channel>
     <cname>AlMada</cname>
     <imageurl>http://www.lyngsat-logo.com/hires/aa/almada_tv_iq.png</imageurl>
     <enabled>True</enabled>
