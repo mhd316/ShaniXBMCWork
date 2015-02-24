@@ -127,8 +127,8 @@
 </channel>
 
 <channel>
-	<cname>Libya Alrasmya</cname>
-	<imageurl></imageurl>
+	<cname>Libya Alrasmiya</cname>
+	<imageurl>http://s9.postimg.org/tdqagxba7/alrasmiya_n.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>lyb</category>
@@ -5516,7 +5516,7 @@
 
 	<channel>
         <cname>Libya 2</cname>
-        <imageurl>https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash2/t1.0-1/c48.22.276.276/p320x320/302788_190009627738036_1004835846_n.jpg</imageurl>
+        <imageurl>http://s3.postimg.org/ruhs0qfjj/libyatvlogo_bgblack.png</imageurl>
         <enabled>True</enabled>
         <assignedcategory>
         <category>lyb</category>
