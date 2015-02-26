@@ -1,3 +1,6 @@
+B]Version 3.3.7[/B]
+- updated, green channels
+
 B]Version 3.3.6[/B]
 - updated, green channels vanished
 
