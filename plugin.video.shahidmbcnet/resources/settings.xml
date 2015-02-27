@@ -45,11 +45,11 @@
 		   <setting label="32071" type="lsep"/>
 			<setting label="32072" type="text" id="GLArabUserName" values="" default="Anonymous"/>
 			<setting label="32073" type="text" id="GLArabUserPwd" values="" default="Anonymous"/>  
-			<setting label="32077" type="labelenum" id="GLArabServerHD" default="Try All" values="Disabled|Try All|216.66.42.85|38.99.146.36|38.99.146.37|38.99.146.40|38.99.146.158|8.21.48.19|8.21.48.20 "/>
-			<setting label="32078" type="labelenum" id="GLArabServerMED" default="Try All" values="Disabled|Try All|216.66.42.85|38.99.146.36|38.99.146.37|38.99.146.40|38.99.146.71|38.99.146.158|8.21.48.19|8.21.48.20"/>
-			<setting label="32079" type="labelenum" id="GLArabServerLOW" default="Try All" values="Disabled|Try All|216.66.42.85|38.99.146.36|38.99.146.37|38.99.146.40|38.99.146.158|8.21.48.19|8.21.48.20|38.99.146.42|38.99.146.44"/>
+			<setting label="32077" type="labelenum" id="GLArabServerHD" default="Try All" values="Disabled|Try All|216.66.42.84|216.66.42.85|38.99.146.36|38.99.146.37|38.99.146.40|38.99.146.158|8.21.48.19|8.21.48.20 "/>
+			<setting label="32078" type="labelenum" id="GLArabServerMED" default="Try All" values="Disabled|Try All|216.66.42.84|216.66.42.85|38.99.146.36|38.99.146.37|38.99.146.40|38.99.146.71|38.99.146.158|8.21.48.19|8.21.48.20"/>
+			<setting label="32079" type="labelenum" id="GLArabServerLOW" default="Try All" values="Disabled|Try All|216.66.42.84|216.66.42.85|38.99.146.36|38.99.146.37|38.99.146.40|38.99.146.158|8.21.48.19|8.21.48.20|38.99.146.42|38.99.146.44"/>
 			<setting label="32089" type="labelenum" id="GLArabServerLR" default="Try All" values="Disabled|Try All|38.99.146.151|38.99.146.152|8.21.48.116|8.21.48.117"/>
-			<setting label="32091" type="labelenum" id="GLArabServerLOWNP" default="Try All" values="Disabled|Try All|216.66.42.86|38.99.146.42|38.99.146.44|8.21.48.26|8.21.48.28"/>
+			<setting label="32091" type="labelenum" id="GLArabServerLOWNP" default="Try All" values="Disabled|Try All|216.66.42.86|216.66.42.87|38.99.146.42|38.99.146.44|8.21.48.26|8.21.48.28"/>
 
             
             <setting label="32090" type="bool"   id="isGLCommonProxyEnabled" default="false" />
