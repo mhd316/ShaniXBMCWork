@@ -6750,5 +6750,13 @@
             <category>drama</category>
             </assignedcategory>
     </channel>
+    <channel>
+        <cname>RTI</cname>
+        <imageurl>http://www.lyngsat-logo.com/logo/tv/rr/rti_tv1_ci.png</imageurl>
+        <enabled>True</enabled>
+        <assignedcategory>
+            <category>africa</category>
+            </assignedcategory>
+    </channel>
     
 </channels>
