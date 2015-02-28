@@ -1,4 +1,13 @@
 <channels>
+
+<channel>
+    	<cname>Tom and Jerry</cname>
+	<imageurl>http://www.americasfreedomfighters.com/wp-content/uploads/2014/10/Tom-And-Jerry-Picture.jpg</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>kids</category>
+	</assignedcategory>
+ </channel>
 <channel>
     <cname>Tiji</cname>
     <imageurl>http://www.lyngsat-logo.com/hires/tt/tiji.png</imageurl>
