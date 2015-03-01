@@ -5264,8 +5264,15 @@
         </assignedcategory>
     </channel>
 
-	
-    
+<channel>
+	<cname>Al Magharibia 2</cname>
+	<imageurl>http://s23.postimg.org/qsrqo9l3v/url.jpg</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>dzair</category>
+	<category>news</category>
+	</assignedcategory>
+</channel>	
     <channel>
         <cname>Al Magharibia</cname>
         <imageurl>http://i1064.photobucket.com/albums/u379/zombiB/mgrbi_zps1eec1e35.png</imageurl>
