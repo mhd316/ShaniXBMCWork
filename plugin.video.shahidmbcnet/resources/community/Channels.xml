@@ -1,5 +1,12 @@
 <channels>
-
+<channel>
+	<cname>Libya 24</cname>
+	<imageurl>http://s29.postimg.org/4fnv51713/unnamed.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>lyb</category>
+	</assignedcategory>
+</channel>
 <channel>
     	<cname>Tom and Jerry</cname>
 	<imageurl>http://www.americasfreedomfighters.com/wp-content/uploads/2014/10/Tom-And-Jerry-Picture.jpg</imageurl>
