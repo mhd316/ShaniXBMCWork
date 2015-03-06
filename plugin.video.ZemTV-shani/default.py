@@ -593,7 +593,8 @@ def AddWatchCric(url):
 
 def AddSmartCric(url):
     req = urllib2.Request(base64.b64decode('aHR0cDovL3d3dy5zbWFydGNyaWMuY29tLw=='))
-    req.add_header('User-Agent', 'Mozilla/5.0(iPad; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B314 Safari/531.21.10')
+    req.add_header('User-Agent', 'Mozilla/5.0 (Linux; Android 4.1.1; Nexus 7 Build/JRO03D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166  Safari/535.19')
+
     response = urllib2.urlopen(req)
     link=response.read()
     response.close()
@@ -605,7 +606,10 @@ def AddSmartCric(url):
         match_sn =re.findall(patt_sn,link)[0]
         final_url=  match_url+   match_sn
         req = urllib2.Request(final_url)
-        req.add_header('User-Agent', 'Mozilla/5.0(iPad; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B314 Safari/531.21.10')
+        req.add_header('User-Agent', ' Mozilla/5.0 (Linux; Android 4.1.1; Nexus 7 Build/JRO03D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166  Safari/535.19')
+        req.add_header('Origin', base64.b64decode('aHR0cDovL3d3dy5zbWFydGNyaWMuY29t'))
+        req.add_header('Referer', base64.b64decode('aHR0cDovL3d3dy5zbWFydGNyaWMuY29tLw=='))
+
         response = urllib2.urlopen(req)
         link=response.read()
         response.close()
@@ -628,8 +632,12 @@ def AddSmartCric(url):
                     for s in source["streamsList"]:
                         cname=s["caption"]
                         curl=s["streamName"]
-                        curl="http://"+fms+":1935/mobile/"+curl+"/playlist.m3u8?"+match_sn+"";
-                        addDir('    -'+cname ,curl ,15,'', False, True,isItFolder=False)		#name,url,mode,icon
+                        curl1="rtsp://"+fms+":1935/mobile/"+curl+"?"+match_sn+"";
+                        addDir('    -'+cname ,curl1 ,15,'', False, True,isItFolder=False)		#name,url,mode,icon
+                        
+                        curl1="rtsp://"+"206.190.140.164"+":1935/mobile/"+curl+"?"+match_sn+"";
+                        addDir('    -'+cname +" (static ip)",curl1 ,15,'', False, True,isItFolder=False)		#name,url,mode,icon
+
                         channeladded=True
                 else:
                     cname='No streams available'
