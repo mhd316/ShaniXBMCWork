@@ -200,15 +200,17 @@ def PlayFlashTv(url):
     
 def AddP3gSports(url):
 
-    addDir('Ptv Sports P3G.Tv (requires new rtmp)' ,base64.b64decode('aHR0cDovL3d3dy5wM2cudHYvZW1iZWRwbGF5ZXIvcHR2c2hlcmUvMi82MDAvNDIw') ,17,'', False, True,isItFolder=False)
-    addDir('Star Sports 1 P3G.Tv (requires new rtmp)' ,base64.b64decode('aHR0cDovL3d3dy5wM2cudHYvZW1iZWRwbGF5ZXIvc3RhcmhkYWxhLzIvNjAwLzQyMA==' ),17,'', False, True,isItFolder=False)
-    addDir('Star Sports 3 P3G.Tv (requires new rtmp)' ,base64.b64decode('aHR0cDovL3d3dy5wM2cudHYvZW1iZWRwbGF5ZXIvY3N0YXJzcG9ydDMvMi82MDAvNDIw') ,17,'', False, True,isItFolder=False)
-    addDir('Star Sports 4 P3G.Tv (requires new rtmp)' ,base64.b64decode('aHR0cDovL3d3dy5wM2cudHYvZW1iZWRwbGF5ZXIvc3RhcnNwb3J0czRkLzIvNjAwLzQwMA==') ,17,'', False, True,isItFolder=False)
+##http://live-sports.crichd.in/
+    addDir('Ptv Sports P3G.Tv (requires new rtmp)' ,base64.b64decode('aHR0cDovL3d3dy5wM2cudHYvZW1iZWRwbGF5ZXIvcHR2ZGlnaXRhbC8yLzYwMC80MjA=') ,17,'', False, True,isItFolder=False)
+    addDir('Star Sports 1 P3G.Tv (requires new rtmp)' ,base64.b64decode('aHR0cDovL3d3dy5wM2cudHYvZW1iZWRwbGF5ZXIvc3RhcjFkb250YmFuLzIvNjAwLzQyMA==' ),17,'', False, True,isItFolder=False)
+    addDir('Star Sports 2 P3G.Tv (requires new rtmp)' ,base64.b64decode('aHR0cDovL3d3dy5wM2cudHYvZW1iZWRwbGF5ZXIvc3RhcjJkb250YmFuLzIvNjAwLzQyMA==') ,17,'', False, True,isItFolder=False)
+    addDir('Star Sports 3 P3G.Tv (requires new rtmp)' ,base64.b64decode('aHR0cDovL3d3dy5wM2cudHYvZW1iZWRwbGF5ZXIvc3RhcjNkb250YmFuLzIvNjAwLzQyMA==') ,17,'', False, True,isItFolder=False)
+    addDir('Star Sports 4 P3G.Tv (requires new rtmp)' ,base64.b64decode('aHR0cDovL3d3dy5wM2cudHYvZW1iZWRwbGF5ZXIvZXNwbnN0YXI0MS8yLzYwMC80MDA=') ,17,'', False, True,isItFolder=False)
     
-    addDir('GeoSuper P3G.Tv (requires new rtmp)' ,base64.b64decode('aHR0cDovL3d3dy5wM2cudHYvZW1iZWRwbGF5ZXIvZ2Vvc3VwZXIxMjEvMi82NDAvNDQw') ,17,'', False, True,isItFolder=False)
+    addDir('GeoSuper P3G.Tv (requires new rtmp)' ,base64.b64decode('aHR0cDovL3d3dy5wM2cudHYvZW1iZWRwbGF5ZXIvdGhlZ2Vvc3VwZXJ0ZS8yLzY0MC80NDA=') ,17,'', False, True,isItFolder=False)
     addDir('Ten Cricket P3G.Tv (requires new rtmp)' ,base64.b64decode('aHR0cDovL3d3dy5wM2cudHYvZW1iZWRwbGF5ZXIvdGVuY3JpY2tldHpoLzIvNjQwLzQ0MA==') ,17,'', False, True,isItFolder=False)
     addDir('Ten sports P3G.Tv (requires new rtmp)' ,base64.b64decode('aHR0cDovL3d3dy5wM2cudHYvZW1iZWRwbGF5ZXIvdGVucGt5YS8yLzY0MC80NDA=' ),17,'', False, True,isItFolder=False)
-    addDir('Ten action P3G.Tv (requires new rtmp)' ,base64.b64decode('aHR0cDovL3d3dy5wM2cudHYvZW1iZWRwbGF5ZXIvdGVuYWN0aW9uc2UvMi82NDAvNDQw' ),17,'', False, True,isItFolder=False)
+    addDir('Ten action P3G.Tv (requires new rtmp)' ,base64.b64decode('aHR0cDovL3d3dy5wM2cudHYvZW1iZWRwbGF5ZXIvcHQzbmFjdGlvbi8yLzY0MC80NDA=' ),17,'', False, True,isItFolder=False)
     
 def AddFlashtv(url):
     addDir('Sky Sports 1' ,base64.b64decode('aHR0cDovL2ZsYXNodHYuY28vZW1iZWRvLnBocD9saXZlPXNra3kxJnZ3PTY1MCZ2aD00ODA='),32,'', False, True,isItFolder=False)
@@ -221,11 +223,11 @@ def AddFlashtv(url):
     
 def AddSports(url):
     match=[]
-    match.append((base64.b64decode('U2t5IFNwb3J0IDE='),'manual',base64.b64decode('aHR0cDovL2pweG1sLmphZG9vdHYuY29tL3Z1eG1sLnBocC9qYWRvb3htbC9wbGF5LzMxNg=='),''))
-    match.append((base64.b64decode('U2t5IFNwb3J0IDI='),'manual',base64.b64decode('aHR0cDovL2pweG1sLmphZG9vdHYuY29tL3Z1eG1sLnBocC9qYWRvb3htbC9wbGF5LzMyNg=='),''))
-    match.append((base64.b64decode('U2t5IFNwb3J0IDM='),'manual',base64.b64decode('aHR0cDovL215amFkb290di5qYWRvb3R2LmNvbS9qbWFya3MvYm94L3BsYXlWaWRlby5waHA/cGxheVVybD1ydG1wOi8vcXVpbnplbGl2ZWZzLmZwbGl2ZS5uZXQvcXVpbnplbGl2ZS1saXZlL3NreXNwb3J0czMuc3RyZWFtP3NlY3VyaXR5dHlwZT0y'),''))
-    match.append((base64.b64decode('U2t5IFNwb3J0IDQ='),'manual',base64.b64decode('aHR0cDovL2pweG1sLmphZG9vdHYuY29tL3Z1eG1sLnBocC9qYWRvb3htbC9wbGF5LzMxNQ=='),''))
-    match.append((base64.b64decode('U2t5IFNwb3J0IDU='),'manual',base64.b64decode('aHR0cDovL215amFkb290di5qYWRvb3R2LmNvbS9qbWFya3MvYm94L3BsYXlWaWRlby5waHA/cGxheVVybD1ydG1wOi8vcXVpbnplbGl2ZWZzLmZwbGl2ZS5uZXQvcXVpbnplbGl2ZS1saXZlL3NreXNwb3J0czUuc3RyZWFtP3NlY3VyaXR5dHlwZT0y'),''))
+    match.append((base64.b64decode('U2t5IFNwb3J0IDE=')+ ' [Not working]','manual',base64.b64decode('aHR0cDovL2pweG1sLmphZG9vdHYuY29tL3Z1eG1sLnBocC9qYWRvb3htbC9wbGF5LzMxNg=='),''))
+    match.append((base64.b64decode('U2t5IFNwb3J0IDI=')+' [Not working]','manual',base64.b64decode('aHR0cDovL2pweG1sLmphZG9vdHYuY29tL3Z1eG1sLnBocC9qYWRvb3htbC9wbGF5LzMyNg=='),''))
+    match.append((base64.b64decode('U2t5IFNwb3J0IDM=')+' [Not working]','manual',base64.b64decode('aHR0cDovL215amFkb290di5qYWRvb3R2LmNvbS9qbWFya3MvYm94L3BsYXlWaWRlby5waHA/cGxheVVybD1ydG1wOi8vcXVpbnplbGl2ZWZzLmZwbGl2ZS5uZXQvcXVpbnplbGl2ZS1saXZlL3NreXNwb3J0czMuc3RyZWFtP3NlY3VyaXR5dHlwZT0y'),''))
+    match.append((base64.b64decode('U2t5IFNwb3J0IDQ=')+' [Not working]','manual',base64.b64decode('aHR0cDovL2pweG1sLmphZG9vdHYuY29tL3Z1eG1sLnBocC9qYWRvb3htbC9wbGF5LzMxNQ=='),''))
+    match.append((base64.b64decode('U2t5IFNwb3J0IDU=')+' [Not working]','manual',base64.b64decode('aHR0cDovL215amFkb290di5qYWRvb3R2LmNvbS9qbWFya3MvYm94L3BsYXlWaWRlby5waHA/cGxheVVybD1ydG1wOi8vcXVpbnplbGl2ZWZzLmZwbGl2ZS5uZXQvcXVpbnplbGl2ZS1saXZlL3NreXNwb3J0czUuc3RyZWFtP3NlY3VyaXR5dHlwZT0y'),''))
 
     #v2
     match.append((base64.b64decode('U2t5IFNwb3J0IDE=')+' alt','manual',base64.b64decode('cnRtcGU6Ly80Ni4yNDYuMjkuMTYwOjE5MzUvbCBwbGF5cGF0aD1zc2t5czEgc3dmVXJsPWh0dHA6Ly9oZGNhc3Qub3JnL2VwbGF5ZXIuc3dmIGxpdmU9MSBwYWdlVXJsPWh0dHA6Ly93d3cuaGRjYXN0Lm9yZy9lbWJlZGxpdmU0LnBocD91PXNza3lzMSZ2dz02NTAmdmg9NDcwJmRvbWFpbj1jcmljYm94LnR2IHRva2VuPUZvNV9uMHc/VS5yQTZsMy03MHc0N2NoDQo='),''))
@@ -273,7 +275,7 @@ def AddPopeLive(url):
 #        pat='<a href="http://.*?/.*?/(.*?)-Live.*?/(.+?)" '
 #        channels=re.findall(pat,videoPage)
 #        print channels
-        channels=[('Sky Sports 1','47'),('Sky Sports 2','19'),('Sky Sports 3','10'),('Sky Sports 4','16'),('Sky Sports 5','23'),('Sky Sports F1','22') ,('BT Sport 1','13'),('BT Sports 2','15') ,('Willow Cricket','38') ,('Ptv Sports','33')   ]
+        channels=[('Sky Sports 1','40'),('Sky Sports 2','48'),('Sky Sports 3','10'),('Sky Sports 4','16'),('Sky Sports 5','23'),('Sky Sports F1','22') ,('BT Sport 1','13'),('BT Sports 2','15') ,('Willow Cricket','38') ,('Ptv Sports','33')   ]
         for channel in channels:
             print channel
             cname=channel[0]
@@ -781,7 +783,10 @@ def AddChannelsFromOthers(isPakistani):
     patt='<item><name>(.*?)<.*?<link>(.*?)<.*?albumart>(.*?)<'
     match=[]    
     if 1==1:#enable it
-        url=base64.b64decode("aHR0cDovL2pweG1sLmphZG9vdHYuY29tL3Z1eG1sLnBocC9qYWRvb3htbC9pdGVtcy8xMzE0LyVkLw==")
+        if isPakistani:
+            url=base64.b64decode("aHR0cDovL2pweG1sLmphZG9vdHYuY29tL3Z1eG1sLnBocC9qYWRvb3htbC9pdGVtcy8xMzE0LyVkLw==")
+        else:
+            url=base64.b64decode("aHR0cDovL2pweG1sLmphZG9vdHYuY29tL3Z1eG1sLnBocC9qYWRvb3htbC9pdGVtcy8xMzE1LyVkLw==")
 
         pageIndex=0
         try:
@@ -842,11 +847,11 @@ def AddChannelsFromOthers(isPakistani):
             match.append(('Color','manual','cid:316',''))
 
         
-    match.append((base64.b64decode('U2t5IFNwb3J0IDE='),'manual',base64.b64decode('aHR0cDovL2pweG1sLmphZG9vdHYuY29tL3Z1eG1sLnBocC9qYWRvb3htbC9wbGF5LzMxNg=='),''))
-    match.append((base64.b64decode('U2t5IFNwb3J0IDI='),'manual',base64.b64decode('aHR0cDovL2pweG1sLmphZG9vdHYuY29tL3Z1eG1sLnBocC9qYWRvb3htbC9wbGF5LzMyNg=='),''))
-    match.append((base64.b64decode('U2t5IFNwb3J0IDM='),'manual',base64.b64decode('aHR0cDovL215amFkb290di5qYWRvb3R2LmNvbS9qbWFya3MvYm94L3BsYXlWaWRlby5waHA/cGxheVVybD1ydG1wOi8vcXVpbnplbGl2ZWZzLmZwbGl2ZS5uZXQvcXVpbnplbGl2ZS1saXZlL3NreXNwb3J0czMuc3RyZWFtP3NlY3VyaXR5dHlwZT0y'),''))
-    match.append((base64.b64decode('U2t5IFNwb3J0IDQ='),'manual',base64.b64decode('aHR0cDovL2pweG1sLmphZG9vdHYuY29tL3Z1eG1sLnBocC9qYWRvb3htbC9wbGF5LzMxNQ=='),''))
-    match.append((base64.b64decode('U2t5IFNwb3J0IDU='),'manual',base64.b64decode('aHR0cDovL215amFkb290di5qYWRvb3R2LmNvbS9qbWFya3MvYm94L3BsYXlWaWRlby5waHA/cGxheVVybD1ydG1wOi8vcXVpbnplbGl2ZWZzLmZwbGl2ZS5uZXQvcXVpbnplbGl2ZS1saXZlL3NreXNwb3J0czUuc3RyZWFtP3NlY3VyaXR5dHlwZT0y'),''))
+#    match.append((base64.b64decode('U2t5IFNwb3J0IDE='),'manual',base64.b64decode('aHR0cDovL2pweG1sLmphZG9vdHYuY29tL3Z1eG1sLnBocC9qYWRvb3htbC9wbGF5LzMxNg=='),''))
+#    match.append((base64.b64decode('U2t5IFNwb3J0IDI='),'manual',base64.b64decode('aHR0cDovL2pweG1sLmphZG9vdHYuY29tL3Z1eG1sLnBocC9qYWRvb3htbC9wbGF5LzMyNg=='),''))
+#    match.append((base64.b64decode('U2t5IFNwb3J0IDM='),'manual',base64.b64decode('aHR0cDovL215amFkb290di5qYWRvb3R2LmNvbS9qbWFya3MvYm94L3BsYXlWaWRlby5waHA/cGxheVVybD1ydG1wOi8vcXVpbnplbGl2ZWZzLmZwbGl2ZS5uZXQvcXVpbnplbGl2ZS1saXZlL3NreXNwb3J0czMuc3RyZWFtP3NlY3VyaXR5dHlwZT0y'),''))
+#    match.append((base64.b64decode('U2t5IFNwb3J0IDQ='),'manual',base64.b64decode('aHR0cDovL2pweG1sLmphZG9vdHYuY29tL3Z1eG1sLnBocC9qYWRvb3htbC9wbGF5LzMxNQ=='),''))
+#    match.append((base64.b64decode('U2t5IFNwb3J0IDU='),'manual',base64.b64decode('aHR0cDovL215amFkb290di5qYWRvb3R2LmNvbS9qbWFya3MvYm94L3BsYXlWaWRlby5waHA/cGxheVVybD1ydG1wOi8vcXVpbnplbGl2ZWZzLmZwbGl2ZS5uZXQvcXVpbnplbGl2ZS1saXZlL3NreXNwb3J0czUuc3RyZWFtP3NlY3VyaXR5dHlwZT0y'),''))
 
 
 
@@ -887,7 +892,8 @@ def revist_dag(page_data):
         final_url = final_url.replace('devinlive', 'flive')
     if 'permlivefs.fplive.net' not in final_url:
         final_url = final_url.replace('permlive', 'flive')
-    
+
+
 
     return final_url
     

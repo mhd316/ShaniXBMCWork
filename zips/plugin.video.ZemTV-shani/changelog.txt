@@ -1,3 +1,6 @@
+B]Version 3.3.8[/B]
+- updated sports and indian
+
 B]Version 3.3.7[/B]
 - updated, green channels
 
