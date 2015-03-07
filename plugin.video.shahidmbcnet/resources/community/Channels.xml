@@ -2741,7 +2741,7 @@
 </channel>
 <channel>
 	<cname>Aljazeera En</cname>
-	<imageurl>http://www.3arablive.com/wp-content/uploads/2011/03/aljazeera-english.jpg</imageurl>
+	<imageurl>http://s30.postimg.org/4z182xcq9/AJE_campaign_logo_239x300.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>news</category>
@@ -3203,8 +3203,8 @@
 </channel>	
 
 <channel>
-	<cname>Al Ikhbaria</cname>
-	<imageurl>http://i1064.photobucket.com/albums/u379/zombiB/ekh_zpse8cea69a.png</imageurl>
+	<cname>Al Ikhbaria Syria</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/aa/al_ikhbaria_sy.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>sham</category>
