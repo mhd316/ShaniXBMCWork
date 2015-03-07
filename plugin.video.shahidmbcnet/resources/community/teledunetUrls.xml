@@ -1,5 +1,9 @@
 <streamingInfos>
-
+<streaminginfo><cname>Karbala</cname><url>karbala_tv</url></streaminginfo>
+<streaminginfo><cname>BFMTV</cname><url>bfm_tv</url></streaminginfo>
+<streaminginfo><cname>M6</cname><title>M6 Music</title><url>m6_music</url></streaminginfo>
+<streaminginfo><cname>RMC Decouverte</cname><url>rmc_decouverte</url></streaminginfo>
+<streaminginfo><cname>TF1</cname><title>TF1 SD</title><url>tf1_sd</url></streaminginfo>
 <streaminginfo><cname>alwatan</cname><url>al_watan</url></streaminginfo>
 <streaminginfo><cname>FRANCE 0</cname><url>france_o</url></streaminginfo>
 <streaminginfo><cname>HCTV</cname><url>horn_cable_tv</url></streaminginfo>
@@ -61,7 +65,7 @@
 <streaminginfo><cname>Al Baghdadia</cname><url>al_baghdadia</url></streaminginfo>
 <streaminginfo><cname>Al Haneen Music</cname><url>al_haneen_music</url></streaminginfo>
 <streaminginfo><cname>Alhayat Cinema</cname><url>al_hayat_cinema</url></streaminginfo>
-<streaminginfo><cname>Al Ikhbaria</cname><url>al_ikhbaria</url></streaminginfo>
+<streaminginfo><cname>Al Ikhbaria Syria</cname><url>al_ikhbaria</url></streaminginfo>
 <streaminginfo><cname>AlQahera W Elnas</cname><url>al_kahera_wal_nas</url></streaminginfo>
 <streaminginfo><cname>Al Maghribia</cname><url>al_maghribia</url></streaminginfo>
 <streaminginfo><cname>Al Majd</cname><url>al_majd</url></streaminginfo>
