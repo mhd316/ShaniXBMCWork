@@ -330,7 +330,7 @@
 </channel>
 <channel>
 	<cname>Ghenwaty</cname>
-	<imageurl></imageurl>
+	<imageurl>http://s3.postimg.org/b8mwwp1mn/ghenwaty.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>music</category>
@@ -1172,7 +1172,7 @@
 </channel>
 <channel>
 	<cname>Alquds Educ</cname>
-	<imageurl>https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpf1/t1.0-1/p160x160/10468647_699893530056375_810853363037637731_n.jpg</imageurl>
+	<imageurl>http://arabicfomny.com/fomnyarabictv/alquds_edu_tv_live.jpg</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>sham</category>
@@ -2689,7 +2689,7 @@
 </channel>
 <channel>
 	<cname>Chelsea TV</cname>
-	<imageurl>https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfp1/t1.0-1/p160x160/10361994_632729266797237_827435547775781281_n.jpg</imageurl>
+	<imageurl>http://www.lyngsat-logo.com/hires/cc/chelsea_tv.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>sports</category>
@@ -5127,7 +5127,7 @@
 	
 <channel>
 	<cname>LCD AFLAM</cname>
-	<imageurl>https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/t1.0-1/c43.21.263.263/321019_243533255779451_1204166563_n.png</imageurl>
+	<imageurl>http://s14.postimg.org/8mv6a3yjx/lcd.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>drama</category>
@@ -5378,7 +5378,7 @@
 	
 <channel>
 	<cname>Telvza TV</cname>
-	<imageurl>https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-xaf1/v/t1.0-9/1796520_787974247927560_6567902159216284330_n.png?oh=cc80dfd7bc3fc90cc05b9ade389f9d58&amp;oe=55192D1E&amp;__gda__=1424070240_e0e104bdf79277a2a17870a0a193c192</imageurl>
+	<imageurl>http://www.madwatch.net/wp-content/uploads/2013/12/LOGO-telvza.jpg</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>tunis</category>
@@ -5579,7 +5579,7 @@
    
  <channel>
 	<cname>SkyNewsArabia</cname>
-	<imageurl>https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/t1.0-1/553925_421969167853415_181934826_a.jpg</imageurl>
+	<imageurl>http://www.lyngsat-logo.com/hires/ss/sky_uk_news_arabia.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>news</category>
@@ -6135,14 +6135,7 @@
 	<category>islam</category>
 	</assignedcategory>
 </channel>	
-<channel>
-	<cname>Al Hadath</cname>
-	<imageurl>http://unitedtv.net/images/chanel_images/1357347803.jpg</imageurl>
-	<enabled>True</enabled>
-	<assignedcategory>
-	<category>news</category>
-	</assignedcategory>
-</channel>	
+	
 <channel>
 	<cname>Panorama Action</cname>
 	<imageurl>http://s24.postimg.org/sftbbejlh/Unbenannt.png</imageurl>
