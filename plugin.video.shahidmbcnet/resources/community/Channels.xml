@@ -1,5 +1,13 @@
 <channels>
 <channel>
+	<cname>Hona Alquds</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/hh/hona_alquds_tv_ps.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>sham</category>
+	</assignedcategory>
+</channel>
+<channel>
 	<cname>Libya 24</cname>
 	<imageurl>http://s29.postimg.org/4fnv51713/unnamed.png</imageurl>
 	<enabled>True</enabled>
