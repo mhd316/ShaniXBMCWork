@@ -144,7 +144,7 @@
 	</item>
 </streaminginfo>
 <streaminginfo>
-	<cname>Al Ikhbaria</cname>
+	<cname>KSA News</cname>
 	<item>
 	<title>Low</title>
 	<link>http://$GL-IPLOW$:7777/AlEkhbariya.m3u8?session=$GL-Sesession$</link>
@@ -1278,7 +1278,7 @@
 	</item>
 </streaminginfo>
 <streaminginfo>
-	<cname>Al Ikhbaria</cname>
+	<cname>KSA News</cname>
 	<item>
 	<title>Proxy HD</title>
 	<link>http://$GLProxyIP$:4500/channel.flv?server=$GL-IPHD$&amp;channel=AlEkhbariya_HD&amp;port=2077&amp;session=$GL-Sesession$</link>
@@ -2440,7 +2440,7 @@
 	</item>
 </streaminginfo>
 <streaminginfo>
-	<cname>Al Ikhbaria</cname>
+	<cname>KSA News</cname>
 	<item>
 	<title>Proxy Med</title>
 	<link>http://$GLProxyIP$:4500/channel.flv?server=$GL-IPMED$&amp;channel=AlEkhbariya_Med&amp;port=2077&amp;session=$GL-Sesession$</link>
@@ -3609,7 +3609,7 @@
 	</item>
 </streaminginfo>
 <streaminginfo>
-	<cname>Al Ikhbaria</cname>
+	<cname>KSA News</cname>
 	<item>
 	<title>Proxy Low</title>
 	<link>http://$GLProxyIP$:4500/channel.flv?server=$GL-IPLOW$&amp;channel=AlEkhbariya_Low&amp;port=2077&amp;session=$GL-Sesession$</link>
@@ -4729,7 +4729,7 @@
 	</item>
 </streaminginfo>
 <streaminginfo>
-	<cname>Al Ikhbaria</cname>
+	<cname>KSA News</cname>
 	<item>
 	<title>Proxy LR</title>
 	<link>http://$GLProxyIP$:4500/channel.flv?server=$GL-IPLR$&amp;channel=AlEkhbariya_LR&amp;port=2077&amp;session=$GL-Sesession$</link>
