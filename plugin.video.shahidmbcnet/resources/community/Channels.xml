@@ -3857,15 +3857,6 @@
 </channel>	
 
 <channel>
-	<cname>Alekhbaria Syria</cname>
-	<imageurl>http://i1064.photobucket.com/albums/u379/zombiB/ekh_zpse8cea69a.png</imageurl>
-	<enabled>True</enabled>
-	<assignedcategory>
-	<category>news</category>
-	</assignedcategory>
-</channel>	
-
-<channel>
 	<cname>Al Sharqiya News</cname>
 	<imageurl>http://i1064.photobucket.com/albums/u379/zombiB/shrnews_zpsdf84de8f.png</imageurl>
 	<enabled>True</enabled>
