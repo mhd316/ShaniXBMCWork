@@ -1,5 +1,22 @@
 <channels>
 <channel>
+	<cname>Kawaliss</cname>
+	<imageurl>http://s14.postimg.org/f9x9xte7l/Kawaliss.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>dzair</category>
+	<category>music</category>
+	</assignedcategory>
+</channel>
+<channel>
+     <cname>Alahad</cname>
+     <imageurl>http://www.lyngsat-logo.com/hires/aa/al_ahad_tv_iq.png</imageurl>
+     <enabled>True</enabled>
+     <assignedcategory>
+     <category>iraq</category>
+     </assignedcategory>
+</channel>
+<channel>
 	<cname>Hona Alquds</cname>
 	<imageurl>http://www.lyngsat-logo.com/hires/hh/hona_alquds_tv_ps.png</imageurl>
 	<enabled>True</enabled>
