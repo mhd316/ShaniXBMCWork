@@ -1,5 +1,31 @@
 <channels>
 <channel>
+	<cname>Tobacts</cname>
+	<imageurl>http://www.lyngsat-logo.com/logo/tv/tt/tobacts_fm_tv_ly.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>lyb</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Darabaka Aflam</cname>
+	<imageurl>http://s17.postimg.org/5dgxvpq7f/Darabaka_Aflam.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	<category>egypt</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Cima Alibaba</cname>
+	<imageurl>http://s12.postimg.org/kcw90j3w9/alibaba.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	<category>egypt</category>
+	</assignedcategory>
+</channel>	
+<channel>
 	<cname>Kawaliss</cname>
 	<imageurl>http://s14.postimg.org/f9x9xte7l/Kawaliss.png</imageurl>
 	<enabled>True</enabled>
