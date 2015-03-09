@@ -4667,7 +4667,7 @@
 </channel>	
 <channel>
 	<cname>AlMasrawia</cname>
-	<imageurl>http://i1064.photobucket.com/albums/u379/zombiB/msrwi_zpsf1027b17.png</imageurl>
+	<imageurl>http://s17.postimg.org/3n0r7apfz/masrapng.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>egypt</category>
@@ -5129,16 +5129,6 @@
 	<category>drama</category>
 	</assignedcategory>
 </channel>	
-
-<channel>
-	<cname>Star 1 Cinema +7</cname>
-	<imageurl>http://i1064.photobucket.com/albums/u379/zombiB/strmov_zps987ece1f.png</imageurl>
-	<enabled>True</enabled>
-	<assignedcategory>
-	<category>drama</category>
-	</assignedcategory>
-</channel>	
-
 <channel>
 	<cname>Star 1 Cinema</cname>
 	<imageurl>http://i1064.photobucket.com/albums/u379/zombiB/strmov_zps987ece1f.png</imageurl>
@@ -5147,16 +5137,6 @@
 	<category>drama</category>
 	</assignedcategory>
 </channel>	
-	
-<channel>
-	<cname>Star 2 Cinema +7</cname>
-	<imageurl>http://i1064.photobucket.com/albums/u379/zombiB/strmov_zps987ece1f.png</imageurl>
-	<enabled>True</enabled>
-	<assignedcategory>
-	<category>drama</category>
-	</assignedcategory>
-</channel>	
-
 <channel>
 	<cname>Star 2 Cinema</cname>
 	<imageurl>http://i1064.photobucket.com/albums/u379/zombiB/strmov_zps987ece1f.png</imageurl>
@@ -5165,9 +5145,6 @@
 	<category>drama</category>
 	</assignedcategory>
 </channel>	
-
-
-	
 <channel>
 	<cname>LCD AFLAM</cname>
 	<imageurl>http://s14.postimg.org/8mv6a3yjx/lcd.png</imageurl>
@@ -5176,7 +5153,6 @@
 	<category>drama</category>
 	</assignedcategory>
 </channel>	
-
 <channel>
 	<cname>Sudan TV</cname>
 	<imageurl>http://i1064.photobucket.com/albums/u379/zombiB/sudan_zpsa5859579.png</imageurl>
