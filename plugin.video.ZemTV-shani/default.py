@@ -199,18 +199,28 @@ def PlayFlashTv(url):
     
     
 def AddP3gSports(url):
-
-##http://live-sports.crichd.in/
-    addDir('Ptv Sports P3G.Tv (requires new rtmp)' ,base64.b64decode('aHR0cDovL3d3dy5wM2cudHYvZW1iZWRwbGF5ZXIvcHR2ZGlnaXRhbC8yLzYwMC80MjA=') ,17,'', False, True,isItFolder=False)
-    addDir('Star Sports 1 P3G.Tv (requires new rtmp)' ,base64.b64decode('aHR0cDovL3d3dy5wM2cudHYvZW1iZWRwbGF5ZXIvc3RhcjFkb250YmFuLzIvNjAwLzQyMA==' ),17,'', False, True,isItFolder=False)
-    addDir('Star Sports 2 P3G.Tv (requires new rtmp)' ,base64.b64decode('aHR0cDovL3d3dy5wM2cudHYvZW1iZWRwbGF5ZXIvc3RhcjJkb250YmFuLzIvNjAwLzQyMA==') ,17,'', False, True,isItFolder=False)
-    addDir('Star Sports 3 P3G.Tv (requires new rtmp)' ,base64.b64decode('aHR0cDovL3d3dy5wM2cudHYvZW1iZWRwbGF5ZXIvc3RhcjNkb250YmFuLzIvNjAwLzQyMA==') ,17,'', False, True,isItFolder=False)
-    addDir('Star Sports 4 P3G.Tv (requires new rtmp)' ,base64.b64decode('aHR0cDovL3d3dy5wM2cudHYvZW1iZWRwbGF5ZXIvZXNwbnN0YXI0MS8yLzYwMC80MDA=') ,17,'', False, True,isItFolder=False)
+    pat="pe='text\/javascript'>ch='(.*?)'"
+    res=getUrl("http://c247.tv/")
+    channels=re.findall(pat,res)
+    channels=sorted(channels,key=lambda s: s[0].lower()   )
+    for i in channels:
+        addDir('%s P3G.Tv (requires new rtmp)'%(i.replace('_','')) ,'http://c247.tv/live.php?ch=%s'%i,17,'', False, True,isItFolder=False)
     
-    addDir('GeoSuper P3G.Tv (requires new rtmp)' ,base64.b64decode('aHR0cDovL3d3dy5wM2cudHYvZW1iZWRwbGF5ZXIvdGhlZ2Vvc3VwZXJ0ZS8yLzY0MC80NDA=') ,17,'', False, True,isItFolder=False)
-    addDir('Ten Cricket P3G.Tv (requires new rtmp)' ,base64.b64decode('aHR0cDovL3d3dy5wM2cudHYvZW1iZWRwbGF5ZXIvdGVuY3JpY2tldHpoLzIvNjQwLzQ0MA==') ,17,'', False, True,isItFolder=False)
-    addDir('Ten sports P3G.Tv (requires new rtmp)' ,base64.b64decode('aHR0cDovL3d3dy5wM2cudHYvZW1iZWRwbGF5ZXIvdGVucGt5YS8yLzY0MC80NDA=' ),17,'', False, True,isItFolder=False)
-    addDir('Ten action P3G.Tv (requires new rtmp)' ,base64.b64decode('aHR0cDovL3d3dy5wM2cudHYvZW1iZWRwbGF5ZXIvcHQzbmFjdGlvbi8yLzY0MC80NDA=' ),17,'', False, True,isItFolder=False)
+
+##http://c247.tv/
+#http://c247.tv/live.php?ch=Geo_Super
+#http://c247.tv/
+#    addDir('Ptv Sports P3G.Tv (requires new rtmp)' ,base64.b64decode('http://c247.tv/live.php?ch=Geo_Super') ,17,'', False, True,isItFolder=False)
+#    addDir('Star Sports 1 P3G.Tv (requires new rtmp)' ,base64.b64decode('http://www.p3g.tv/embedplayer/star1dontban/2/600/420' ),17,'', False, True,isItFolder=False)
+#    addDir('Star Sports 2 P3G.Tv (requires new rtmp)' ,base64.b64decode('aHR0cDovL3d3dy5wM2cudHYvZW1iZWRwbGF5ZXIvc3RhcjJkb250YmFuLzIvNjAwLzQyMA==') ,17,'', False, True,isItFolder=False)
+#    addDir('Star Sports 3 P3G.Tv (requires new rtmp)' ,base64.b64decode('aHR0cDovL3d3dy5wM2cudHYvZW1iZWRwbGF5ZXIvc3RhcjNkb250YmFuLzIvNjAwLzQyMA==') ,17,'', False, True,isItFolder=False)
+#    addDir('Star Sports 4 P3G.Tv (requires new rtmp)' ,base64.b64decode('aHR0cDovL3d3dy5wM2cudHYvZW1iZWRwbGF5ZXIvZXNwbnN0YXI0MS8yLzYwMC80MDA=') ,17,'', False, True,isItFolder=False)
+#    
+#    addDir('GeoSuper P3G.Tv (requires new rtmp)' ,base64.b64decode('http://c247.tv/live.php?ch=Geo_Super') ,17,'', False, True,isItFolder=False)
+#    addDir('Ten Cricket P3G.Tv (requires new rtmp)' ,base64.b64decode('aHR0cDovL3d3dy5wM2cudHYvZW1iZWRwbGF5ZXIvdGVuY3JpY2tldHpoLzIvNjQwLzQ0MA==') ,17,'', False, True,isItFolder=False)
+#    addDir('Ten sports P3G.Tv (requires new rtmp)' ,base64.b64decode('aHR0cDovL3d3dy5wM2cudHYvZW1iZWRwbGF5ZXIvdGVucGt5YS8yLzY0MC80NDA=' ),17,'', False, True,isItFolder=False)
+#    addDir('Ten action P3G.Tv (requires new rtmp)' ,base64.b64decode('aHR0cDovL3d3dy5wM2cudHYvZW1iZWRwbGF5ZXIvcHQzbmFjdGlvbi8yLzY0MC80NDA=' ),17,'', False, True,isItFolder=False)
+
     
 def AddFlashtv(url):
     addDir('Sky Sports 1' ,base64.b64decode('aHR0cDovL2ZsYXNodHYuY28vZW1iZWRvLnBocD9saXZlPXNra3kxJnZ3PTY1MCZ2aD00ODA='),32,'', False, True,isItFolder=False)
@@ -250,7 +260,7 @@ def AddSports(url):
     addDir('CricHD.tv (Live Channels)' ,'pope' ,26,'')
 #    addDir('Flashtv.co (Live Channels)' ,'flashtv' ,31,'')
     addDir('WatchCric.com (requires new rtmp)-Live matches only' ,base64.b64decode('aHR0cDovL3d3dy53YXRjaGNyaWMubmV0Lw==' ),16,'') #blocking as the rtmp requires to be updated to send gaolVanusPobeleVoKosat
-    addDir('P3G.Tv (requires new rtmp)' ,'P3G'  ,30,'')
+    addDir('c247.tv-P3G.Tv (requires new rtmp)' ,'P3G'  ,30,'')
     addDir('Willow.Tv (login required)' ,base64.b64decode('aHR0cDovL3d3dy53aWxsb3cudHYv') ,19,'')
 
 
@@ -654,8 +664,11 @@ def AddSmartCric(url):
     return
 
 def PlayWatchCric(url):
+    progress = xbmcgui.DialogProgress()
+    progress.create('Progress', 'Fetching Streaming Info')
+    progress.update( 10, "", "Finding links..", "" )
     pat_ifram='<iframe.*?src=(.*?).?"?>'    
-    if 'p3g.tv' not in url:
+    if 'c247.tv' not in url:
         req = urllib2.Request(url)
         req.add_header('User-Agent', 'Mozilla/5.0(iPad; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B314 Safari/531.21.10')
         response = urllib2.urlopen(req)
@@ -665,6 +678,7 @@ def PlayWatchCric(url):
     else:
         match_url=url
         url=base64.b64decode('aHR0cDovL2VtYmVkMjQ3LmNvbS9saXZlLnBocD9jaD1QdHZfU3BvcnRzMSZ2dz02MDAmdmg9NDAwJmRvbWFpbj13d3cuc2FtaXN0cmVhbS5jb20=')
+        
     req = urllib2.Request(match_url)
     req.add_header('User-Agent', 'Mozilla/5.0(iPad; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B314 Safari/531.21.10')
     req.add_header('Referer', url)
@@ -697,15 +711,16 @@ def PlayWatchCric(url):
         app='live'
         pat_js='channel=\'(.*?)\''
 
-    elif 'p3g.tv' in link:
+    elif 'c247.tv' in link:
         c='zenataStoGoPuknalaGavolot'
         ccommand='%s;TRUE;TRUE;'
         swfUrl=base64.b64decode('aHR0cDovL3d3dy5wM2cudHYvcmVzb3VyY2VzL3NjcmlwdHMvZXBsYXllci5zd2Y=')
         sitename='www.p3g.tv'
-        pat_e='&g=\'?(.*?)\'?&;?'
+        pat_e='channel.*?g=\'(.*?)\''
         app='stream'
-        pat_js='&s=(.*?)&'
-        
+        pat_js='channel=\'(.*?)\''
+
+    progress.update( 40, "", "Building request links..", "" )
         
     match_urljs =re.findall(pat_js,link)[0]
     width='480'
@@ -739,6 +754,7 @@ def PlayWatchCric(url):
     
 
     sid=match_flash.split('s=')[1].split('&')[0]
+    progress.update( 40, "", "Finalizing request..", "" )
 
     ccommand=ccommand%c
     url='rtmp://%s/%s playpath=%s?id=%s pageUrl=%s swfUrl=%s Conn=S:OK ccommand=%s timeout=20'%(ip,app,sid,matchid,match_urljs,swfUrl,ccommand)
@@ -1670,9 +1686,7 @@ try:
 	elif mode==24:
 		print "Play url is "+url
 		AddWillSportsOldSeriesMatches(url)        
-	elif mode==25 :
-		print "Play url is "+url
-		AddP3Gtv(url)
+
 	elif mode==26 :
 		print "Play url is "+url
 		AddPopeLive(url)
