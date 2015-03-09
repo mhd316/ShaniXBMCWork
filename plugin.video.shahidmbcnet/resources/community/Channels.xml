@@ -6213,14 +6213,6 @@
 	</assignedcategory>
 </channel>	
 <channel>
-	<cname>Masria ESC</cname>
-	<imageurl>http://unitedtv.net/images/chanel_images/1357388945.png</imageurl>
-	<enabled>True</enabled>
-	<assignedcategory>
-	<category>egypt</category>
-	</assignedcategory>
-</channel>	
-<channel>
 	<cname>LCI</cname>
 	<imageurl>http://www.gwenael.org/xbmc-streams/images/channels/89.png</imageurl>
 	<enabled>True</enabled>
