@@ -3245,7 +3245,7 @@
 
 <channel>
 	<cname>Alhayat2</cname>
-	<imageurl>http://i1064.photobucket.com/albums/u379/zombiB/hyt2_zps5a349a8c.png</imageurl>
+	<imageurl>http://s22.postimg.org/dxenmsbxd/Alhayat_2.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>drama</category>
@@ -3740,7 +3740,7 @@
 </channel>	
 
 <channel>
-	<cname>Alhayat-Series</cname>
+	<cname>Alhayat Drama</cname>
 	<imageurl>http://www.lyngsat-logo.com/hires/aa/alhayat_series.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
@@ -6751,15 +6751,6 @@
     </assignedcategory>
 </channel>	
     
-<channel>
-	<cname>Alhayat Drama</cname>
-	<imageurl>http://i1064.photobucket.com/albums/u379/zombiB/hyt2_zps5a349a8c.png</imageurl>
-	<enabled>True</enabled>
-	<assignedcategory>
-	<category>drama</category>
-	<category>egypt</category>
-    </assignedcategory>
-</channel>	
 <channel>
 	<cname>Royal Secrets</cname>
 	<imageurl>http://www.lyngsat-logo.com/logo/tv/rr/royal_secrets_sa.png</imageurl>
