@@ -5856,7 +5856,7 @@
 	</item>
 </streaminginfo>
 <streaminginfo>
-	<cname>Alnahar Alyoum</cname>
+	<cname>Al Nahar Alyoum</cname>
 	<item>
 	<title>Proxy High</title>
 	<link>http://$GLProxyIP$:4500/channel.flv?server=$GL-IPHD$&amp;channel=AlNahar2_High&amp;port=2077&amp;session=$GL-Sesession$</link>
