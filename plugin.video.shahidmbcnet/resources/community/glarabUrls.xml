@@ -5786,7 +5786,7 @@
 	</item>
 </streaminginfo>
 <streaminginfo>
-	<cname>Alhayat-Series</cname>
+	<cname>Alhayat Series</cname>
 	<item>
 	<title>Proxy High</title>
 	<link>http://$GLProxyIP$:4500/channel.flv?server=$GL-IPHD$&amp;channel=AlHayatMousalsalat_High&amp;port=2077&amp;session=$GL-Sesession$</link>
