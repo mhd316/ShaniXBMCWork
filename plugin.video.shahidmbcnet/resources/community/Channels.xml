@@ -1634,7 +1634,7 @@
 </channel>
 <channel>
 	<cname>Palestine Live</cname>
-	<imageurl>http://ims.gtvhome.com/images/palestinelive_db7af692-d795-475f-9798-82f2bb233016.png</imageurl>
+	<imageurl>http://s1.postimg.org/kpyjnnswr/pali_live.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>sham</category>
@@ -2550,16 +2550,6 @@
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>africa</category>
-	</assignedcategory>
-</channel>
-
-<channel>
-	<cname>Cairo Film</cname>
-	<imageurl>http://ims.gtvhome.com/images/cairofilm_493e613c-596b-4d11-9a23-edd3a9e59eda.png</imageurl>
-	<enabled>True</enabled>
-	<assignedcategory>
-	<category>egypt</category>
-	<category>drama</category>
 	</assignedcategory>
 </channel>
 <channel>
