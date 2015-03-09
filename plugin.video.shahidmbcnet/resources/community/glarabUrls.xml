@@ -5772,7 +5772,7 @@
 	</item>
 </streaminginfo>
 <streaminginfo>
-	<cname>Algharam Cinema</cname>
+	<cname>Beirut Cinema</cname>
 	<item>
 	<title>Proxy High</title>
 	<link>http://$GLProxyIP$:4500/channel.flv?server=$GL-IPHD$&amp;channel=AlTet_High&amp;port=2077&amp;session=$GL-Sesession$</link>
