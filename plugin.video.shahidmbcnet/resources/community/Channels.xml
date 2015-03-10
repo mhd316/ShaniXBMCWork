@@ -8,6 +8,14 @@
 	</assignedcategory>
 </channel>
 <channel>
+	<cname>Al Gamaiya</cname>
+	<imageurl>http://s23.postimg.org/zafx8upcr/511_300x250.jpg</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>Iraq</category>
+	</assignedcategory>
+</channel>
+<channel>
 	<cname>Darabaka Aflam</cname>
 	<imageurl>http://s17.postimg.org/5dgxvpq7f/Darabaka_Aflam.png</imageurl>
 	<enabled>True</enabled>
