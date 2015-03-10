@@ -710,7 +710,14 @@ def PlayWatchCric(url):
         pat_e=' e=\'(.*?)\';'
         app='live'
         pat_js='channel=\'(.*?)\''
-
+    elif 'www.streamifyplayer.com' in link:
+        c='keGoVidishStambolSoseBardovci'
+        ccommand='%s;TRUE;TRUE;'
+        swfUrl=base64.b64decode('aHR0cDovL3d3dy5zdHJlYW1pZnlwbGF5ZXIuY29tL3Jlc291cmNlcy9zY3JpcHRzL2VwbGF5ZXIuc3dm')
+        sitename='www.streamifyplayer.com'
+        pat_e='channel.*?g=\'(.*?)\''
+        app='live'
+        pat_js='channel=\'(.*?)\''
     elif 'c247.tv' in link:
         c='zenataStoGoPuknalaGavolot'
         ccommand='%s;TRUE;TRUE;'
