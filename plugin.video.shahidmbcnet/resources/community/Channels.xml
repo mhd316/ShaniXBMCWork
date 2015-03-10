@@ -2528,7 +2528,14 @@
 	<category>drama</category>
 	</assignedcategory>
 </channel>
-
+<channel>
+	<cname>Orbit Series</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/oo/osn_arabic_series.png</imageurl>
+ 	<enabled>True</enabled>
+ 	<assignedcategory>
+ 	<category>drama</category>
+ 	</assignedcategory>
+</channel>
 <channel>
 	<cname>Orbit Series +4</cname>
 	<imageurl>http://s23.postimg.org/cm9f6uuk7/Orbit_Series.png</imageurl>
