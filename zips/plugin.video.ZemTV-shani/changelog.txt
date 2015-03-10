@@ -1,3 +1,6 @@
+B]Version 3.4.2[/B]
+-smartcric url changed
+
 B]Version 3.4.1[/B]
 - streamify links in smartcric modified
 

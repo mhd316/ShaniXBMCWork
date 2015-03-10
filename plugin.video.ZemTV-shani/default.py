@@ -242,6 +242,8 @@ def AddSports(url):
     #v2
     match.append((base64.b64decode('U2t5IFNwb3J0IDE=')+' alt','manual',base64.b64decode('cnRtcGU6Ly80Ni4yNDYuMjkuMTYwOjE5MzUvbCBwbGF5cGF0aD1zc2t5czEgc3dmVXJsPWh0dHA6Ly9oZGNhc3Qub3JnL2VwbGF5ZXIuc3dmIGxpdmU9MSBwYWdlVXJsPWh0dHA6Ly93d3cuaGRjYXN0Lm9yZy9lbWJlZGxpdmU0LnBocD91PXNza3lzMSZ2dz02NTAmdmg9NDcwJmRvbWFpbj1jcmljYm94LnR2IHRva2VuPUZvNV9uMHc/VS5yQTZsMy03MHc0N2NoDQo='),''))
     match.append((base64.b64decode('U2t5IFNwb3J0IDI=')+' alt','manual',base64.b64decode('cnRtcGU6Ly80Ni4yNDYuMjkuMTYwOjE5MzUvbCBwbGF5cGF0aD1zc2t5czIgc3dmVXJsPWh0dHA6Ly9oZGNhc3Qub3JnL2VwbGF5ZXIuc3dmIGxpdmU9MSBwYWdlVXJsPWh0dHA6Ly93d3cuaGRjYXN0Lm9yZy9lbWJlZGxpdmU0LnBocD91PXNza3lzMSZ2dz02NTAmdmg9NDcwJmRvbWFpbj1jcmljYm94LnR2IHRva2VuPUZvNV9uMHc/VS5yQTZsMy03MHc0N2NoDQo='),''))
+    match.append((base64.b64decode('U2t5IFNwb3J0IDI=')+' alt 2','manual',base64.b64decode('cnRtcDovLzE3OC4xOC4zMS41Mzo0NDMvbGl2ZXJlcGVhdGVyLzE5MDYxNCBzd2ZVcmw9aHR0cDovL2Jlcm5hcmRvdHYuY2x1Yi9mdWNraW5nY29weS5zd2YgcGFnZVVybD1odHRwOi8vYmlnZ2VzdHBsYXllci5tZS9zdHJlYW0ucGhwP2lkPTE5MDYxNCB0b2tlbj0jYXRkJSMkWkggbGl2ZT0xIHRpbWVvdXQ9MjA='),''))
+    
     match.append((base64.b64decode('U2t5IFNwb3J0IDM=')+' alt','manual',base64.b64decode('cnRtcGU6Ly80Ni4yNDYuMjkuMTYwOjE5MzUvbCBwbGF5cGF0aD1zc2t5czMgc3dmVXJsPWh0dHA6Ly9oZGNhc3Qub3JnL2VwbGF5ZXIuc3dmIGxpdmU9MSBwYWdlVXJsPWh0dHA6Ly93d3cuaGRjYXN0Lm9yZy9lbWJlZGxpdmU0LnBocD91PXNza3lzMSZ2dz02NTAmdmg9NDcwJmRvbWFpbj1jcmljYm94LnR2IHRva2VuPUZvNV9uMHc/VS5yQTZsMy03MHc0N2NoDQo='),''))
 
     match.append((base64.b64decode('U2t5IFNwb3J0IDQ=')+' alt','manual',base64.b64decode('cnRtcGU6Ly80Ni4yNDYuMjkuMTYwOjE5MzUvbCBwbGF5cGF0aD1zc2t5czQgc3dmVXJsPWh0dHA6Ly9oZGNhc3Qub3JnL2VwbGF5ZXIuc3dmIGxpdmU9MSBwYWdlVXJsPWh0dHA6Ly93d3cuaGRjYXN0Lm9yZy9lbWJlZGxpdmU0LnBocD91PXNza3lzMSZ2dz02NTAmdmg9NDcwJmRvbWFpbj1jcmljYm94LnR2IHRva2VuPUZvNV9uMHc/VS5yQTZsMy03MHc0N2NoDQo='),''))
@@ -612,8 +614,10 @@ def AddSmartCric(url):
     match_url =re.findall(patt,link)[0]
     channeladded=False
     patt_sn='sn = "(.*?)"'
+    patt_pk='(&pk=.*?)"'
     try:
         match_sn =re.findall(patt_sn,link)[0]
+        match_pk =re.findall(patt_pk,link)[0]
         final_url=  match_url+   match_sn
         req = urllib2.Request(final_url)
         req.add_header('User-Agent', ' Mozilla/5.0 (Linux; Android 4.1.1; Nexus 7 Build/JRO03D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166  Safari/535.19')
@@ -642,10 +646,11 @@ def AddSmartCric(url):
                     for s in source["streamsList"]:
                         cname=s["caption"]
                         curl=s["streamName"]
-                        curl1="rtsp://"+fms+":1935/mobile/"+curl+"?"+match_sn+"";
+                        curl1="rtsp://"+fms+":1935/mobile/"+curl+"?key="+match_sn+match_pk;
+                                             
                         addDir('    -'+cname ,curl1 ,15,'', False, True,isItFolder=False)		#name,url,mode,icon
                         
-                        curl1="rtsp://"+"206.190.140.164"+":1935/mobile/"+curl+"?"+match_sn+"";
+                        curl1="rtsp://"+"206.190.140.164"+":1935/mobile/"+curl+"?key="+match_sn+match_pk;
                         addDir('    -'+cname +" (static ip)",curl1 ,15,'', False, True,isItFolder=False)		#name,url,mode,icon
 
                         channeladded=True
@@ -990,7 +995,7 @@ def PlayOtherUrl ( url ):
         curlpatth='<source src="(.*?)"'
         progress.update( 50, "", "Preparing url..", "" )
         dag_url =re.findall(curlpatth,link)[0]
-    elif 'dag1.asx' not in url and 'hdcast.org' not in url and '?securitytype=2' not in url:
+    elif 'dag1.asx' not in url and 'hdcast.org' not in url and '?securitytype=2' not in url and 'bernardotv.club' not in url:
         req = urllib2.Request(url)
         req.add_header('User-Agent', base64.b64decode('VmVyaXNtby1CbGFja1VJXygyLjQuNy41LjguMC4zNCk='))   
         response = urllib2.urlopen(req)
@@ -1006,7 +1011,7 @@ def PlayOtherUrl ( url ):
         else:
             dag_url=dag_url[0]
     else:
-        if 'hdcast.org' in url:
+        if 'hdcast.org' in url or 'bernardotv.club' in url:
             direct=True
         dag_url=url
     if '[CDATA' in dag_url:
