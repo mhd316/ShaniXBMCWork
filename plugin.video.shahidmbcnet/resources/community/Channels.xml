@@ -2519,15 +2519,24 @@
 	<assignedcategory>
 	<category>music</category>
 	</assignedcategory>
-	 </channel>
+</channel>
 <channel>
-	<cname>Orbit Mmousalsalat</cname>
-	<imageurl>http://www.lyngsat-logo.com/hires/oo/osn_arabic_series.png</imageurl>
+	<cname>Orbit Cinema 2</cname>
+	<imageurl>http://s30.postimg.org/lznu9yea5/1151.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>drama</category>
 	</assignedcategory>
 	 </channel>
+<channel>
+<channel>
+	<cname>Orbit Series +4</cname>
+	<imageurl>http://s23.postimg.org/cm9f6uuk7/Orbit_Series.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	</assignedcategory>
+</channel>
 <channel>
 	<cname>Orbit Cinema 1</cname>
 	<imageurl>http://www.lyngsat-logo.com/hires/oo/osn_cinema1_arabic.png</imageurl>
