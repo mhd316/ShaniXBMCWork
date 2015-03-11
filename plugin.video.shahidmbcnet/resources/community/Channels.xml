@@ -25,6 +25,14 @@
 	</assignedcategory>
 </channel>
 <channel>
+     <cname>Yemen Shabab</cname>
+     <imageurl>http://s13.postimg.org/bl4880co3/logo.png</imageurl>
+     <enabled>True</enabled>
+     <assignedcategory>
+     <category>gulf</category>
+     </assignedcategory>
+</channel>
+<channel>
 	<cname>Cima Alibaba</cname>
 	<imageurl>http://s12.postimg.org/kcw90j3w9/alibaba.png</imageurl>
 	<enabled>True</enabled>
