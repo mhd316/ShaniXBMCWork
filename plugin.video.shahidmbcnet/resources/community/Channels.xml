@@ -2105,10 +2105,17 @@
 	<category>christ</category>
 	</assignedcategory>
 </channel>
-
 <channel>
 	<cname>Azhari</cname>
 	<imageurl>http://www.lyngsat-logo.com/logo/tv/aa/azhari_tv.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>islam</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>AzhariTV</cname>
+	<imageurl>http://s7.postimg.org/brrw6rexj/logo_small.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>islam</category>
