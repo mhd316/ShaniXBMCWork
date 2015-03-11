@@ -6386,10 +6386,10 @@
 </channel>
 <channel>
      <cname>AssyrSat</cname>
-     <imageurl></imageurl>
+     <imageurl>http://s3.postimg.org/963t1pzo3/assyriasat.jpg</imageurl>
      <enabled>True</enabled>
      <assignedcategory>
-     <category>news</category>
+     <category>oth</category>
      </assignedcategory>
 </channel>
 <channel>
