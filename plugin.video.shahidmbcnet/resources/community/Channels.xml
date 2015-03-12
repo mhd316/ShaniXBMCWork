@@ -2488,10 +2488,10 @@
 </channel>
 <channel>
 	<cname>Al Taghier</cname>
-	<imageurl>http://www.lyngsat-logo.com/logo/tv/aa/al_taghier_jo.png</imageurl>
+	<imageurl>http://live-tv.im/wp-content/uploads/2014/04/Al-Taghier.gif</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
-	<category>gulf</category>
+	<category>Iraq</category>
 	</assignedcategory>
 </channel>
 <channel>
@@ -6117,15 +6117,6 @@
 <channel>
 	<cname>Al Masar 2</cname>
 	<imageurl>http://i1064.photobucket.com/albums/u379/zombiB/msr_zps6e7bcf6e.png</imageurl>
-	<enabled>True</enabled>
-	<assignedcategory>
-	<category>Iraq</category>
-	</assignedcategory>
-</channel>	
-
-<channel>
-	<cname>ALTAGHEER TV</cname>
-	<imageurl>http://i1064.photobucket.com/albums/u379/zombiB/tgr_zps1e834a73.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>Iraq</category>
