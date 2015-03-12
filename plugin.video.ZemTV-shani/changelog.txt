@@ -1,3 +1,6 @@
+B]Version 3.4.3[/B]
+greens channels back. thanks to arif
+
 B]Version 3.4.2[/B]
 -smartcric url changed
 

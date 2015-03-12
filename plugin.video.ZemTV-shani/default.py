@@ -996,6 +996,8 @@ def PlayOtherUrl ( url ):
         progress.update( 50, "", "Preparing url..", "" )
         dag_url =re.findall(curlpatth,link)[0]
     elif 'dag1.asx' not in url and 'hdcast.org' not in url and '?securitytype=2' not in url and 'bernardotv.club' not in url:
+        if '/play/' in url:
+            url+=base64.b64decode('L05PLzA4LzAwMDZEQzg1M0FBQQ==')
         req = urllib2.Request(url)
         req.add_header('User-Agent', base64.b64decode('VmVyaXNtby1CbGFja1VJXygyLjQuNy41LjguMC4zNCk='))   
         response = urllib2.urlopen(req)
