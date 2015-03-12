@@ -4674,10 +4674,20 @@
 	<category>drama</category>
 	</assignedcategory>
 </channel>	
+<channel>
+	<cname>MBC Masr 2</cname>
+	<imageurl>http://s14.postimg.org/w7mn2vxup/MBC_Masr2.jpg</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>ent</category>
+	<category>egypt</category>
+	<category>drama</category>
+	</assignedcategory>
+</channel>	
 
 <channel>
 	<cname>MBC Masr Drama</cname>
-	<imageurl>http://i1064.photobucket.com/albums/u379/zombiB/mbc-msr_zps87074427.png</imageurl>
+	<imageurl>http://www.lyngsat-logo.com/logo/tv/mm/mbc_ae_misr_drama.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>ent</category>
