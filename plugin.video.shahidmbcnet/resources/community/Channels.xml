@@ -83,6 +83,14 @@
 	</assignedcategory>
 </channel>
 <channel>
+	<cname>LPC</cname>
+	<imageurl>http://s2.postimg.org/x3f4sdrwp/lpc.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>lyb</category>
+	</assignedcategory>
+</channel>
+<channel>
 	<cname>Libya 24</cname>
 	<imageurl>http://s29.postimg.org/4fnv51713/unnamed.png</imageurl>
 	<enabled>True</enabled>
