@@ -157,6 +157,26 @@
   </extension>
 </addon>
 
+<addon id="plugin.video.serialzone"
+       name="India - SerialZone"
+       version="1.0"
+       provider-name="sorkan">
+  <requires>
+    	<import addon="xbmc.python" version="2.1.0"/>
+	<import addon="script.module.urlresolver" version="1.0.0"/>
+	<import addon="plugin.video.youtube" version="2.9.2"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>serialzone.in XBMC Client</summary>
+    <description>Watch any available Indian language and TV serials/shows on your XBMC. This plugin fetches the video sources from serialzone and play on XBMC compatible plateforms</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
 <addon id="plugin.video.shahidmbcnet"
        name="Shahid Arabic"
        version="3.5.1"
