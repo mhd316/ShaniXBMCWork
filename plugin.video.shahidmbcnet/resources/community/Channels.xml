@@ -2645,7 +2645,7 @@
 
 <channel>
 	<cname>AlMalakot</cname>
-	<imageurl></imageurl>
+	<imageurl>http://www.lyngsat-logo.com/hires/aa/al_malakoot_sat.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>christ</category>
