@@ -1,3 +1,52 @@
 <streaminginfos>
 
+<streaminginfo>
+	<cname>OSN Yahala HD</cname>
+	<item>
+	<link>http://185.27.237.105:8082/TV0064</link>
+	</item>
+</streaminginfo>
+
+<streaminginfo>
+	<cname>OSN Movies Drama+2</cname>
+	<item>
+	<link>http://185.27.237.105:8082/TV0075</link>
+	</item>
+</streaminginfo>
+
+<streaminginfo>
+	<cname>OSN Yahala Drama HD</cname>
+	<item>
+	<link>http://185.27.237.105:8082/TV0077</link>
+	</item>
+</streaminginfo>
+
+<streaminginfo>
+	<cname>TCM</cname>
+	<item>
+	<link>http://185.27.237.105:8082/TV0082</link>
+	</item>
+</streaminginfo>
+
+<streaminginfo>
+	<cname>OSN First More</cname>
+	<item>
+	<link>http://185.27.237.105:8082/TV0084</link>
+	</item>
+</streaminginfo>
+
+<streaminginfo>
+	<cname>Alsafwa</cname>
+	<item>
+	<link>http://185.27.237.105:8082/TV0099</link>
+	</item>
+</streaminginfo>
+
+<streaminginfo>
+	<cname>OSN Sport1</cname>
+	<item>
+	<link>http://185.27.237.105:8082/TV0104</link>
+	</item>
+</streaminginfo>
+
 </streaminginfos>
