@@ -1,0 +1,4 @@
+[B]Version 1.0[/B]
+- First version 1.0
+- Consolidated for opening any channel/show on serial zone.
+
