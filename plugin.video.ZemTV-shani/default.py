@@ -818,7 +818,7 @@ def AddChannelsFromOthers(isPakistani):
 
     patt='<item><name>(.*?)<.*?<link>(.*?)<.*?albumart>(.*?)<'
     match=[]    
-    if 1==1:#enable it
+    if 1==2:#enable it
         if isPakistani:
             url=base64.b64decode("aHR0cDovL2pweG1sLmphZG9vdHYuY29tL3Z1eG1sLnBocC9qYWRvb3htbC9pdGVtcy8xMzE0LyVkLw==")
         else:
@@ -846,7 +846,7 @@ def AddChannelsFromOthers(isPakistani):
                     break
         except: pass
 
-    if 1==2:
+    if 1==1:
         try:
             patt='<channel><channel_number>.*?<channel_name>(.+?[^<])</channel_name><channel_type>(.+?)</channel_type>.*?[^<"]<channel_url>(.+?[^<])</channel_url>.*?</channel>'
             url=base64.b64decode("aHR0cDovL2ZlcnJhcmlsYi5qZW10di5jb20vaW5kZXgucGhwLzJfNC9neG1sL2NoYW5uZWxfbGlzdA==")
@@ -864,7 +864,7 @@ def AddChannelsFromOthers(isPakistani):
             match +=re.findall(patt,match_temp)
         except: pass
         
-    if 1==2:
+    if 1==1:
         if isPakistani:
             match.append(('Ary digital','manual','cid:475',''))
             match.append(('Ary digital','manual','cid:981',''))
@@ -997,9 +997,11 @@ def PlayOtherUrl ( url ):
         dag_url =re.findall(curlpatth,link)[0]
     elif 'dag1.asx' not in url and 'hdcast.org' not in url and '?securitytype=2' not in url and 'bernardotv.club' not in url:
         if '/play/' in url:
-            url+=base64.b64decode('L05PLzA4LzAwMDZEQzg1M0FBQQ==')
+            url+=base64.b64decode('L1VTLzEvMDAwNkRDODUzQUFC')
+            getUrl(base64.b64decode('aHR0cDovL2ZlcnJhcmlsYi5qZW10di5jb20vaW5kZXgucGhwL3htbC9pbml0aWFsaXplLzA1LTAyLTEzMDEwNy0yNC1QT1AtNjE4LTAwMC8yLjIuMS40LzAwMDZEQzg1M0FBQg=='))
         req = urllib2.Request(url)
         req.add_header('User-Agent', base64.b64decode('VmVyaXNtby1CbGFja1VJXygyLjQuNy41LjguMC4zNCk='))   
+
         response = urllib2.urlopen(req)
         link=response.read()
         curlpatth='<link>(.*?)<\/link>'
