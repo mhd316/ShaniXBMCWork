@@ -305,6 +305,7 @@ def checkAndRefresh():
 			#print 'lastUpdate',lastUpdate,now_date
 			if not now_date==lastUpdate:
 				do_update=True
+		if selfAddon.getSetting( "stopAutoUpdate" )=="true": do_update=False
 		selfAddon.setSetting( id="lastupdate" ,value=now_date)
 		if do_update:
 			RefreshResources(True)

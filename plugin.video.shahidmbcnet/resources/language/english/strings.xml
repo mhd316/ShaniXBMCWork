@@ -82,5 +82,7 @@
           <string id="32090">Enable Shared Proxy?</string>
 	 <string id="32080">Enable Local Proxy?</string>
 	 <string id="32081">GL Proxy (use 127.0.0.1) for local machine</string>
-	
+	 <string id="32084">Disable daily auto update</string>
+
+     
 </strings>
