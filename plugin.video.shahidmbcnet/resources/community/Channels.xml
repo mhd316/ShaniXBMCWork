@@ -1829,8 +1829,8 @@
 	</assignedcategory>
 </channel>
 <channel>
-	<cname>OSN TMC</cname>
-	<imageurl>http://www.lyngsat-logo.com/hires/tt/tcm_cinema_fr.png</imageurl>
+	<cname>OSN TCM</cname>
+	<imageurl>http://www.lyngsat-logo.com/logo/tv/tt/tcm_global.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>drama</category>
