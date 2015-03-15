@@ -1,3 +1,6 @@
+Version 1.6.0
+support for noredirect tag in regex to stop the redirect
+
 Version 1.5.9
 Thanks to alibaba@tvaddons, added f4m,youtube and ftv tags etc.
 
