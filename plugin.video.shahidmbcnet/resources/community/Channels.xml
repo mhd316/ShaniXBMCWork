@@ -1805,8 +1805,8 @@
 </channel>
 	
 <channel>
-	<cname>Discovery HD</cname>
-	<imageurl>http://upload.wikimedia.org/wikipedia/tr/6/69/Discovery_HD_logo.PNG</imageurl>
+	<cname>Discovery</cname>
+	<imageurl>http://i1064.photobucket.com/albums/u379/zombiB/dscvvry_zpscf4d4864.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>doc</category>
@@ -5972,18 +5972,6 @@
 	<category>doc</category>
 	</assignedcategory>
 </channel>	
-
-
-<channel>
-	<cname>DISCOVERY CHANNEL</cname>
-	<imageurl>http://i1064.photobucket.com/albums/u379/zombiB/dscvvry_zpscf4d4864.png</imageurl>
-	<enabled>True</enabled>
-	<assignedcategory>
-	<category>doc</category>
-	</assignedcategory>
-</channel>	
-
-
 <channel>
 	<cname>Almajd Rawdhah</cname>
 	<imageurl>http://i1064.photobucket.com/albums/u379/zombiB/roda_zps138bad78.png</imageurl>
