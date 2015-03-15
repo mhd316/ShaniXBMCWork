@@ -1,5 +1,31 @@
 <channels>
 <channel>
+	<cname>Attasi3a</cname>
+	<imageurl>http://satexpat.com/img/cha/tn/tv9-95x95.gif</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>tunis</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>6Ter</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/num/6ter_fr.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>french</category>
+	</assignedcategory>
+</channel>	
+<channel>
+	<cname>M6 Music</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/mm/m6_music_fr.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>music</category>
+	<category>french</category>
+	</assignedcategory>
+</channel>
+
+<channel>
 	<cname>Tobacts</cname>
 	<imageurl>http://www.lyngsat-logo.com/logo/tv/tt/tobacts_fm_tv_ly.png</imageurl>
 	<enabled>True</enabled>
