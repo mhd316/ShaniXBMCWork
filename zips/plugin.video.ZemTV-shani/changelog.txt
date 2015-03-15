@@ -1,3 +1,6 @@
+B]Version 3.4.6[/B]
+added geo entertainment for EB
+
 B]Version 3.4.5[/B]
 added alt sports
 

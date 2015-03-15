@@ -1124,13 +1124,21 @@ def AddChannelsFromEbound():
 	match.append(('madina','madina','manual'))
 	match.append(('Qtv','qtv','manual'))
 	match.append(('Peace Tv','peacetv','manual'))
+	match.append(('Geo Entertainment','geoentertainment','manual'))
+	match.append(('Geo News','geonews','manual'))
 
+	match.append(('Quran TV Urdu','aHR0cDovL2lzbDEuaXNsYW00cGVhY2UuY29tL1F1cmFuVXJkdVRW','gen'))
+    
+
+    
 	match=sorted(match,key=lambda s: s[0].lower()   )
 
 	#h = HTMLParser.HTMLParser()
 	for cname in match:
 		if cname[2]=='manual':
 			addDir(Colored(cname[0].capitalize(),'EB') ,cname[1] ,9,cname[2], False, True,isItFolder=False)		#name,url,mode,icon
+		elif cname[2]=='gen':
+			addDir(Colored(cname[0].capitalize(),'EB') ,cname[1] ,33,cname[2], False, True,isItFolder=False)		#name,url,mode,icon
 		else:
 			addDir(Colored(cname[0].capitalize(),'EB') ,cname[0] ,9,cname[1], False, True,isItFolder=False)		#name,url,mode,icon
 
