@@ -1813,6 +1813,31 @@
 	</assignedcategory>
 </channel>
 <channel>
+	<cname>OSN MGM</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/mm/mgm_channel_us.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	</assignedcategory>
+</channel>	
+<channel>
+	<cname>OSN Star Movies</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/ss/star_movies_in.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>OSN TMC</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/tt/tcm_cinema_fr.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	</assignedcategory>
+</channel>
+
+<channel>
 	<cname>OSN Movies Drama</cname>
 	<imageurl>http://www.lyngsat-logo.com/hires/oo/osn_movies_drama.png</imageurl>
 	<enabled>True</enabled>
