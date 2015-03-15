@@ -1126,8 +1126,13 @@ def AddChannelsFromEbound():
 	match.append(('Peace Tv','peacetv','manual'))
 	match.append(('Geo Entertainment','geoentertainment','manual'))
 	match.append(('Geo News','geonews','manual'))
+	match.append(('Channel 92','channel92','manual'))
+	match.append(('Geo Super','geosuper','manual'))
 
+    
 	match.append(('Quran TV Urdu','aHR0cDovL2lzbDEuaXNsYW00cGVhY2UuY29tL1F1cmFuVXJkdVRW','gen'))
+
+    
     
 
     
