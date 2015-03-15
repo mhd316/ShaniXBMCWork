@@ -1813,6 +1813,14 @@
 	</assignedcategory>
 </channel>
 <channel>
+	<cname>OSN Movies Drama</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/oo/osn_movies_drama.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	</assignedcategory>
+</channel>
+<channel>
 	<cname>OSN Movies Kids</cname>
 	<imageurl>http://www.lyngsat-logo.com/hires/oo/osn_movies_kids.png</imageurl>
 	<enabled>True</enabled>
