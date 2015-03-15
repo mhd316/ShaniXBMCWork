@@ -1,3 +1,7 @@
+Version 1.6.1
+fix the release issue
+
+
 Version 1.6.0
 support for noredirect tag in regex to stop the redirect
 
