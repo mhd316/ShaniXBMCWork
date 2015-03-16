@@ -1812,6 +1812,25 @@
 	<category>doc</category>
 	</assignedcategory>
 </channel>
+
+<channel>
+	<cname>OSN Ar</cname>
+	<imageurl>http://i1064.photobucket.com/albums/u379/zombiB/osnhl_zps3d76c036.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	<category>ent</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>OSN EN</cname>
+	<imageurl>http://i1064.photobucket.com/albums/u379/zombiB/osn_zpsdd80d14f.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	<category>ent</category>
+	</assignedcategory>
+</channel>
 <channel>
 	<cname>OSN MGM</cname>
 	<imageurl>http://www.lyngsat-logo.com/hires/mm/mgm_channel_us.png</imageurl>
@@ -1836,10 +1855,17 @@
 	<category>drama</category>
 	</assignedcategory>
 </channel>
-
 <channel>
 	<cname>OSN Movies Drama</cname>
 	<imageurl>http://www.lyngsat-logo.com/hires/oo/osn_movies_drama.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>OSN Movies Drama+2</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/oo/osn_movies_drama_plus2.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>drama</category>
@@ -1854,6 +1880,105 @@
 	</assignedcategory>
 </channel>
 <channel>
+	<cname>OSN First HD</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/oo/osn_first_hd.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>OSN First More</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/oo/osn_first_more.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>OSN Ya Hala Shabab HD</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/oo/osn_ya_hala_shabab_hd.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	</assignedcategory>
+</channel>	
+<channel>
+	<cname>OSN Ya Hala +2</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/oo/osn_ya_hala_hd_plus2.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>OSN Movies Premiere HD</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/oo/osn_movies_hd.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>OSN Movies Comedy</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/oo/osn_movies_comedy_hd.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	</assignedcategory>
+</channel>	
+<channel>
+	<cname>OSN Movies HD +2</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/oo/osn_movies_hd_plus2.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	</assignedcategory>
+</channel>	
+<channel>
+	<cname>OSN Movies Action HD</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/oo/osn_movies_action_hd.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>OSN Yahala HD</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/oo/osn_ya_hala_hd.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>OSN Yahala Drama</cname>
+	<imageurl>http://press.osn.com/logo/logos/OYA.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>OSN ALPHA orbit</cname>
+	<imageurl>https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash2/t1.0-1/1378503_569711983083437_144631773_n.jpg</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>egypt</category>
+	<category>drama</category>
+	<category>iptv</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>OSN Sports1</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/oo/osn.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	</assignedcategory>
+</channel>
+
+<channel>
 	<cname>AlBabeleyia</cname>
 	<imageurl>http://www.lyngsat-logo.com/logo/tv/aa/al_babeleyia.png</imageurl>
 	<enabled>True</enabled>
@@ -1861,7 +1986,6 @@
 	<category>Iraq</category>
 	</assignedcategory>
 </channel>
-
 <channel>
 	<cname>Massaya</cname>
 	<imageurl>http://www.lyngsat-logo.com/logo/tv/mm/massaya_tv.png</imageurl>
@@ -3130,86 +3254,7 @@
 	<category>africa</category>
 	</assignedcategory>
 </channel>	
-    
-<channel>
-	<cname>OSN First HD</cname>
-	<imageurl>http://www.lyngsat-logo.com/hires/oo/osn_first_hd.png</imageurl>
-	<enabled>True</enabled>
-	<assignedcategory>
-	<category>drama</category>
-	</assignedcategory>
-</channel>	
-	
-<channel>
-	<cname>OSN Ya Hala Shabab HD</cname>
-	<imageurl>http://www.lyngsat-logo.com/hires/oo/osn_ya_hala_shabab_hd.png</imageurl>
-	<enabled>True</enabled>
-	<assignedcategory>
-	<category>drama</category>
-	</assignedcategory>
-</channel>	
-<channel>
-	<cname>OSN Ya Hala +2</cname>
-	<imageurl>http://www.lyngsat-logo.com/hires/oo/osn_ya_hala_hd_plus2.png</imageurl>
-	<enabled>True</enabled>
-	<assignedcategory>
-	<category>drama</category>
-	</assignedcategory>
-</channel>	
 
-    
-<channel>
-	<cname>OSN Movies Premiere HD</cname>
-	<imageurl>http://www.lyngsat-logo.com/hires/oo/osn_movies_hd.png</imageurl>
-	<enabled>True</enabled>
-	<assignedcategory>
-	<category>drama</category>
-	</assignedcategory>
-</channel>	
-	
-<channel>
-	<cname>OSN Movies Comedy</cname>
-	<imageurl>http://www.lyngsat-logo.com/hires/oo/osn_movies_comedy_hd.png</imageurl>
-	<enabled>True</enabled>
-	<assignedcategory>
-	<category>drama</category>
-	</assignedcategory>
-</channel>	
-<channel>
-	<cname>OSN Movies HD +2</cname>
-	<imageurl>http://www.lyngsat-logo.com/hires/oo/osn_movies_hd_plus2.png</imageurl>
-	<enabled>True</enabled>
-	<assignedcategory>
-	<category>drama</category>
-	</assignedcategory>
-</channel>	
-<channel>
-	<cname>OSN Movies Action HD</cname>
-	<imageurl>http://www.lyngsat-logo.com/hires/oo/osn_movies_action_hd.png</imageurl>
-	<enabled>True</enabled>
-	<assignedcategory>
-	<category>drama</category>
-	</assignedcategory>
-</channel>	
-
-
-<channel>
-	<cname>OSN Yahala HD</cname>
-	<imageurl>http://www.lyngsat-logo.com/hires/oo/osn_ya_hala_hd.png</imageurl>
-	<enabled>True</enabled>
-	<assignedcategory>
-	<category>drama</category>
-	</assignedcategory>
-</channel>	
-	
-<channel>
-	<cname>OSN Yahala Drama</cname>
-	<imageurl>http://press.osn.com/logo/logos/OYA.png</imageurl>
-	<enabled>True</enabled>
-	<assignedcategory>
-	<category>drama</category>
-	</assignedcategory>
-</channel>	
 <channel>
 	<cname>ART Hekayat</cname>
 	<imageurl>http://www.lyngsat-logo.com/hires/aa/art_hekayat.png</imageurl>
@@ -3235,18 +3280,7 @@
 	<category>egypt</category>
 	<category>drama</category>
 	</assignedcategory>
-</channel>	
-
-<channel>
-	<cname>OSN ALPHA orbit</cname>
-	<imageurl>https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash2/t1.0-1/1378503_569711983083437_144631773_n.jpg</imageurl>
-	<enabled>True</enabled>
-	<assignedcategory>
-	<category>egypt</category>
-	<category>drama</category>
-	<category>iptv</category>
-	</assignedcategory>
-</channel>	
+</channel>
 
     
 
@@ -3459,26 +3493,6 @@
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>drama</category>
-	</assignedcategory>
-</channel>	
-
-<channel>
-	<cname>OSN Ar</cname>
-	<imageurl>http://i1064.photobucket.com/albums/u379/zombiB/osnhl_zps3d76c036.png</imageurl>
-	<enabled>True</enabled>
-	<assignedcategory>
-	<category>drama</category>
-	<category>ent</category>
-	</assignedcategory>
-</channel>	
-
-<channel>
-	<cname>OSN EN</cname>
-	<imageurl>http://i1064.photobucket.com/albums/u379/zombiB/osn_zpsdd80d14f.png</imageurl>
-	<enabled>True</enabled>
-	<assignedcategory>
-	<category>drama</category>
-	<category>ent</category>
 	</assignedcategory>
 </channel>	
 
