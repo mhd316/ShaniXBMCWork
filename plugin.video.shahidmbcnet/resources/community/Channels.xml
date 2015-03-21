@@ -8,6 +8,15 @@
 	</assignedcategory>
 </channel>
 <channel>
+	<cname>Darbaka</cname>
+	<imageurl>http://www.lyngsat-logo.com/logo/tv/dd/darbaka_tv.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	 <category>drama</category>
+     <category>egypt</category>
+	</assignedcategory>
+</channel>
+<channel>
 	<cname>6Ter</cname>
 	<imageurl>http://www.lyngsat-logo.com/hires/num/6ter_fr.png</imageurl>
 	<enabled>True</enabled>
