@@ -6972,8 +6972,8 @@
 	</assignedcategory>
 </channel>
 <channel>
-	<cname>ABC Aflam</cname>
-	<imageurl></imageurl>
+	<cname>ABC Cinema</cname>
+	<imageurl>http://s14.postimg.org/eo2kbev3l/ABCCinema.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>drama</category>
