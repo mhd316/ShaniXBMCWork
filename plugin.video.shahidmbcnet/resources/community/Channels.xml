@@ -6885,4 +6885,167 @@
 	</assignedcategory>
 </channel>	
     
+    
+    
+    
+    
+    
+    <channel>
+	<cname>Time Taxi</cname>
+	<imageurl>http://s4.postimg.org/bs34k422h/Time.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	<category>egypt</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Time Film</cname>
+	<imageurl>http://s4.postimg.org/bs34k422h/Time.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	<category>egypt</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Time Action</cname>
+	<imageurl>http://s4.postimg.org/bs34k422h/Time.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	<category>egypt</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Cairo Zaman</cname>
+	<imageurl>http://s28.postimg.org/4if8i6ev1/Cairo_Zaman_222x300.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	<category>egypt</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Kidzinia</cname>
+	<imageurl>http://s14.postimg.org/a9aa6xzox/photo.jpg</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	<category>egypt</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Al Shasha</cname>
+	<imageurl></imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	<category>egypt</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Kalb Elasad</cname>
+	<imageurl></imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	<category>egypt</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Halawat Rooh</cname>
+	<imageurl></imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	<category>egypt</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Abla Faita</cname>
+	<imageurl></imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	<category>egypt</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>ABC Aflam</cname>
+	<imageurl></imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	<category>egypt</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Libya Alshababiya</cname>
+	<imageurl></imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>lyb</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Libya Altoratiya</cname>
+	<imageurl></imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>lyb</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Layali Cinema</cname>
+	<imageurl></imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	<category>egypt</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>MBC Drama Plus</cname>
+	<imageurl>http://livetvscreen.com/wp-content/uploads/2012/06/Mbc-Drama-Plus.jpg</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Addounia</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/aa/addounia_tv.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>sham</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Disney Junior</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/dd/disney_junior_us.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>kids</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Zee Living</cname>
+	<imageurl>http://2.bp.blogspot.com/-AQD5h2om0r4/VHijcRDjRvI/AAAAAAAACqg/qrzhc4Ii6sA/s1600/z-living.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Moga Cinema</cname>
+	<imageurl>http://s27.postimg.org/yrtchc0r7/1380564105141.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	<category>egypt</category>
+	</assignedcategory>
+</channel>
+
+
 </channels>
