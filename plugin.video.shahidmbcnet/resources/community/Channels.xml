@@ -6912,6 +6912,15 @@
 	</assignedcategory>
 </channel>
 <channel>
+	<cname>Time Ekhtarna Lak</cname>
+	<imageurl>http://s4.postimg.org/bs34k422h/Time.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	<category>egypt</category>
+	</assignedcategory>
+</channel>
+<channel>
 	<cname>Time Action</cname>
 	<imageurl>http://s4.postimg.org/bs34k422h/Time.png</imageurl>
 	<enabled>True</enabled>
