@@ -2339,16 +2339,6 @@
 	<category>drama</category>
 	</assignedcategory>
 </channel>
-
-<channel>
-	<cname>Taxi El Sahra</cname>
-	<imageurl>http://www.lyngsat-logo.com/logo/tv/tt/taxi_el_sahra.png</imageurl>
-	<enabled>True</enabled>
-	<assignedcategory>
-	<category>egypt</category>
-	</assignedcategory>
-</channel>
-
 <channel>
 	<cname>AlHayat_Christian</cname>
 	<imageurl>http://www.lyngsat-logo.com/logo/tv/aa/al_hayat.png</imageurl>
@@ -5360,17 +5350,19 @@
 
 <channel>
 	<cname>Time Comedy</cname>
-	<imageurl>http://i1064.photobucket.com/albums/u379/zombiB/cmdi_zpsbd253edc.png</imageurl>
+	<imageurl>http://s4.postimg.org/bs34k422h/Time.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>drama</category>
+	<category>egypt</category>
 	</assignedcategory>
 </channel>	
 <channel>
 	<cname>Time Drama</cname>
-	<imageurl>http://i1064.photobucket.com/albums/u379/zombiB/cmdi_zpsbd253edc.png</imageurl>
+	<imageurl>http://s4.postimg.org/bs34k422h/Time.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
+	<category>egypt</category>
 	<category>drama</category>
 	</assignedcategory>
 </channel>	
@@ -6098,7 +6090,7 @@
 
 <channel>
 	<cname>Time cinema</cname>
-	<imageurl>http://i1064.photobucket.com/albums/u379/zombiB/timecine_zpsd2d2b918.png</imageurl>
+	<imageurl>http://s4.postimg.org/bs34k422h/Time.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>drama</category>
