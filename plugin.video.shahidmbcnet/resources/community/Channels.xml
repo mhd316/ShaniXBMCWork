@@ -853,15 +853,7 @@
 	 <category>french</category>
      </assignedcategory>
 </channel>
-<channel>
-     <cname>NATIONAL GEO FR</cname>
-     <imageurl>https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/t1.0-1/p320x320/1044696_665694903448030_1017020399_n.jpg</imageurl>
-     <enabled>True</enabled>
-     <assignedcategory>
-     <category>doc</category>
-	 <category>french</category>
-     </assignedcategory>
-</channel>
+
 <channel>
      <cname>Finance</cname>
      <imageurl>http://cdn.marketplaceimages.windowsphone.com/v8/images/59e331ba-f024-4e6d-abcf-c1eed734d512?imageType=ws_icon_large</imageurl>
@@ -6709,9 +6701,10 @@
 </channel>	
 <channel>
 	<cname>National Geo FR</cname>
-	<imageurl>http://www.lyngsat-logo.com/hires/nn/nat_geo_asia.png</imageurl>
+	<imageurl>https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/t1.0-1/p320x320/1044696_665694903448030_1017020399_n.jpg</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
+	<category>doc</category>
 	<category>french</category>
     </assignedcategory>
 </channel>	
