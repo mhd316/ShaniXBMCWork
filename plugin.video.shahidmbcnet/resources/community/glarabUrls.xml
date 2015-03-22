@@ -6605,7 +6605,7 @@
 	</item>
 </streaminginfo>
 <streaminginfo>
-	<cname>Taxi El Sahra</cname>
+	<cname>Time Taxi</cname>
 	<item>
 	<title>Proxy High</title>
 	<link>http://$GLProxyIP$:4500/channel.flv?server=$GL-IPHD$&amp;channel=TimeTiatro_High&amp;port=2077&amp;session=$GL-Sesession$</link>
@@ -8810,7 +8810,7 @@
 </item>
 </streaminginfo>
 <streaminginfo>
-<cname>Taxi El Sahra</cname>
+<cname>Time Taxi</cname>
 <item>
 <title>HD</title>
 <link>http://$GL-IPHD$:7777/TimeTiatro_HD.m3u8?session=$GL-Sesession$</link>
