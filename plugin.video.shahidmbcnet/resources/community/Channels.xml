@@ -6686,6 +6686,7 @@
 	<imageurl>http://www.lyngsat-logo.com/hires/dd/disney_channel_global.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
+	<category>kids</category>
 	<category>french</category>
     </assignedcategory>
 </channel>	
@@ -6694,6 +6695,7 @@
 	<imageurl>http://www.lyngsat-logo.com/hires/dd/disney_xd_us.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
+	<category>kids</category>
 	<category>french</category>
     </assignedcategory>
 </channel>	
@@ -6932,7 +6934,7 @@
 	<imageurl>http://s14.postimg.org/a9aa6xzox/photo.jpg</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
-	<category>drama</category>
+	<category>kids</category>
 	<category>egypt</category>
 	</assignedcategory>
 </channel>
