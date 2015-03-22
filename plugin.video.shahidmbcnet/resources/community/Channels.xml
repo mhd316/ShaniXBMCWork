@@ -6946,7 +6946,7 @@
 </channel>
 <channel>
 	<cname>Kalb Elasad</cname>
-	<imageurl></imageurl>
+	<imageurl>http://s1.postimg.org/prf34r8pb/Kalb_alasad2.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>drama</category>
@@ -6955,7 +6955,7 @@
 </channel>
 <channel>
 	<cname>Halawat Rooh</cname>
-	<imageurl></imageurl>
+	<imageurl>http://s27.postimg.org/5jcwfb9ar/Halawat_rooh.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>drama</category>
@@ -6998,7 +6998,7 @@
 </channel>
 <channel>
 	<cname>Layali Cinema</cname>
-	<imageurl></imageurl>
+	<imageurl>http://s30.postimg.org/hfoq8qby9/layalicinema.jpg</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>drama</category>
@@ -7046,6 +7046,32 @@
 	<category>egypt</category>
 	</assignedcategory>
 </channel>
-
+<channel>
+	<cname>Hollywood Cinema</cname>
+	<imageurl></imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	<category>egypt</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Masr Alarab</cname>
+	<imageurl></imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	<category>egypt</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Set Elbait</cname>
+	<imageurl>http://s12.postimg.org/89o45bgml/ablafahita.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>cook</category>
+	<category>egypt</category>
+	</assignedcategory>
+</channel>
 
 </channels>
