@@ -795,7 +795,7 @@
 	</item>
 </streaminginfo>
 <streaminginfo>
-	<cname>Nile Drama 2</cname>
+	<cname>Sout El Shaab</cname>
 	<item>
 	<title>Low</title>
 	<link>http://$GL-IPLOW$:7777/NileDrama2.m3u8?session=$GL-Sesession$</link>
@@ -6339,7 +6339,7 @@
 	</item>
 </streaminginfo>
 <streaminginfo>
-	<cname>Nile Drama 2</cname>
+	<cname>Sout El Shaab</cname>
 	<item>
 	<title>Proxy High</title>
 	<link>http://$GLProxyIP$:4500/channel.flv?server=$GL-IPHD$&amp;channel=NileDrama2_High&amp;port=2077&amp;session=$GL-Sesession$</link>
@@ -8544,7 +8544,7 @@
 </item>
 </streaminginfo>
 <streaminginfo>
-<cname>Nile Drama 2</cname>
+<cname>Sout El Shaab</cname>
 <item>
 <title>HD</title>
 <link>http://$GL-IPHD$:7777/NileDrama2_HD.m3u8?session=$GL-Sesession$</link>
