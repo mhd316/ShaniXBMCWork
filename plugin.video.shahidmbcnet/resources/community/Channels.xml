@@ -8,6 +8,14 @@
 	</assignedcategory>
 </channel>
 <channel>
+	<cname>Sout El Shaab</cname>
+	<imageurl>http://s15.postimg.org/hngwpb85j/photo.jpg</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>egypt</category>
+	</assignedcategory>
+</channel>
+<channel>
 	<cname>Darbaka</cname>
 	<imageurl>http://www.lyngsat-logo.com/logo/tv/dd/darbaka_tv.png</imageurl>
 	<enabled>True</enabled>
