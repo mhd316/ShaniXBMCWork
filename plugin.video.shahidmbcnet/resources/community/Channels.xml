@@ -8,6 +8,15 @@
 	</assignedcategory>
 </channel>
 <channel>
+	<cname>Habashiya Cima</cname>
+	<imageurl>http://s23.postimg.org/hpe36xp2v/Habishia.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	<category>egypt</category>
+	</assignedcategory>
+</channel>	
+<channel>
 	<cname>Sout El Shaab</cname>
 	<imageurl>http://s15.postimg.org/hngwpb85j/photo.jpg</imageurl>
 	<enabled>True</enabled>
