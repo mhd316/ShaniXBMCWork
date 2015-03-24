@@ -8,6 +8,16 @@
 	</assignedcategory>
 </channel>
 <channel>
+	<cname>Basra</cname>
+	<imageurl>http://s9.postimg.org/gepyyh3u3/logo.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>Iraq</category>
+	<category>news</category>
+	</assignedcategory>
+</channel>	
+
+<channel>
 	<cname>Habashiya Cima</cname>
 	<imageurl>http://s23.postimg.org/hpe36xp2v/Habishia.png</imageurl>
 	<enabled>True</enabled>
