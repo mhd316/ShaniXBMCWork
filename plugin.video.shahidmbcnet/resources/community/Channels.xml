@@ -6284,7 +6284,16 @@
 	<assignedcategory>
 	<category>islam</category>
 	</assignedcategory>
-</channel>	
+</channel>
+
+<channel>
+	<cname>Al Anwar 2</cname>
+	<imageurl>http://www.lyngsat-logo.com/logo/tv/aa/alanwar_tv.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>islam</category>
+	</assignedcategory>
+</channel>
 	
 <channel>
 	<cname>Panorama Action</cname>
