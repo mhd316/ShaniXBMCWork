@@ -1,7 +1,10 @@
-B]Version 3.4.6[/B]
+[B]Version 3.4.7[/B]
+Mac-change and smartcric
+
+[B]Version 3.4.6[/B]
 added geo entertainment for EB
 
-B]Version 3.4.5[/B]
+[B]Version 3.4.5[/B]
 added alt sports
 
 
