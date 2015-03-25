@@ -44,6 +44,9 @@ def createCookie(url,cj=None,agent='Mozilla/5.0 (Windows NT 6.1; rv:32.0) Gecko/
         u='/'.join(url.split('/')[:-1])
         query = '%s/cdn-cgi/l/chk_jschl?jschl_vc=%s&jschl_answer=%s' % (u, jschl, answer)
 
+        if 'type="hidden" name="pass"' in result:
+            passval=re.compile('name="pass" value="(.*?)"').findall(result)[0]
+            query+='&pass='+ passval
         opener = urllib2.build_opener(NoRedirection, urllib2.HTTPCookieProcessor(cj))
         opener.addheaders = [('User-Agent', agent)]
         response = opener.open(query)
