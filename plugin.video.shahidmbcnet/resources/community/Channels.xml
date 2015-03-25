@@ -78,6 +78,33 @@
 	</assignedcategory>
 </channel>
 <channel>
+	<cname>Olly Cinema</cname>
+	<imageurl>http://s30.postimg.org/aghfdm4y9/olly_Cinema.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	<category>egypt</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Cinema Pro</cname>
+	<imageurl></imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	<category>egypt</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Ten</cname>
+	<imageurl>http://s9.postimg.org/pisorm7xb/Ten.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	<category>egypt</category>
+	</assignedcategory>
+</channel>
+<channel>
 	<cname>Darabaka Aflam</cname>
 	<imageurl>http://s17.postimg.org/5dgxvpq7f/Darabaka_Aflam.png</imageurl>
 	<enabled>True</enabled>
@@ -7023,7 +7050,7 @@
 </channel>
 <channel>
 	<cname>Libya Altoratiya</cname>
-	<imageurl></imageurl>
+	<imageurl>http://s16.postimg.org/fkiw0qi9h/altoratiya.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>lyb</category>
