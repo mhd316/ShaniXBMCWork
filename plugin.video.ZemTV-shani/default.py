@@ -5,7 +5,8 @@ import HTMLParser
 import xbmcaddon
 from operator import itemgetter
 import traceback,cookielib
-import base64,os
+import base64,os,  binascii
+
 try:
     import json
 except:
@@ -659,12 +660,11 @@ def AddSmartCric(url):
                     for s in source["streamsList"]:
                         cname=s["caption"]
                         curl=s["streamName"]
+                        curl1="http://"+fms+":1935/mobile/"+curl+"/playlist.m3u8?key="+match_sn+match_pk;
+                        addDir('    -'+cname +" (http)" ,curl1 ,15,'', False, True,isItFolder=False)		#name,url,mode,icon
+                        #curl1="rtsp://"+"206.190.140.164"+":1935/mobile/"+curl+"?key="+match_sn+match_pk;
                         curl1="rtsp://"+fms+":1935/mobile/"+curl+"?key="+match_sn+match_pk;
-                                             
-                        addDir('    -'+cname ,curl1 ,15,'', False, True,isItFolder=False)		#name,url,mode,icon
-                        
-                        curl1="rtsp://"+"206.190.140.164"+":1935/mobile/"+curl+"?key="+match_sn+match_pk;
-                        addDir('    -'+cname +" (static ip)",curl1 ,15,'', False, True,isItFolder=False)		#name,url,mode,icon
+                        addDir('    -'+cname +" (rtsp)",curl1 ,15,'', False, True,isItFolder=False)		#name,url,mode,icon
 
                         channeladded=True
                 else:
@@ -1022,7 +1022,7 @@ def PlayOtherUrl ( url ):
         dag_url =re.findall(curlpatth,link)[0]
     elif 'dag1.asx' not in url and 'hdcast.org' not in url and '?securitytype=2' not in url and 'bernardotv.club' not in url:
         if '/play/' in url:
-            code=base64.b64decode('MDAwNkRDODUzQUFD')
+            code=base64.b64decode('MDAwNkRDODUz')+binascii.b2a_hex(os.urandom(2))[:3]
             url+=base64.b64decode('L1VTLzEv')+code
             getUrl(base64.b64decode('aHR0cDovL2ZlcnJhcmlsYi5qZW10di5jb20vaW5kZXgucGhwL3htbC9pbml0aWFsaXplLzA1LTAyLTEzMDEwNy0yNC1QT1AtNjE4LTAwMC8yLjIuMS40Lw==')+code)
         req = urllib2.Request(url)

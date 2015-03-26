@@ -1,3 +1,7 @@
+[B]Version 3.4.8[/B]
+Mac-change randomized
+
+
 [B]Version 3.4.7[/B]
 Mac-change and smartcric
 
