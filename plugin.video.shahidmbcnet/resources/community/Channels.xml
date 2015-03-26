@@ -9,7 +9,7 @@
 </channel>
 <channel>
 	<cname>ShamFM</cname>
-	<imageurl>http://s9.postimg.org/ffhkephen/image_src.png/imageurl>
+	<imageurl>http://s9.postimg.org/ffhkephen/image_src.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>sham</category>
