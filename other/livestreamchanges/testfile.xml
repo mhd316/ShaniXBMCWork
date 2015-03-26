@@ -1,4 +1,61 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<item>
+<title>BeamStream HASOMASO RegEx **https://beamstream.biz/index.php/CustomPage/59/**</title>
+<link>$doregex[get-url]$doregex[LOGOUT]</link>
+<regex>
+<name>get-url</name>
+<expres>file: "(.*?)"</expres>
+<page>https://beamstream.biz/index.php/CustomPage/59/</page>
+<cookieJar>$doregex[LoginAndCookie]</cookieJar>
+</regex>
+
+<regex>
+<name>get-s</name>
+<expres>'&amp;s=(.*?)'</expres>
+<page>http://beamstream.biz/index.php/CustomPage/59/</page>
+<cookieJar></cookieJar>
+</regex>
+
+<regex>
+<name>get-t</name>
+<expres>SECURITY_TOKEN = '(.*?)';</expres>
+<page>http://beamstream.biz/index.php/</page>
+<cookieJar></cookieJar>
+</regex>
+
+<regex>
+<name>LoginAndCookie</name>
+<expres></expres>
+<page>http://beamstream.biz/index.php/Login/</page>
+<referer>http://beamstream.biz/index.php/JCoinsPremiumGroupsOverview/</referer>
+<rawpost>username=USERNAMEHERE&amp;password=PWDHERE&amp;useCookies=1&amp;submitButton=Anmelden&amp;t=$doregex[get-t]</rawpost>
+<cookieJar>$doregex[createCFCookie]</cookieJar>
+</regex>
+
+<regex>
+<name>LOGOUT</name>
+<expres></expres>
+<page>https://beamstream.biz/index.php/Logout/?t=$doregex[get-logout-tok]</page>
+<cookieJar></cookieJar>
+</regex>
+
+<regex>
+<name>get-logout-tok</name>
+<expres>Logout\/\?t=(.*?)"</expres>
+<page>https://beamstream.biz/</page>
+<referer>https://beamstream.biz/index.php/Login/</referer>
+<cookieJar></cookieJar>
+</regex>
+
+<regex>
+<name>createCFCookie</name>                                                     
+<expres></expres>
+<page>$pyFunction:cloudflare.createCookie('http://beamstream.biz/',Cookie_Jar,'Mozilla/5.0 (Windows NT 6.1; rv:14.0) Gecko/20100101 Firefox/14.0.1')</page>
+<cookieJar></cookieJar>
+</regex>
+
+</item>
+
 
 <item>
 <title>ch54- Captcha - 2M</title>
