@@ -1,4 +1,4 @@
-import sys,traceback,urllib2,re
+import sys,traceback,urllib2,re, urllib
 def createCookie(url,cj=None,agent='Mozilla/5.0 (Windows NT 6.1; rv:32.0) Gecko/20100101 Firefox/32.0'):
     urlData=''
     try:
@@ -46,7 +46,7 @@ def createCookie(url,cj=None,agent='Mozilla/5.0 (Windows NT 6.1; rv:32.0) Gecko/
 
         if 'type="hidden" name="pass"' in result:
             passval=re.compile('name="pass" value="(.*?)"').findall(result)[0]
-            query+='&pass='+ passval
+            query+='&pass='+ urllib.quote_plus(passval)
         opener = urllib2.build_opener(NoRedirection, urllib2.HTTPCookieProcessor(cj))
         opener.addheaders = [('User-Agent', agent)]
         response = opener.open(query)
