@@ -8,6 +8,15 @@
 	</assignedcategory>
 </channel>
 <channel>
+	<cname>ShamFM</cname>
+	<imageurl>http://s9.postimg.org/ffhkephen/image_src.png/imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>sham</category>
+	<category>music</category>
+	</assignedcategory>
+</channel>	
+<channel>
 	<cname>Basra</cname>
 	<imageurl>http://s9.postimg.org/gepyyh3u3/logo.png</imageurl>
 	<enabled>True</enabled>
