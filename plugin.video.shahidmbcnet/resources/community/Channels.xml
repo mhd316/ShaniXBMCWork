@@ -15,7 +15,16 @@
 	<category>sham</category>
 	<category>music</category>
 	</assignedcategory>
-</channel>	
+</channel>
+<channel>
+	<cname>Belody Cinema</cname>
+	<imageurl>http://s10.postimg.org/e7icwv5a1/Belody_cinema.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	<category>egypt</category>
+	</assignedcategory>
+</channel>
 <channel>
 	<cname>Basra</cname>
 	<imageurl>http://s9.postimg.org/gepyyh3u3/logo.png</imageurl>
@@ -97,7 +106,7 @@
 </channel>
 <channel>
 	<cname>Cinema Pro</cname>
-	<imageurl></imageurl>
+	<imageurl>http://s15.postimg.org/tca8opqvb/cinema_pro.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>drama</category>
