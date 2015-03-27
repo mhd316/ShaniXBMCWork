@@ -1,5 +1,13 @@
 <channels>
 <channel>
+	<cname>Al Emarat</cname>
+	<imageurl>http://jazarah.net/wp-content/uploads/2015/03/Al-Emarat-Logo.jpg</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>gulf</category>
+	</assignedcategory>
+</channel>	
+<channel>
 	<cname>Attasi3a</cname>
 	<imageurl>http://satexpat.com/img/cha/tn/tv9-95x95.gif</imageurl>
 	<enabled>True</enabled>
