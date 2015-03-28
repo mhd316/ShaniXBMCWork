@@ -1628,7 +1628,7 @@
 	</item>
 </streaminginfo>
 <streaminginfo>
-	<cname>Bein Sport News</cname>
+	<cname>Bein Sport</cname>
 	<item>
 	<title>Proxy HD</title>
 	<link>http://$GLProxyIP$:4500/channel.flv?server=$GL-IPHD$&amp;channel=beINSports_HD&amp;port=2077&amp;session=$GL-Sesession$</link>
@@ -2783,7 +2783,7 @@
 	</item>
 </streaminginfo>
 <streaminginfo>
-	<cname>Bein Sport News</cname>
+	<cname>Bein Sport</cname>
 	<item>
 	<title>Proxy Med</title>
 	<link>http://$GLProxyIP$:4500/channel.flv?server=$GL-IPMED$&amp;channel=beINSports_Med&amp;port=2077&amp;session=$GL-Sesession$</link>
@@ -3938,7 +3938,7 @@
 	</item>
 </streaminginfo>
 <streaminginfo>
-	<cname>Bein Sport News</cname>
+	<cname>Bein Sport</cname>
 	<item>
 	<title>Proxy Low</title>
 	<link>http://$GLProxyIP$:4500/channel.flv?server=$GL-IPLOW$&amp;channel=beINSports_Low&amp;port=2077&amp;session=$GL-Sesession$</link>
@@ -7186,7 +7186,7 @@
 	</item>
 </streaminginfo>
 <streaminginfo>
-	<cname>Bein Sport News</cname>
+	<cname>Bein Sport</cname>
 	<item>
 	<title>HD</title>
 	<link>http://$GL-IPHD$:7777/beINSports_HD.m3u8?session=$GL-Sesession$</link>
