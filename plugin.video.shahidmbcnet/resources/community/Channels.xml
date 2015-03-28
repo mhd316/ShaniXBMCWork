@@ -1,12 +1,5 @@
 <channels>
-<channel>
-	<cname>Al Emarat</cname>
-	<imageurl>http://jazarah.net/wp-content/uploads/2015/03/Al-Emarat-Logo.jpg</imageurl>
-	<enabled>True</enabled>
-	<assignedcategory>
-	<category>gulf</category>
-	</assignedcategory>
-</channel>	
+	
 <channel>
 	<cname>Attasi3a</cname>
 	<imageurl>http://satexpat.com/img/cha/tn/tv9-95x95.gif</imageurl>
@@ -688,7 +681,7 @@
 
 <channel>
 	<cname>Abu Dhabi Emirates</cname>
-	<imageurl>http://www.lyngsat-logo.com/hires/aa/abu_dhabi_al_emarat.png</imageurl>
+	<imageurl>http://jazarah.net/wp-content/uploads/2015/03/Al-Emarat-Logo.jpg</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>ent</category>
@@ -4149,6 +4142,14 @@
 <channel>
 	<cname>Bein Sport News</cname>
 	<imageurl>https://lh6.googleusercontent.com/-56L601mTIFA/U6kr2iiiXmI/AAAAAAAAAHw/uF4dMVWgvLs/BS%252520News.jpg</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>sports</category>
+	</assignedcategory>
+</channel>	
+<channel>
+	<cname>Bein Sport</cname>
+	<imageurl>http://www.greatdreambox.com/wp-content/uploads/2014/08/Al_Jazeera_Sport_Logo6.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>sports</category>
