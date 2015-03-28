@@ -6795,15 +6795,25 @@
 	<assignedcategory>
 	<category>doc</category>
 	<category>french</category>
-    </assignedcategory>
-</channel>	
+    	</assignedcategory>
+</channel>
+<channel>
+	<cname>National Geo Wild</cname>
+	<imageurl>https://pmcdeadline2.files.wordpress.com/2014/03/natwild__140319165829.jpg</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>french</category>
+	<category>doc</category>
+    	</assignedcategory>
+</channel>
 <channel>
 	<cname>National Geo Wild FR</cname>
 	<imageurl>http://www.lyngsat-logo.com/hires/nn/nat_geo_wild_lam.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
+	<category>doc</category>
 	<category>french</category>
-    </assignedcategory>
+    	</assignedcategory>
 </channel>	
 <channel>
 	<cname>Planet Plus</cname>
