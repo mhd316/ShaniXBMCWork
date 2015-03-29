@@ -24,7 +24,7 @@
         <setting label="32061" type="labelenum" id="order11" values="Teledunet.com|livetv.tn|Shani|PC|Zombi|Local|iptvOsn|GLArab|magictvBox|Emad|FilmOn|Official|Telvza|IPTVPlanet" default="FilmOn"/>   
        <setting label="32064" type="labelenum" id="order12" values="Teledunet.com|livetv.tn|Shani|PC|Zombi|Local|iptvOsn|GLArab|magictvBox|Emad|FilmOn|Official|Telvza|IPTVPlanet" default="Official"/>   
        <setting label="32068" type="labelenum" id="order13" values="Teledunet.com|livetv.tn|Shani|PC|Zombi|Local|iptvOsn|GLArab|magictvBox|Emad|FilmOn|Official|Telvza|IPTVPlanet" default="Telvza"/>   
-       <setting label="32068" type="labelenum" id="order14" values="Teledunet.com|livetv.tn|Shani|PC|Zombi|Local|iptvOsn|GLArab|magictvBox|Emad|FilmOn|Official|Telvza|IPTVPlanet" default="IPTVPlanet"/>   
+       <setting label="32083" type="labelenum" id="order14" values="Teledunet.com|livetv.tn|Shani|PC|Zombi|Local|iptvOsn|GLArab|magictvBox|Emad|FilmOn|Official|Telvza|IPTVPlanet" default="IPTVPlanet"/>   
         
      
 	   </category>
