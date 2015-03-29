@@ -20,11 +20,12 @@
 	<string id="32026">5ème préférence</string>
     <string id="32052">7ème préférence</string>
     <string id="32054">8ème préférence</string>
-     <string id="32056">9ème préférence</string>
+    <string id="32056">9ème préférence</string>
     <string id="32059">10ème préférence</string>
     <string id="32061">11ème préférence</string>
     <string id="32068">13ème préférence</string>
-		
+	<string id="32083">14ème préférence</string>
+	
 	<string id="32027">Ressources locales</string>
 	<string id="32028">Votre fichier Youtube</string>
 	<string id="32029">Votre fichier de streaming xml</string>
@@ -42,7 +43,9 @@
     <string id="32055">Désactiver MagictvBox</string>	
     <string id="32060">Désactiver Emad</string>	
 	<string id="32062">Désactiver FilmOn</string>
-	<string id="32069">Désactiver Telvza</string>	
+	<string id="32069">Désactiver Telvza</string>
+	<string id="32082">Désactiver IPTVPlanet</string>
+	
 	<string id="32063">Ne pas jouer "Qualité élevée" avec FilmOn</string>	
 
     
@@ -60,11 +63,11 @@
 	<string id="32049">Divers paramètres</string>	
 	<string id="32050">Override default view mode</string>	
     <string id="32057">Nbre de tentatives de connexion à Teledunet</string>	
-     <string id="32058">Favourite add mode</string>	
-     <string id="32064">12ème préférence</string>
+    <string id="32058">Mode d'ajout favori</string>	
+    <string id="32064">12ème préférence</string>
 	<string id="32065">Désactiver Official</string>	
-
 	<string id="32066">Essayer toutes les sources une par une</string>
+	
 	<string id="32071">Identifiants GLArab</string>	
 	<string id="32072">Pseudo GLArab</string>	
 	<string id="32073">Mot de passe GLArab</string>		
@@ -72,6 +75,13 @@
 	<string id="32075">Qualité</string>
 	<string id="32077">GL Qualité haute</string>		
 	<string id="32078">GL Qualité moyenne</string>		
-	<string id="32079">GL Qualité basse</string>
+    <string id="32079">GL Proxy Qualité basse</string>
+    <string id="32089">GL Proxy LR Qualité basse</string>
+    <string id="32091">GL Qualité basse</string>
+
+    <string id="32090">Activer proxy partagé?</string>
+	<string id="32080">Activer proxy local?</string>
+	<string id="32081">GL Proxy (utiliser 127.0.0.1) pour machine locale</string>
+	<string id="32084">Désactiver les mises à jour auto périodiques</string>
 
 </strings>
