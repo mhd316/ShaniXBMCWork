@@ -155,7 +155,7 @@
 <colour>FF8B009B</colour>
 <baseurl>http://website.com</baseurl>
 <enabled>True</enabled>
-<urlfile>iptvplanetUrls.xml</urlfile>
+<urlfile>IPTVPlanetUrls.xml</urlfile>
 <imageurl>http://mylogo.com</imageurl>
 <processor>genericPlayer.py</processor>
 </source>
