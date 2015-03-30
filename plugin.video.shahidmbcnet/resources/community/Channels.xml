@@ -54,7 +54,16 @@
 	</assignedcategory>
 </channel>
 <channel>
-	<cname>Darbaka</cname>
+	<cname>Darbaka Aflam</cname>
+	<imageurl>http://www.lyngsat-logo.com/logo/tv/dd/darbaka_tv.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	 <category>drama</category>
+     <category>egypt</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Darbaka Cinema</cname>
 	<imageurl>http://www.lyngsat-logo.com/logo/tv/dd/darbaka_tv.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
@@ -4856,16 +4865,6 @@
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>sham</category>
-	</assignedcategory>
-</channel>	
-
-    
-<channel>
-	<cname>Masrawi Aflam</cname>
-	<imageurl>http://s12.postimg.org/bxx4sn6sp/masrawi_aflam_jpg.png</imageurl>
-	<enabled>True</enabled>
-	<assignedcategory>
-	<category>drama</category>
 	</assignedcategory>
 </channel>	
 <channel>
