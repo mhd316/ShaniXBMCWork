@@ -4419,7 +4419,14 @@
  	<category>egypt</category>
 	</assignedcategory>
 </channel>	
-
+<channel>
+	<cname>Canal Plus Series</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/cc/canalplus_es_series.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>french</category>
+	</assignedcategory>
+</channel>	
 <channel>
 	<cname>Canal plus</cname>
 	<imageurl>http://www.gwenael.org/xbmc-streams/images/channels/9.png</imageurl>
