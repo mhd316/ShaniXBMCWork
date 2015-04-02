@@ -1,3 +1,6 @@
+Version 1.6.4
+Cloudflare wait 4 seconds
+
 Version 1.6.2
 CF pass value with quoteplus
 
