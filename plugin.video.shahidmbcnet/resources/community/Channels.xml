@@ -4584,7 +4584,7 @@
 
 <channel>
 	<cname>France 24</cname>
-	<imageurl>http://www.gwenael.org/xbmc-streams/images/channels/101.png</imageurl>
+	<imageurl>http://s4.postimg.org/kx41gtxgd/france24_arabic.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>news</category>
@@ -6020,12 +6020,23 @@
 	<category>kids</category>
 	</assignedcategory>
 </channel>	
+<channel>
+	<cname>France 24 EN</cname>
+	<imageurl>http://s11.postimg.org/rzdvwaucz/france24_english.jpg</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>french</category>
+	<category>news</category>
+	<category>english</category>
+	</assignedcategory>
+</channel>	
 
 <channel>
 	<cname>France 24 FR</cname>
-	<imageurl>http://www.gwenael.org/xbmc-streams/images/channels/101.png</imageurl>
+	<imageurl>http://s11.postimg.org/6awws14qb/Francais.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
+	<category>news</category>
 	<category>french</category>
 	</assignedcategory>
 </channel>	
