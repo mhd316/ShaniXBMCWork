@@ -1,4 +1,127 @@
 <channels>
+
+<channel>
+	<cname>Alnagaf</cname>
+	<imageurl></imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>Iraq</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>City7</cname>
+	<imageurl>http://s8.postimg.org/tuuirr80l/city7_Dubai.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>gulf</category>
+	</assignedcategory>
+</channel>http://159.8.125.14/arabic1/ch1099/index.m3u8
+<channel>
+	<cname>Cairo One</cname>
+	<imageurl>http://s18.postimg.org/48jxpqrqh/cairo_one.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>egypt</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Samarra</cname>
+	<imageurl>http://s3.postimg.org/e4in7bbar/sama.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>Iraq</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Oscar Comedy</cname>
+	<imageurl></imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>egypt</category>
+	</assignedcategory>
+</channel>
+
+<channel>
+	<cname>Alkhalij</cname>
+	<imageurl>http://www.lyngsat-logo.com/logo/tv/aa/al_khalij_tv.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>islam</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Wasat Albalad</cname>
+	<imageurl>http://s29.postimg.org/jp76y7mlf/Wasat_albalad.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>egypt</category>
+	</assignedcategory>
+</channel>
+
+<channel>
+	<cname>Panorama Cinema</cname>
+	<imageurl>http://s8.postimg.org/v521579zl/Panorama_c.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>egypt</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Alitihad</cname>
+	<imageurl>http://s4.postimg.org/bmuny5c09/Al_Ittihad_TV.jpg</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>Iraq</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Lilwa Alghad</cname>
+	<imageurl>http://s10.postimg.org/6ofepojlx/Lilwa_Alghad.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>Iraq</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Beur</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/bb/beur_tv_be.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>dzair</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Hogar</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/hh/hogar_tv_dz.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>dzair</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>SahraTV</cname>
+	<imageurl>http://s27.postimg.org/wnxnprls3/Dz_Sahara.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>dzair</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>AL Seha Waljamal</cname>
+	<imageurl>http://nnewsn.com/channelsFrequencies/wp-content/uploads/2014/12/AL-Seha-Waljamal.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>egypt</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Sawt Masr</cname>
+	<imageurl>http://s1.postimg.org/yfw51cfe3/Sawtmasrpng.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>egypt</category>
+	</assignedcategory>
+</channel>
 	
 <channel>
 	<cname>Attasi3a</cname>
