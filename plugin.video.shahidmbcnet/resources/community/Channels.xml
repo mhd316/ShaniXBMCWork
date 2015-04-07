@@ -75,7 +75,7 @@
 	</assignedcategory>
 </channel>
 <channel>
-	<cname>Lilwa Alghad</cname>
+	<cname>Ninwa Alghad</cname>
 	<imageurl>http://s10.postimg.org/6ofepojlx/Lilwa_Alghad.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
@@ -5650,15 +5650,14 @@
 	<category>news</category>
 	</assignedcategory>
 </channel>	
-
-
-	
 <channel>
 	<cname>Maghreb24</cname>
 	<imageurl>http://www.maghreb24tv.com/commons/images/m24Entertainment.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>maroc</category>
+	<category>tunis</category>
+	<category>music</category>
 	</assignedcategory>
 </channel>	
 
