@@ -711,6 +711,12 @@ def parse_regex(reg_item):
                             regexs[i('name')[0].string]['connection'] = i('connection')[0].string
                         except:
                             addon_log("Regex: -- No connection --")
+
+                        try:
+                            regexs[i('name')[0].string]['notplayable'] = i('notplayable')[0].string
+                        except:
+                            addon_log("Regex: -- No notplayable --")
+                            
                         try:
                             regexs[i('name')[0].string]['noredirect'] = i('noredirect')[0].string
                         except:
@@ -1926,8 +1932,8 @@ def addLink(url,name,iconimage,fanart,description,genre,date,showcontext,playlis
         liz.setProperty("Fanart_Image", fanart)
         if (not play_list) and not any(x in url for x in g_ignoreSetResolved):#  (not url.startswith('plugin://plugin.video.f4mTester')):
             if regexs:
-                if '$pyFunction:playmedia(' not in urllib.unquote_plus(regexs) and 'NOTPlayable' not in url :
-                    #print 'setting isplayable',url, urllib.unquote_plus(regexs)
+                if '$pyFunction:playmedia(' not in urllib.unquote_plus(regexs) and 'notplayable' not in urllib.unquote_plus(regexs)  :
+                    #print 'setting isplayable',url, urllib.unquote_plus(regexs),url
                     liz.setProperty('IsPlayable', 'true')
             else:
                 liz.setProperty('IsPlayable', 'true')

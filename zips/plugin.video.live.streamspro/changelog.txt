@@ -1,3 +1,6 @@
+Version 1.6.6
+NOTPlayable option in item
+
 Version 1.6.5
 NOTPlayable option in item
 
