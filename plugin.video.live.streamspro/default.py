@@ -863,7 +863,7 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
 
                 if  'rawpost' in m and '$doregex' in m['rawpost']:
                     m['rawpost']=getRegexParsed(regexs, m['rawpost'],cookieJar,recursiveCall=True,cachedPages=cachedPages,rawPost=True)
-                    print 'rawpost is now',m['rawpost']
+                    #print 'rawpost is now',m['rawpost']
   
                 if 'rawpost' in m and '$epoctime$' in m['rawpost']:
                     m['rawpost']=m['rawpost'].replace('$epoctime$',getEpocTime())
@@ -997,9 +997,6 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
                 if  '$doregex' in m['expre']:
                     m['expre']=getRegexParsed(regexs, m['expre'],cookieJar,recursiveCall=True,cachedPages=cachedPages)
                     
-                print 'exp k and url'
-                print m['expre'],k,url
-                print 'aa'
                 
                 if not m['expre']=='':
                     print 'doing it ',m['expre']
@@ -1048,6 +1045,7 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
 
         if recursiveCall: return url
         print 'final url',url
+        if url=="": return
         item = xbmcgui.ListItem(path=url)
         
         if setresolved:
@@ -1928,7 +1926,7 @@ def addLink(url,name,iconimage,fanart,description,genre,date,showcontext,playlis
         liz.setProperty("Fanart_Image", fanart)
         if (not play_list) and not any(x in url for x in g_ignoreSetResolved):#  (not url.startswith('plugin://plugin.video.f4mTester')):
             if regexs:
-                if '$pyFunction:playmedia(' not in urllib.unquote_plus(regexs):
+                if '$pyFunction:playmedia(' not in urllib.unquote_plus(regexs) and 'NOTPlayable' not in url :
                     #print 'setting isplayable',url, urllib.unquote_plus(regexs)
                     liz.setProperty('IsPlayable', 'true')
             else:
