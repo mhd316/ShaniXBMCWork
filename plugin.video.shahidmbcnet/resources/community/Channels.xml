@@ -1,5 +1,12 @@
 <channels>
-
+<channel>
+	<cname>Yemen Alyawm</cname>
+	<imageurl>http://www.yementodaytv.net/images/logo.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>gulf</category>
+	</assignedcategory>
+</channel>
 <channel>
 	<cname>Alnagaf</cname>
 	<imageurl>http://www.satexpat.com/img/cha/iq/annajaf_95x80.gif</imageurl>
@@ -2167,7 +2174,7 @@
 </channel>
 <channel>
 	<cname>OSN ALPHA orbit</cname>
-	<imageurl>https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash2/t1.0-1/1378503_569711983083437_144631773_n.jpg</imageurl>
+	<imageurl>http://s23.postimg.org/ftnemq3pj/alfa_n.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>egypt</category>
@@ -2961,14 +2968,15 @@
 	<imageurl>http://www.lyngsat-logo.com/hires/oo/osn_cinema1_arabic.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
-		 <category>drama</category>
+	<category>drama</category>
 	</assignedcategory>
-	 </channel>
+ </channel>
 <channel>
 	<cname>Saudia Sport</cname>
 	<imageurl>http://4.bp.blogspot.com/-2-sHy7Fn6uw/UB1BdM_oz9I/AAAAAAAAAOU/y6K_ZZxjfsc/s1600/rsz_1983.jpg</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
+	<category>gulf</category>
 	<category>sports</category>
 	</assignedcategory>
 	 </channel>
@@ -5394,6 +5402,7 @@
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>cook</category>
+	<category>dzair</category>
 	</assignedcategory>
 </channel>	
 
