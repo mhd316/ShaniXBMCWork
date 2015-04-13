@@ -112,7 +112,7 @@ def PlayStream(sourceEtree, urlSoup, name, url):
 				traceback.print_exc(file=sys.stdout)
 				print 'trying backup'
 				try:
-					link=getUrl("http://pastebin.com/raw.php?i=5Z0GLFab", getCookieJar())
+					link=getUrl("http://pastebin.com/raw.php?i=72npi56Y", getCookieJar())
 					rtmp =re.findall(('rtmp://(.*?)/%s\''%channelId), link)[0]
 					rtmp='rtmp://%s/%s'%(rtmp,channelId)
 				except:
@@ -121,10 +121,10 @@ def PlayStream(sourceEtree, urlSoup, name, url):
 					print 'error in channel using hardcoded value'
 		pDialog.update(80, 'trying to play')
 		liveLink= sourceEtree.findtext('rtmpstring');
-
+		freeCH= '2m'
 		print 'rtmpstring',liveLink,rtmp
 #		liveLink=liveLink%(rtmp,channelId,match,channelId,channelId)
-		liveLink=liveLink%(rtmp,channelId,timesegment,channelId,selfAddon.getSetting( "teledunetTvLogin" ),token)
+		liveLink=liveLink%(rtmp,channelId,timesegment,freeCH,selfAddon.getSetting( "teledunetTvLogin" ),token)
 
         
 
