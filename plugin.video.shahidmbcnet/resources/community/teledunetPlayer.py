@@ -112,12 +112,12 @@ def PlayStream(sourceEtree, urlSoup, name, url):
 				traceback.print_exc(file=sys.stdout)
 				print 'trying backup'
 				try:
-					link=getUrl("http://pastebin.com/raw.php?i=72npi56Y", getCookieJar())
+					link=getUrl("http://pastebin.com/raw.php?i=z66yHXcG", getCookieJar())
 					rtmp =re.findall(('rtmp://(.*?)/%s\''%channelId), link)[0]
 					rtmp='rtmp://%s/%s'%(rtmp,channelId)
 				except:
 					traceback.print_exc(file=sys.stdout)
-					rtmp='rtmp://178.33.241.201:1935/teledunet/%s'%(channelId)
+					rtmp='rtmp://37.59.17.92:1935/live/%s'%(channelId)
 					print 'error in channel using hardcoded value'
 		pDialog.update(80, 'trying to play')
 		liveLink= sourceEtree.findtext('rtmpstring');
@@ -230,18 +230,10 @@ def performLoginOLD():
 def performLogin():
 	try:
 		cookieJar=cookielib.LWPCookieJar()
-		captcha="http://www.teledunet.com/captcha.php"
-		local_captcha = os.path.join(profile_path, "captchaTD.img" )
-		localFile = open(local_captcha, "wb")
-		localFile.write(getUrl(captcha,cookieJar))
-		localFile.close()
-		solver = InputWindow(captcha=local_captcha)
-		solution = solver.get()
-
 		userName=selfAddon.getSetting( "teledunetTvLogin" )
 		password=selfAddon.getSetting( "teledunetTvPassword" )
 		print 'Values are ',userName,password
-		post={'login_user':userName,'pass_user':password,'captcha':solution}
+		post={'login_user':userName,'pass_user':password}
 		post = urllib.urlencode(post)
 		html_text=getUrl("http://www.teledunet.com/boutique/connexion.php",cookieJar,post)
 		cookieJar.save (COOKIEFILE,ignore_discard=True)
@@ -410,20 +402,3 @@ def getChannelHTML(cid):
     except:
         traceback.print_exc(file=sys.stdout)
         return ''
-class InputWindow(xbmcgui.WindowDialog):
-    def __init__(self, *args, **kwargs):
-        self.cptloc = kwargs.get('captcha')
-        self.img = xbmcgui.ControlImage(335,30,624,80,self.cptloc)
-        self.addControl(self.img)
-        self.kbd = xbmc.Keyboard()
-
-    def get(self):
-        self.show()
-        time.sleep(3)        
-        self.kbd.doModal()
-        if (self.kbd.isConfirmed()):
-            text = self.kbd.getText()
-            self.close()
-            return text
-        self.close()
-        return False
