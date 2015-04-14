@@ -117,7 +117,7 @@ def PlayStream(sourceEtree, urlSoup, name, url):
 					rtmp='rtmp://%s/%s'%(rtmp,channelId)
 				except:
 					traceback.print_exc(file=sys.stdout)
-					rtmp='rtmp://178.33.241.201:1935/teledunet/%s'%(channelId)
+					rtmp='rtmp://37.59.17.92:1935/live/%s'%(channelId)
 					print 'error in channel using hardcoded value'
 		pDialog.update(80, 'trying to play')
 		liveLink= sourceEtree.findtext('rtmpstring');
