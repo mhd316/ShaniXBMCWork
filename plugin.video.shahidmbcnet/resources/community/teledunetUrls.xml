@@ -1,5 +1,12 @@
 <streamingInfos>
-
+  
+<streaminginfo><cname>NRJ 12</cname><url>nrj_12</url></streaminginfo>
+<streaminginfo><cname>Tele Liban</cname><url>lebanon_tv</url></streaminginfo>
+<streaminginfo><cname>Dejlah</cname><url>dijla_tv</url></streaminginfo>
+<streaminginfo><cname>LDC</cname><url>Ldc</url></streaminginfo>
+<streaminginfo><cname>Scope</cname><url>scope_tv</url></streaminginfo>
+<streaminginfo><cname>KSA News</cname><url>al_ekhabaria</url></streaminginfo>
+<streaminginfo><cname>KSA News</cname><url>al_ekhbaria</url></streaminginfo>
 <streaminginfo><cname>Royali Somali</cname><url>royal_somali_tv</url></streaminginfo>
 <streaminginfo><cname>NRJ 12</cname><url>nrj_12</url></streaminginfo>
 <streaminginfo><cname>Tele Liban</cname><url>lebanon_tv</url></streaminginfo>
@@ -34,7 +41,6 @@
 <streaminginfo><cname>Aljazeera US</cname><url>aljazeera_america</url></streaminginfo>
 <streaminginfo><cname>Libya AlWataniya</cname><url>libya_tv</url></streaminginfo>
 <streaminginfo><cname>Zaitouna</cname><url>zaytoona</url></streaminginfo>
-
 <streaminginfo><cname>Elheddaf</cname><url>el_heddaf_tv</url></streaminginfo>
 <streaminginfo><cname>Gulli</cname><url>gulli</url></streaminginfo>
 <streaminginfo><cname>Zahra Ennahar</cname><url>zahra_ennahar</url></streaminginfo>
@@ -120,36 +126,39 @@
 <streaminginfo><cname>Baraem</cname><url>baraem</url></streaminginfo>
 <streaminginfo><cname>Bein 1 FR</cname><url>bein_sports_1_hd_fr</url></streaminginfo>
 <streaminginfo><cname>Bein 2 FR</cname><url>bein_sports_2_hd_fr</url></streaminginfo>
-<streaminginfo><cname>Bein Sport 1</cname><title>Low</title><url>bein_sport_1_low</url></streaminginfo>
-<streaminginfo><cname>Bein Sport 2</cname><title>Low</title><url>bein_sport_2_low</url></streaminginfo>
-<streaminginfo><cname>Bein Sport 3</cname><title>Low</title><url>bein_sport_3_low</url></streaminginfo>
-<streaminginfo><cname>Bein Sport 4</cname><title>Low</title><url>bein_sport_4_low</url></streaminginfo>
-<streaminginfo><cname>Bein Sport 5</cname><title>Low</title><url>bein_sport_5_low</url></streaminginfo>
-<streaminginfo><cname>Bein Sport 6</cname><title>Low</title><url>bein_sport_6_low</url></streaminginfo>
-<streaminginfo><cname>Bein Sport 7</cname><title>Low</title><url>bein_sport_7_low</url></streaminginfo>
-<streaminginfo><cname>Bein Sport 8</cname><title>Low</title><url>bein_sport_8_low</url></streaminginfo>
-<streaminginfo><cname>Bein Sport 9</cname><title>Low</title><url>bein_sport_9_low</url></streaminginfo>
-<streaminginfo><cname>Bein Sport 10</cname><title>Low</title><url>bein_sport_10_low</url></streaminginfo>
-<streaminginfo><cname>Bein Sport 11</cname><title>Low</title><url>bein_sport_11_low</url></streaminginfo>
-<streaminginfo><cname>Bein Sport 12</cname><title>Low</title><url>bein_sport_12_low</url></streaminginfo>
-<streaminginfo><cname>Bein Sport 13</cname><title>Low</title><url>bein_sport_13_low</url></streaminginfo>
-<streaminginfo><cname>Bein Sport 14</cname><title>Low</title><url>bein_sport_14_low</url></streaminginfo>
-<streaminginfo><cname>Bein Sport 15</cname><title>Low</title><url>bein_sport_15_low</url></streaminginfo>
-<streaminginfo><cname>Bein Sport 1</cname><url>bein_sport_1</url></streaminginfo>
-<streaminginfo><cname>Bein Sport 2</cname><url>bein_sport_2</url></streaminginfo>
-<streaminginfo><cname>Bein Sport 3</cname><url>bein_sport_3</url></streaminginfo>
-<streaminginfo><cname>Bein Sport 4</cname><url>bein_sport_4</url></streaminginfo>
-<streaminginfo><cname>Bein Sport 5</cname><url>bein_sport_5</url></streaminginfo>
-<streaminginfo><cname>Bein Sport 6</cname><url>bein_sport_6</url></streaminginfo>
-<streaminginfo><cname>Bein Sport 7</cname><url>bein_sport_7</url></streaminginfo>
-<streaminginfo><cname>Bein Sport 8</cname><url>bein_sport_8</url></streaminginfo>
-<streaminginfo><cname>Bein Sport 9</cname><url>bein_sport_9</url></streaminginfo>
-<streaminginfo><cname>Bein Sport 10</cname><url>bein_sport_10</url></streaminginfo>
-<streaminginfo><cname>Bein Sport 11</cname><url>bein_sport11</url></streaminginfo>
-<streaminginfo><cname>Bein Sport 12</cname><url>bein_sport_12</url></streaminginfo>
-<streaminginfo><cname>Bein Sport 13</cname><url>bein_sport_13</url></streaminginfo>
-<streaminginfo><cname>Bein Sport 14</cname><url>bein_sport_14</url></streaminginfo>
-<streaminginfo><cname>Bein Sport 15</cname><url>bein_sport_15</url></streaminginfo>
+
+<streaminginfo><cname>Bein Sport 1</cname><title>SVR2</title><url>bein_sport_1_low</url></streaminginfo>
+<streaminginfo><cname>Bein Sport 2</cname><title>SVR2</title><url>bein_sport_2_low</url></streaminginfo>
+<streaminginfo><cname>Bein Sport 3</cname><title>SVR2</title><url>bein_sport_3_low</url></streaminginfo>
+<streaminginfo><cname>Bein Sport 4</cname><title>SVR2</title><url>bein_sport_4_low</url></streaminginfo>
+<streaminginfo><cname>Bein Sport 5</cname><title>SVR2</title><url>bein_sport_5_low</url></streaminginfo>
+<streaminginfo><cname>Bein Sport 6</cname><title>SVR2</title><url>bein_sport_6_low</url></streaminginfo>
+<streaminginfo><cname>Bein Sport 7</cname><title>SVR2</title><url>bein_sport_7_low</url></streaminginfo>
+<streaminginfo><cname>Bein Sport 8</cname><title>SVR2</title><url>bein_sport_8_low</url></streaminginfo>
+<streaminginfo><cname>Bein Sport 9</cname><title>SVR2</title><url>bein_sport_9_low</url></streaminginfo>
+<streaminginfo><cname>Bein Sport 10</cname><title>SVR2</title><url>bein_sport_10_low</url></streaminginfo>
+<streaminginfo><cname>Bein Sport 11</cname><title>SVR2</title><url>bein_sport_11_low</url></streaminginfo>
+<streaminginfo><cname>Bein Sport 12</cname><title>SVR2</title><url>bein_sport_12_low</url></streaminginfo>
+<streaminginfo><cname>Bein Sport 13</cname><title>SVR2</title><url>bein_sport_13_low</url></streaminginfo>
+<streaminginfo><cname>Bein Sport 14</cname><title>SVR2</title><url>bein_sport_14_low</url></streaminginfo>
+<streaminginfo><cname>Bein Sport 15</cname><title>SVR2</title><url>bein_sport_15_low</url></streaminginfo>
+<streaminginfo><cname>Bein Sport 1</cname><title>SVR1</title><url>bein_sport_1</url></streaminginfo>
+<streaminginfo><cname>Bein Sport 2</cname><title>SVR1</title><url>bein_sport_2</url></streaminginfo>
+<streaminginfo><cname>Bein Sport 3</cname><title>SVR1</title><url>bein_sport_3</url></streaminginfo>
+<streaminginfo><cname>Bein Sport 4</cname><title>SVR1</title><url>bein_sport_4</url></streaminginfo>
+<streaminginfo><cname>Bein Sport 5</cname><title>SVR1</title><url>bein_sport_5</url></streaminginfo>
+<streaminginfo><cname>Bein Sport 6</cname><title>SVR1</title><url>bein_sport_6</url></streaminginfo>
+<streaminginfo><cname>Bein Sport 7</cname><title>SVR1</title><url>bein_sport_7</url></streaminginfo>
+<streaminginfo><cname>Bein Sport 8</cname><title>SVR1</title><url>bein_sport_8</url></streaminginfo>
+<streaminginfo><cname>Bein Sport 9</cname><title>SVR1</title><url>bein_sport_9</url></streaminginfo>
+<streaminginfo><cname>Bein Sport 10</cname><title>SVR1</title><url>bein_sport_10</url></streaminginfo>
+<streaminginfo><cname>Bein Sport 11</cname><title>SVR1</title><url>bein_sport11</url></streaminginfo>
+<streaminginfo><cname>Bein Sport 12</cname><title>SVR1</title><url>bein_sport_12</url></streaminginfo>
+<streaminginfo><cname>Bein Sport 13</cname><title>SVR1</title><url>bein_sport_13</url></streaminginfo>
+<streaminginfo><cname>Bein Sport 14</cname><title>SVR1</title><url>bein_sport_14</url></streaminginfo>
+<streaminginfo><cname>Bein Sport 15</cname><title>SVR1</title><url>bein_sport_15</url></streaminginfo>
+
+
 <streaminginfo><cname>CBC 2</cname><url>cbc_2</url></streaminginfo>
 <streaminginfo><cname>CBC Drama</cname><url>cbc_drama</url></streaminginfo>
 <streaminginfo><cname>CBC</cname><url>cbc</url></streaminginfo>
