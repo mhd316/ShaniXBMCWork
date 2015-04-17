@@ -1094,7 +1094,7 @@ def get_saw_rtmp(page_value, referer=None):
         page_url=page_value
         page_value= getUrl(page_value,headers=referer)
 
-    str_pattern="(eval\(function\(p,a,c,k,e,d.*)"
+    str_pattern="(eval\(function\(p,a,c,k,e,(?:r|d).*)"
 
     reg_res=re.compile(str_pattern).findall(page_value)
     r=""
