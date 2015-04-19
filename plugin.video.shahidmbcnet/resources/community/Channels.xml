@@ -1,4 +1,14 @@
 <channels>
+
+
+<channel>
+	<cname>ESTV</cname>
+	<imageurl>http://www.lyngsat-logo.com/logo/tv/ee/ethiopia_somali_tv.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>africa</category>
+	</assignedcategory>
+</channel>	
 <channel>
 	<cname>Yemen Alyawm</cname>
 	<imageurl>http://www.yementodaytv.net/images/logo.png</imageurl>
