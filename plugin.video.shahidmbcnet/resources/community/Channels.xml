@@ -18,6 +18,15 @@
 	</assignedcategory>
 </channel>
 <channel>
+	<cname>Al Eshraq</cname>
+	<imageurl>http://www.lyngsat-logo.com/logo/tv/aa/al_eshraq_tv_iq.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>Iraq</category>
+	</assignedcategory>
+</channel>	
+
+<channel>
 	<cname>Alnagaf</cname>
 	<imageurl>http://www.satexpat.com/img/cha/iq/annajaf_95x80.gif</imageurl>
 	<enabled>True</enabled>
