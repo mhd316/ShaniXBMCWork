@@ -3356,7 +3356,7 @@
 	
 <channel>
 	<cname>Sky Sports 1</cname>
-	<imageurl>https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/t1.0-1/c1.0.320.320/p320x320/1503820_10152083754583762_1175632840_n.jpg</imageurl>
+	<imageurl>http://www.lyngsat-logo.com/hires/ss/sky_de_sport_01_hd.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>sports</category>
@@ -3365,7 +3365,7 @@
 		
 <channel>
 	<cname>Sky Sports 2</cname>
-	<imageurl>https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/t1.0-1/c1.0.320.320/p320x320/1503820_10152083754583762_1175632840_n.jpg</imageurl>
+	<imageurl>http://www.lyngsat-logo.com/hires/ss/sky_de_sport_02_hd.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>sports</category>
@@ -3374,7 +3374,7 @@
 		
 <channel>
 	<cname>Sky Sports 3</cname>
-	<imageurl>https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/t1.0-1/c1.0.320.320/p320x320/1503820_10152083754583762_1175632840_n.jpg</imageurl>
+	<imageurl>http://www.lyngsat-logo.com/hires/ss/sky_de_sport.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>sports</category>
@@ -3383,7 +3383,7 @@
 	
 <channel>
 	<cname>Sky Sports 4</cname>
-	<imageurl>https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/t1.0-1/c1.0.320.320/p320x320/1503820_10152083754583762_1175632840_n.jpg</imageurl>
+	<imageurl>http://www.lyngsat-logo.com/hires/ss/sky_de_sport.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>sports</category>
@@ -3391,7 +3391,7 @@
 </channel>	
 <channel>
 	<cname>Sky Sports F1</cname>
-	<imageurl>https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/t1.0-1/c1.0.320.320/p320x320/1503820_10152083754583762_1175632840_n.jpg</imageurl>
+	<imageurl>http://www.lyngsat-logo.com/hires/ss/sky_de_sport.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>sports</category>
