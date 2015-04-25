@@ -1,5 +1,13 @@
 <channels>
-
+<channel>
+	<cname>Afrah</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/aa/afrah_tv.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>music</category>
+	<category>egypt</category>
+	</assignedcategory>
+</channel>
 <channel>
 	<cname>Libya Channel</cname>
 	<imageurl>http://s29.postimg.org/7hn3vltl3/favicon.png</imageurl>
