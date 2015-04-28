@@ -1,3 +1,6 @@
+[B]Version 3.4.9[/B]
+updates sports, removed some, updated some
+
 [B]Version 3.4.8[/B]
 Mac-change randomized
 
