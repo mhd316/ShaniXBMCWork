@@ -819,9 +819,10 @@ def replaceGLArabVariables(link, d,gcid, title):
             serverAddress=GLArabServerLR
             print GLArabServerLR,'GLArabServerLR  '
             type='lr'
-            
+        GlUser='2620262'    
         link=link.replace('$GL-Qlty$',GLArabQuality)
         link=link.replace('$GL-Sesession$',session)
+        link=link.replace('$GL-User$',GlUser)
         print 'the links is ',link
         
 
