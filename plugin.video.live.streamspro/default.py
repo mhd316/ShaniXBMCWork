@@ -1721,15 +1721,26 @@ def rmFavorite(name):
         xbmc.executebuiltin("XBMC.Container.Refresh")
 
 
-def play_playlist(name, list):
-        playlist = xbmc.PlayList(1)
+def play_playlist(name, mu_playlist):
+        import urlparse
+        playlist = xbmc.PlayList(1) # 1 means video
         playlist.clear()
         item = 0
-        for i in list:
-            item += 1
-            info = xbmcgui.ListItem('%s) %s' %(str(item),name))
-            playlist.add(i, info)
-        xbmc.executebuiltin('playlist.playoffset(video,0)')
+        if addon.getSetting('ask_playlist_items') == 'true':
+            names = []
+            for i in mu_playlist:
+                names.append( urlparse.urlparse(i).netloc)
+            dialog = xbmcgui.Dialog()
+            index = dialog.select('Choose a Live source:', names)
+            if index >= 0:
+                url = mu_playlist[index]
+                xbmc.Player().play(url)
+        else:
+            for i in mu_playlist:
+                item += 1
+                info = xbmcgui.ListItem('%s) %s' %(str(item),name))
+                playlist.add(i, info)
+                xbmc.executebuiltin('playlist.playoffset(video,0)')
 
 
 def download_file(name, url):
