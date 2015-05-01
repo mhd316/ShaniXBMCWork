@@ -4713,11 +4713,29 @@
 
 <channel>
 	<cname>Dubai</cname>
-	<imageurl>http://cdnhwedubaitv.endavomedia.com/images/media/f/f1ea6ed1853b861f7b20bc0d74beaaa6-2.png</imageurl>
+	<imageurl>http://s23.postimg.org/6l1hndql7/Dubai_TV.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>gulf</category>
 	<category>ent</category>
+	</assignedcategory>
+</channel>	
+<channel>
+	<cname>Dubai Drama</cname>
+	<imageurl>http://s21.postimg.org/suwts3z3r/Drama.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>gulf</category>
+	<category>drama</category>
+	</assignedcategory>
+</channel>	
+<channel>
+	<cname>Dubai Zaman</cname>
+	<imageurl>http://s12.postimg.org/sj6d4a38t/zaman2_n.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>gulf</category>
+	<category>drama</category>
 	</assignedcategory>
 </channel>	
 
@@ -5229,7 +5247,7 @@
 
 <channel>
 	<cname>Noor Dubai</cname>
-	<imageurl>http://s24.postimg.org/8acrwvvhh/image.jpg</imageurl>
+	<imageurl>http://s22.postimg.org/rfvxqr169/Noor.jpg</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>gulf</category>
