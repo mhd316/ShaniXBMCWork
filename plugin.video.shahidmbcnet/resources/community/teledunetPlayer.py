@@ -117,7 +117,7 @@ def PlayStream(sourceEtree, urlSoup, name, url):
 					rtmp='rtmp://%s/%s'%(rtmp,channelId)
 				except:
 					traceback.print_exc(file=sys.stdout)
-					rtmp='rtmp://37.59.17.92:1935/live/%s'%(channelId)
+					rtmp='rtmp://5.196.84.28:1935/live/%s'%(channelId)
 					print 'error in channel using hardcoded value'
 		pDialog.update(80, 'trying to play')
 		liveLink= sourceEtree.findtext('rtmpstring');
@@ -378,14 +378,14 @@ def getChannelHTML(cid):
                     spacerUrl="http://www.teledunet.com/spacer.php"
                     post = urllib.urlencode(post)
                     html=getUrl(spacerUrl,cookie_jar ,post,'http://www.teledunet.com/')
-                    if 'id0' in html:
-                        newod1=re.findall('id0=(.*)', html)[0]
+                    if 'id1' in html:
+                        newod1=re.findall('id1=(.*)', html)[0]
         if newod1==None:
             post={'onData':'[type Function]','secure':'1'}
             post = urllib.urlencode(post)#Referer: http://www.teledunet.com/player.swf?
             html=getUrl('http://www.teledunet.com/security.php',cookie_jar ,post,'http://www.teledunet.com/player.swf?')        
-            if 'id0' in html:
-                newod1=re.findall('id0=(.*)', html)[0]
+            if 'id1' in html:
+                newod1=re.findall('id1=(.*)', html)[0]
         token=''
         import random
         token=str(   int('11' +  str(int(999999 +random.random() * (99999999 - 999999)))) * 65);
