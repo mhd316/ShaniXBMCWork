@@ -1977,7 +1977,7 @@ def addLink(url,name,iconimage,fanart,description,genre,date,showcontext,playlis
                 play_list = True
         else:
             u += "url="+urllib.quote_plus(url)+"&mode="+mode
-        if regexs:
+        if regexs and not playlist:
             u += "&regexs="+regexs
         if not setCookie == '':
             u += "&setCookie="+urllib.quote_plus(setCookie)
