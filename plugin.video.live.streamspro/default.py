@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-#88776-00973 3315 4645 #jehangir 
 import urllib
 import urllib2
 import datetime
@@ -672,7 +671,10 @@ def getItems(items,fanart):
                     alt = 0
                     playlist = []
                     for i in url:
-                        playlist.append(i)
+                        if regexs:
+                            playlist.append(i+'&regexs='+regexs)
+                        else:
+                            playlist.append(i)
                     if addon.getSetting('add_playlist') == "false":                    
                             for i in url:
                                 alt += 1
@@ -1051,14 +1053,11 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
 
         if recursiveCall: return url
         print 'final url',url
-        if url=="": return
-        item = xbmcgui.ListItem(path=url)
-        
-        if setresolved:
-            print 'now doing set resolved',item
-            xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, item)
+        if url=="": 
+        	return
         else:
-            xbmc.Player( xbmc.PLAYER_CORE_MPLAYER ).play(url)
+        	return url,setresolved
+
             
         
 def getmd5(t):
@@ -1720,22 +1719,73 @@ def rmFavorite(name):
                 break
         xbmc.executebuiltin("XBMC.Container.Refresh")
 
+def urlsolver(url):
+    if addon.getSetting('Updatecommonresolvers') == 'true':
+        l = os.path.join(home,'commonresolvers.py')
+        if xbmcvfs.exists(l):
+            os.remove(l)
 
+        genesis_url = 'https://raw.githubusercontent.com/lambda81/lambda-addons/master/plugin.video.genesis/commonresolvers.py'
+        th= urllib.urlretrieve(genesis_url,l)
+        addon.setSetting('Updatecommonresolvers', 'false')
+    try:
+        import commonresolvers
+    except Exception:
+        xbmc.executebuiltin("XBMC.Notification(LiveStreamsPro,Please enable Update Commonresolvers to Play. - ,10000)")
+
+    resolved=commonresolvers.get(url).result
+    #r = resolved.worker(url,url)
+    if url == resolved:
+        #import
+        xbmc.executebuiltin("XBMC.Notification(LiveStreamsPro,Using Urlresolver module.. - ,5000)")
+        import urlresolver
+        host = urlresolver.HostedMediaFile(url)
+        if host:
+            resolver = urlresolver.resolve(url)
+            resolved = resolver
+    if resolved :
+        if isinstance(resolved,list):
+            for k in resolved:
+                quality = addon.getSetting('quality')
+                if k['quality'] == 'HD'  :
+                    resolver = k['url']
+                    break
+                elif k['quality'] == 'SD' :
+                    resolver = k['url']
+                elif k['quality'] == '1080p' and addon.getSetting('1080pquality') == 'true' :
+                    resolver = k['url']
+                    break
+        else:
+            resolver = resolved
+    return resolver
 def play_playlist(name, mu_playlist):
         import urlparse
-        playlist = xbmc.PlayList(1) # 1 means video
-        playlist.clear()
-        item = 0
         if addon.getSetting('ask_playlist_items') == 'true':
             names = []
             for i in mu_playlist:
-                names.append( urlparse.urlparse(i).netloc)
+                d_name=urlparse.urlparse(i).netloc
+                if d_name == '':
+                    names.append(name)
+                else:
+                    names.append(d_name)
             dialog = xbmcgui.Dialog()
-            index = dialog.select('Choose a Live source:', names)
+            index = dialog.select('Choose a video source', names)
             if index >= 0:
-                url = mu_playlist[index]
-                xbmc.Player().play(url)
+                if "&mode=19" in mu_playlist[index]:
+                    xbmc.Player().play(urlsolver(mu_playlist[index].replace('&mode=19','')))
+                elif "$doregex" in mu_playlist[index] :
+
+                    sepate = mu_playlist[index].split('&regexs=')
+
+                    url,setresolved = getRegexParsed(sepate[1], sepate[0])
+                    xbmc.Player().play(url)
+                else:
+                    url = mu_playlist[index]
+                    xbmc.Player().play(url)
         else:
+            playlist = xbmc.PlayList(1) # 1 means video
+            playlist.clear()
+            item = 0
             for i in mu_playlist:
                 item += 1
                 info = xbmcgui.ListItem('%s) %s' %(str(item),name))
@@ -1794,11 +1844,11 @@ def ytdl_download(url,title,media_type='video'):
     elif xbmc.Player().isPlaying() == True :
         import YDStreamExtractor
         if YDStreamExtractor.isDownloading() == True:
-            #print 'already downloading Add to que'
+
             YDStreamExtractor.manageDownloads()
         else:
             xbmc_url = xbmc.Player().getPlayingFile()
-            print 'title is ',title
+
             xbmc_url = xbmc_url.split('|User-Agent=')[0]
             info = {'url':xbmc_url,'title':title,'media_type':media_type}
             youtubedl.single_YD('',download=True,dl_info=info)    
@@ -1813,7 +1863,7 @@ def search(site_name,search_term=None):
     if site_name == 'history' :
         content = LoadFile(history)
         match = re.compile('(.+?):(.*?)(?:\r|\n)').findall(content)
-        print len(match)
+
         for name,search_term in match:
             if 'plugin://' in search_term:
                 addLink(search_term, name,thumbnail,'','','','','',None,'',total=int(len(match)))
@@ -1832,11 +1882,10 @@ def search(site_name,search_term=None):
     if 'youtube' in site_name:
         #youtube = youtube#Lana Del Rey
         import _ytplist
-        print 'search_termsearch_term',search_term
+
         search_res = {}
         search_res = _ytplist.YoUTube('searchYT',youtube=search_term,max_page=4,nosave='nosave')
         total = len(search_res)
-        print 'total search_res::', str(total)
         for item in search_res:
             try:
                 name = search_res[item]['title']
@@ -1847,11 +1896,9 @@ def search(site_name,search_term=None):
                     description = 'UNAVAIABLE'
 
                 url = 'plugin://plugin.video.youtube/play/?video_id=' + search_res[item]['url']
-                #print url
                 thumbnail ='http://img.youtube.com/vi/'+search_res[item]['url']+'/0.jpg'
                 addLink(url, name,thumbnail,'','','','','',None,'',total)
             except Exception:
-                print 'ignore this linkddddddddddd'
         page_data = site_name +':'+ search_term + '\n'
         SaveToFile(os.path.join(profile,'history'),page_data,append=True)
     elif 'dmotion' in site_name:
@@ -1866,7 +1913,7 @@ def search(site_name,search_term=None):
     elif 'IMDBidplay' in site_name:
         urlMain = "http://www.omdbapi.com/?t=" 
         url= urlMain+search_term
-        print url
+
         headers = dict({'User-Agent':'Mozilla/5.0 (Windows NT 6.3; rv:33.0) Gecko/20100101 Firefox/33.0','Referer': 'http://joker.org/','Accept-Encoding':'gzip, deflate','Content-Type': 'application/json;charset=utf-8','Accept': 'application/json, text/plain, */*'})
     
         r=requests.get(url,headers=headers)
@@ -2189,7 +2236,11 @@ elif mode==16:
 
 elif mode==17:
     addon_log("getRegexParsed")
-    getRegexParsed(regexs, url)
+    url,setresolved = getRegexParsed(regexs, url)
+    if url:
+        playsetresolved(url,name,iconimage,setresolved)
+    else:
+        xbmc.executebuiltin("XBMC.Notification(LiveStreamsPro,Failed to extract regex. - "+"this"+",4000,"+icon+")")
 elif mode==18:
     addon_log("youtubedl")
     try:
@@ -2203,34 +2254,8 @@ elif mode==18:
     #item = xbmcgui.ListItem(path=stream_url)
     #xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, item)    
 elif mode==19:
-    addon_log("Commonresolvers")
-    if addon.getSetting('Updatecommonresolvers') == 'true':
-        l = os.path.join(home,'commonresolvers.py')
-        if xbmcvfs.exists(l):
-            os.remove(l)
-            
-        genesis_url = 'https://raw.githubusercontent.com/lambda81/lambda-addons/master/plugin.video.genesis/commonresolvers.py'
-        th= urllib.urlretrieve(genesis_url,l)
-        addon.setSetting('Updatecommonresolvers', 'false')
-    import commonresolvers
-    resolved=commonresolvers.get(url).result    
-    if resolved:
-        if isinstance(resolved,list):
-            for k in resolved:
-                quality = addon.getSetting('quality')
-                if k['quality'] == 'HD'  :
-                    resolver = k['url']
-                    break
-                elif k['quality'] == 'SD' :
-                    resolver = k['url']        
-                elif k['quality'] == '1080p' and addon.getSetting('1080pquality') == 'true' :
-                    resolver = k['url']
-                    break
-        else:
-            resolver = resolved        
-        playsetresolved(resolver,name,iconimage)
-    else: 
-        xbmc.executebuiltin("XBMC.Notification(LiveStreamsPro,Probably,this host is not supported or resolver is broken::,10000)")    
+	addon_log("Commonresolvers")
+	playsetresolved (urlsolver(url),name,iconimage,True)	
 
 elif mode==21:
     addon_log("download current file using youtube-dl service")
