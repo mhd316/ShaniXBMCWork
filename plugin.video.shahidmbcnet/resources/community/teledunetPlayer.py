@@ -122,9 +122,11 @@ def PlayStream(sourceEtree, urlSoup, name, url):
 		pDialog.update(80, 'trying to play')
 		liveLink= sourceEtree.findtext('rtmpstring');
 		freeCH= '2m'
+		html=getUrl("http://www.teledunet.com/mobile/access_id.php")
+		userID=html.replace('?id1=', '')
 		print 'rtmpstring',liveLink,rtmp
 #		liveLink=liveLink%(rtmp,channelId,match,channelId,channelId)
-		liveLink=liveLink%(rtmp,channelId,timesegment,freeCH,selfAddon.getSetting( "teledunetTvLogin" ),token)
+		liveLink=liveLink%(rtmp,channelId,userID,freeCH,selfAddon.getSetting( "teledunetTvLogin" ),token)
 
         
 
