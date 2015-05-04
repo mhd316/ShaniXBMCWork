@@ -1899,6 +1899,7 @@ def search(site_name,search_term=None):
                 thumbnail ='http://img.youtube.com/vi/'+search_res[item]['url']+'/0.jpg'
                 addLink(url, name,thumbnail,'','','','','',None,'',total)
             except Exception:
+            	addon_log( 'This item is ignored::')
         page_data = site_name +':'+ search_term + '\n'
         SaveToFile(os.path.join(profile,'history'),page_data,append=True)
     elif 'dmotion' in site_name:
@@ -2247,8 +2248,6 @@ elif mode==18:
         import youtubedl
     except Exception:
         xbmc.executebuiltin("XBMC.Notification(LiveStreamsPro,Please [COLOR yellow]install Youtube-dl[/COLOR] module ,10000,"")")
-        
-    print url
     stream_url=youtubedl.single_YD(url)
     playsetresolved(stream_url,name,iconimage)
     #item = xbmcgui.ListItem(path=stream_url)
