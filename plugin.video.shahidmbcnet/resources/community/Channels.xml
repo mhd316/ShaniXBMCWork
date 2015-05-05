@@ -1,4 +1,16 @@
 <channels>
+
+
+
+<channel>
+	<cname>Sudan Music Angham</cname>
+	<imageurl>http://s27.postimg.org/gv20zl2b7/Angham_sudan.jpg</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>africa</category>
+	<category>music</category>
+	</assignedcategory>
+</channel>	
 <channel>
 	<cname>Afrah</cname>
 	<imageurl>http://www.lyngsat-logo.com/hires/aa/afrah_tv.png</imageurl>
