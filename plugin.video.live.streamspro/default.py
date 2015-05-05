@@ -673,6 +673,8 @@ def getItems(items,fanart):
                     for i in url:
                         if regexs:
                             playlist.append(i+'&regexs='+regexs)
+                        elif  any(x in i for x in resolve_url) and  i.startswith('http'):
+                            playlist.append(i+'&mode=19')                            
                         else:
                             playlist.append(i)
                     if addon.getSetting('add_playlist') == "false":                    
@@ -1721,7 +1723,7 @@ def rmFavorite(name):
 
 def urlsolver(url):
     if addon.getSetting('Updatecommonresolvers') == 'true':
-        l = os.path.join(home,'commonresolvers.py')
+        l = os.path.join(home,'genesisresolvers.py')
         if xbmcvfs.exists(l):
             os.remove(l)
 
@@ -1729,13 +1731,12 @@ def urlsolver(url):
         th= urllib.urlretrieve(genesis_url,l)
         addon.setSetting('Updatecommonresolvers', 'false')
     try:
-        import commonresolvers
+        import genesisresolvers
     except Exception:
-        xbmc.executebuiltin("XBMC.Notification(LiveStreamsPro,Please enable Update Commonresolvers to Play. - ,10000)")
+        xbmc.executebuiltin("XBMC.Notification(LiveStreamsPro,Please enable Update Commonresolvers to Play in Settings. - ,10000)")
 
-    resolved=commonresolvers.get(url).result
-    #r = resolved.worker(url,url)
-    if url == resolved:
+    resolved=genesisresolvers.get(url).result
+    if url == resolved or resolved is None:
         #import
         xbmc.executebuiltin("XBMC.Notification(LiveStreamsPro,Using Urlresolver module.. - ,5000)")
         import urlresolver
@@ -2029,12 +2030,15 @@ def addLink(url,name,iconimage,fanart,description,genre,date,showcontext,playlis
         ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,totalItems=total)
         #print 'added',name
         return ok
-def playsetresolved(url,name,iconimage):
-    liz = xbmcgui.ListItem(name, iconImage=iconimage)
-    liz.setInfo(type='Video', infoLabels={'Title':name})
-    liz.setProperty("IsPlayable","true")
-    liz.setPath(url)
-    xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, liz)
+def playsetresolved(url,name,iconimage,setresolved=True):
+    if setresolved:
+        liz = xbmcgui.ListItem(name, iconImage=iconimage)
+        liz.setInfo(type='Video', infoLabels={'Title':name})
+        liz.setProperty("IsPlayable","true")
+        liz.setPath(url)
+        xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, liz)
+    else:
+        xbmc.executebuiltin('XBMC.RunPlugin('+url+')')      
 
 
 ## Thanks to daschacka, an epg scraper for http://i.teleboy.ch/programm/station_select.php
@@ -2253,7 +2257,7 @@ elif mode==18:
     #item = xbmcgui.ListItem(path=stream_url)
     #xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, item)    
 elif mode==19:
-	addon_log("Commonresolvers")
+	addon_log("Genesiscommonresolvers")
 	playsetresolved (urlsolver(url),name,iconimage,True)	
 
 elif mode==21:
