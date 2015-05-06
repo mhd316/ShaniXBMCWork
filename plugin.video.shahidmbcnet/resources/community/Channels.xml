@@ -1,7 +1,15 @@
 <channels>
 
 
-
+<channel>
+	<cname>Mafia Cinema</cname>
+	<imageurl>http://s14.postimg.org/dytdmj63l/Cinema_Mafia.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+ 	<category>egypt</category>
+	</assignedcategory>
+</channel>	
 <channel>
 	<cname>Sudan Music Angham</cname>
 	<imageurl>http://s27.postimg.org/gv20zl2b7/Angham_sudan.jpg</imageurl>
