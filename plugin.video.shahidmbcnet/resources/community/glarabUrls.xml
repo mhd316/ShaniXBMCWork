@@ -6399,14 +6399,14 @@
 	</item>
 </streaminginfo>
 <streaminginfo>
-	<cname>Oscar Drama 2</cname>
+	<cname>Mafia Cinema</cname>
 	<item>
 	<title>Proxy High</title>
 	<link>http://$GLProxyIP$:4500/channel.flv?server=$GL-IPHD$&amp;channel=OscarDrama2_High&amp;port=2077&amp;user=$GL-User$&amp;session=$GL-Sesession$</link>
 	</item>
 </streaminginfo>
 <streaminginfo>
-	<cname>Oscar Drama</cname>
+	<cname>Melody Classic</cname>
 	<item>
 	<title>Proxy High</title>
 	<link>http://$GLProxyIP$:4500/channel.flv?server=$GL-IPHD$&amp;channel=OscarDrama_High&amp;port=2077&amp;user=$GL-User$&amp;session=$GL-Sesession$</link>
@@ -8604,14 +8604,14 @@
 </item>
 </streaminginfo>
 <streaminginfo>
-<cname>Oscar Drama 2</cname>
+<cname>Mafia Cinema</cname>
 <item>
 <title>HD</title>
 <link>http://$GL-IPHD$:7777/OscarDrama2_HD.m3u8?user=$GL-User$&amp;session=$GL-Sesession$</link>
 </item>
 </streaminginfo>
 <streaminginfo>
-<cname>Oscar Drama</cname>
+<cname>Melody Classic</cname>
 <item>
 <title>HD</title>
 <link>http://$GL-IPHD$:7777/OscarDrama_HD.m3u8?user=$GL-User$&amp;session=$GL-Sesession$</link>
