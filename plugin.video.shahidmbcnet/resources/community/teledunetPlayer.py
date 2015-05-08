@@ -94,17 +94,30 @@ def PlayStream(sourceEtree, urlSoup, name, url):
 					#	cache2Hr.set('MainChannelPage','yes')
 					#	print 'Stored in local file',cache2Hr.get('MainChannelPage')
 					
-				if 'fromspacer' in link:
-					match =re.findall('fromspacer\((.*?)\)', link)
-				else:
-					match =re.findall('aut=\'\?id0=(.*?)\'', link)
-				print match
-				timesegment=str(long(float(match[0])))
-				if timesegment=="0":
-					print 1/0; #produce error
-				
+#				if 'fromspacer' in link:
+#					match =re.findall('fromspacer\((.*?)\)', link)
+#				else:
+#					match =re.findall('aut=\'\?id0=(.*?)\'', link)
+#				print match
+#				timesegment=str(long(float(match[0])))#
+#				if timesegment=="0":#
+#					print 1/0; #produce error
+				print 'link',link
 				rtmp =re.findall(('rtmp://(.*?)/%s\''%channelId), link)[0]
+				print 'rtmp1',rtmp
 				rtmp='rtmp://%s/%s'%(rtmp,channelId)
+				print 'rtmp2',rtmp
+				if '127.0.0.1' in rtmp:
+					server_pat='Array\((.*?)\);'
+					servers_array=re.findall(server_pat, link)[0].replace('\'','')+','
+					print servers_array
+					server_pat="(rtmp:.*?),"
+					servers_array=re.findall(server_pat, servers_array)
+					rtmp=servers_array[2] 
+#					rtmp="rtmp://www.teledunet.com:1935/live2"
+                    
+#					rtmp='%s/%s'%(servers_selected,channelId)
+#					print 'servers_selected',servers_selected,rtmp
 				#if '5.135.134.110' in rtmp and 'bein' in channelId:
 				#	rtmp=rtmp.replace('5.135.134.110','www.teledunet.com')
 			except:
@@ -122,11 +135,11 @@ def PlayStream(sourceEtree, urlSoup, name, url):
 		pDialog.update(80, 'trying to play')
 		liveLink= sourceEtree.findtext('rtmpstring');
 		freeCH= '2m'
-		html=getUrl("http://www.teledunet.com/mobile/access_id.php")
-		userID=html.replace('?id1=', '')
+		html=getUrl("http://www.teledunet.com/mobile/access_id.php",getCookieJar())
+		access_id=html
 		print 'rtmpstring',liveLink,rtmp
 #		liveLink=liveLink%(rtmp,channelId,match,channelId,channelId)
-		liveLink=liveLink%(rtmp,channelId,userID,freeCH,selfAddon.getSetting( "teledunetTvLogin" ),token)
+		liveLink=liveLink%(rtmp,channelId,access_id,freeCH,selfAddon.getSetting( "teledunetTvLogin" ),token)
 
         
 
@@ -389,8 +402,9 @@ def getChannelHTML(cid):
             if 'id1' in html:
                 newod1=re.findall('id1=(.*)', html)[0]
         token=''
-        import random
-        token=str(   int('11' +  str(int(999999 +random.random() * (99999999 - 999999)))) * 65);
+        #import random
+        #token=str(   int('11' +  str(int(999999 +random.random() * (99999999 - 999999)))) * 65);
+        
 #        post=None
 #        testUrl='http://www.teledunet.com/mobile//player.swf?id0=%s&channel=abu_dhabi_drama&user=&token=%s'%(newod1,token) 
 #        getUrl(testUrl,cookie_jar ,post,'http://www.teledunet.com/mobile/') 
