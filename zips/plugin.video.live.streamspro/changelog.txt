@@ -1,3 +1,6 @@
+Version 1.6.8
+Thanks to Alibaba, updated the multi playlist settings for regex etc
+
 Version 1.6.7
 Thanks to Alibaba, updated the multi playlist settings as well sync with Lambda settings
 

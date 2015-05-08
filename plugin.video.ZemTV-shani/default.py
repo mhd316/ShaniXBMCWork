@@ -466,6 +466,7 @@ def getMatchUrl(matchid):
             calltype='Live'
             if mode==21:
                 WLlive=True
+                print 'matchid',matchid
                 matchid,source_sectionid=matchid.split(':')
                 st='LiveMatch'
                 url=base64.b64decode('aHR0cDovL3d3dy53aWxsb3cudHYvRXZlbnRNZ210LyVzVVJMLmFzcD9taWQ9JXM=')%(st,matchid)
@@ -489,6 +490,9 @@ def getMatchUrl(matchid):
 
             final_url=''
         
+            print calltype,mode
+            print videoPage
+            print pat
             if calltype=='Live' or calltype=='RecordOne':
                 videoPage='},\n{'.join(videoPage.split("},{"))
                 final_url=re.findall(pat,videoPage)[0]
@@ -566,7 +570,7 @@ def AddWillowCric(url):
                 #    addDir(entry_name ,match_id,-1,'', False, True,isItFolder=False)		#name,url,mode,icon
                 #else:
                 for i in range(4):
-                    addDir(entry_name+(' source %s'%str(i)) ,match_id+':'+str(i),21,'', False, True,isItFolder=False)		#name,url,mode,icon
+                    addDir(Colored('Source %s '%str(i+1),'ZM',True)+entry_name ,match_id+':'+str(i+1),21,'', False, True,isItFolder=False)		#name,url,mode,icon
 #                else:
 #                    addDir(entry_name ,match_id,21,'', False, True,isItFolder=False)		#name,url,mode,icon           
         else:
@@ -827,8 +831,11 @@ def AddEnteries(type):
         #addDir(Colored('ZemTv Channels','ZM',True) ,'ZEMTV' ,10,'', False, True,isItFolder=False)		#name,url,mode,icon
         #AddChannels();#AddChannels()
         isPakistani=(type=='Pakistani Live Channels')
-        print 'isPakistani',isPakistani
-        if isPakistani:        
+        
+        
+        isYellowOff=selfAddon.getSetting( "isYellowOff" ) 
+        print 'isPakistani',isPakistani,isYellowOff
+        if isPakistani and not isYellowOff=="true":        
             addDir(Colored('EboundServices Channels','EB',True) ,'ZEMTV' ,10,'', False, True,isItFolder=False)		#name,url,mode,icon
             try:
                 AddChannelsFromEbound();#AddChannels()

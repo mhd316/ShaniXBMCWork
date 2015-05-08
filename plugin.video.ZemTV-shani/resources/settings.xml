@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <settings>
     <category label="32001">
-         <setting label="32018" type="enum" id="DefaultVideoType" values="Youtube Video|Dailymotion Video|Tune.pk Video|PlayWire Video|EBound Video|Show All Sources"/>
+         <setting label="32018" type="enum" id="DefaultVideoType"  default="Dailymotion Video" values="Dailymotion Video|Tune.pk Video|PlayWire Video|EBound Video|Show All Sources"/>
 		 <setting label="32019" type="enum" id="DefaultStreamType" values="RTMP(Flash)|Http Live(ios)"/>
 		 <setting label="32020" type="text" id="WillowUserName" values="" default=""/>
 		<setting label="32021" type="text" id="WillowPassword" values="" default=""/>  
+		<setting label="32022" type="bool"   id="isYellowOff" default="false"/>
 
      </category>
 </settings>

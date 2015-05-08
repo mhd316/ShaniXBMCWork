@@ -1,3 +1,7 @@
+[B]Version 3.5.0[/B]
+updated willow index and a settings to turn off Yellow channels
+
+
 [B]Version 3.4.9[/B]
 updates sports, removed some, updated some
 
