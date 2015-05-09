@@ -1,6 +1,22 @@
 <channels>
 
 <channel>
+	<cname>Sky Select</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/ss/sky_de_select.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>news</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Eritrea TV</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/ee/eri_tv.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>africa</category>
+	</assignedcategory>
+</channel>
+<channel>
 	<cname>Sky Movies</cname>
 	<imageurl>https://pbs.twimg.com/profile_images/531857784430551040/4UAp8YWg.png</imageurl>
 	<enabled>True</enabled>
@@ -9,7 +25,6 @@
 	<category>english</category>
 	</assignedcategory>
 </channel>
-
 <channel>
 	<cname>Mafia Cinema</cname>
 	<imageurl>http://s14.postimg.org/dytdmj63l/Cinema_Mafia.png</imageurl>
