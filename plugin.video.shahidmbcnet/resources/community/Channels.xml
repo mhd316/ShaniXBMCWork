@@ -1,6 +1,23 @@
 <channels>
 
 <channel>
+	<cname>Panorama Food</cname>
+	<imageurl>http://s4.postimg.org/iymu4ntl9/Panorama_Food.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>cook</category>
+	<category>egypt</category>
+	</assignedcategory>
+</channel>	
+<channel>
+	<cname>Cine+</cname>
+	<imageurl>http://blog.lenodal.com/uploads/actualitedelhabillage/2011/mth-logos-cineplus.jpg</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>french</category>
+	</assignedcategory>
+</channel>	
+<channel>
 	<cname>Sky Select</cname>
 	<imageurl>http://www.lyngsat-logo.com/hires/ss/sky_de_select.png</imageurl>
 	<enabled>True</enabled>
