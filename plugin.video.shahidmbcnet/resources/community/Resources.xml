@@ -6,6 +6,9 @@
 	<file fname="teledunetUrls.xml"/>
     	<file fname="ssPlayer.py"/>
 	<file fname="ssUrls.xml"/>
+    	<file fname="ttvPlayer.py"/>
+	<file fname="ttvUrls.xml"/>
+    
 	<file fname="livetvPlayer.py"/>
 	<file fname="livetvUrls.xml"/>	
 	<file fname="genericPlayer.py" />	

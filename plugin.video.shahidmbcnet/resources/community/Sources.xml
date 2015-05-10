@@ -172,5 +172,19 @@
 <imageurl>http://www.ss.com</imageurl>
 <processor>ssPlayer.py</processor>
 </source>
+
+
+<source>
+<id>ttv</id>
+<shortname>ttv</shortname>
+<sname>ttv</sname>
+<colour>yellow</colour>
+<baseurl>http://ttv.com/</baseurl>
+<enabled>True</enabled>
+<urlfile>ttvUrls.xml</urlfile>
+<rtmpstring></rtmpstring>
+<imageurl>http://www.ttv.com</imageurl>
+<processor>ttvPlayer.py</processor>
+</source>
 </streamingsources>
 
