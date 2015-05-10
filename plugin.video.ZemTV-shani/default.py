@@ -1,5 +1,5 @@
 import xbmc, xbmcgui, xbmcplugin
-import urllib2,urllib,cgi, re, urlresolver
+import urllib2,urllib,cgi, re, urlresolver  
 import urlparse
 import HTMLParser
 import xbmcaddon
@@ -280,6 +280,7 @@ def AddSports(url):
     addDir('WatchCric.com (requires new rtmp)-Live matches only' ,base64.b64decode('aHR0cDovL3d3dy53YXRjaGNyaWMubmV0Lw==' ),16,'') #blocking as the rtmp requires to be updated to send gaolVanusPobeleVoKosat
     addDir('c247.tv-P3G.Tv (requires new rtmp)' ,'P3G'  ,30,'')
     addDir('Willow.Tv (login required)' ,base64.b64decode('aHR0cDovL3d3dy53aWxsb3cudHYv') ,19,'')
+    addDir('SSS events' ,'sss',34,'')
 
 
 def PlayPopeLive(url):
@@ -292,6 +293,62 @@ def PlayPopeLive(url):
     playlist.add(url,listitem)
     xbmcPlayer = xbmc.Player(xbmc.PLAYER_CORE_AUTO)
     xbmcPlayer.play(playlist) 
+
+    
+def GetSSSEvents(url):
+    try:
+        url='http://www.supersport.com/live-video'
+        req = urllib2.Request(url)
+        req.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.93 Safari/537.36')
+        response = urllib2.urlopen(req)
+        videoPage =  response.read()
+        response.close()
+        pat='setallLiveStreamsVideos\\(...({.*?})\\\\\"\\"\\);'
+        print videoPage
+        channels_string=re.findall(pat,videoPage)[0]
+        channels_string=channels_string.replace('\\\\r','')
+        channels_string=channels_string=channels_string.replace('\\\\n','')
+        channels_string=channels_string.replace('\\\\','\\')
+        channels_string=channels_string.replace('\\"','"')
+        channels_string=channels_string.replace('\\"','"')
+        print channels_string
+        
+        print 'channels_string',channels_string
+        channels = json.loads(channels_string)
+        print channels
+
+        
+#            sid=series["Id"]
+        addDir('Maxbitrate Settings' ,'Live' ,6,'',isItFolder=False)
+        
+        addDir(Colored('Live Events','EB',True) ,'' ,-1,'', False, True,isItFolder=False)		#name,url,mode,icon   
+        try:
+            for channel in channels["EventLiveStreamNow"]:
+                if channel["IsLiveNow"]:
+                    ptitle=channel["Title"]
+                    cname=channel["Channel"]
+                    link=channel["Link"]
+
+        #            addDir(cname ,'a',27,'', False, True,isItFolder=False)
+                    addDir('  '+cname + ' ' + ptitle ,link,35,'', False, False,isItFolder=False)
+        except: traceback.print_exc(file=sys.stdout)
+
+        addDir(Colored('Channels','EB',True) ,'' ,-1,'', False, True,isItFolder=False)		#name,url,mode,icon   
+        try:
+            for channel in channels["ChannelStream"]:
+
+                ptitle=channel["NowPlaying"]["EventNowPlaying"]
+                cname=channel["NowPlaying"]["Channel"]
+                link=channel["NowPlaying"]["Link"]
+
+        #            addDir(cname ,'a',27,'', False, True,isItFolder=False)
+                addDir('  '+cname + ' ' + ptitle ,link,35,'', False, False,isItFolder=False)
+                                                                        
+
+        except: traceback.print_exc(file=sys.stdout)
+        
+    except: traceback.print_exc(file=sys.stdout)
+    
 
 def AddPopeLive(url):
     try:
@@ -512,7 +569,59 @@ def getMatchUrl(matchid):
             dialog = xbmcgui.Dialog()
             ok = dialog.ok('Login Failed', Msg)
         
+def PlaySSSEvent(url):
+
+
+    murl='http://www.supersport.com/video/playerlivejson.aspx?vid=%s'
+    matchid=url.split('/')[-1]
+    match_url=murl%matchid
+    match_json=getUrl(match_url)
+    match=json.loads(match_json)
+    matchurl=match['result']['services']['videoURL']
+ 
+    finalUrl=getdecSSMatchUrl(matchurl,'LIVE')
+    if 'manifest.f4m' in finalUrl:
+        maxbitrate='0'
+        maxbitrate_settings=selfAddon.getSetting('defualtSSSBitRate')
+        if (not maxbitrate_settings=='') and 'Max' not in maxbitrate_settings:
+            maxbitrate=maxbitrate_settings
+        finalUrl='plugin://plugin.video.f4mTester/?url=%s&maxbitrate=%s&name=%s'%(urllib.quote_plus(finalUrl),maxbitrate,str(name))
+    print 'finalUrl',finalUrl
+#    playlist = xbmc.PlayList(1)
+#    playlist.clear()
+#    listitem = xbmcgui.ListItem( label = str(name), iconImage = "DefaultVideo.png", thumbnailImage = xbmc.getInfoImage( "ListItem.Thumb" ) )
+#    playlist.add(finalUrl,listitem)
+#    xbmcPlayer = xbmc.Player(xbmc.PLAYER_CORE_AUTO)
+#    xbmcPlayer.play(playlist) 
+    xbmc.executebuiltin('XBMC.RunPlugin('+finalUrl+')') 
     
+
+def getdecSSMatchUrl(strToDecrypt,type):
+    DECRYPTION_KEY1 = "1233901199002223000111A2"
+    DECRYPTION_KEY2 = "9685647821298987483258Z8"
+    DECRYPTION_KEY_LIVE1 = "9685647821298987483258Z8"
+    DECRYPTION_KEY_LIVE2 = "1233901199002223000111A2"
+    DECRYPTION_KEY_VIDEO1 = "1233901199002223000111A2"
+    DECRYPTION_KEY_VIDEO2 = "9685647821298987483258Z8"
+    ds1 = ""
+    if type == "LIVE": 
+        import pyaes
+        decryptor = pyaes.new(DECRYPTION_KEY_LIVE1, pyaes.MODE_ECB, IV='')
+        ds1 = decryptor.decrypt(strToDecrypt.decode("hex")).replace('\x00', '')
+        if ds1[:4] == "rtmp" or ds1[:4] == "http": return ds1
+        else:
+            decryptor = pyaes.new(DECRYPTION_KEY_LIVE2, pyaes.MODE_ECB, IV='')
+            ds1 = decryptor.decrypt(strToDecrypt.decode("hex")).replace('\x00', '')
+            if ds1[:4] == "rtmp" or ds1[:4] == "http": return ds1
+    if type == "VIDEO": 
+        decryptor = pyaes.new(DECRYPTION_KEY1, pyaes.MODE_ECB, IV='')
+        ds1 = decryptor.decrypt(strToDecrypt.decode("hex")).replace('\x00', '')
+        if ds1[:4] == "rtmp" or ds1[:4] == "http": return ds1
+        else:
+            decryptor = pyaes.new(DECRYPTION_KEY2, pyaes.MODE_ECB, IV='')
+            ds1 = decryptor.decrypt(strToDecrypt.decode("hex")).replace('\x00', '')
+            if ds1[:4] == "rtmp" or ds1[:4] == "http": return ds1
+    return ds1
     
     
 def PlayWillowMatch(url):
@@ -1773,6 +1882,12 @@ try:
 	elif mode==33 :
 		print "Play url is "+url
 		PlayGen(url)                
+	elif mode==34 :
+		print "Play url is "+url
+		GetSSSEvents(url)                
+	elif mode==35 :
+		print "Play url is "+url
+		PlaySSSEvent(url)                
 
 
         
@@ -1781,7 +1896,7 @@ except:
 	traceback.print_exc(file=sys.stdout)
 	
 
-if not ( (mode==3 or mode==4 or mode==9 or mode==11 or mode==15 or mode==21 or mode==22 or mode==27 or mode==33)  )  :
+if not ( (mode==3 or mode==4 or mode==9 or mode==11 or mode==15 or mode==21 or mode==22 or mode==27 or mode==33 or mode==35)  )  :
 	if mode==144:
 		xbmcplugin.endOfDirectory(int(sys.argv[1]),updateListing=True)
 	else:
