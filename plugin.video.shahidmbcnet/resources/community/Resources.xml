@@ -4,6 +4,8 @@
 	<file fname="Sources.xml"/>
 	<file fname="teledunetPlayer.py"/>
 	<file fname="teledunetUrls.xml"/>
+    	<file fname="ssPlayer.py"/>
+	<file fname="ssUrls.xml"/>
 	<file fname="livetvPlayer.py"/>
 	<file fname="livetvUrls.xml"/>	
 	<file fname="genericPlayer.py" />	

@@ -160,5 +160,17 @@
 <processor>genericPlayer.py</processor>
 </source>
 
+<source>
+<id>ss</id>
+<shortname>ss</shortname>
+<sname>ss</sname>
+<colour>blue</colour>
+<baseurl>http://ss.com/</baseurl>
+<enabled>True</enabled>
+<urlfile>ssUrls.xml</urlfile>
+<rtmpstring></rtmpstring>
+<imageurl>http://www.ss.com</imageurl>
+<processor>ssPlayer.py</processor>
+</source>
 </streamingsources>
 

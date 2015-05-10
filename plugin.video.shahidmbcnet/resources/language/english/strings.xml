@@ -25,6 +25,7 @@
     <string id="32061">Eleventh Preference</string>
     <string id="32068">Thirteenth Preference</string>
     <string id="32083">Fourteenth Preference</string>
+    <string id="32085">Fifteenth Preference</string>
 
 	<string id="32027">Local Resources</string>
 	<string id="32028">Your Youtube file</string>
@@ -45,7 +46,9 @@
 	<string id="32062">Disable FilmOn source</string>	
 	<string id="32069">Disable Telvza source</string>	
 	<string id="32082">Disable IPTvPlanet source</string>	
+	<string id="32086">Disable ss source</string>	
 
+    
 	<string id="32063">Do not play High quality win FilmOn</string>	
 
     
