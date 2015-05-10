@@ -102,8 +102,13 @@ def PlayStream(sourceEtree, urlSoup, name, url):
 #				timesegment=str(long(float(match[0])))#
 #				if timesegment=="0":#
 #					print 1/0; #produce error
-				print 'link',link
-				rtmp =re.findall(('rtmp://(.*?)/%s\''%channelId), link)[0]
+#				print 'link',link
+				rtmp =re.findall(('rtmp://(.*?)/%s\''%channelId), link)
+				if len(rtmp)==0:
+					print 'creating it manually'
+					rtmp='rtmp://127.0.0.1:1935/live/%s'%channelId
+				else:
+					rtmp=rtmp[0]               
 				print 'rtmp1',rtmp
 				rtmp='rtmp://%s/%s'%(rtmp,channelId)
 				print 'rtmp2',rtmp
@@ -135,13 +140,19 @@ def PlayStream(sourceEtree, urlSoup, name, url):
 		pDialog.update(80, 'trying to play')
 		liveLink= sourceEtree.findtext('rtmpstring');
 		freeCH= '2m'
-		html=getUrl("http://www.teledunet.com/mobile/access_id.php",getCookieJar())
-		access_id=html
-		print 'rtmpstring',liveLink,rtmp
+#		html=getUrl("http://www.teledunet.com/mobile/access_id.php",getCookieJar())
+#		access_id=html
+		ip_patt="ip='(.*?)';"
+		dz_patt="dz='(.*?)';"
+		dz=re.findall(dz_patt, link)[0]        
+		ip=re.findall(ip_patt, link)[0]
+		ip2=''.join(ip.split('.')[0:3])
+		access_id=str(((365-int(dz))*int(ip2)*2015)+1983)
+		access_id='?id1='+access_id
+
+#		print 'rtmpstring',liveLink,rtmp
 #		liveLink=liveLink%(rtmp,channelId,match,channelId,channelId)
 		liveLink=liveLink%(rtmp,channelId,access_id,freeCH,selfAddon.getSetting( "teledunetTvLogin" ),token)
-
-        
 
 		name+='-Teledunet'
 		print 'liveLink',liveLink
@@ -402,8 +413,8 @@ def getChannelHTML(cid):
             if 'id1' in html:
                 newod1=re.findall('id1=(.*)', html)[0]
         token=''
-        #import random
-        #token=str(   int('11' +  str(int(999999 +random.random() * (99999999 - 999999)))) * 65);
+        import random
+        token=str(   int('11' +  str(int(999999 +random.random() * (99999999 - 999999)))) * 331);
         
 #        post=None
 #        testUrl='http://www.teledunet.com/mobile//player.swf?id0=%s&channel=abu_dhabi_drama&user=&token=%s'%(newod1,token) 
