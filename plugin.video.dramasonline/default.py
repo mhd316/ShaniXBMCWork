@@ -335,7 +335,7 @@ def getPlaywireUrl(html, short):
 
 		else:
 			# try new links
-			str = '<script data-config="http...config.playwire.com.(\d+)\/videos.v2.(\d+)\/'
+			str = '<script data-config="(http)?...?config.playwire.com.(\d+)\/videos.v2.(\d+)\/'
 			match =re.findall(str, html)
 
 			if len(match):
@@ -350,7 +350,7 @@ def getPlaywireUrl(html, short):
 			return None
 
 		if newFormat:
-			(PubId,videoID)=playURL
+			(pp,PubId,videoID)=playURL
 
 			cdnUrl="http://config.playwire.com/%s/videos/v2/%s/manifest.f4m" % (PubId,videoID)
 			link=getHtml(cdnUrl)
