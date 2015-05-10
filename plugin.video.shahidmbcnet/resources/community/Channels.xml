@@ -6821,15 +6821,7 @@
 	<category>kids</category>
 	</assignedcategory>
 </channel>
-<channel>
-	<cname>Foot+</cname>
-	<imageurl>http://www.lyngsat-logo.com/hires/cc/canalsat_fr_foot_plus.png</imageurl>
-	<enabled>True</enabled>
-	<assignedcategory>
-	<category>french</category>
-	<category>sports</category>
-	</assignedcategory>
-</channel>
+
 <channel>
 	<cname>Paris Premiere</cname>
 	<imageurl>http://www.gwenael.org/xbmc-streams/images/channels/600.png</imageurl>
