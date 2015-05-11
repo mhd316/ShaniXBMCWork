@@ -819,7 +819,7 @@ def replaceGLArabVariables(link, d,gcid, title):
             serverAddress=GLArabServerLR
             print GLArabServerLR,'GLArabServerLR  '
             type='lr'
-        GlUser='2620'    
+        GlUser=base64.b64decode('MzM4OA==')
         link=link.replace('$GL-Qlty$',GLArabQuality)
         link=link.replace('$GL-Sesession$',session)
         link=link.replace('$GL-User$',GlUser)
