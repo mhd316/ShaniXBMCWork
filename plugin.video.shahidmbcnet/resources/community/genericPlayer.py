@@ -750,15 +750,19 @@ def replaceGLArabVariables(link, d,gcid, title):
             print 'login or accessing the site failed.. continuing'
             traceback.print_exc(file=sys.stdout)
         
-        if gcid:
-            gcUrl='https://apps.glwiz.com:448/uniwebappandroidads/(S(g01ykv45pojkhpzwap1u14dy))/ajax.ashx?channel=tv&chid=%s&'%gcid
-            print gcUrl,'gcUrl'
-            gcidhtml=getUrl(gcUrl)
-            print gcidhtml
-            patt='makeHttpRequestNoCache\\(\'(.*?)\''
-            gcurl='https://apps.glwiz.com:448/uniwebappandroidads/(S(g01ykv45pojkhpzwap1u14dy))/'+ re.compile(patt).findall(gcidhtml)[0] 
-            print 'gcurl',gcurl
-            gcurl=gcurl.replace(' ','%20')
+        if gcid or ProxyCall==False:
+            if gcid:
+                gcUrl='https://apps.glwiz.com:448/uniwebappandroidads/(S(g01ykv45pojkhpzwap1u14dy))/ajax.ashx?channel=tv&chid=%s&'%gcid
+                print gcUrl,'gcUrl'
+                gcidhtml=getUrl(gcUrl)
+                print gcidhtml
+                patt='makeHttpRequestNoCache\\(\'(.*?)\''
+                gcurl='https://apps.glwiz.com:448/uniwebappandroidads/(S(g01ykv45pojkhpzwap1u14dy))/'+ re.compile(patt).findall(gcidhtml)[0] 
+                print 'gcurl',gcurl
+                gcurl=gcurl.replace(' ','%20')
+            else:
+                gcurl='https://apps.glwiz.com:448/uniwebappandroidads/(S(0mdxhq55vlua3zy1wfg4oooz))/ajax.ashx?stream=tv&ppoint=0&chid=0&chname=&clustername=zixi-mobile&'
+                
             sessionpage=getUrl(gcurl,cookieJar)
             
             print sessionpage
