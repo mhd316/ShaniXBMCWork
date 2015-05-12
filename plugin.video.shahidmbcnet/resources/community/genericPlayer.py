@@ -823,7 +823,11 @@ def replaceGLArabVariables(link, d,gcid, title):
             serverAddress=GLArabServerLR
             print GLArabServerLR,'GLArabServerLR  '
             type='lr'
-        GlUser=base64.b64decode('MzM4OA==')
+        
+        import random
+        token=str(int(152 +random.random() * 99999));
+
+        GlUser=token#base64.b64decode('MzM4OA==')
         link=link.replace('$GL-Qlty$',GLArabQuality)
         link=link.replace('$GL-Sesession$',session)
         link=link.replace('$GL-User$',GlUser)
