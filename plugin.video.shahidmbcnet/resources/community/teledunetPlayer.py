@@ -144,10 +144,12 @@ def PlayStream(sourceEtree, urlSoup, name, url):
 #		access_id=html
 		ip_patt="ip='(.*?)';"
 		dz_patt="dz='(.*?)';"
+		v1 = 234;
+		v2 = 553;
 		dz=re.findall(dz_patt, link)[0]        
 		ip=re.findall(ip_patt, link)[0]
 		ip2=''.join(ip.split('.')[0:3])
-		access_id=str(((365-int(dz))*int(ip2)*2015)+1983)
+		access_id=str(((365-int(dz))*int(ip2)*v1)+v2)
 		access_id='?id1='+access_id
 
 #		print 'rtmpstring',liveLink,rtmp
@@ -414,7 +416,7 @@ def getChannelHTML(cid):
                 newod1=re.findall('id1=(.*)', html)[0]
         token=''
         import random
-        token=str(   int('11' +  str(int(999999 +random.random() * (99999999 - 999999)))) * 331);
+        token=str(   int('11' +  str(int(999999 +random.random() * (99999999 - 999999)))) * 3353);
         
 #        post=None
 #        testUrl='http://www.teledunet.com/mobile//player.swf?id0=%s&channel=abu_dhabi_drama&user=&token=%s'%(newod1,token) 
