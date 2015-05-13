@@ -144,7 +144,8 @@ def PlayStream(sourceEtree, urlSoup, name, url):
 #		access_id=html
 		ip_patt="ip='(.*?)';"
 		dz_patt="dz='(.*?)';"
-		v1 = 234;
+		today = datetime.datetime.now()
+		v1 = 234*(366-(today - datetime.datetime(today.year, 1, 1)).days + 1);
 		v2 = 553;
 		dz=re.findall(dz_patt, link)[0]        
 		ip=re.findall(ip_patt, link)[0]
