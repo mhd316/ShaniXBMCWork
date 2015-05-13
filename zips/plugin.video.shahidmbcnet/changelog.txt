@@ -1,4 +1,7 @@
 [B]Version 3.6.0[/B]
+small bug
+
+[B]Version 3.6.0[/B]
 Added yo and cdn
 
 

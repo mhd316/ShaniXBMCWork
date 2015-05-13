@@ -358,7 +358,7 @@ def RefreshResources(auto=False):
 			try:
 				if isBase64: 
 					import base64
-					data=b64decode(data)
+					data=base64.b64decode(data)
 			except: 
 				print 'Failed..not base64.'+fname
 				pDialog.update(20+progr, 'Failed..not base64.'+fname)
