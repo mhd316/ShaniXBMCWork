@@ -25,6 +25,11 @@
     <string id="32061">11ème préférence</string>
     <string id="32068">13ème préférence</string>
 	<string id="32083">14ème préférence</string>
+	<string id="32085">15ème préférence</string>
+    <string id="32087">16ème préférence</string>
+    <string id="32093">17ème préférence</string>
+    <string id="32094">18ème préférence</string>
+	
 	
 	<string id="32027">Ressources locales</string>
 	<string id="32028">Votre fichier Youtube</string>
@@ -45,6 +50,10 @@
 	<string id="32062">Désactiver FilmOn</string>
 	<string id="32069">Désactiver Telvza</string>
 	<string id="32082">Désactiver IPTVPlanet</string>
+	<string id="32086">Désactiver ss</string>	
+	<string id="32088">Désactiver ttv</string>	
+	<string id="32095">Désactiver cdn</string>	
+    <string id="32096">Désactiver yo</string>
 	
 	<string id="32063">Ne pas jouer "Qualité élevée" avec FilmOn</string>	
 
@@ -84,4 +93,5 @@
 	<string id="32081">GL Proxy (utiliser 127.0.0.1) pour machine locale</string>
 	<string id="32084">Désactiver les mises à jour auto périodiques</string>
 
+	
 </strings>
