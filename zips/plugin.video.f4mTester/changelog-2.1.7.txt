@@ -36,3 +36,6 @@
 - added stream type for hls support including DRM HLS
 [B]Version 2.1.7[/B]
 support setresolved param
+
+[B]Version 2.1.8[/B]
+icon change

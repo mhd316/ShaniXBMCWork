@@ -339,6 +339,10 @@ def RefreshResources(auto=False):
 		try:
 			remoteUrl = rfile['url']
 		except: pass
+		isBase64=False
+		try:
+			isBase64= rfile['base64']=="true"
+		except: pass
 		if remoteUrl:
 			fileToDownload = remoteUrl
 		else:
@@ -350,6 +354,15 @@ def RefreshResources(auto=False):
 			response = urllib2.urlopen(req)
 			data=response.read()
 		except: data=''
+		if len(data)>0:
+			try:
+				if isBase64: 
+					import base64
+					data=b64decode(data)
+			except: 
+				print 'Failed..not base64.'+fname
+				pDialog.update(20+progr, 'Failed..not base64.'+fname)
+				data=''
 		if len(data)>0:
 			with open(os.path.join(communityStreamPath, fname), "wb") as filewriter:
 				filewriter.write(data)
@@ -851,7 +864,7 @@ def getSourceAndStreamInfo(channelId, returnOnFirst,pDialog, filterBySource=""):
 		#print 'default_source',default_source
 		orderlist={}
 		default_source_exists=False
-		total_sources=16
+		total_sources=18
 		for n in range(total_sources):
 			val=selfAddon.getSetting( "order"+str(n+1) )
 			if val and not val=="":

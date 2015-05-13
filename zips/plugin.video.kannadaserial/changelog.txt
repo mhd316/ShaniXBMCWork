@@ -12,3 +12,6 @@
 
 [B]Version 2.2.4[/B]
 - house cleaning
+
+[B]Version 2.2.5[/B]
+- icon changed

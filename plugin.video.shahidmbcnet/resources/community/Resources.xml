@@ -8,6 +8,8 @@
 	<file fname="ssUrls.xml"/>
     	<file fname="ttvPlayer.py"/>
 	<file fname="ttvUrls.xml"/>
+	<file base64="true" fname="cdnUrls.xml"/>
+	<file base64="true" fname="yoUrls.xml"/>
     
 	<file fname="livetvPlayer.py"/>
 	<file fname="livetvUrls.xml"/>	

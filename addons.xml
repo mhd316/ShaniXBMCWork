@@ -2,7 +2,7 @@
 <addons>
 <addon id="plugin.video.dramasonline"
        name="DramasOnline.com"
-       version="2.4.4"
+       version="2.4.5"
        provider-name="shani">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -37,7 +37,7 @@
 
 <addon id="plugin.video.jagobd"
        name="JagoBD.com"
-       version="1.0.7"
+       version="1.0.8"
        provider-name="shani">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -75,7 +75,7 @@
 
 <addon id="plugin.video.kannadaserial"
        name="Kannada TV"
-       version="2.2.4"
+       version="2.2.5"
        provider-name="sorkan">
   <requires>
     	<import addon="xbmc.python" version="2.1.0"/>
@@ -95,7 +95,7 @@
 
 <addon id="plugin.video.live.streamspro"
        name="LiveStreamsPro"
-       version="1.6.8"
+       version="1.6.9"
        provider-name="Shani">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -159,7 +159,7 @@
 
 <addon id="plugin.video.serialzone"
        name="India - SerialZone"
-       version="1.0"
+       version="1.1"
        provider-name="sorkan">
   <requires>
     	<import addon="xbmc.python" version="2.1.0"/>
@@ -179,7 +179,7 @@
 
 <addon id="plugin.video.shahidmbcnet"
        name="Shahid Arabic"
-       version="3.5.3"
+       version="3.6.0"
        provider-name="shani">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -202,7 +202,7 @@
 
 <addon id="plugin.video.ZemTV-shani"
        name="ZemTV.com"
-       version="3.5.1"
+       version="3.5.2"
        provider-name="shani">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -224,7 +224,7 @@
   </extension>
 </addon>
 
-<addon id="repository.shani" name="Shanis Addon Repository" version="2.5" provider-name="Shani">
+<addon id="repository.shani" name="Shanis Addon Repository" version="2.6" provider-name="Shani">
 	<extension point="xbmc.addon.repository" name="Shanis Addon Repository">
 		<info compressed="false">https://raw.github.com/Shani-08/ShaniXBMCWork/master/addons.xml</info>
 		<checksum>https://raw.github.com/Shani-08/ShaniXBMCWork/master/addons.xml.md5</checksum>
@@ -239,7 +239,7 @@
 
 <addon id="script.video.F4mProxy"
 	     name="F4mProxy"
-	     version="2.1.8"
+	     version="2.1.9"
 	     provider-name="Shani">
   <requires>
     <import addon="xbmc.python" version="2.1.0" />

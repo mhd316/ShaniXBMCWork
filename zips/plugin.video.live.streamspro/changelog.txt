@@ -1,3 +1,6 @@
+Version 1.6.9
+icon change and other details
+
 Version 1.6.8
 Thanks to Alibaba, updated the multi playlist settings for regex etc
 

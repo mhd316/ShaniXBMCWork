@@ -18,3 +18,7 @@
 
 [B]Version 2.5[/B]
 - Back to github
+
+
+[B]Version 2.6[/B]
+- Icon Updated

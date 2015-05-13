@@ -17,3 +17,5 @@ B]Version 1.0.3[/B]
 - mobile access
 [B]Version 1.0.7[/B]
 - changed url
+[B]Version 1.0.8[/B]
+- icon changed

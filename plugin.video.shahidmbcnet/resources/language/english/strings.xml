@@ -27,6 +27,8 @@
     <string id="32083">Fourteenth Preference</string>
     <string id="32085">Fifteenth Preference</string>
     <string id="32087">Sixteenth Preference</string>
+    <string id="32093">Seventeenth Preference</string>
+    <string id="32094">Eighteenth Preference</string>
 
     
 	<string id="32027">Local Resources</string>
@@ -50,7 +52,8 @@
 	<string id="32082">Disable IPTvPlanet source</string>	
 	<string id="32086">Disable ss source</string>	
 	<string id="32088">Disable ttv source</string>	
-
+	<string id="32095">Disable cdn source</string>	
+    <string id="32096">Disable yo source</string>	
     
 	<string id="32063">Do not play High quality win FilmOn</string>	
 
