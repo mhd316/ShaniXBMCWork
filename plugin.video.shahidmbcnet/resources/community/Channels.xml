@@ -16,7 +16,15 @@
 	<assignedcategory>
 	<category>french</category>
 	</assignedcategory>
-</channel>	
+</channel>
+<channel>
+	<cname>Sundance 1</cname>
+	<imageurl>http://s28.postimg.org/x5q8dom9p/sun.jpg</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>drama</category>
+	</assignedcategory>
+</channel>
 <channel>
 	<cname>Sky Select</cname>
 	<imageurl>http://www.lyngsat-logo.com/hires/ss/sky_de_select.png</imageurl>
