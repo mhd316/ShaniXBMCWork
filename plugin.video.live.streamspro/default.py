@@ -326,7 +326,7 @@ def getData(url,fanart):
                     linkedUrl =  channel('externallink')[0].string
                     lcount=len(channel('externallink'))
                 except: pass
-                print 'linkedUrl',linkedUrl,lcount
+                #print 'linkedUrl',linkedUrl,lcount
                 if lcount>1: linkedUrl=''
 
                 name = channel('name')[0].string
@@ -414,7 +414,6 @@ def parse_m3u(data):
             thumbnail = ''
         if 'type' in other:
             mode_type = re_me(other,'type=[\'"](.*?)[\'"]')
-            print mode_type
             if mode_type == 'yt-dl':
                 stream_url = stream_url +"&mode=18"
             elif mode_type == 'regex':
@@ -996,14 +995,14 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
 
                         link = response.read()
                         link=javascriptUnEscape(link)
-                        print link
+                        #print link This just print whole webpage in LOG
                         if 'includeheaders' in m:
                             link+=str(response.headers.get('Set-Cookie'))
 
                         response.close()
                         cachedPages[m['page']] = link
                         #print link
-                        print 'store link for',m['page'],forCookieJarOnly
+                        #print 'store link for',m['page'],forCookieJarOnly
                         
                         if forCookieJarOnly:
                             return cookieJar# do nothing
@@ -1025,10 +1024,10 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
                     print 'doing it ',m['expre']
                     if '$LiveStreamCaptcha' in m['expre']:
                         val=askCaptcha(m,link,cookieJar)
-                        print 'url and val',url,val
+                        #print 'url and val',url,val
                         url = url.replace("$doregex[" + k + "]", val)
                     elif m['expre'].startswith('$pyFunction:'):
-                        print 'expeeeeeeeeeeeeeeeeeee',m['expre']
+                        #print 'expeeeeeeeeeeeeeeeeeee',m['expre']
                         val=doEval(m['expre'].split('$pyFunction:')[1],link,cookieJar )
                         if 'ActivateWindow' in m['expre']: return 
                         print 'still hre'
@@ -2001,7 +2000,6 @@ def pluginquerybyJSON(url):
             studio = ''
 
         if i['filetype'] == 'file':
-            print 'adding link'
             addLink(url,name,thumbnail,fanart,description,'',date,'',None,'',total=len(json_folder_detail['result']['files']))
             xbmc.executebuiltin("Container.SetViewMode(500)")
 
