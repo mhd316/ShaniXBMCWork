@@ -697,7 +697,7 @@ def getItems(items,fanart):
                         #addLink(url[0],name.encode('utf-8', 'ignore'),thumbnail,fanArt,desc,genre,date,True,None,regexs,total)
                     elif isJsonrpc:
                         addDir(name.encode('utf-8'),ext_url[0],53,thumbnail,fanart,desc,genre,date,None,'source')
-                        xbmc.executebuiltin("Container.SetViewMode(500)")                    	
+                        #xbmc.executebuiltin("Container.SetViewMode(500)")                    	
                     else: 
                         addLink(url[0],name.encode('utf-8', 'ignore'),thumbnail,fanArt,desc,genre,date,True,None,regexs,total)
                         
@@ -2001,11 +2001,11 @@ def pluginquerybyJSON(url):
 
         if i['filetype'] == 'file':
             addLink(url,name,thumbnail,fanart,description,'',date,'',None,'',total=len(json_folder_detail['result']['files']))
-            xbmc.executebuiltin("Container.SetViewMode(500)")
+            #xbmc.executebuiltin("Container.SetViewMode(500)")
 
         else:
             addDir(name,url,53,thumbnail,fanart,description,'',date,'')
-            xbmc.executebuiltin("Container.SetViewMode(500)")
+            #xbmc.executebuiltin("Container.SetViewMode(500)")
 
 def addLink(url,name,iconimage,fanart,description,genre,date,showcontext,playlist,regexs,total,setCookie=""):
         #print 'url,name',url,name
