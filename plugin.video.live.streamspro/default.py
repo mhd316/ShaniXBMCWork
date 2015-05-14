@@ -499,7 +499,8 @@ def getItems(items,fanart):
         total = len(items)
         addon_log('Total Items: %s' %total)
         for item in items:
-            #print item
+            isXMLSource=False
+            isJsonrpc = False
             try:
                 name = item('title')[0].string
                 if name is None:
@@ -614,11 +615,18 @@ def getItems(items,fanart):
             except: pass
             
             if isXMLSource:
-                url=[isXMLSource]
+                ext_url=[isXMLSource]
                 isXMLSource=True
             else:
                 isXMLSource=False
-            
+            try:
+                isJsonrpc = item('jsonrpc')[0].string
+            except: pass
+            if isJsonrpc:
+                ext_url=[isJsonrpc]
+                isJsonrpc=True
+            else:
+                isJsonrpc=False            
             try:
                 thumbnail = item('thumbnail')[0].string
                 if thumbnail == None:
@@ -671,10 +679,11 @@ def getItems(items,fanart):
                     alt = 0
                     playlist = []
                     for i in url:
-                        if regexs:
-                            playlist.append(i+'&regexs='+regexs)
-                        elif  any(x in i for x in resolve_url) and  i.startswith('http'):
-                            playlist.append(i+'&mode=19')                            
+                    	if addon.getSetting('ask_playlist_items') == 'true':
+	                        if regexs:
+	                            playlist.append(i+'&regexs='+regexs)
+	                        elif  any(x in i for x in resolve_url) and  i.startswith('http'):
+	                            playlist.append(i+'&mode=19')                            
                         else:
                             playlist.append(i)
                     if addon.getSetting('add_playlist') == "false":                    
@@ -684,10 +693,14 @@ def getItems(items,fanart):
                     else:
                         addLink('', name.encode('utf-8', 'ignore'),thumbnail,fanArt,desc,genre,date,True,playlist,regexs,total)
                 else:
-                    if not isXMLSource:    
-                        addLink(url[0],name.encode('utf-8', 'ignore'),thumbnail,fanArt,desc,genre,date,True,None,regexs,total)
+                    if isXMLSource:
+                    	addDir(name.encode('utf-8'),ext_url[0].encode('utf-8'),1,thumbnail,fanart,desc,genre,date,None,'source')
+                        #addLink(url[0],name.encode('utf-8', 'ignore'),thumbnail,fanArt,desc,genre,date,True,None,regexs,total)
+                    elif isJsonrpc:
+                        addDir(name.encode('utf-8'),ext_url[0],53,thumbnail,fanart,desc,genre,date,None,'source')
+                        xbmc.executebuiltin("Container.SetViewMode(500)")                    	
                     else: 
-                        addDir(name.encode('utf-8'),url[0].encode('utf-8'),1,thumbnail,fanart,desc,genre,date,None,'source')
+                        addLink(url[0],name.encode('utf-8', 'ignore'),thumbnail,fanArt,desc,genre,date,True,None,regexs,total)
                         
                     #print 'success'
             except:
@@ -1933,8 +1946,68 @@ def search(site_name,search_term=None):
                 return url
         else:
             xbmc.executebuiltin("XBMC.Notification(LiveStreamsPro,No IMDB match found ,7000,"+icon+")")
-    
+## Lunatixz PseudoTV feature
+def ascii(string):
+    if isinstance(string, basestring):
+        if isinstance(string, unicode):
+           string = string.encode('ascii', 'ignore')
+    return string
+def uni(string, encoding = 'utf-8'):
+    if isinstance(string, basestring):
+        if not isinstance(string, unicode):
+            string = unicode(string, encoding, 'ignore')
+    return string
+def removeNonAscii(s): return "".join(filter(lambda x: ord(x)<128, s))
 
+def sendJSON( command):
+    data = ''
+    try:
+        data = xbmc.executeJSONRPC(uni(command))
+    except UnicodeEncodeError:
+        data = xbmc.executeJSONRPC(ascii(command))
+
+    return uni(data)
+    
+def pluginquerybyJSON(url):
+    json_query = uni('{"jsonrpc":"2.0","method":"Files.GetDirectory","params":{"directory":"%s","media":"video","properties":["thumbnail","title","year","dateadded","fanart","rating","season","episode","studio"]},"id":1}') %url
+
+    json_folder_detail = json.loads(sendJSON(json_query))
+    for i in json_folder_detail['result']['files'] :
+        url = i['file']
+        name = removeNonAscii(i['label'])
+        thumbnail = removeNonAscii(i['thumbnail'])
+        try:
+            fanart = removeNonAscii(i['fanart'])
+        except Exception:
+            fanart = ''
+        try:
+            date = i['year']
+        except Exception:
+            date = ''
+        try:
+            episode = i['episode']
+            season = i['season']
+            if episode == -1 or season == -1:
+                description = ''
+            else:
+                description = '[COLOR yellow] S' + str(season)+'[/COLOR][COLOR hotpink] E' + str(episode) +'[/COLOR]'
+        except Exception:
+            description = ''
+        try:
+            studio = i['studio']
+            if studio:
+                description += '\n Studio:[COLOR steelblue] ' + studio[0] + '[/COLOR]'
+        except Exception:
+            studio = ''
+
+        if i['filetype'] == 'file':
+            print 'adding link'
+            addLink(url,name,thumbnail,fanart,description,'',date,'',None,'',total=len(json_folder_detail['result']['files']))
+            xbmc.executebuiltin("Container.SetViewMode(500)")
+
+        else:
+            addDir(name,url,53,thumbnail,fanart,description,'',date,'')
+            xbmc.executebuiltin("Container.SetViewMode(500)")
 
 def addLink(url,name,iconimage,fanart,description,genre,date,showcontext,playlist,regexs,total,setCookie=""):
         #print 'url,name',url,name
@@ -1974,12 +2047,12 @@ def addLink(url,name,iconimage,fanart,description,genre,date,showcontext,playlis
             if addon.getSetting('add_playlist') == "false":
                 u += "url="+urllib.quote_plus(url)+"&mode="+mode
             else:
-                u += "mode=13&name=%s&playlist=%s" %(urllib.quote_plus(name), urllib.quote_plus(str(playlist).replace(',','|')))
+                u += "mode=13&name=%s&playlist=%s" %(urllib.quote_plus(name), urllib.quote_plus(str(playlist).replace(',','||')))
                 name = name + '[COLOR magenta] (' + str(len(playlist)) + ' items )[/COLOR]'
                 play_list = True
         else:
             u += "url="+urllib.quote_plus(url)+"&mode="+mode
-        if regexs and not playlist:
+        if regexs and addon.getSetting('ask_playlist_items') == 'false':
             u += "&regexs="+regexs
         if not setCookie == '':
             u += "&setCookie="+urllib.quote_plus(setCookie)
@@ -2013,7 +2086,7 @@ def addLink(url,name,iconimage,fanart,description,genre,date,showcontext,playlis
                     %(sys.argv[0], urllib.quote_plus(name), urllib.quote_plus(url), urllib.quote_plus(iconimage), urllib.quote_plus(fanart))
                     )
                 if playlist:
-                    fav_params += 'playlist='+urllib.quote_plus(str(playlist).replace(',','|'))
+                    fav_params += 'playlist='+urllib.quote_plus(str(playlist).replace(',','||'))
                 if regexs:
                     fav_params += "&regexs="+regexs
                 contextMenu.append(('Add to LiveStreamsPro Favorites','XBMC.RunPlugin(%s)' %fav_params))
@@ -2023,7 +2096,7 @@ def addLink(url,name,iconimage,fanart,description,genre,date,showcontext,playlis
                 playlist_name = name.split(') ')[1]
                 contextMenu_ = [
                     ('Play '+playlist_name+' PlayList','XBMC.RunPlugin(%s?mode=13&name=%s&playlist=%s)'
-                     %(sys.argv[0], urllib.quote_plus(playlist_name), urllib.quote_plus(str(playlist).replace(',','|'))))
+                     %(sys.argv[0], urllib.quote_plus(playlist_name), urllib.quote_plus(str(playlist).replace(',','||'))))
                      ]
                 liz.addContextMenuItems(contextMenu_)
         #print 'adding',name
@@ -2120,7 +2193,7 @@ try:
 except:
     pass
 try:
-    playlist=eval(urllib.unquote_plus(params["playlist"]).replace('|',','))
+    playlist=eval(urllib.unquote_plus(params["playlist"]).replace('||',','))
 except:
     pass
 try:
@@ -2208,13 +2281,9 @@ elif mode==11:
 
 elif mode==12:
     addon_log("setResolvedUrl")
-
-    if not any(x in url for x in g_ignoreSetResolved):#not url.startswith("plugin://plugin.video.f4mTester") :
+    if not url.startswith("plugin://plugin") or not any(x in url for x in g_ignoreSetResolved):#not url.startswith("plugin://plugin.video.f4mTester") :
         item = xbmcgui.ListItem(path=url)
         xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, item)
-        #xbmc.playlist(xbmc.playlist_video).clear()
-        #xbmc.playlist(xbmc.playlist_video).add(url)
-        #xbmc.Player(xbmc.PLAYER_CORE_MPLAYER).play(item=url)
     else:
         print 'Not setting setResolvedUrl'
         xbmc.executebuiltin('XBMC.RunPlugin('+url+')')
@@ -2254,8 +2323,6 @@ elif mode==18:
         xbmc.executebuiltin("XBMC.Notification(LiveStreamsPro,Please [COLOR yellow]install Youtube-dl[/COLOR] module ,10000,"")")
     stream_url=youtubedl.single_YD(url)
     playsetresolved(stream_url,name,iconimage)
-    #item = xbmcgui.ListItem(path=stream_url)
-    #xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, item)    
 elif mode==19:
 	addon_log("Genesiscommonresolvers")
 	playsetresolved (urlsolver(url),name,iconimage,True)	
@@ -2281,5 +2348,8 @@ elif mode==26:
 elif mode==27:
     addon_log("Using IMDB id to play in Pulsar")
     pulsarIMDB=search(url)
-    #playsetresolved(pulsarIMDB,name,iconimage)
     xbmc.Player().play(pulsarIMDB) 
+elif mode==53:
+    addon_log("Requesting JSON-RPC Items")
+    pluginquerybyJSON(url)
+    xbmcplugin.endOfDirectory(int(sys.argv[1]))    
