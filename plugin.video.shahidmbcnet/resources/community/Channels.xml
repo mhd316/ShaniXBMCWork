@@ -1,6 +1,70 @@
 <channels>
 
 <channel>
+     <cname>VH1</cname>
+     <imageurl>http://www.lyngsat-logo.com/hires/vv/vh1.png</imageurl>
+     <enabled>True</enabled>
+     <assignedcategory>
+	 <category>music</category>
+     </assignedcategory>
+</channel>
+<channel>
+     <cname>MTV Classic</cname>
+     <imageurl>http://www.lyngsat-logo.com/logo/tv/mm/mtv_classic_uk.png</imageurl>
+     <enabled>True</enabled>
+     <assignedcategory>
+	 <category>music</category>
+     </assignedcategory>
+</channel>
+<channel>
+     <cname>MTV Music</cname>
+     <imageurl>https://nickreynoldson.files.wordpress.com/2010/08/470px-mtv_canada_logo-svg.png</imageurl>
+     <enabled>True</enabled>
+     <assignedcategory>
+	 <category>music</category>
+     </assignedcategory>
+</channel>
+<channel>
+     <cname>MTV Hits</cname>
+     <imageurl>http://www.lyngsat-logo.com/hires/mm/mtv_hits_uk.png</imageurl>
+     <enabled>True</enabled>
+     <assignedcategory>
+	 <category>music</category>
+     </assignedcategory>
+</channel>
+<channel>
+     <cname>MTV Rocks</cname>
+     <imageurl>http://www.lyngsat-logo.com/logo/tv/mm/mtv_rocks_us.png</imageurl>
+     <enabled>True</enabled>
+     <assignedcategory>
+	 <category>music</category>
+     </assignedcategory>
+</channel>
+<channel>
+     <cname>MTV Dance</cname>
+     <imageurl>http://www.lyngsat-logo.com/logo/tv/mm/mtv_dance_us.png</imageurl>
+     <enabled>True</enabled>
+     <assignedcategory>
+	 <category>music</category>
+     </assignedcategory>
+</channel>
+<channel>
+     <cname>Discovery History</cname>
+     <imageurl>http://www.lyngsat-logo.com/logo/tv/dd/discovery_history.png</imageurl>
+     <enabled>True</enabled>
+     <assignedcategory>
+	 <category>Doc</category>
+     </assignedcategory>
+</channel>
+<channel>
+     <cname>Discovery Science</cname>
+     <imageurl>http://www.lyngsat-logo.com/logo/tv/dd/discovery_science_global.png</imageurl>
+     <enabled>True</enabled>
+     <assignedcategory>
+	 <category>Doc</category>
+     </assignedcategory>
+</channel>
+<channel>
 	<cname>Panorama Food</cname>
 	<imageurl>http://s4.postimg.org/iymu4ntl9/Panorama_Food.png</imageurl>
 	<enabled>True</enabled>
@@ -2022,7 +2086,7 @@
 </channel>
 	
 <channel>
-	<cname>Discovery</cname>
+	<cname>Discovery World</cname>
 	<imageurl>http://i1064.photobucket.com/albums/u379/zombiB/dscvvry_zpscf4d4864.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
