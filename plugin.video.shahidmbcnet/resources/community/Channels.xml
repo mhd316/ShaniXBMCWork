@@ -18,7 +18,7 @@
 </channel>
 <channel>
      <cname>MTV Music</cname>
-     <imageurl>https://nickreynoldson.files.wordpress.com/2010/08/470px-mtv_canada_logo-svg.png</imageurl>
+     <imageurl>http://www.lyngsat-logo.com/logo/tv/mm/mtv_music_it.png</imageurl>
      <enabled>True</enabled>
      <assignedcategory>
 	 <category>music</category>
@@ -26,7 +26,7 @@
 </channel>
 <channel>
      <cname>MTV Hits</cname>
-     <imageurl>http://www.lyngsat-logo.com/hires/mm/mtv_hits_uk.png</imageurl>
+     <imageurl>http://www.lyngsat-logo.com/logo/tv/mm/mtv_hits_lam.png</imageurl>
      <enabled>True</enabled>
      <assignedcategory>
 	 <category>music</category>
