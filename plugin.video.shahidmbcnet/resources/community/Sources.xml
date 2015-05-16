@@ -23,17 +23,6 @@
 <processor>livetvPlayer.py</processor>
 <rtmpstring>rtmp://iptv.livetv.tn/live app=live tcUrl=rtmp://iptv.livetv.tn/live  playpath=%s?code=%s swfUrl=http://www.livetv.tn/flowplayer-3.2.7.swf pageUrl=%s swfVfy=true  timeout=15 flashver=WIN\2013,0,0,214</rtmpstring>
 </source>
-<source>
-<id>generic</id>
-<shortname>OSN</shortname>
-<sname>iptvOsn</sname>
-<colour>blue</colour>
-<baseurl>http://website.com</baseurl>
-<enabled>True</enabled>
-<urlfile>iptvosnUrls.xml</urlfile>
-<imageurl>http://mylogo.com</imageurl>
-<processor>genericPlayer.py</processor>
-</source>
 
 <source>
 <id>generic</id>
@@ -206,6 +195,17 @@
 <baseurl>http://website.com</baseurl>
 <enabled>True</enabled>
 <urlfile>cdnUrls.xml</urlfile>
+<imageurl>http://mylogo.com</imageurl>
+<processor>genericPlayer.py</processor>
+</source>
+<source>
+<id>generic</id>
+<shortname>kar</shortname>
+<sname>kar</sname>
+<colour>red</colour>
+<baseurl>http://website.com</baseurl>
+<enabled>True</enabled>
+<urlfile>karUrls.xml</urlfile>
 <imageurl>http://mylogo.com</imageurl>
 <processor>genericPlayer.py</processor>
 </source>

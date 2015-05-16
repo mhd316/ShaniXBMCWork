@@ -11,6 +11,8 @@ import time
 import sys
 import  CustomPlayer
 import base64
+import cookielib
+
 __addon__       = xbmcaddon.Addon()
 __addonname__   = __addon__.getAddonInfo('name')
 __icon__        = __addon__.getAddonInfo('icon')
@@ -22,6 +24,10 @@ addonArt = os.path.join(addonPath,'resources/images')
 communityStreamPath = os.path.join(addonPath,'resources')
 communityStreamPath =os.path.join(communityStreamPath,'community')
 
+class NoRedirection(urllib2.HTTPErrorProcessor):
+   def http_response(self, request, response):
+       return response
+   https_response = http_response
 
 def PlayStream(sourceEtree, urlSoup, name, url):
     try:
@@ -67,6 +73,9 @@ def PlayStream(sourceEtree, urlSoup, name, url):
                 if gcid and len(gcid)==0: gcid=None
             except: pass
             liveLink=replaceGLArabVariables(liveLink,pDialog,gcid, title)
+            if liveLink=="": return False
+        if (sc=='kar' or sc=='Local')  and '$KARLOGINCODE$' in liveLink :
+            liveLink=replaceKARVariables(liveLink,pDialog,title)
             if liveLink=="": return False
         print 'liveLink',liveLink
         pDialog.close()
@@ -577,12 +586,12 @@ def getCookiesString(cookieJar):
     print 'cookieString',cookieString
     return cookieString
 
-def getUrl(url, cookieJar=None,post=None, timeout=20, headers=None, returnResponse=False):
-
+def getUrl(url, cookieJar=None,post=None, timeout=20, headers=None, returnResponse=False, noredirect=False):
 
     cookie_handler = urllib2.HTTPCookieProcessor(cookieJar)
     opener = urllib2.build_opener(cookie_handler, urllib2.HTTPBasicAuthHandler(), urllib2.HTTPHandler())
-    #opener = urllib2.install_opener(opener)
+#    opener = urllib2.install_opener(opener)
+    
     req = urllib2.Request(url)
     req.add_header('User-Agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36')
     if headers:
@@ -911,5 +920,36 @@ def replaceGLArabVariables(link, d,gcid, title):
 def getProxyLink(proxy,server,video_path,session):
     return 'http://%s:4500/channel.flv?server=%s&channel=%s&port=2077&session=%s'%(proxy,server,video_path,session)
 
+def replaceKARVariables(liveLink,pDialog,title):
+    karUser=selfAddon.getSetting( "KARUSER" )
+    karPwd=selfAddon.getSetting( "KARPWD" )
+
+    cfile = communityStreamPath+'/karLoginCookie.lwp'
+    cj=getCookieJar(cfile)
+    htmlD=getUrl('http://karimos-sat.com/index-home.php', cookieJar=cj,timeout=20)
+    if not (len(htmlD)>0 and 'user_token' in htmlD):
+        post = urllib.urlencode({'submitted':1,'username':karUser,'password':karPwd,'Submit':'Submit'})
+        htmlD=getUrl('http://karimos-sat.com/loginuser.php', cookieJar=cj,post=post,timeout=20)
+
+    code_pat='d="user_token" >(.*?)<'        
+    reg_code=re.compile(code_pat).findall(htmlD)[0]
+    saveCookieJar(cj,cfile)
+    return liveLink.replace('$KARLOGINCODE$',reg_code)
+    
+def getCookieJar(cfile):
+    cookieJar=None
+
+    try:
+        cookieJar = cookielib.LWPCookieJar()
+        cookieJar.load(cfile,ignore_discard=True)
+    except: 
+        cookieJar=None
+
+    if not cookieJar:
+        cookieJar = cookielib.LWPCookieJar()
+    return cookieJar
         
-        
+def saveCookieJar(cookieJar,COOKIEFILE):
+	try:
+		cookieJar.save(COOKIEFILE,ignore_discard=True)
+	except: pass

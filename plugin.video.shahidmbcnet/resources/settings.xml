@@ -11,24 +11,6 @@
 <category label="32015">
  <setting label="32020" type="bool"   id="playFirstChannel" default="false"/>
    <setting label="32021" type="lsep"/>
-		<setting label="32022" type="labelenum" id="order1" values="Teledunet.com|livetv.tn|Shani|PC|Zombi|Local|iptvOsn|GLArab|magictvBox|Emad|FilmOn|Official|Telvza|IPTVPlanet|ss|ttv|cdn|yo" default="Teledunet.com"/>
-		<setting label="32023" type="labelenum" id="order2" values="Teledunet.com|livetv.tn|Shani|PC|Zombi|Local|iptvOsn|GLArab|magictvBox|Emad|FilmOn|Official|Telvza|IPTVPlanet|ss|ttv|cdn|yo" default="livetv.tn"/>
-		<setting label="32024" type="labelenum" id="order3" values="Teledunet.com|livetv.tn|Shani|PC|Zombi|Local|iptvOsn|GLArab|magictvBox|Emad|FilmOn|Official|Telvza|IPTVPlanet|ss|ttv|cdn|yo" default="Shani"/>
-		<setting label="32025" type="labelenum" id="order4" values="Teledunet.com|livetv.tn|Shani|PC|Zombi|Local|iptvOsn|GLArab|magictvBox|Emad|FilmOn|Official|Telvza|IPTVPlanet|ss|ttv|cdn|yo" default="PC"/>
-		<setting label="32026" type="labelenum" id="order5" values="Teledunet.com|livetv.tn|Shani|PC|Zombi|Local|iptvOsn|GLArab|magictvBox|Emad|FilmOn|Official|Telvza|IPTVPlanet|ss|ttv|cdn|yo" default="Zombi"/>
-		<setting label="32030" type="labelenum" id="order6" values="Teledunet.com|livetv.tn|Shani|PC|Zombi|Local|iptvOsn|GLArab|magictvBox|Emad|FilmOn|Official|Telvza|IPTVPlanet|ss|ttv|cdn|yo" default="Local"/>
-        <setting label="32052" type="labelenum" id="order7" values="Teledunet.com|livetv.tn|Shani|PC|Zombi|Local|iptvOsn|GLArab|magictvBox|Emad|FilmOn|Official|Telvza|IPTVPlanet|ss|ttv|cdn|yo" default="iptvOsn"/>
-        <setting label="32054" type="labelenum" id="order8" values="Teledunet.com|livetv.tn|Shani|PC|Zombi|Local|iptvOsn|GLArab|magictvBox|Emad|FilmOn|Official|Telvza|IPTVPlanet|ss|ttv|cdn|yo" default="GLArab"/>
-        <setting label="32056" type="labelenum" id="order9" values="Teledunet.com|livetv.tn|Shani|PC|Zombi|Local|iptvOsn|GLArab|magictvBox|Emad|FilmOn|Official|Telvza|IPTVPlanet|ss|ttv|cdn|yo" default="magictvBox"/>   
-        <setting label="32059" type="labelenum" id="order10" values="Teledunet.com|livetv.tn|Shani|PC|Zombi|Local|iptvOsn|GLArab|magictvBox|Emad|FilmOn|Official|Telvza|IPTVPlanet|ss|ttv|cdn|yo" default="Emad"/>   
-        <setting label="32061" type="labelenum" id="order11" values="Teledunet.com|livetv.tn|Shani|PC|Zombi|Local|iptvOsn|GLArab|magictvBox|Emad|FilmOn|Official|Telvza|IPTVPlanet|ss|ttv|cdn|yo" default="FilmOn"/>   
-       <setting label="32064" type="labelenum" id="order12" values="Teledunet.com|livetv.tn|Shani|PC|Zombi|Local|iptvOsn|GLArab|magictvBox|Emad|FilmOn|Official|Telvza|IPTVPlanet|ss|ttv|cdn|yo" default="Official"/>   
-       <setting label="32068" type="labelenum" id="order13" values="Teledunet.com|livetv.tn|Shani|PC|Zombi|Local|iptvOsn|GLArab|magictvBox|Emad|FilmOn|Official|Telvza|IPTVPlanet|ss|ttv|cdn|yo" default="Telvza"/>   
-       <setting label="32083" type="labelenum" id="order14" values="Teledunet.com|livetv.tn|Shani|PC|Zombi|Local|iptvOsn|GLArab|magictvBox|Emad|FilmOn|Official|Telvza|IPTVPlanet|ss|ttv|cdn|yo" default="IPTVPlanet"/>   
-       <setting label="32085" type="labelenum" id="order16" values="Teledunet.com|livetv.tn|Shani|PC|Zombi|Local|iptvOsn|GLArab|magictvBox|Emad|FilmOn|Official|Telvza|IPTVPlanet|ss|ttv|cdn|yo" default="ss"/>   
-       <setting label="32087" type="labelenum" id="order17" values="Teledunet.com|livetv.tn|Shani|PC|Zombi|Local|iptvOsn|GLArab|magictvBox|Emad|FilmOn|Official|Telvza|IPTVPlanet|ss|ttv|cdn|yo" default="ttv"/>   
-       <setting label="32093" type="labelenum" id="order18" values="Teledunet.com|livetv.tn|Shani|PC|Zombi|Local|iptvOsn|GLArab|magictvBox|Emad|FilmOn|Official|Telvza|IPTVPlanet|ss|ttv|cdn|yo" default="cdn"/>   
-       <setting label="32094" type="labelenum" id="order19" values="Teledunet.com|livetv.tn|Shani|PC|Zombi|Local|iptvOsn|GLArab|magictvBox|Emad|FilmOn|Official|Telvza|IPTVPlanet|ss|ttv|cdn|yo" default="yo"/>   
         
      
 	   </category>
@@ -42,9 +24,6 @@
 		   <setting label="32045" type="lsep"/>
 		<setting label="32039" type="text" id="teledunetTvLogin" values="" default=""/>
 		<setting label="32040" type="text" id="teledunetTvPassword" values="" default=""/>  
-		<setting label="32042" type="lsep"/>
-			<setting label="32043" type="text" id="setting_iptvosnUser" values="" default=""/>
-			<setting label="32044" type="text" id="setting_iptvosnPwd" values="" default=""/>  
 			
 		   <setting label="32071" type="lsep"/>
 			<setting label="32072" type="text" id="GLArabUserName" values="" default="Anonymous"/>
@@ -60,6 +39,9 @@
 
             <setting label="32080" type="bool"   id="isGLProxyEnabled" default="false"/>
     <setting label="32081" type="text"   id="GLproxyName" default="127.0.0.1"  enable="!eq(-1,false)"  />
+		   <setting label="32104" type="lsep"/>
+			<setting label="32101" type="text" id="KARUSER" values="" default=""/>
+			<setting label="32102" type="text" id="KARPWD" values="" default=""/>  
 
 			<!--<setting label="32075" type="labelenum" id="GLArabQuality" values="Low|Med|HD" default="Low"/> -->
 			<setting type="sep"/>
@@ -80,7 +62,6 @@
         <setting label="32035" type="bool"   id="isPCSourceDisabled" default="false"/>
         <setting label="32036" type="bool"   id="isZombiSourceDisabled" default="false"/>
         <setting label="32037" type="bool"   id="isLocalSourceDisabled" default="false"/>        
-		<setting label="32051" type="bool"   id="isiptvOsnSourceDisabled" default="false"/>        
 		<setting label="32053" type="bool"   id="isGLArabSourceDisabled" default="false"/>  
 	<setting label="32055" type="bool"   id="ismagictvBoxSourceDisabled" default="false"/>  
     <setting label="32060" type="bool"   id="isEmadSourceDisabled" default="false"/>  
@@ -92,6 +73,7 @@
       <setting label="32088" type="bool"   id="isttvSourceDisabled" default="false"/>  
       <setting label="32095" type="bool"   id="icdnSourceDisabled" default="false"/>  
       <setting label="32096" type="bool"   id="isyoSourceDisabled" default="false"/>  
+      <setting label="32103" type="bool"   id="iskarSourceDisabled" default="false"/>  
         
 
 	  </category>

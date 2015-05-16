@@ -13,22 +13,24 @@
 		<string id="32019">Password</string>
 	<string id="32020">Play first available Channel Source?</string>
 	<string id="32021">Source order</string>
-	<string id="32022">First Preference</string>
-	<string id="32023">Second Preference</string>
-	<string id="32024">Third Preference</string>
-	<string id="32025">Fourth Preference</string>
-	<string id="32026">Fifth Preference</string>
-    <string id="32052">Seventh Preference</string>
-    <string id="32054">Eighth Preference</string>
-     <string id="32056">Ninth Preference</string>
-    <string id="32059">Tenth Preference</string>
-    <string id="32061">Eleventh Preference</string>
-    <string id="32068">Thirteenth Preference</string>
-    <string id="32083">Fourteenth Preference</string>
-    <string id="32085">Fifteenth Preference</string>
-    <string id="32087">Sixteenth Preference</string>
-    <string id="32093">Seventeenth Preference</string>
-    <string id="32094">Eighteenth Preference</string>
+	<string id="32022">1. Preference</string>
+	<string id="32023">2. Preference</string>
+	<string id="32024">3. Preference</string>
+	<string id="32025">4. Preference</string>
+	<string id="32026">5. Preference</string>
+    <string id="32052">6. Preference</string>
+    <string id="32054">7. Preference</string>
+     <string id="32056">8. Preference</string>
+    <string id="32059">9. Preference</string>
+    <string id="32061">10. Preference</string>
+    <string id="32068">11. Preference</string>
+    <string id="32083">12. Preference</string>
+    <string id="32085">13. Preference</string>
+    <string id="32087">14. Preference</string>
+    <string id="32093">15. Preference</string>
+    <string id="32094">16. Preference</string>
+    <string id="32094">17. Preference</string>
+    <string id="32100">18. Preference</string>
 
     
 	<string id="32027">Local Resources</string>
@@ -54,6 +56,7 @@
 	<string id="32088">Disable ttv source</string>	
 	<string id="32095">Disable cdn source</string>	
     <string id="32096">Disable yo source</string>	
+    <string id="32103">Disable kar source</string>	
     
 	<string id="32063">Do not play High quality win FilmOn</string>	
 
@@ -63,9 +66,9 @@
 	<string id="32039">Teledunet User Name</string>
     <string id="32040">Teledunet Password</string>
     <string id="32041">LiveTv Login</string>
-	<string id="32042">iptvosn Login</string>
+	<!--<string id="32042">iptvosn Login</string>
 	<string id="32043">iptvosn User Name</string>
-	<string id="32044">iptvosn Password</string>
+	<string id="32044">iptvosn Password</string>-->
 	<string id="32046">Premium Code (xml)</string>	
 	<string id="32047">Clear Login Session Data</string>	
 	<string id="32048">Web Login Code(when Addon Login not working)</string>	
@@ -73,7 +76,6 @@
 	<string id="32050">Override default view mode</string>
     <string id="32057">Teledunet retry count</string>
      <string id="32058">Favourite add mode</string>
-    <string id="32064">Twelfth Preference</string>
 	<string id="32065">Disable Offcial source</string>
 	<string id="32066">Try All sources one by one</string>
 
@@ -87,7 +89,11 @@
      <string id="32079">GL Proxy Low Quality</string>
      <string id="32089">GL Proxy LR Quality</string>
      <string id="32091">GL Low Quality</string>
+     <string id="32101">Karimos User</string>
+     <string id="32102">Karimos Pwd</string>
+     <string id="32104">Karimos Login</string>
 
+     
           <string id="32090">Enable Shared Proxy?</string>
 	 <string id="32080">Enable Local Proxy?</string>
 	 <string id="32081">GL Proxy (use 127.0.0.1) for local machine</string>

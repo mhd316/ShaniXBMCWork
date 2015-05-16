@@ -864,7 +864,9 @@ def getSourceAndStreamInfo(channelId, returnOnFirst,pDialog, filterBySource=""):
 		#print 'default_source',default_source
 		orderlist={}
 		default_source_exists=False
-		total_sources=18
+		sources=sourcesXml.findall('source')
+		total_sources=len(sources)
+		print 'total_sources',total_sources
 		for n in range(total_sources):
 			val=selfAddon.getSetting( "order"+str(n+1) )
 			if val and not val=="":
@@ -880,7 +882,6 @@ def getSourceAndStreamInfo(channelId, returnOnFirst,pDialog, filterBySource=""):
 
 		
 		pDialog.update(30, 'Looping on sources')
-		sources=sourcesXml.findall('source')
 		GLArabServerLOW=selfAddon.getSetting( "GLArabServerLOW" )
 		GLArabServerHD=selfAddon.getSetting( "GLArabServerHD" )
 		GLArabServerMED=selfAddon.getSetting( "GLArabServerMED" )

@@ -1,4 +1,7 @@
-[B]Version 3.6.0[/B]
+[B]Version 3.6.2[/B]
+small bug
+
+[B]Version 3.6.1[/B]
 small bug
 
 [B]Version 3.6.0[/B]
