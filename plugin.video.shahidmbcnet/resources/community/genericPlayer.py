@@ -924,6 +924,8 @@ def replaceKARVariables(liveLink,pDialog,title):
     karUser=selfAddon.getSetting( "KARUSER" )
     karPwd=selfAddon.getSetting( "KARPWD" )
 
+    if karUser=="" or karPwd=="":
+        return ""
     cfile = communityStreamPath+'/karLoginCookie.lwp'
     cj=getCookieJar(cfile)
     htmlD=getUrl('http://karimos-sat.com/index-home.php', cookieJar=cj,timeout=20)
