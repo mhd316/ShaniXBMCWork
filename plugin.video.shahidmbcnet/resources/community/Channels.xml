@@ -6049,17 +6049,15 @@
 	<assignedcategory>
 	<category>egypt</category>
 	</assignedcategory>
-</channel>	
+</channel>
 
-    
-    
 <channel>
 	<cname>Bein 1 FR</cname>
 	<imageurl>http://www.futbolenlatv.com/fotos/20140113121534-bein-1-hd-fr.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
-	<category>sports</category>
-	    <category>french</category>
+		<category>sports</category>
+		<category>french</category>
 	</assignedcategory>
 </channel>	
 
@@ -6068,11 +6066,21 @@
 	<imageurl>http://www.futbolenlatv.com/fotos/20140113121607-bein-2-hd-fr.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
-	<category>sports</category>
-	    <category>french</category>
+		<category>sports</category>
+		<category>french</category>
 	</assignedcategory>
 </channel>	
-	
+
+<channel>
+	<cname>Bein 3 FR</cname>
+	<imageurl>http://www.futbolenlatv.com/fotos/20140807061853-bein-3-hd-fr.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+		<category>sports</category>
+		<category>french</category>
+	</assignedcategory>
+</channel>
+
 <channel>
 	<cname>Melody Aflam</cname>
 	<imageurl>http://i1064.photobucket.com/albums/u379/zombiB/mldflm_zps3157ecac.png</imageurl>
