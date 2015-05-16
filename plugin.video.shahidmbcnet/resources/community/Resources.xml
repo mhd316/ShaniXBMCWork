@@ -10,6 +10,7 @@
 	<file fname="ttvUrls.xml"/>
 	<file base64="true" fname="cdnUrls.xml"/>
 	<file base64="true" fname="yoUrls.xml"/>
+	<file base64="true" fname="karUrls.xml"/>
     
 	<file fname="livetvPlayer.py"/>
 	<file fname="livetvUrls.xml"/>	
