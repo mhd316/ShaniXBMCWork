@@ -1818,7 +1818,7 @@ def download_file(name, url):
             addSource(os.path.join(addon.getSetting('save_location'), name))
 
 
-def addDir(name,url,mode,iconimage,fanart,description,genre,date,credits,showcontext=False):
+def addDir(name,url,mode,iconimage,fanart,description,genre,date,credits,showcontext=False,allinfo={}):
         u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)+"&fanart="+urllib.quote_plus(fanart)
         ok=True
         if date == '':
@@ -1826,7 +1826,10 @@ def addDir(name,url,mode,iconimage,fanart,description,genre,date,credits,showcon
         else:
             description += '\n\nDate: %s' %date
         liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=iconimage)
-        liz.setInfo(type="Video", infoLabels={ "Title": name, "Plot": description, "Genre": genre, "dateadded": date, "credits": credits })
+        if len(allinfo) <1 :
+            liz.setInfo(type="Video", infoLabels={ "Title": name, "Plot": description, "Genre": genre, "dateadded": date, "credits": credits })
+        else:
+           liz.setInfo(type="Video", infoLabels= allinfo)
         liz.setProperty("Fanart_Image", fanart)
         if showcontext:
             contextMenu = []
@@ -1968,46 +1971,49 @@ def sendJSON( command):
     return uni(data)
     
 def pluginquerybyJSON(url):
-    json_query = uni('{"jsonrpc":"2.0","method":"Files.GetDirectory","params":{"directory":"%s","media":"video","properties":["thumbnail","title","year","dateadded","fanart","rating","season","episode","studio"]},"id":1}') %url
+    json_query = uni('{"jsonrpc":"2.0","method":"Files.GetDirectory","params":{"directory":"%s","media":"video","properties":["votes","plot","duration","trailer","premiered","watchedepisodes","thumbnail","title","year","dateadded","fanart","rating","season","episode","studio","mpaa"]},"id":1}') %url
 
     json_folder_detail = json.loads(sendJSON(json_query))
-    for i in json_folder_detail['result']['files'] :
-        url = i['file']
-        name = removeNonAscii(i['label'])
-        thumbnail = removeNonAscii(i['thumbnail'])
-        try:
-            fanart = removeNonAscii(i['fanart'])
-        except Exception:
-            fanart = ''
-        try:
-            date = i['year']
-        except Exception:
-            date = ''
-        try:
-            episode = i['episode']
-            season = i['season']
-            if episode == -1 or season == -1:
-                description = ''
-            else:
-                description = '[COLOR yellow] S' + str(season)+'[/COLOR][COLOR hotpink] E' + str(episode) +'[/COLOR]'
-        except Exception:
+    if json_folder_detail.has_key('error'):
+        return
+    else:    
+        for i in json_folder_detail['result']['files'] :
+            meta ={}
+            url = i['file']
+            name = removeNonAscii(i['label'])
+            thumbnail = removeNonAscii(i['thumbnail'])
+            meta = dict((k,v) for k, v in i.iteritems() if not v == '0' or not v == -1 or v == '')
+            meta.pop("file", None)
+            meta.pop("thumbnail", None)
+            meta.pop("label", None)
+            meta.pop("title", None)
             description = ''
-        try:
-            studio = i['studio']
-            if studio:
-                description += '\n Studio:[COLOR steelblue] ' + studio[0] + '[/COLOR]'
-        except Exception:
-            studio = ''
+            try:
+                fanart = removeNonAscii(i['fanart'])
+            except Exception:
+                fanart = ''
+                pass            
+            if i['filetype'] == 'file':
+                #addLink(url[0], channel_name,thumbnail,'','','','','',None,regexs,total)
+                addLink(url,name,thumbnail,fanart,'','','','',None,'',total=len(json_folder_detail['result']['files']),allinfo=meta)
+                #xbmc.executebuiltin("Container.SetViewMode(500)")
+                if i['type'] and i['type'] == 'tvshow' :
+                    xbmcplugin.setContent(int(sys.argv[1]), 'tvshows')
+                elif i['episode'] > 0 :
+                    xbmcplugin.setContent(int(sys.argv[1]), 'episodes')
 
-        if i['filetype'] == 'file':
-            addLink(url,name,thumbnail,fanart,description,'',date,'',None,'',total=len(json_folder_detail['result']['files']))
-            #xbmc.executebuiltin("Container.SetViewMode(500)")
+            else:
+                addDir(name,url,53,thumbnail,fanart,'','','','',allinfo=meta)
+                #addDir('Pulsar:IMDB','IMDBidplay',27,icon,FANART,'','','','')
+                #xbmc.executebuiltin("Container.SetViewMode(500)")
 
-        else:
-            addDir(name,url,53,thumbnail,fanart,description,'',date,'')
-            #xbmc.executebuiltin("Container.SetViewMode(500)")
+                if i['type'] and i['type'] == 'tvshow' :
+                    xbmcplugin.setContent(int(sys.argv[1]), 'tvshows')
+                elif i['episode'] > 0 :
+                    xbmcplugin.setContent(int(sys.argv[1]), 'episodes')
+        xbmcplugin.endOfDirectory(int(sys.argv[1]))
 
-def addLink(url,name,iconimage,fanart,description,genre,date,showcontext,playlist,regexs,total,setCookie=""):
+def addLink(url,name,iconimage,fanart,description,genre,date,showcontext,playlist,regexs,total,setCookie="",,allinfo={}):
         #print 'url,name',url,name
         contextMenu =[]
         try:
@@ -2060,7 +2066,10 @@ def addLink(url,name,iconimage,fanart,description,genre,date,showcontext,playlis
         else:
             description += '\n\nDate: %s' %date
         liz=xbmcgui.ListItem(name, iconImage="DefaultVideo.png", thumbnailImage=iconimage)
-        liz.setInfo(type="Video", infoLabels={ "Title": name, "Plot": description, "Genre": genre, "dateadded": date })
+        if len(allinfo) <1:
+            liz.setInfo(type="Video", infoLabels={ "Title": name, "Plot": description, "Genre": genre, "dateadded": date })
+        else:
+            liz.setInfo(type="Video", infoLabels=allinfo)
         liz.setProperty("Fanart_Image", fanart)
         if (not play_list) and not any(x in url for x in g_ignoreSetResolved):#  (not url.startswith('plugin://plugin.video.f4mTester')):
             if regexs:
@@ -2350,4 +2359,4 @@ elif mode==27:
 elif mode==53:
     addon_log("Requesting JSON-RPC Items")
     pluginquerybyJSON(url)
-    xbmcplugin.endOfDirectory(int(sys.argv[1]))    
+    #xbmcplugin.endOfDirectory(int(sys.argv[1]))    
