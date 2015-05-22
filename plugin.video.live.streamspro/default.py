@@ -156,7 +156,7 @@ def addSource(url=None):
         media_info = None
         #print 'source_url',source_url
         data = getSoup(source_url)
-        print 'source_url',source_url
+        addon_log('source_url\n',source_url)
         if isinstance(data,BeautifulSOAP):
             if data.find('channels_info'):
                 media_info = data.channels_info
@@ -842,24 +842,20 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
 
         for k in doRegexs:
             if k in regexs:
-                #print 'processing ' ,k
                 m = regexs[k]
-                #print m
                 cookieJarParam=False
-
-
                 if  'cookiejar' in m: # so either create or reuse existing jar
-                    #print 'cookiejar exists',m['cookiejar']
+                    addon_log('cookiejar exists\n' + str(m['cookiejar']))
                     cookieJarParam=m['cookiejar']
                     if  '$doregex' in cookieJarParam:
                         cookieJar=getRegexParsed(regexs, m['cookiejar'],cookieJar,True, True,cachedPages)
                         cookieJarParam=True
                     else:
                         cookieJarParam=True
-                #print 'm[cookiejar]',m['cookiejar'],cookieJar
+                addon_log('m[cookiejar]\ncookieJar' + str(m['cookiejar'])+str(cookieJar))
                 if cookieJarParam:
                     if cookieJar==None:
-                        #print 'create cookie jar'
+                        addon_log('create cookie jar')
                         cookie_jar_file=None
                         if 'open[' in m['cookiejar']:
                             cookie_jar_file=m['cookiejar'].split('open[')[1].split(']')[0]
@@ -873,7 +869,7 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
                     elif 'save[' in m['cookiejar']:
                         cookie_jar_file=m['cookiejar'].split('save[')[1].split(']')[0]
                         complete_path=os.path.join(profile,cookie_jar_file)
-                        print 'complete_path',complete_path
+                        addon_log( 'complete_path\n' + str(complete_path))
                         saveCookieJar(cookieJar,cookie_jar_file)
                         
  
@@ -888,11 +884,11 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
                  
                 if  'post' in m and '$doregex' in m['post']:
                     m['post']=getRegexParsed(regexs, m['post'],cookieJar,recursiveCall=True,cachedPages=cachedPages)
-                    print 'post is now',m['post']
+                    addon_log('post is now' + str(m['post']))
 
                 if  'rawpost' in m and '$doregex' in m['rawpost']:
                     m['rawpost']=getRegexParsed(regexs, m['rawpost'],cookieJar,recursiveCall=True,cachedPages=cachedPages,rawPost=True)
-                    #print 'rawpost is now',m['rawpost']
+                    addon_log('rawpost is now\n' +str(m['rawpost']))
   
                 if 'rawpost' in m and '$epoctime$' in m['rawpost']:
                     m['rawpost']=m['rawpost'].replace('$epoctime$',getEpocTime())
@@ -911,7 +907,7 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
                         if '$epoctime2$' in m['page']:
                             m['page']=m['page'].replace('$epoctime2$',getEpocTime2())
 
-                        #print 'Ingoring Cache',m['page']
+                        addon_log('Ingoring Cache\n' +str(m['page']))
                         page_split=m['page'].split('|')
                         pageUrl=page_split[0]
                         header_in_page=None
@@ -928,10 +924,10 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
                         if 'x-forward' in m:
                             req.add_header('X-Forwarded-For', m['x-forward'])
                         if 'setcookie' in m:
-                            print 'adding cookie',m['setcookie']
+                            addon_log('adding cookie' + str(m['setcookie']))
                             req.add_header('Cookie', m['setcookie'])
                         if 'appendcookie' in m:
-                            print 'appending cookie to cookiejar',m['appendcookie']
+                            addon_log('appending cookie to cookiejar\n' + str(m['appendcookie']))
                             cookiestoApend=m['appendcookie']
                             cookiestoApend=cookiestoApend.split(';')
                             for h in cookiestoApend:
@@ -991,10 +987,6 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
                                 (captcha_challenge,catpcha_word)=processRecaptcha(m['page'])
                                 if captcha_challenge:
                                    post+='&recaptcha_challenge_field='+captcha_challenge+'&recaptcha_response_field='+catpcha_word
-
-
-                            
-
                         if post:
                             response = urllib2.urlopen(req,post)
                         else:
@@ -1002,14 +994,14 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
 
                         link = response.read()
                         link=javascriptUnEscape(link)
-                        #print link This just print whole webpage in LOG
+                        addon_log(link) # This just print whole webpage in LOG
                         if 'includeheaders' in m:
                             link+=str(response.headers.get('Set-Cookie'))
 
                         response.close()
                         cachedPages[m['page']] = link
                         #print link
-                        #print 'store link for',m['page'],forCookieJarOnly
+                        addon_log('store link for' + str(m['page']) +str(forCookieJarOnly))
                         
                         if forCookieJarOnly:
                             return cookieJar# do nothing
@@ -1031,14 +1023,14 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
                     print 'doing it ',m['expre']
                     if '$LiveStreamCaptcha' in m['expre']:
                         val=askCaptcha(m,link,cookieJar)
-                        #print 'url and val',url,val
+                        addon_log('url and val' + url +'\n' + val)
                         url = url.replace("$doregex[" + k + "]", val)
                     elif m['expre'].startswith('$pyFunction:'):
                         #print 'expeeeeeeeeeeeeeeeeeee',m['expre']
                         val=doEval(m['expre'].split('$pyFunction:')[1],link,cookieJar )
                         if 'ActivateWindow' in m['expre']: return 
                         print 'still hre'
-                        print 'url k val',url,k,val
+                        addon_log( 'url k val\n' + str(url) + '\n'+k +'\n' +val)
 
                         url = url.replace("$doregex[" + k + "]", val)
                     else:
@@ -1075,6 +1067,7 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
         if recursiveCall: return url
         print 'final url',url
         if url=="": 
+        	addon_log('Regex function failed return NONE')
         	return
         else:
         	return url,setresolved
@@ -1503,10 +1496,10 @@ def doEval(fun_call,page_data,Cookie_Jar):
     if functions_dir not in sys.path:
         sys.path.append(functions_dir)
     
-    print fun_call
+    addon_log(str( fun_call))
     try:
         py_file='import '+fun_call.split('.')[0]
-        print py_file,sys.path
+        addon_log( str(py_file) + str(sys.path))
         exec( py_file)
         print 'done'
     except:
@@ -1585,7 +1578,7 @@ def get_decode(str,reg=None):
 
 def javascriptUnEscape(str):
 	js=re.findall('unescape\(\'(.*?)\'',str)
-	print 'js',js
+	addon_log('js'+ str(js))
 	if (not js==None) and len(js)>0:
 		for j in js:
 			#print urllib.unquote(j)
@@ -1611,7 +1604,7 @@ def askCaptcha(m,html_page, cookieJar):
     
     local_captcha = os.path.join(profile, str(iid)+"captcha.jpg" )
     localFile = open(local_captcha, "wb")
-    print ' c capurl',captcha_url
+    addon_log( ' c capurl' + str(captcha_url))
     req = urllib2.Request(captcha_url)
     req.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; rv:14.0) Gecko/20100101 Firefox/14.0.1')
     if 'refer' in m:
@@ -1619,7 +1612,7 @@ def askCaptcha(m,html_page, cookieJar):
     if 'agent' in m:
         req.add_header('User-agent', m['agent'])
     if 'setcookie' in m:
-        print 'adding cookie',m['setcookie']
+        addon_log('adding cookie\n' + str(m['setcookie']))
         req.add_header('Cookie', m['setcookie'])
         
     #cookie_handler = urllib2.HTTPCookieProcessor(cookieJar)
@@ -2299,7 +2292,7 @@ elif mode==12:
         item = xbmcgui.ListItem(path=url)
         xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, item)
     else:
-        print 'Not setting setResolvedUrl'
+        addon_log('Not setting setResolvedUrl')
         xbmc.executebuiltin('XBMC.RunPlugin('+url+')')
 
 
