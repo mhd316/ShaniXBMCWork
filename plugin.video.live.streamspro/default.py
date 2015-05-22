@@ -678,19 +678,23 @@ def getItems(items,fanart):
                     alt = 0
                     playlist = []
                     for i in url:
-                    	if addon.getSetting('ask_playlist_items') == 'true':
-	                        if regexs:
-	                            playlist.append(i+'&regexs='+regexs)
-	                        elif  any(x in i for x in resolve_url) and  i.startswith('http'):
-	                            playlist.append(i+'&mode=19')                            
-                        else:
-                            playlist.append(i)
-                    if addon.getSetting('add_playlist') == "false":                    
-                            for i in url:
+                            if addon.getSetting('add_playlist') == "false":
+
                                 alt += 1
-                                addLink(i,'%s) %s' %(alt, name.encode('utf-8', 'ignore')),thumbnail,fanArt,desc,genre,date,True,playlist,regexs,total)                            
-                    else:
-                        addLink('', name.encode('utf-8', 'ignore'),thumbnail,fanArt,desc,genre,date,True,playlist,regexs,total)
+                                addLink(i,'%s) %s' %(alt, name.encode('utf-8', 'ignore')),thumbnail,fanArt,desc,genre,date,True,playlist,regexs,total)
+
+                            elif addon.getSetting('add_playlist') == "true" and addon.getSetting('ask_playlist_items') == 'true':
+                                if regexs:
+                                    playlist.append(i+'&regexs='+regexs)
+                                elif  any(x in i for x in resolve_url) and  i.startswith('http'):
+                                    playlist.append(i+'&mode=19')
+                                else:
+                                    playlist.append(i)
+                            else:
+                                playlist.append(i)
+
+                    if len(playlist) > 1:
+                        addLink('', name,thumbnail,fanArt,desc,genre,date,True,playlist,regexs,total)
                 else:
                     if isXMLSource:
                     	addDir(name.encode('utf-8'),ext_url[0].encode('utf-8'),1,thumbnail,fanart,desc,genre,date,None,'source')
