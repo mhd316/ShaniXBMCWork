@@ -156,7 +156,7 @@ def addSource(url=None):
         media_info = None
         #print 'source_url',source_url
         data = getSoup(source_url)
-        addon_log('source_url\n',source_url)
+        addon_log('source_url\n'+source_url)
         if isinstance(data,BeautifulSOAP):
             if data.find('channels_info'):
                 media_info = data.channels_info
@@ -850,9 +850,10 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
                     if  '$doregex' in cookieJarParam:
                         cookieJar=getRegexParsed(regexs, m['cookiejar'],cookieJar,True, True,cachedPages)
                         cookieJarParam=True
+                        addon_log('$doregex in cookiejar'+str(cookieJar))
                     else:
                         cookieJarParam=True
-                addon_log('m[cookiejar]\ncookieJar' + str(m['cookiejar'])+str(cookieJar))
+                #addon_log('m[cookiejar]\ncookieJar' + str(m['cookiejar'])+str(cookieJar))
                 if cookieJarParam:
                     if cookieJar==None:
                         addon_log('create cookie jar')
@@ -869,7 +870,7 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
                     elif 'save[' in m['cookiejar']:
                         cookie_jar_file=m['cookiejar'].split('save[')[1].split(']')[0]
                         complete_path=os.path.join(profile,cookie_jar_file)
-                        addon_log( 'complete_path\n' + str(complete_path))
+                        addon_log( 'complete_path to save cookiejar\n' + str(complete_path))
                         saveCookieJar(cookieJar,cookie_jar_file)
                         
  
@@ -1030,7 +1031,7 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
                         val=doEval(m['expre'].split('$pyFunction:')[1],link,cookieJar )
                         if 'ActivateWindow' in m['expre']: return 
                         print 'still hre'
-                        addon_log( 'url k val\n' + str(url) + '\n'+k +'\n' +val)
+                        addon_log( 'url k val\n' + str(url) + '\nk::'+k +'\nval::' +val)
 
                         url = url.replace("$doregex[" + k + "]", val)
                     else:
