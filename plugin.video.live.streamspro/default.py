@@ -2020,7 +2020,7 @@ def pluginquerybyJSON(url):
                     xbmcplugin.setContent(int(sys.argv[1]), 'episodes')
         xbmcplugin.endOfDirectory(int(sys.argv[1]))
 
-def addLink(url,name,iconimage,fanart,description,genre,date,showcontext,playlist,regexs,total,setCookie="",,allinfo={}):
+def addLink(url,name,iconimage,fanart,description,genre,date,showcontext,playlist,regexs,total,setCookie="",allinfo={}):
         #print 'url,name',url,name
         contextMenu =[]
         try:
