@@ -1579,7 +1579,7 @@ def get_decode(str,reg=None):
 
 def javascriptUnEscape(str):
 	js=re.findall('unescape\(\'(.*?)\'',str)
-	addon_log('js'+ str(js))
+	addon_log('javascriptUnEscape')
 	if (not js==None) and len(js)>0:
 		for j in js:
 			#print urllib.unquote(j)
