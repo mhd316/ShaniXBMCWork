@@ -1002,7 +1002,7 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
                         response.close()
                         cachedPages[m['page']] = link
                         #print link
-                        addon_log('store link for' + str(m['page']) +str(forCookieJarOnly))
+                        addon_log('store link for\n' + str(m['page'])+ '\n' +str(forCookieJarOnly))
                         
                         if forCookieJarOnly:
                             return cookieJar# do nothing
@@ -1579,7 +1579,7 @@ def get_decode(str,reg=None):
 
 def javascriptUnEscape(str):
 	js=re.findall('unescape\(\'(.*?)\'',str)
-	addon_log('javascriptUnEscape')
+	addon_log('javascriptUnEscape string is::%s' %js)
 	if (not js==None) and len(js)>0:
 		for j in js:
 			#print urllib.unquote(j)
