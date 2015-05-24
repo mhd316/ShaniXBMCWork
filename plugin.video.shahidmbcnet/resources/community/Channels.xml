@@ -13,8 +13,17 @@
      <imageurl>http://www.lyngsat-logo.com/logo/tv/mm/mtv_classic_uk.png</imageurl>
      <enabled>True</enabled>
      <assignedcategory>
-	 <category>music</category>
+     <category>music</category>
      </assignedcategory>
+</channel>
+<channel>
+      <cname>MFM</cname>
+      <imageurl>http://s22.postimg.org/6iticot3l/Mf_MTV.png</imageurl>
+      <enabled>True</enabled>
+      <assignedcategory>
+      <category>africa</category>
+      <category>music</category>
+      </assignedcategory>
 </channel>
 <channel>
      <cname>MTV Music</cname>
