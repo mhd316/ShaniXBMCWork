@@ -1,5 +1,12 @@
 <channels>
-
+<channel>
+     <cname>GuideUS TV</cname>
+     <imageurl>http://www.lyngsat-logo.com/logo/tv/gg/guide_us_tv.png</imageurl>
+     <enabled>True</enabled>
+     <assignedcategory>
+	 <category>islam</category>
+     </assignedcategory>
+</channel>
 <channel>
      <cname>VH1</cname>
      <imageurl>http://www.lyngsat-logo.com/hires/vv/vh1.png</imageurl>
@@ -4887,7 +4894,7 @@
 	<imageurl>http://i1064.photobucket.com/albums/u379/zombiB/klsn_zps62722125.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
-	<category>oth</category>
+	<category>africa</category>
 	</assignedcategory>
 </channel>	
 	
@@ -5517,7 +5524,7 @@
 	<imageurl>http://i1064.photobucket.com/albums/u379/zombiB/smst_zps6ab6fe7c.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
-	<category>oth</category>
+	<category>africa</category>
 	</assignedcategory>
 </channel>	
 <channel>
