@@ -1,5 +1,13 @@
 <channels>
 <channel>
+	<cname>Islam Channel UK</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/ii/islam_channel.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>islam</category>
+	</assignedcategory>
+</channel>	
+<channel>
 	<cname>ArabNights Radio</cname>
 	<imageurl>http://s21.postimg.org/qch8kewuv/arabnightstradio.jpg</imageurl>
 	<enabled>True</enabled>
