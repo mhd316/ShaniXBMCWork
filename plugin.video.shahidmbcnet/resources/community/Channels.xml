@@ -1,4 +1,12 @@
 <channels>
+<channel>
+	<cname>ArabNights Radio</cname>
+	<imageurl>http://s21.postimg.org/qch8kewuv/arabnightstradio.jpg</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>music</category>
+	</assignedcategory>
+</channel>	
 	
 <channel>
 	<cname>Arraed</cname>
