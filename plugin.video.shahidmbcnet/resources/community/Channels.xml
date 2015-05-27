@@ -1,5 +1,21 @@
 <channels>
 <channel>
+     <cname>Peace TV Asia</cname>
+     <imageurl>http://www.lyngsat-logo.com/logo/tv/pp/peace_tv.png</imageurl>
+     <enabled>True</enabled>
+     <assignedcategory>
+	 <category>islam</category>
+     </assignedcategory>
+</channel>
+<channel>
+     <cname>Peace TV UK</cname>
+     <imageurl>http://www.lyngsat-logo.com/logo/tv/pp/peace_tv.png</imageurl>
+     <enabled>True</enabled>
+     <assignedcategory>
+	 <category>islam</category>
+     </assignedcategory>
+</channel>
+<channel>
      <cname>GuideUS TV</cname>
      <imageurl>http://www.lyngsat-logo.com/logo/tv/gg/guide_us_tv.png</imageurl>
      <enabled>True</enabled>
@@ -4897,7 +4913,14 @@
 	<category>africa</category>
 	</assignedcategory>
 </channel>	
-	
+<channel>
+	<cname>Dalmar TV</cname>
+	<imageurl>http://www.dalmartv.com/wp-content/uploads/2015/03/DALMAR-TV-Final-LOGO-300x150.jpg</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>africa</category>
+	</assignedcategory>
+</channel>	
 	
 
 <channel>
