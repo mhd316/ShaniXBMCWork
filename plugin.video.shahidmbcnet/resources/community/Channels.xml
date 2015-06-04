@@ -1,6 +1,14 @@
 <channels>
 	
-	
+<channel>
+      <cname>NTV 2</cname>
+      <imageurl>http://www.lyngsat-logo.com/logo/tv/nn/ntv_2_bj.png</imageurl>
+      <enabled>True</enabled>
+      <assignedcategory>
+      <category>africa</category>
+      <category>music</category>
+      </assignedcategory>
+</channel>	
 <channel>
       <cname>Telesud</cname>
       <imageurl>http://www.lyngsat-logo.com/hires/tt/tele_sud_fr.png</imageurl>
