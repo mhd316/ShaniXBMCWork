@@ -1,4 +1,15 @@
 <channels>
+	
+	
+<channel>
+      <cname>Telesud</cname>
+      <imageurl>http://www.lyngsat-logo.com/hires/tt/tele_sud_fr.png</imageurl>
+      <enabled>True</enabled>
+      <assignedcategory>
+      <category>africa</category>
+      <category>french</category>
+      </assignedcategory>
+</channel>
 <channel>
 	<cname>Islam Channel UK</cname>
 	<imageurl>http://www.lyngsat-logo.com/hires/ii/islam_channel.png</imageurl>
