@@ -1,4 +1,30 @@
 <channels>
+<channel>
+	<cname>Sudan Drama</cname>
+	<imageurl>http://s21.postimg.org/wphlwbekn/sudan.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>africa</category>
+	<category>drama</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Sudan OUS</cname>
+	<imageurl>http://www.lyngsat-logo.com/logo/tv/oo/open_university_of_sudan_tv.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>africa</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Khair</cname>
+	<imageurl>http://s7.postimg.org/447w0wd17/khair.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>islam</category>
+	<category>gulf</category>
+	</assignedcategory>
+</channel>
 	
 <channel>
       <cname>NTV 2</cname>
