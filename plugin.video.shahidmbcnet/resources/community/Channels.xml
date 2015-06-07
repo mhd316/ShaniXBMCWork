@@ -1,4 +1,15 @@
 <channels>
+	
+	
+<channel>
+	<cname>Tanasuh</cname>
+	<imageurl>http://s17.postimg.org/vro4lvmov/1259035.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>islam</category>
+	<category>lyb</category>
+	</assignedcategory>
+</channel>
 <channel>
 	<cname>Sudan Drama</cname>
 	<imageurl>http://s21.postimg.org/wphlwbekn/sudan.png</imageurl>
