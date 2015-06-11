@@ -104,22 +104,34 @@ def AddTVChannels(Fromurl):
 	   return(0)
 
 	#print link
-	#print "addchannels"
+	print "add TV channels"
+        idx1= link.index("<div class=\"nav\">")
+        #print "INDEX1: %s" %idx1
+        templ=link[idx1:]
+        #print "TEMPL: %s" %templ
+        idx2=templ.index(r"</div>")
+        #print "INDEX2: %s" %idx2
+        new_link=templ[:idx2+6]
+        #print "LINK: %s" %new_link
+
         # first level to match on nav pttern
-	regstring='<div class="nav">(.*?)<a href="(.*?)">(.*?)<\/a>(.*?)<\/ul><\/div>'
-	match_temp =re.findall(regstring, link)
+	#regstring='<div class="nav"><ul>  (.*?)<a href="(.*?)">(.*?)<\/a>(.*?)<\/ul><\/div>'
+	#match_temp =re.findall(regstring, new_link)
         #print "Match - Lev 1: ",match_temp
 
 	#take the fourth element
-	link_temp=match_temp[0][3]
+	#link_temp=match_temp[0][3]
 	regstring='<a href="(.*?)">(.*?)<\/a>'
-	match = re.findall(regstring, link_temp)
+	match = re.findall(regstring, new_link)
      
-	#print "Match - Lev 2: ",match
+	print "Match - Lev 2: ",match
 
 	for cname in match:
-            # ignore online games from showing on XBMC/KODI - take all other channel info
+           # ignore online games from showing on XBMC/KODI - take all other channel info
 	    if 'gallery' in cname[1]:
+                continue # continue to next entry
+
+            elif "HOME" in cname[1]:
                 continue # continue to next entry
 
 	    elif "snav" in cname[1]:
@@ -152,19 +164,24 @@ def AddSeries(Fromurl):
            print "Error opening URL"
 	   return(0)
 
-	#print link
-	#print "addshows"
+	print link
+	print "addshows"
 
-	# do first level match
-	regstring='<div class="rm">(.*?)<\/div>'
+	regstring='<div class="serial">(.*?)<\/div>'
 	match_temp=re.findall(regstring, link)
-        #print "Num elements: ",len(match_temp)
-        #print "Match_items: ",match_temp
+        print "Num elements: ",len(match_temp)
+        print "Match_items: ",match_temp
 	for entries in match_temp:
 	    # walk thru matched patterns to find sub-pattern
-	    #print "MATCH ENTRY LEV1: ",entries
-	    subreg_str='<img src="(.*?)".*\s*<div class="rml"><a href="(.*?)" >(.*?)<\/a>'
+	    print "MATCH ENTRY LEV1: ",entries
+            #idx1= entries.index('<img src=')
+            #rint "INDEX1: %s" %idx1
+            #mpl=entries[idx1:]
+            #rint "TEMPL: %s" %templ
+            #ntries=templ
+            subreg_str='<img src="(.*?)".*?<div class="title"><a href="(.*?)">(.*?)<\/a>'
             match2=re.findall(subreg_str, entries)
+            print match2
 
 	    for cname in match2:
 		#print "LEV 2 match: ",cname
