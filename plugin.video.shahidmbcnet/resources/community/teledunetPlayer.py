@@ -149,10 +149,12 @@ def PlayStream(sourceEtree, urlSoup, name, url):
 		v2 = 553;
 		dz=re.findall(dz_patt, link)[0]        
 		ip=re.findall(ip_patt, link)[0]
-		ip2=''.join(ip.split('.')[0:3])
+		ip2=''.join(ip.split('.')[0:4])
 		access_id=str(((365-int(dz))*int(ip2)*v1)+v2)
 		access_id='?id1='+access_id
 
+
+   
 #		print 'rtmpstring',liveLink,rtmp
 #		liveLink=liveLink%(rtmp,channelId,match,channelId,channelId)
 		liveLink=liveLink%(rtmp,channelId,access_id,freeCH,selfAddon.getSetting( "teledunetTvLogin" ),token)
