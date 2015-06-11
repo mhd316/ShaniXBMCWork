@@ -156,7 +156,7 @@ def addSource(url=None):
         media_info = None
         #print 'source_url',source_url
         data = getSoup(source_url)
-        addon_log('source_url\n'+source_url)
+        print 'source_url',source_url
         if isinstance(data,BeautifulSOAP):
             if data.find('channels_info'):
                 media_info = data.channels_info
@@ -497,9 +497,6 @@ def getSubChannelItems(name,url,fanart):
 def getItems(items,fanart):
         total = len(items)
         addon_log('Total Items: %s' %total)
-        add_playlist = addon.getSetting('add_playlist')
-        ask_playlist_items =addon.getSetting('ask_playlist_items')
-        use_thumb = addon.getSetting('use_thumb')
         for item in items:
             isXMLSource=False
             isJsonrpc = False
@@ -637,7 +634,7 @@ def getItems(items,fanart):
                 thumbnail = ''
             try:
                 if not item('fanart'):
-                    if use_thumb == "true":
+                    if addon.getSetting('use_thumb') == "true":
                         fanArt = thumbnail
                     else:
                         fanArt = fanart
@@ -676,32 +673,28 @@ def getItems(items,fanart):
                 except:
                     pass            
            
-
             try:
                 if len(url) > 1:
                     alt = 0
                     playlist = []
                     for i in url:
-                            if  add_playlist == "false":
-
+                    	if addon.getSetting('ask_playlist_items') == 'true':
+	                        if regexs:
+	                            playlist.append(i+'&regexs='+regexs)
+	                        elif  any(x in i for x in resolve_url) and  i.startswith('http'):
+	                            playlist.append(i+'&mode=19')                            
+                        else:
+                            playlist.append(i)
+                    if addon.getSetting('add_playlist') == "false":                    
+                            for i in url:
                                 alt += 1
-                                addLink(i,'%s) %s' %(alt, name.encode('utf-8', 'ignore')),thumbnail,fanArt,desc,genre,date,True,playlist,regexs,total)
-
-                            elif  add_playlist == "true" and  ask_playlist_items == 'true':
-                                if regexs:
-                                    playlist.append(i+'&regexs='+regexs)
-                                elif  any(x in i for x in resolve_url) and  i.startswith('http'):
-                                    playlist.append(i+'&mode=19')
-                                else:
-                                    playlist.append(i)
-                            else:
-                                playlist.append(i)
-
-                    if len(playlist) > 1:
-                        addLink('', name,thumbnail,fanArt,desc,genre,date,True,playlist,regexs,total)
+                                addLink(i,'%s) %s' %(alt, name.encode('utf-8', 'ignore')),thumbnail,fanArt,desc,genre,date,True,playlist,regexs,total)                            
+                    else:
+                        addLink('', name.encode('utf-8', 'ignore'),thumbnail,fanArt,desc,genre,date,True,playlist,regexs,total)
                 else:
                     if isXMLSource:
                     	addDir(name.encode('utf-8'),ext_url[0].encode('utf-8'),1,thumbnail,fanart,desc,genre,date,None,'source')
+                        #addLink(url[0],name.encode('utf-8', 'ignore'),thumbnail,fanArt,desc,genre,date,True,None,regexs,total)
                     elif isJsonrpc:
                         addDir(name.encode('utf-8'),ext_url[0],53,thumbnail,fanart,desc,genre,date,None,'source')
                         #xbmc.executebuiltin("Container.SetViewMode(500)")                    	
@@ -842,21 +835,24 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
 
         for k in doRegexs:
             if k in regexs:
+                #print 'processing ' ,k
                 m = regexs[k]
+                #print m
                 cookieJarParam=False
+
+
                 if  'cookiejar' in m: # so either create or reuse existing jar
-                    addon_log('cookiejar exists\n' + str(m['cookiejar']))
+                    #print 'cookiejar exists',m['cookiejar']
                     cookieJarParam=m['cookiejar']
                     if  '$doregex' in cookieJarParam:
                         cookieJar=getRegexParsed(regexs, m['cookiejar'],cookieJar,True, True,cachedPages)
                         cookieJarParam=True
-                        addon_log('$doregex in cookiejar'+str(cookieJar))
                     else:
                         cookieJarParam=True
-                #addon_log('m[cookiejar]\ncookieJar' + str(m['cookiejar'])+str(cookieJar))
+                #print 'm[cookiejar]',m['cookiejar'],cookieJar
                 if cookieJarParam:
                     if cookieJar==None:
-                        addon_log('create cookie jar')
+                        #print 'create cookie jar'
                         cookie_jar_file=None
                         if 'open[' in m['cookiejar']:
                             cookie_jar_file=m['cookiejar'].split('open[')[1].split(']')[0]
@@ -870,7 +866,7 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
                     elif 'save[' in m['cookiejar']:
                         cookie_jar_file=m['cookiejar'].split('save[')[1].split(']')[0]
                         complete_path=os.path.join(profile,cookie_jar_file)
-                        addon_log( 'complete_path to save cookiejar\n' + str(complete_path))
+                        print 'complete_path',complete_path
                         saveCookieJar(cookieJar,cookie_jar_file)
                         
  
@@ -885,11 +881,11 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
                  
                 if  'post' in m and '$doregex' in m['post']:
                     m['post']=getRegexParsed(regexs, m['post'],cookieJar,recursiveCall=True,cachedPages=cachedPages)
-                    addon_log('post is now' + str(m['post']))
+                    print 'post is now',m['post']
 
                 if  'rawpost' in m and '$doregex' in m['rawpost']:
                     m['rawpost']=getRegexParsed(regexs, m['rawpost'],cookieJar,recursiveCall=True,cachedPages=cachedPages,rawPost=True)
-                    addon_log('rawpost is now\n' +str(m['rawpost']))
+                    #print 'rawpost is now',m['rawpost']
   
                 if 'rawpost' in m and '$epoctime$' in m['rawpost']:
                     m['rawpost']=m['rawpost'].replace('$epoctime$',getEpocTime())
@@ -908,7 +904,7 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
                         if '$epoctime2$' in m['page']:
                             m['page']=m['page'].replace('$epoctime2$',getEpocTime2())
 
-                        addon_log('Ingoring Cache\n' +str(m['page']))
+                        #print 'Ingoring Cache',m['page']
                         page_split=m['page'].split('|')
                         pageUrl=page_split[0]
                         header_in_page=None
@@ -925,10 +921,10 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
                         if 'x-forward' in m:
                             req.add_header('X-Forwarded-For', m['x-forward'])
                         if 'setcookie' in m:
-                            addon_log('adding cookie' + str(m['setcookie']))
+                            print 'adding cookie',m['setcookie']
                             req.add_header('Cookie', m['setcookie'])
                         if 'appendcookie' in m:
-                            addon_log('appending cookie to cookiejar\n' + str(m['appendcookie']))
+                            print 'appending cookie to cookiejar',m['appendcookie']
                             cookiestoApend=m['appendcookie']
                             cookiestoApend=cookiestoApend.split(';')
                             for h in cookiestoApend:
@@ -988,6 +984,10 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
                                 (captcha_challenge,catpcha_word)=processRecaptcha(m['page'])
                                 if captcha_challenge:
                                    post+='&recaptcha_challenge_field='+captcha_challenge+'&recaptcha_response_field='+catpcha_word
+
+
+                            
+
                         if post:
                             response = urllib2.urlopen(req,post)
                         else:
@@ -995,14 +995,19 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
 
                         link = response.read()
                         link=javascriptUnEscape(link)
-                        addon_log(link) # This just print whole webpage in LOG
+                        #print link This just print whole webpage in LOG
                         if 'includeheaders' in m:
-                            link+=str(response.headers.get('Set-Cookie'))
+                            #link+=str(response.headers.get('Set-Cookie'))
+                            link+='$$HEADERS_START$$:'
+                            for b in response.headers:
+                                link+= b+':'+response.headers.get(b)+'\n'
+                            link+='$$HEADERS_END$$:'
+                            print link
 
                         response.close()
                         cachedPages[m['page']] = link
                         #print link
-                        addon_log('store link for\n' + str(m['page'])+ '\n' +str(forCookieJarOnly))
+                        #print 'store link for',m['page'],forCookieJarOnly
                         
                         if forCookieJarOnly:
                             return cookieJar# do nothing
@@ -1024,14 +1029,14 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
                     print 'doing it ',m['expre']
                     if '$LiveStreamCaptcha' in m['expre']:
                         val=askCaptcha(m,link,cookieJar)
-                        addon_log('url and val' + url +'\n' + val)
+                        #print 'url and val',url,val
                         url = url.replace("$doregex[" + k + "]", val)
                     elif m['expre'].startswith('$pyFunction:'):
                         #print 'expeeeeeeeeeeeeeeeeeee',m['expre']
                         val=doEval(m['expre'].split('$pyFunction:')[1],link,cookieJar )
                         if 'ActivateWindow' in m['expre']: return 
                         print 'still hre'
-                        addon_log( 'url k val\n' + str(url) + '\nk::'+k +'\nval::' +val)
+                        print 'url k val',url,k,val
 
                         url = url.replace("$doregex[" + k + "]", val)
                     else:
@@ -1068,7 +1073,6 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
         if recursiveCall: return url
         print 'final url',url
         if url=="": 
-        	addon_log('Regex function failed return NONE')
         	return
         else:
         	return url,setresolved
@@ -1083,9 +1087,10 @@ def getmd5(t):
 
 def decrypt_vaughnlive(encrypted):
     retVal=""
-    for val in encrypted.split(':'):
-        retVal+=chr(int(val.replace("0m0",""))/84/5)
-    return retVal
+    print 'enc',encrypted
+    #for val in encrypted.split(':'):
+    #    retVal+=chr(int(val.replace("0m0","")))
+    #return retVal
 
 def playmedia(media_url):
     try:
@@ -1497,10 +1502,10 @@ def doEval(fun_call,page_data,Cookie_Jar):
     if functions_dir not in sys.path:
         sys.path.append(functions_dir)
     
-    addon_log(str( fun_call))
+    print fun_call
     try:
         py_file='import '+fun_call.split('.')[0]
-        addon_log( str(py_file) + str(sys.path))
+        print py_file,sys.path
         exec( py_file)
         print 'done'
     except:
@@ -1579,7 +1584,7 @@ def get_decode(str,reg=None):
 
 def javascriptUnEscape(str):
 	js=re.findall('unescape\(\'(.*?)\'',str)
-	addon_log('javascriptUnEscape string is::%s' %js)
+	print 'js',js
 	if (not js==None) and len(js)>0:
 		for j in js:
 			#print urllib.unquote(j)
@@ -1605,7 +1610,7 @@ def askCaptcha(m,html_page, cookieJar):
     
     local_captcha = os.path.join(profile, str(iid)+"captcha.jpg" )
     localFile = open(local_captcha, "wb")
-    addon_log( ' c capurl' + str(captcha_url))
+    print ' c capurl',captcha_url
     req = urllib2.Request(captcha_url)
     req.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; rv:14.0) Gecko/20100101 Firefox/14.0.1')
     if 'refer' in m:
@@ -1613,7 +1618,7 @@ def askCaptcha(m,html_page, cookieJar):
     if 'agent' in m:
         req.add_header('User-agent', m['agent'])
     if 'setcookie' in m:
-        addon_log('adding cookie\n' + str(m['setcookie']))
+        print 'adding cookie',m['setcookie']
         req.add_header('Cookie', m['setcookie'])
         
     #cookie_handler = urllib2.HTTPCookieProcessor(cookieJar)
@@ -1819,7 +1824,7 @@ def download_file(name, url):
             addSource(os.path.join(addon.getSetting('save_location'), name))
 
 
-def addDir(name,url,mode,iconimage,fanart,description,genre,date,credits,showcontext=False,allinfo={}):
+def addDir(name,url,mode,iconimage,fanart,description,genre,date,credits,showcontext=False):
         u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)+"&fanart="+urllib.quote_plus(fanart)
         ok=True
         if date == '':
@@ -1827,10 +1832,7 @@ def addDir(name,url,mode,iconimage,fanart,description,genre,date,credits,showcon
         else:
             description += '\n\nDate: %s' %date
         liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=iconimage)
-        if len(allinfo) <1 :
-            liz.setInfo(type="Video", infoLabels={ "Title": name, "Plot": description, "Genre": genre, "dateadded": date, "credits": credits })
-        else:
-           liz.setInfo(type="Video", infoLabels= allinfo)
+        liz.setInfo(type="Video", infoLabels={ "Title": name, "Plot": description, "Genre": genre, "dateadded": date, "credits": credits })
         liz.setProperty("Fanart_Image", fanart)
         if showcontext:
             contextMenu = []
@@ -1972,49 +1974,46 @@ def sendJSON( command):
     return uni(data)
     
 def pluginquerybyJSON(url):
-    json_query = uni('{"jsonrpc":"2.0","method":"Files.GetDirectory","params":{"directory":"%s","media":"video","properties":["votes","plot","duration","trailer","premiered","watchedepisodes","thumbnail","title","year","dateadded","fanart","rating","season","episode","studio","mpaa"]},"id":1}') %url
+    json_query = uni('{"jsonrpc":"2.0","method":"Files.GetDirectory","params":{"directory":"%s","media":"video","properties":["thumbnail","title","year","dateadded","fanart","rating","season","episode","studio"]},"id":1}') %url
 
     json_folder_detail = json.loads(sendJSON(json_query))
-    if json_folder_detail.has_key('error'):
-        return
-    else:    
-        for i in json_folder_detail['result']['files'] :
-            meta ={}
-            url = i['file']
-            name = removeNonAscii(i['label'])
-            thumbnail = removeNonAscii(i['thumbnail'])
-            meta = dict((k,v) for k, v in i.iteritems() if not v == '0' or not v == -1 or v == '')
-            meta.pop("file", None)
-            meta.pop("thumbnail", None)
-            meta.pop("label", None)
-            meta.pop("title", None)
-            description = ''
-            try:
-                fanart = removeNonAscii(i['fanart'])
-            except Exception:
-                fanart = ''
-                pass            
-            if i['filetype'] == 'file':
-                #addLink(url[0], channel_name,thumbnail,'','','','','',None,regexs,total)
-                addLink(url,name,thumbnail,fanart,'','','','',None,'',total=len(json_folder_detail['result']['files']),allinfo=meta)
-                #xbmc.executebuiltin("Container.SetViewMode(500)")
-                if i['type'] and i['type'] == 'tvshow' :
-                    xbmcplugin.setContent(int(sys.argv[1]), 'tvshows')
-                elif i['episode'] > 0 :
-                    xbmcplugin.setContent(int(sys.argv[1]), 'episodes')
-
+    for i in json_folder_detail['result']['files'] :
+        url = i['file']
+        name = removeNonAscii(i['label'])
+        thumbnail = removeNonAscii(i['thumbnail'])
+        try:
+            fanart = removeNonAscii(i['fanart'])
+        except Exception:
+            fanart = ''
+        try:
+            date = i['year']
+        except Exception:
+            date = ''
+        try:
+            episode = i['episode']
+            season = i['season']
+            if episode == -1 or season == -1:
+                description = ''
             else:
-                addDir(name,url,53,thumbnail,fanart,'','','','',allinfo=meta)
-                #addDir('Pulsar:IMDB','IMDBidplay',27,icon,FANART,'','','','')
-                #xbmc.executebuiltin("Container.SetViewMode(500)")
+                description = '[COLOR yellow] S' + str(season)+'[/COLOR][COLOR hotpink] E' + str(episode) +'[/COLOR]'
+        except Exception:
+            description = ''
+        try:
+            studio = i['studio']
+            if studio:
+                description += '\n Studio:[COLOR steelblue] ' + studio[0] + '[/COLOR]'
+        except Exception:
+            studio = ''
 
-                if i['type'] and i['type'] == 'tvshow' :
-                    xbmcplugin.setContent(int(sys.argv[1]), 'tvshows')
-                elif i['episode'] > 0 :
-                    xbmcplugin.setContent(int(sys.argv[1]), 'episodes')
-        xbmcplugin.endOfDirectory(int(sys.argv[1]))
+        if i['filetype'] == 'file':
+            addLink(url,name,thumbnail,fanart,description,'',date,'',None,'',total=len(json_folder_detail['result']['files']))
+            #xbmc.executebuiltin("Container.SetViewMode(500)")
 
-def addLink(url,name,iconimage,fanart,description,genre,date,showcontext,playlist,regexs,total,setCookie="",allinfo={}):
+        else:
+            addDir(name,url,53,thumbnail,fanart,description,'',date,'')
+            #xbmc.executebuiltin("Container.SetViewMode(500)")
+
+def addLink(url,name,iconimage,fanart,description,genre,date,showcontext,playlist,regexs,total,setCookie=""):
         #print 'url,name',url,name
         contextMenu =[]
         try:
@@ -2067,10 +2066,7 @@ def addLink(url,name,iconimage,fanart,description,genre,date,showcontext,playlis
         else:
             description += '\n\nDate: %s' %date
         liz=xbmcgui.ListItem(name, iconImage="DefaultVideo.png", thumbnailImage=iconimage)
-        if len(allinfo) <1:
-            liz.setInfo(type="Video", infoLabels={ "Title": name, "Plot": description, "Genre": genre, "dateadded": date })
-        else:
-            liz.setInfo(type="Video", infoLabels=allinfo)
+        liz.setInfo(type="Video", infoLabels={ "Title": name, "Plot": description, "Genre": genre, "dateadded": date })
         liz.setProperty("Fanart_Image", fanart)
         if (not play_list) and not any(x in url for x in g_ignoreSetResolved):#  (not url.startswith('plugin://plugin.video.f4mTester')):
             if regexs:
@@ -2293,7 +2289,7 @@ elif mode==12:
         item = xbmcgui.ListItem(path=url)
         xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, item)
     else:
-        addon_log('Not setting setResolvedUrl')
+        print 'Not setting setResolvedUrl'
         xbmc.executebuiltin('XBMC.RunPlugin('+url+')')
 
 
@@ -2360,4 +2356,4 @@ elif mode==27:
 elif mode==53:
     addon_log("Requesting JSON-RPC Items")
     pluginquerybyJSON(url)
-    #xbmcplugin.endOfDirectory(int(sys.argv[1]))    
+    xbmcplugin.endOfDirectory(int(sys.argv[1]))    
