@@ -95,7 +95,7 @@
 
 <addon id="plugin.video.live.streamspro"
        name="LiveStreamsPro"
-       version="1.7.0"
+       version="1.7.1"
        provider-name="Shani">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -159,7 +159,7 @@
 
 <addon id="plugin.video.serialzone"
        name="India - SerialZone"
-       version="1.1"
+       version="1.2"
        provider-name="sorkan">
   <requires>
     	<import addon="xbmc.python" version="2.1.0"/>
