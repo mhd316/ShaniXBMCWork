@@ -1,3 +1,6 @@
+Version 1.7.3
+support for new captcha function
+
 Version 1.7.2
 now includeheaders include all the headers.
 

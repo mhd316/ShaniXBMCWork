@@ -1013,7 +1013,7 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
                             return cookieJar# do nothing
                     elif m['page'] and  not m['page'].startswith('http'):
                         if m['page'].startswith('$pyFunction:'):
-                            val=doEval(m['page'].split('$pyFunction:')[1],'',cookieJar )
+                            val=doEval(m['page'].split('$pyFunction:')[1],'',cookieJar,m )
                             if forCookieJarOnly:
                                 return cookieJar# do nothing
                             link=val
@@ -1033,7 +1033,7 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
                         url = url.replace("$doregex[" + k + "]", val)
                     elif m['expre'].startswith('$pyFunction:'):
                         #print 'expeeeeeeeeeeeeeeeeeee',m['expre']
-                        val=doEval(m['expre'].split('$pyFunction:')[1],link,cookieJar )
+                        val=doEval(m['expre'].split('$pyFunction:')[1],link,cookieJar,m)
                         if 'ActivateWindow' in m['expre']: return 
                         print 'still hre'
                         print 'url k val',url,k,val
@@ -1497,7 +1497,7 @@ def getCookieJar(COOKIEFILE):
 	
 	return cookieJar
     
-def doEval(fun_call,page_data,Cookie_Jar):
+def doEval(fun_call,page_data,Cookie_Jar,m):
     ret_val=''
     if functions_dir not in sys.path:
         sys.path.append(functions_dir)
@@ -1608,6 +1608,46 @@ def askCaptcha(m,html_page, cookieJar):
         else:
             captcha_url=page_+'/'+captcha_url
     
+    local_captcha = os.path.join(profile, str(iid)+"captcha.jpg" )
+    localFile = open(local_captcha, "wb")
+    print ' c capurl',captcha_url
+    req = urllib2.Request(captcha_url)
+    req.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; rv:14.0) Gecko/20100101 Firefox/14.0.1')
+    if 'refer' in m:
+        req.add_header('Referer', m['refer'])
+    if 'agent' in m:
+        req.add_header('User-agent', m['agent'])
+    if 'setcookie' in m:
+        print 'adding cookie',m['setcookie']
+        req.add_header('Cookie', m['setcookie'])
+        
+    #cookie_handler = urllib2.HTTPCookieProcessor(cookieJar)
+    #opener = urllib2.build_opener(cookie_handler, urllib2.HTTPBasicAuthHandler(), urllib2.HTTPHandler())
+    #opener = urllib2.install_opener(opener)
+    urllib2.urlopen(req)
+    response = urllib2.urlopen(req)
+
+    localFile.write(response.read())
+    response.close()
+    localFile.close()
+    solver = InputWindow(captcha=local_captcha)
+    solution = solver.get()
+    return solution
+    
+def askCaptchaNew(imageregex,html_page,cookieJar,m):
+    global iid
+    iid+=1
+
+    
+    if not imageregex=='':
+        if html_page.startswith("http"):
+            page_=getUrl(html_page,cookieJar=cookieJar)
+        else:
+            page_=html_page
+        captcha_url=re.compile(imageregex).findall(html_page)[0]
+    else:
+        captcha_url=html_page
+
     local_captcha = os.path.join(profile, str(iid)+"captcha.jpg" )
     localFile = open(local_captcha, "wb")
     print ' c capurl',captcha_url
