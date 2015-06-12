@@ -1,3 +1,6 @@
+[B]Version 3.5.3[/B]
+added channel24 and bol new yellow section (low quality)
+
 [B]Version 3.5.2[/B]
 icon updated
 
