@@ -92,7 +92,9 @@
      <string id="32101">Karimos User</string>
      <string id="32102">Karimos Pwd</string>
      <string id="32104">Karimos Login</string>
-
+     <string id="32105">Yo Login Details</string>
+     <string id="32106">Yo User Name</string>
+     <string id="32107">Yo Password</string>
      
           <string id="32090">Enable Shared Proxy?</string>
 	 <string id="32080">Enable Local Proxy?</string>

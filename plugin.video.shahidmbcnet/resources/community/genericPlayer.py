@@ -77,6 +77,10 @@ def PlayStream(sourceEtree, urlSoup, name, url):
         if (sc=='kar' or sc=='Local')  and '$KARLOGINCODE$' in liveLink :
             liveLink=replaceKARVariables(liveLink,pDialog,title)
             if liveLink=="": return False
+        if (sc=='yo' or (sc=='Local'  and  ('yoolive.com' in liveLink or 'yooanime.com' in liveLink))) :
+            liveLink=replaceYOVariables(liveLink,pDialog,title)
+            if liveLink=="": return False
+            
         print 'liveLink',liveLink
         pDialog.close()
         listitem = xbmcgui.ListItem( label = str(name), iconImage = "DefaultVideo.png", thumbnailImage = xbmc.getInfoImage( "ListItem.Thumb" ), path=liveLink )
@@ -937,6 +941,29 @@ def replaceKARVariables(liveLink,pDialog,title):
     reg_code=re.compile(code_pat).findall(htmlD)[0]
     saveCookieJar(cj,cfile)
     return liveLink.replace('$KARLOGINCODE$',reg_code)
+
+def replaceYOVariables(liveLink,pDialog,title):
+    if not liveLink.endswith('.php'):
+        return liveLink
+    sUser=selfAddon.getSetting( "YOUSER" )
+    sPwd=selfAddon.getSetting( "YOPWD" )
+
+    if sUser=="" or sPwd=="":
+        return ""
+    cfile = communityStreamPath+'/yoLoginCookie.lwp'
+    cj=getCookieJar(cfile)
+    htmlD=getUrl('http://yooanime.com/index.php', cookieJar=cj,timeout=20)
+    if  'Log In | Register' in htmlD:
+        post = urllib.urlencode({'rememberMe':1,'username':sUser,'password':sPwd,'submit':'Login'})
+        htmlD=getUrl('http://yooanime.com/index.php', cookieJar=cj,post=post,timeout=20)
+
+    page_data=getUrl(liveLink, cookieJar=cj,timeout=20)
+    code_pat='\[\{file:"(.*?)"'        
+    reg_code=re.compile(code_pat).findall(page_data)[0]
+    saveCookieJar(cj,cfile)
+    if reg_code.startswith('rtmp'):
+        reg_code+=' timeout=10'
+    return reg_code
     
 def getCookieJar(cfile):
     cookieJar=None

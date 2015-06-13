@@ -60,7 +60,9 @@
 		   <setting label="32104" type="lsep"/>
 			<setting label="32101" type="text" id="KARUSER" values="" default=""/>
 			<setting label="32102" type="text" id="KARPWD" values="" default=""/>  
-
+		   <setting label="32105" type="lsep"/>
+			<setting label="32106" type="text" id="YOUSER" values="" default=""/>
+			<setting label="32107" type="text" id="YOPWD" values="" default=""/>  
 			<!--<setting label="32075" type="labelenum" id="GLArabQuality" values="Low|Med|HD" default="Low"/> -->
 			<setting type="sep"/>
 		
