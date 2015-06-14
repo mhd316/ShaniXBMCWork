@@ -1026,11 +1026,15 @@ def AddChannelsFromOthers(isPakistani):
 
             match.append(('ETV Urdu','manual','etv',''))
             match.append(('Ary Zindagi','manual',base64.b64decode('aHR0cDovL2xpdmUuYXJ5emluZGFnaS50di8='),base64.b64decode('aHR0cDovL3d3dy5hcnl6aW5kYWdpLnR2L3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDE0LzEwL0ZpbmFsLWxvZ28tMi5naWY=')))
+            match.append(('QTV','manual',base64.b64decode('aHR0cDovL2xpdmUuYXJ5cXR2LnR2Lw=='),base64.b64decode('aHR0cDovL2FyeXF0di50di93cC1jb250ZW50L3VwbG9hZHMvMjAxNC8xMi9hcnktcXR2LTEtY29weS5qcGc=')))
+            
+
         else:
             match.append(('Color','manual','cid:316',''))
 
         
     match.append((base64.b64decode('U2t5IFNwb3J0IDE='),'manual',base64.b64decode('aHR0cDovL2pweG1sLmphZG9vdHYuY29tL3Z1eG1sLnBocC9qYWRvb3htbC9wbGF5LzMxNg=='),''))
+
 #    match.append((base64.b64decode('U2t5IFNwb3J0IDI='),'manual',base64.b64decode('aHR0cDovL2pweG1sLmphZG9vdHYuY29tL3Z1eG1sLnBocC9qYWRvb3htbC9wbGF5LzMyNg=='),''))
 #    match.append((base64.b64decode('U2t5IFNwb3J0IDM='),'manual',base64.b64decode('aHR0cDovL215amFkb290di5qYWRvb3R2LmNvbS9qbWFya3MvYm94L3BsYXlWaWRlby5waHA/cGxheVVybD1ydG1wOi8vcXVpbnplbGl2ZWZzLmZwbGl2ZS5uZXQvcXVpbnplbGl2ZS1saXZlL3NreXNwb3J0czMuc3RyZWFtP3NlY3VyaXR5dHlwZT0y'),''))
 #    match.append((base64.b64decode('U2t5IFNwb3J0IDQ='),'manual',base64.b64decode('aHR0cDovL2pweG1sLmphZG9vdHYuY29tL3Z1eG1sLnBocC9qYWRvb3htbC9wbGF5LzMxNQ=='),''))
@@ -1126,12 +1130,13 @@ def PlayOtherUrl ( url ):
     progress.update( 10, "", "Finding links..", "" )
 
     direct=False
-    if url==base64.b64decode('aHR0cDovL2xpdmUuYXJ5emluZGFnaS50di8='):
+    if url==base64.b64decode('aHR0cDovL2xpdmUuYXJ5emluZGFnaS50di8=') or url==base64.b64decode('aHR0cDovL2xpdmUuYXJ5cXR2LnR2Lw=='):
         req = urllib2.Request(url)
-        req.add_header('User-Agent', base64.b64decode('VmVyaXNtby1CbGFja1VJXygyLjQuNy41LjguMC4zNCk=')) 
+#        req.add_header('User-Agent', base64.b64decode('VmVyaXNtby1CbGFja1VJXygyLjQuNy41LjguMC4zNCk=')) 
         response = urllib2.urlopen(req)
         link=response.read()
-        curlpatth='file: "(htt.*?)"'
+        curlpatth='file: "(htt.*?)"' if 'qtv' not in url else 'file: \'(.*?)\''
+        if curlpatth.startswith('rtmp'): curlpatth+=' timeout=20'
         progress.update( 50, "", "Preparing url..", "" )
         dag_url =re.findall(curlpatth,link)[0]
     elif url=='etv':
@@ -1245,7 +1250,6 @@ def AddChannelsFromEbound():
 	match.append(('National Geographic','nationalgeographic','manual'))
 	match.append(('mecca','mecca','manual'))
 	match.append(('madina','madina','manual'))
-	match.append(('Qtv','qtv','manual'))
 	match.append(('Peace Tv','peacetv','manual'))
 	match.append(('Geo Entertainment','geoentertainment','manual'))
 	match.append(('Geo News','geonews','manual'))
@@ -1256,7 +1260,9 @@ def AddChannelsFromEbound():
 	match.append(('Quran TV Urdu','aHR0cDovL2lzbDEuaXNsYW00cGVhY2UuY29tL1F1cmFuVXJkdVRW','gen'))
 
 	match.append(('Channel 24','cnRtcDovL2RzdHJlYW1vbmUuY29tOjE5MzUvbGl2ZS8gcGxheXBhdGg9Y2l0eTQyIHN3ZlVybD1odHRwOi8vZHN0cmVhbW9uZS5jb20vanAvandwbGF5ZXIuZmxhc2guc3dmIHBhZ2VVcmw9aHR0cDovL2RzdHJlYW1vbmUuY29tL2NpdHk0Mi9pZnJhbWUuaHRtbCB0aW1lb3V0PTIw','gen'))
+	match.append(('QTV','cnRtcDovLzkzLjExNS44NS4xNzoxOTM1L0FSWVFUVi9teVN0cmVhbSB0aW1lb3V0PTEw','gen'))
 
+    
     
     
 
