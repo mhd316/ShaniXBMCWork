@@ -145,12 +145,13 @@ def PlayStream(sourceEtree, urlSoup, name, url):
 		ip_patt="ip='(.*?)';"
 		dz_patt="dz='(.*?)';"
 		today = datetime.datetime.now()
-		v1 = 234*(366-(today - datetime.datetime(today.year, 1, 1)).days + 1);
-		v2 = 553;
+		v1 = 234*(366-(today - datetime.datetime(today.year, 1, 1)).days + 0);
+		v2 = 222-2; #something wrong in calc, may be timezone?
 		dz=re.findall(dz_patt, link)[0]        
 		ip=re.findall(ip_patt, link)[0]
 		ip2=''.join(ip.split('.')[0:4])
-		access_id=str(((365-int(dz))*int(ip2)*v1)+v2)
+		print 'dz',	dz        
+		access_id=str(((365-int(dz))*long(ip2)*v1)+v2)
 		access_id='?id1='+access_id
 
 
