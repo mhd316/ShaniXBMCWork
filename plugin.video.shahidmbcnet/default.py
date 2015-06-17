@@ -457,7 +457,6 @@ def AddSeries(Fromurl,pageNumber=""):
 	#regstring='<a href="(.*?)">[\s\t\r\n\f]*.*[\s\t\r\n\f]+.*[\s\t\r\n\f].*<img .*?alt="(.*?)" src="(.*?)"'
 	regstring='<a href="(\/ar\/(show|series).*?)">\s.*\s*.*\s.*alt="(.*)" src="(.*?)" '
 	match =re.findall(regstring, link)
-	#print match
 	#match=re.compile('<a href="(.*?)"targe.*?<img.*?alt="(.*?)" src="(.*?)"').findall(link)
 	#print Fromurl
 
@@ -1200,7 +1199,8 @@ def PlayShowLink ( url ):
 	playURL= match =re.findall('id  : "(.*?)",\s*pricingPlanId  : "(.*?)"', link)
 	videoID=match[0][0]# check if not found then try other methods
 	paymentID=match[0][1]
-	playlistURL=getMainUrl()+"/arContent/getPlayerContent-param-.id-%s.type-player.pricingPlanId-%s.html" % ( videoID,paymentID)
+	playlistURL=getMainUrl()+"/arContent/getPlayerContent-param-.id-%s.type-playegr.html" % ( videoID)
+#	playlistURL=getMainUrl()+"/arContent/getPlayerContent-param-.id-%s.type-player.pricingPlanId-%s.html" % ( videoID,paymentID)    
 	req = urllib2.Request(playlistURL)
 	req.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36')
 	response = urllib2.urlopen(req)
