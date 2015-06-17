@@ -1,3 +1,6 @@
+Version 1.7.4
+added accept param for regex
+
 Version 1.7.3
 support for new captcha function
 
