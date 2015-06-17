@@ -742,6 +742,10 @@ def parse_regex(reg_item):
                         except:
                             addon_log("Regex: -- No origin --")
                         try:
+                            regexs[i('name')[0].string]['accept'] = i('accept')[0].string
+                        except:
+                            addon_log("Regex: -- No accept --")
+                        try:
                             regexs[i('name')[0].string]['includeheaders'] = i('includeheaders')[0].string
                         except:
                             addon_log("Regex: -- No includeheaders --")                            
@@ -914,6 +918,8 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
                         req.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; rv:14.0) Gecko/20100101 Firefox/14.0.1')
                         if 'refer' in m:
                             req.add_header('Referer', m['refer'])
+                        if 'accept' in m:
+                            req.add_header('Accept', m['accept'])
                         if 'agent' in m:
                             req.add_header('User-agent', m['agent'])
                         if 'x-req' in m:
@@ -1002,7 +1008,8 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
                             for b in response.headers:
                                 link+= b+':'+response.headers.get(b)+'\n'
                             link+='$$HEADERS_END$$:'
-                            print link
+                        addon_log(link)
+                        addon_log(cookieJar )
 
                         response.close()
                         cachedPages[m['page']] = link
