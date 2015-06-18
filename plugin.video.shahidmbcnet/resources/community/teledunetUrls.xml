@@ -227,35 +227,28 @@
 	<streaminginfo><cname>Zaitouna</cname><url>zaytoona</url></streaminginfo>
 	<streaminginfo><cname>Zee Aflam</cname><url>zee_aflam</url></streaminginfo>
 	<streaminginfo><cname>Zee Alwan</cname><url>zee_alwan</url></streaminginfo>
-	
-<streaminginfo><cname>Cima metro</cname><url>cima_metro</url></streaminginfo>
-<streaminginfo><cname>Mystro</cname><url>mystro_tv</url></streaminginfo>
-
-<streaminginfo><cname>Cairo Cinema 2</cname><url>cairo_cinema_2</url></streaminginfo>
-<streaminginfo><cname>Alarabiya Ahdas</cname><url>al_arabia_hadath</url></streaminginfo>
-<streaminginfo><cname>Panorama Food</cname><url>panorama_food</url></streaminginfo>
-<streaminginfo><cname>Telvza TV</cname><url>telvza_tv</url></streaminginfo>
-<streaminginfo><cname>ESTV</cname><url>estv</url></streaminginfo>
-<streaminginfo><cname>Noon Kids</cname><url>noon_tv</url></streaminginfo>
-<streaminginfo><cname>RTS 1</cname><url>rts_senegal</url></streaminginfo>
-<streaminginfo><cname>TFM</cname><url>tfm_senegal</url></streaminginfo>
-<streaminginfo><cname>4Shbab</cname><url>4_shabab</url></streaminginfo>
-<streaminginfo><cname>Alghadeer</cname><url>al_ghadeer</url></streaminginfo>
-<streaminginfo><cname>Al Masar</cname><url>al_masar_iraq</url></streaminginfo>
-<streaminginfo><cname>Alinsen</cname><url>al_insen</url></streaminginfo>
-<streaminginfo><cname>M3Ali Tv</cname><url>al_maaly</url></streaminginfo>
-<streaminginfo><cname>AlMasrawia</cname><url>al_masrawiya_aflam</url></streaminginfo>
-<streaminginfo><cname>Albait Baitak Cinema</cname><url>albait_baitak</url></streaminginfo>
-<streaminginfo><cname>Alhayat Series</cname><url>alhayat_musalsalat</url></streaminginfo>
-<streaminginfo><cname>Darbaka Aflam</cname><url>darbaka_aflam</url></streaminginfo>
-<streaminginfo><cname>Ettounsia </cname><url>ettounsia</url></streaminginfo>
-<streaminginfo><cname>Fox</cname><url>fox</url></streaminginfo>
-<streaminginfo><cname>Kurdmax</cname><url>kurdmax</url></streaminginfo>
-<streaminginfo><cname>Libya Alrasmiya</cname><url>libya_alrasmiya</url></streaminginfo>
-<streaminginfo><cname>M Tunisia</cname><url>m_tunisia</url></streaminginfo>
-<streaminginfo><cname>Sada AlBalad Drama</cname><url>sada_albalad_drama</url></streaminginfo>
-<streaminginfo><cname>TNN</cname><url>tnn</url></streaminginfo>
-<streaminginfo><cname>Ten</cname><url>ten</url></streaminginfo>
-<streaminginfo><cname>Toktok</cname><url>toktok_cinema</url></streaminginfo>
+	<streaminginfo><cname>Alarabiya Ahdas</cname><url>al_arabia_hadath</url></streaminginfo>
+	<streaminginfo><cname>Telvza TV</cname><url>telvza_tv</url></streaminginfo>
+	<streaminginfo><cname>ESTV</cname><url>estv</url></streaminginfo>
+	<streaminginfo><cname>Noon Kids</cname><url>noon_tv</url></streaminginfo>
+	<streaminginfo><cname>RTS 1</cname><url>rts_senegal</url></streaminginfo>
+	<streaminginfo><cname>TFM</cname><url>tfm_senegal</url></streaminginfo>
+	<streaminginfo><cname>4Shbab</cname><url>4_shabab</url></streaminginfo>
+	<streaminginfo><cname>Alghadeer</cname><url>al_ghadeer</url></streaminginfo>
+	<streaminginfo><cname>Al Masar</cname><url>al_masar_iraq</url></streaminginfo>
+	<streaminginfo><cname>Alinsen</cname><url>al_insen</url></streaminginfo>
+	<streaminginfo><cname>M3Ali Tv</cname><url>al_maaly</url></streaminginfo>
+	<streaminginfo><cname>AlMasrawia</cname><url>al_masrawiya_aflam</url></streaminginfo>
+	<streaminginfo><cname>Albait Baitak Cinema</cname><url>albait_baitak</url></streaminginfo>
+	<streaminginfo><cname>Alhayat Series</cname><url>alhayat_musalsalat</url></streaminginfo>
+	<streaminginfo><cname>Darbaka Aflam</cname><url>darbaka_aflam</url></streaminginfo>
+	<streaminginfo><cname>Ettounsia </cname><url>ettounsia</url></streaminginfo>
+	<streaminginfo><cname>Fox</cname><url>fox</url></streaminginfo>
+	<streaminginfo><cname>Libya Alrasmiya</cname><url>libya_alrasmiya</url></streaminginfo>
+	<streaminginfo><cname>M Tunisia</cname><url>m_tunisia</url></streaminginfo>
+	<streaminginfo><cname>Sada AlBalad Drama</cname><url>sada_albalad_drama</url></streaminginfo>
+	<streaminginfo><cname>TNN</cname><url>tnn</url></streaminginfo>
+	<streaminginfo><cname>Ten</cname><url>ten</url></streaminginfo>
+	<streaminginfo><cname>Toktok</cname><url>toktok_cinema</url></streaminginfo>
 	
 </streamingInfos>
