@@ -56,7 +56,7 @@ def getMainUrl():
 			#print 'its enabled'
 			rMain=proxyAddress
 		#else: #print 'Proxy not enable'
-	return rMain
+	return rMain.replace('http:','https:')
 	
 	
 	
@@ -1181,38 +1181,43 @@ def import_module(name, package=None):
 	
 def PlayShowLink ( url ): 
 #	url = tabURL.replace('%s',channelName);
-
+	pDialog = xbmcgui.DialogProgress()
+	ret = pDialog.create('Shahid', 'Trying to resolve the url')
 	line1 = "Finding stream"
 	time = 500  #in miliseconds
-	line1 = "Playing video Link"
-	xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, time, __icon__))
-
+#	line1 = "Playing video Link"
+#	xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, time, __icon__))
+#	print url
 	req = urllib2.Request(url)
 	req.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36')
 	response = urllib2.urlopen(req)
 	link=response.read()
 	response.close()
 #	print url
-
+	pDialog.update(20, 'reading the page')
 
 	#print "PlayLINK"
 	playURL= match =re.findall('id  : "(.*?)",\s*pricingPlanId  : "(.*?)"', link)
 	videoID=match[0][0]# check if not found then try other methods
 	paymentID=match[0][1]
 	playlistURL=getMainUrl()+"/arContent/getPlayerContent-param-.id-%s.type-playegr.html" % ( videoID)
+#	print playlistURL    
 #	playlistURL=getMainUrl()+"/arContent/getPlayerContent-param-.id-%s.type-player.pricingPlanId-%s.html" % ( videoID,paymentID)    
 	req = urllib2.Request(playlistURL)
 	req.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36')
 	response = urllib2.urlopen(req)
 	link=response.read()
+
+	pDialog.update(60, 'Linked fetched')
+#	print link
 	response.close()
 	patt='({.*})'
 	link=re.findall(patt, link)[0]
 	jsonData=json.loads(link)
-	#print jsonData;
+#	print jsonData;
 	url=jsonData["data"]["url"]
 	#print url
-	
+	pDialog.update(80, 'getting Json')
 	
 	defaultCDN="Default"
 	defaultCDN=selfAddon.getSetting( "DefaultCDN" )
@@ -1240,13 +1245,14 @@ def PlayShowLink ( url ):
 		time = 2000  #in miliseconds
 		xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, time, __icon__))
 
-		
+	pDialog.update(100, 'going to play')
 	cName=name
 	listitem = xbmcgui.ListItem( label = str(cName), iconImage = "DefaultVideo.png", thumbnailImage = xbmc.getInfoImage( "ListItem.Thumb" ), path=url )
 	#print "playing stream name: " + str(cName) 
 	listitem.setInfo( type="video", infoLabels={ "Title": cName, "Path" : url } )
 	listitem.setInfo( type="video", infoLabels={ "Title": cName, "Plot" : cName, "TVShowTitle": cName } )
 	#print 'playurl',url
+	pDialog.close()    
 	xbmc.Player().play( url,listitem)
 	#print 'ol..'
 	return
