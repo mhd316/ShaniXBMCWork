@@ -139,14 +139,14 @@ def PlayStream(sourceEtree, urlSoup, name, url):
 					print 'error in channel using hardcoded value'
 		pDialog.update(80, 'trying to play')
 		liveLink= sourceEtree.findtext('rtmpstring');
-		freeCH= '2m'
+		freeCH='2m'
 #		html=getUrl("http://www.teledunet.com/mobile/access_id.php",getCookieJar())
 #		access_id=html
 		ip_patt="ip='(.*?)';"
 		dz_patt="dz='(.*?)';"
 		today = datetime.datetime.now()
 		v1 = 234*(366-(today - datetime.datetime(today.year, 1, 1)).days + 0);
-		v2 = 222-2; #something wrong in calc, may be timezone?
+		v2 = 222; #something wrong in calc, may be timezone?
 		dz=re.findall(dz_patt, link)[0]        
 		ip=re.findall(ip_patt, link)[0]
 		ip2=''.join(ip.split('.')[0:4])
