@@ -360,7 +360,7 @@ def AddPopeLive(url):
 #        pat='<a href="http://.*?/.*?/(.*?)-Live.*?/(.+?)" '
 #        channels=re.findall(pat,videoPage)
 #        print channels
-        channels=[('Sky Sports 1','25'),('Sky Sports 2','48'),('Sky Sports 3','10'),('Sky Sports 4','31'),('Sky Sports 5','11'),('Sky Sports F1','22') ,('BT Sport 1','28'),('BT Sports 2','15') ,('Willow Cricket','38') ,('Ptv Sports','33')   ]
+        channels=[('Sky Sports 1','1'),('Sky Sports 2','2'),('Sky Sports 3','3'),('Sky Sports 4','4'),('Sky Sports 5','5'),('Sky Sports F1','6') ,('BT Sport 1','7'),('BT Sports 2','8') ,('Willow Cricket','24') ,('Ptv Sports','15')   ]
         for channel in channels:
             print channel
             cname=channel[0]
@@ -658,14 +658,15 @@ def AddWillowCric(url):
         match_url =re.findall(patt,link)[0]
         print match_url
         matches=json.loads(match_url)
+        
         print matches
         matchid=matches["result"]["past"][0]["MatchId"]
-        addDir(Colored('Live Channel (Experimental)','EB',True) ,'' ,-1,'', False, True,isItFolder=False)		#name,url,mode,icon
-
-        addDir('  Source 1' ,'%s:1'%str(matchid),21,'', False, True,isItFolder=False)		#name,url,mode,icon
-        addDir('  Source 2' ,'%s:2'%str(matchid),21,'', False, True,isItFolder=False)		#name,url,mode,icon
-        addDir('  Source 3' ,'%s:3'%str(matchid),21,'', False, True,isItFolder=False)		#name,url,mode,icon
-        addDir('  Source 4' ,'%s:4'%str(matchid),21,'', False, True,isItFolder=False)		#name,url,mode,icon
+        if 1==2:
+            addDir(Colored('Live Channel (Experimental)','EB',True) ,'' ,-1,'', False, True,isItFolder=False)		#name,url,mode,icon
+            addDir('  Source 1' ,'%s:1'%str(matchid),21,'', False, True,isItFolder=False)		#name,url,mode,icon
+            addDir('  Source 2' ,'%s:2'%str(matchid),21,'', False, True,isItFolder=False)		#name,url,mode,icon
+            addDir('  Source 3' ,'%s:3'%str(matchid),21,'', False, True,isItFolder=False)		#name,url,mode,icon
+            addDir('  Source 4' ,'%s:4'%str(matchid),21,'', False, True,isItFolder=False)		#name,url,mode,icon
 
         addDir(Colored('Live Games','EB',True) ,'' ,-1,'', False, True,isItFolder=False)		#name,url,mode,icon
         if matches["result"]["live"]:
@@ -819,7 +820,7 @@ def PlayWatchCric(url):
     response = urllib2.urlopen(req)
     link=response.read()
     response.close()
-    print 'match_url',match_url
+    print 'match_url',match_url,link
         
 
     ccommand='%s;TRUE;TRUE;'
@@ -827,6 +828,7 @@ def PlayWatchCric(url):
     sitename='www.mipsplayer.com'
     pat_e=' e=\'(.*?)\';'
     app='live'
+    pat_js='channel=\'(.*?)\''
     
     if 'liveflashplayer.net/resources' in link:
         c='kaskatijaEkonomista'
@@ -860,7 +862,15 @@ def PlayWatchCric(url):
         pat_e='channel.*?g=\'(.*?)\''
         app='stream'
         pat_js='channel=\'(.*?)\''
-
+    elif 'zenexplayer.com' in link:
+        c='zenataStoGoPuknalaGavolot'
+        ccommand=''
+        swfUrl=base64.b64decode('aHR0cDovL3d3dy56ZW5leHBsYXllci5jb20vZGF0YS9zY3JpcHRzL2ZwbGF5ZXIuc3dm')
+        sitename='www.zenexplayer.com'
+        pat_e='channel.*?g=\'(.*?)\''
+        app='zenex'
+        pat_js='channel=\'(.*?)\''
+        
     progress.update( 40, "", "Building request links..", "" )
         
     match_urljs =re.findall(pat_js,link)[0]
