@@ -210,7 +210,7 @@ def Addtypes():
 	addDir('Shahid Youtube' ,'http://gdata.youtube.com/feeds/api/users/aljadeedonline' ,18,addonArt+'/youtube.png')    
 	addDir('Download Files' ,'cRefresh' ,17,addonArt+'/download-icon.png',isItFolder=False)
 	addDir('Settings' ,'Settings' ,8,addonArt+'/setting.png',isItFolder=False) ##
-	addDir('Livetv.tn Login' ,'Livetv' ,24,addonArt+'/setting.png',isItFolder=False) ##
+#	addDir('Livetv.tn Login' ,'Livetv' ,24,addonArt+'/setting.png',isItFolder=False) ##
 	return
 
 def AddYoutubeLanding(url):
@@ -1207,7 +1207,7 @@ def PlayShowLink ( url ):
 	req.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36')
 	response = urllib2.urlopen(req)
 	link=response.read()
-
+	print link
 	pDialog.update(60, 'Linked fetched')
 #	print link
 	response.close()

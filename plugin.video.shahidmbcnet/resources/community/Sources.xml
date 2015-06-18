@@ -17,7 +17,7 @@
 <sname>livetv.tn</sname>
 <colour>yellow</colour>
 <baseurl>http://www.livetv.tn/</baseurl>
-<enabled>True</enabled>
+<enabled>False</enabled>
 <urlfile>livetvUrls.xml</urlfile>
 <imageurl>http://www.livetv.tn/images/logoc.png</imageurl>
 <processor>livetvPlayer.py</processor>
@@ -86,7 +86,7 @@
 <sname>magictvBox</sname>
 <colour>Brown</colour>
 <baseurl>http://website.com</baseurl>
-<enabled>True</enabled>
+<enabled>False</enabled>
 <urlfile>magictvBoxUrls.xml</urlfile>
 <imageurl>http://mylogo.com</imageurl>
 <processor>genericPlayer.py</processor>
@@ -132,7 +132,7 @@
 <sname>Telvza</sname>
 <colour>FF8B009B</colour>
 <baseurl>http://website.com</baseurl>
-<enabled>True</enabled>
+<enabled>False</enabled>
 <urlfile>TelvzaUrls.xml</urlfile>
 <imageurl>http://mylogo.com</imageurl>
 <processor>genericPlayer.py</processor>
@@ -155,7 +155,7 @@
 <sname>ss</sname>
 <colour>blue</colour>
 <baseurl>http://ss.com/</baseurl>
-<enabled>True</enabled>
+<enabled>False</enabled>
 <urlfile>ssUrls.xml</urlfile>
 <rtmpstring></rtmpstring>
 <imageurl>http://www.ss.com</imageurl>
