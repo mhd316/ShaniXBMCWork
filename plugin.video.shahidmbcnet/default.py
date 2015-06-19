@@ -56,7 +56,7 @@ def getMainUrl():
 			#print 'its enabled'
 			rMain=proxyAddress
 		#else: #print 'Proxy not enable'
-	return rMain.replace('http:','https:')
+	return rMain#.replace('http:','https:')
 	
 	
 	
