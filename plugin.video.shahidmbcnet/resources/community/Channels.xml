@@ -1,5 +1,21 @@
 <channels>
-	
+<channel>
+	<cname>Iraq Watania</cname>
+	<imageurl></imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>Iraq</category>
+	</assignedcategory>
+</channel>	
+<channel>
+	<cname>Echorouk Benna</cname>
+	<imageurl>http://s22.postimg.org/m15opkm4h/bent.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>cook</category>
+	<category>dzair</category>
+	</assignedcategory>
+</channel>
 <channel>
 	<cname>Ettounsia</cname>
 	<imageurl>http://www.lyngsat-logo.com/hires/ee/ettounsiya_tv_tn.png</imageurl>
