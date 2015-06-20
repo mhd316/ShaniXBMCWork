@@ -1235,7 +1235,6 @@ def performShahidLogin(pDialog=None):
         pDialog.update(30, 'login being processed stage 3')
         userDetails = json.loads(json_text)
         userDetails=userDetails["user"]
-            
         firstName=userDetails["firstName"]#firstName
         lastName=userDetails["lastName"]#lastName
         userName=userDetails["userName"]#userName
@@ -1300,26 +1299,30 @@ def processProxyLogin():
 
 
 def processShahidLogin(pDialog=None):
-    loginName=selfAddon.getSetting( "ShahidVodLogin" )
-    pDialog.update(10, 'Checking login status')
+    try:
+        loginName=selfAddon.getSetting( "ShahidVodLogin" )
+        pDialog.update(10, 'Checking login status')
 
-    if not loginName=="":
-        if selfAddon.getSetting( "isProxyEnabled" )=="true":
-            return processProxyLogin()
-        if shouldShahidforceLogin():
-            if performShahidLogin(pDialog):
-                print 'done login'
+        if not loginName=="":
+            if selfAddon.getSetting( "isProxyEnabled" )=="true":
+                return processProxyLogin()
+            if shouldShahidforceLogin():
+                if performShahidLogin(pDialog):
+                    print 'done login'
+                else:
+                    print 'login failed??'
             else:
-                print 'login failed??'
+                print 'Login not forced.. perhaps reusing the session'
+            cookie_jar=getShahidCookieJar()
         else:
-            print 'Login not forced.. perhaps reusing the session'
-        cookie_jar=getShahidCookieJar()
-    else:
-        cookie_jar=cookielib.LWPCookieJar()
-    pDialog.update(50, 'login processed')
+            cookie_jar=cookielib.LWPCookieJar()
+        pDialog.update(50, 'login processed')
 
-    return cookie_jar
-            
+        return cookie_jar
+    except: 
+        print 'Error while here'
+        traceback.print_exc(file=sys.stdout)
+    
 def PlayShowLink ( url ): 
 	pDialog = xbmcgui.DialogProgress()
 	ret = pDialog.create('Shahid', 'Trying to resolve the url')
@@ -1349,14 +1352,23 @@ def PlayShowLink ( url ):
 	videoID=match[0][0]# check if not found then try other methods
 	paymentID=match[0][1]
 #	playlistURL=getMainUrl()+"/arContent/getPlayerContent-param-.id-%s.type-playegr.html" % ( videoID)
-#	print playlistURL    
-	playlistURL=getMainUrl()+"/arContent/getPlayerContent-param-.id-%s.type-player.html?" % ( videoID)    
-#	'''req = urllib2.Request(playlistURL)
+	loginName=selfAddon.getSetting( "ShahidVodLogin" )   
+	if not loginName=="":
+		playlistURL=getMainUrl()+"/arContent/getPlayerContent-param-.id-%s.type-player.html?" % ( videoID) 
+		link=getUrl(playlistURL,cookiejar)        
+	else:
+		cJar=cookielib.LWPCookieJar()
+		getUrl('http://proxyusa.org/index.php',cJar);
+		urltoget='http://api.shahid.net/api/Content/Episode/'+videoID+'/8879?apiKey=sh%40hid0nlin3&hash=b2wMCTHpSmyxGqQjJFOycRmLSex%2BBpTK%2Fooxy6vHaqs%3D'
+		post={'u':urltoget,'encodeURL':'on','allowCookies':'on','stripJS':'on','stripObjects':'on'}
+		post = urllib.urlencode(post)
+		link= getUrl('https://proxyusa.org/includes/process.php?action=update',cJar,post)
+        #	'''req = urllib2.Request(playlistURL)
 #	req.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36')
 #	response = urllib2.urlopen(req)
 #	link=response.read()
 #'''
-	link=getUrl(playlistURL,cookiejar)
+
 
 	print link
 	pDialog.update(70, 'Linked fetched')
