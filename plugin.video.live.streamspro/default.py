@@ -497,6 +497,9 @@ def getSubChannelItems(name,url,fanart):
 def getItems(items,fanart):
         total = len(items)
         addon_log('Total Items: %s' %total)
+        add_playlist = addon.getSetting('add_playlist')
+        ask_playlist_items =addon.getSetting('ask_playlist_items')
+        use_thumb = addon.getSetting('use_thumb')        
         for item in items:
             isXMLSource=False
             isJsonrpc = False
@@ -672,29 +675,32 @@ def getItems(items,fanart):
                     regexs = parse_regex(reg_item)
                 except:
                     pass            
-           
             try:
                 if len(url) > 1:
                     alt = 0
                     playlist = []
                     for i in url:
-                    	if addon.getSetting('ask_playlist_items') == 'true':
-	                        if regexs:
-	                            playlist.append(i+'&regexs='+regexs)
-	                        elif  any(x in i for x in resolve_url) and  i.startswith('http'):
-	                            playlist.append(i+'&mode=19')                            
-                        else:
-                            playlist.append(i)
-                    if addon.getSetting('add_playlist') == "false":                    
-                            for i in url:
+                            if  add_playlist == "false":
+
                                 alt += 1
-                                addLink(i,'%s) %s' %(alt, name.encode('utf-8', 'ignore')),thumbnail,fanArt,desc,genre,date,True,playlist,regexs,total)                            
-                    else:
-                        addLink('', name.encode('utf-8', 'ignore'),thumbnail,fanArt,desc,genre,date,True,playlist,regexs,total)
+                                addLink(i,'%s) %s' %(alt, name.encode('utf-8', 'ignore')),thumbnail,fanArt,desc,genre,date,True,playlist,regexs,total)
+
+                            elif  add_playlist == "true" and  ask_playlist_items == 'true':
+                                if regexs:
+                                    playlist.append(i+'&regexs='+regexs)
+                                elif  any(x in i for x in resolve_url) and  i.startswith('http'):
+                                    playlist.append(i+'&mode=19')
+                                else:
+                                    playlist.append(i)
+                            else:
+                                playlist.append(i)
+
+                    if len(playlist) > 1:
+                        addLink('', name,thumbnail,fanArt,desc,genre,date,True,playlist,regexs,total)
                 else:
                     if isXMLSource:
                     	addDir(name.encode('utf-8'),ext_url[0].encode('utf-8'),1,thumbnail,fanart,desc,genre,date,None,'source')
-                        #addLink(url[0],name.encode('utf-8', 'ignore'),thumbnail,fanArt,desc,genre,date,True,None,regexs,total)
+
                     elif isJsonrpc:
                         addDir(name.encode('utf-8'),ext_url[0],53,thumbnail,fanart,desc,genre,date,None,'source')
                         #xbmc.executebuiltin("Container.SetViewMode(500)")                    	
