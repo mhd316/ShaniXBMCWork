@@ -7,7 +7,7 @@
 <baseurl>http://www.teledunet.com/</baseurl>
 <enabled>True</enabled>
 <urlfile>teledunetUrls.xml</urlfile>
-<rtmpstring>%s playpath=%s swfUrl=http://www.teledunet.com/mobile/player.swf%s&amp;&amp;channel=%s&amp;user=%s&amp;token=%s pageUrl=http://www.teledunet.com/mobile/ flashVer=WIN\2018,0,0,160  live=true timeout=15</rtmpstring>
+<rtmpstring>%s playpath=%s swfUrl=http://www.teledunet.com/mobile/player.swf%s&amp;channel=%s&amp;&amp;user=%s&amp;token=%s pageUrl=http://www.teledunet.com/mobile/ flashVer=WIN\2018,0,0,160  live=true timeout=15</rtmpstring>
 <imageurl>http://www.teledunet.com/icon.png</imageurl>
 <processor>teledunetPlayer.py</processor>
 </source>

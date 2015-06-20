@@ -153,13 +153,15 @@ def PlayStream(sourceEtree, urlSoup, name, url):
 		print 'dz',	dz        
 		access_id=str(((365-int(dz))*long(ip2)*v1)+v2)
 		access_id='?id1='+access_id
-
+		access_iddummy='?id1=1'
 
    
 #		print 'rtmpstring',liveLink,rtmp
 #		liveLink=liveLink%(rtmp,channelId,match,channelId,channelId)
+		liveLinkdummy=liveLink%(rtmp,channelId,access_iddummy,freeCH,selfAddon.getSetting( "teledunetTvLogin" ),'')
 		liveLink=liveLink%(rtmp,channelId,access_id,freeCH,selfAddon.getSetting( "teledunetTvLogin" ),token)
 
+                
 		name+='-Teledunet'
 		print 'liveLink',liveLink
 		pDialog.close()
@@ -169,7 +171,6 @@ def PlayStream(sourceEtree, urlSoup, name, url):
 			howMaytimes=int(selfAddon.getSetting( "teledunetRetryCount" ))
 		except:pass
 
-		
 		pDialog = xbmcgui.DialogProgress()
 		pDialog.create('XBMC', 'Playing channel')
 		howMaytimes=1
@@ -178,11 +179,14 @@ def PlayStream(sourceEtree, urlSoup, name, url):
 		randomuser=''
 		if res and len(res)>0:
 			randomuser=res[0]
+			doDummy=False            
 		while totalTried<howMaytimes:
-
+			liveLinkPlay=liveLink
+			if totalTried==0 and doDummy:
+				liveLinkPlay=liveLinkdummy
 			totalTried+=1
 			pDialog.update((totalTried*100)/howMaytimes, 'Teledunet: Try #' + str(totalTried) +' of ' + str(howMaytimes))
-			listitem = xbmcgui.ListItem( label = str(name), iconImage = "DefaultVideo.png", thumbnailImage = xbmc.getInfoImage( "ListItem.Thumb" ), path=liveLink )
+			listitem = xbmcgui.ListItem( label = str(name), iconImage = "DefaultVideo.png", thumbnailImage = xbmc.getInfoImage( "ListItem.Thumb" ), path=liveLinkPlay )
 			player = CustomPlayer.MyXBMCPlayer()
 			#xbmc.Player().play( liveLink,listitem)
 			start = time.time()  
@@ -193,8 +197,8 @@ def PlayStream(sourceEtree, urlSoup, name, url):
 				if len(randomuser)==0:
 					break
 				else:
-					liveLink=re.sub('user=(.*?)&','user=%s&'%randomuser,liveLink)
-			player.play( liveLink,listitem)  
+					liveLinkPlay=re.sub('user=(.*?)&','user=%s&'%randomuser,liveLinkPlay)
+			player.play( liveLinkPlay,listitem)  
 			if pDialog.iscanceled():
 				break
 			#pDialog.close()
