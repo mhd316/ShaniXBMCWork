@@ -1,4 +1,13 @@
 <channels>
+
+<channel>
+	<cname>Kurdmax</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/kk/kurdmax_tv.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>Iraq</category>
+	</assignedcategory>
+</channel>
 <channel>
 	<cname>Iraq Watania</cname>
 	<imageurl></imageurl>
