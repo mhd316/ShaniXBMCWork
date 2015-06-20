@@ -1038,13 +1038,17 @@ def AddChannelsFromOthers(isPakistani):
             match.append(('Ary Zindagi','manual',base64.b64decode('aHR0cDovL2xpdmUuYXJ5emluZGFnaS50di8='),base64.b64decode('aHR0cDovL3d3dy5hcnl6aW5kYWdpLnR2L3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDE0LzEwL0ZpbmFsLWxvZ28tMi5naWY=')))
             match.append(('QTV','manual',base64.b64decode('aHR0cDovL2xpdmUuYXJ5cXR2LnR2Lw=='),base64.b64decode('aHR0cDovL2FyeXF0di50di93cC1jb250ZW50L3VwbG9hZHMvMjAxNC8xMi9hcnktcXR2LTEtY29weS5qcGc=')))
             
+            match.append((base64.b64decode('RHVueWEgKHdlYnNpdGUp'),'manual',base64.b64decode('aHR0cDovL2ltb2IuZHVueWFuZXdzLnR2OjE5MzUvbGl2ZS9zbWlsOnN0cmVhbS5zbWlsL3BsYXlsaXN0Lm0zdTg='),''))
+            match.append((base64.b64decode('Q2FwaXRhbCAod2Vic2l0ZSk='),'manual',base64.b64decode('ZWJvdW5kOmNhcGl0YWx0dg=='),''))
+            match.append((base64.b64decode('RGF3biBuZXdzICh3ZWJzaXRlKQ=='),'manual',base64.b64decode('ZWJvdW5kOmRhd24='),''))
+
 
         else:
             match.append(('Color','manual','cid:316',''))
 
         
     match.append((base64.b64decode('U2t5IFNwb3J0IDE='),'manual',base64.b64decode('aHR0cDovL2pweG1sLmphZG9vdHYuY29tL3Z1eG1sLnBocC9qYWRvb3htbC9wbGF5LzMxNg=='),''))
-
+     
 #    match.append((base64.b64decode('U2t5IFNwb3J0IDI='),'manual',base64.b64decode('aHR0cDovL2pweG1sLmphZG9vdHYuY29tL3Z1eG1sLnBocC9qYWRvb3htbC9wbGF5LzMyNg=='),''))
 #    match.append((base64.b64decode('U2t5IFNwb3J0IDM='),'manual',base64.b64decode('aHR0cDovL215amFkb290di5qYWRvb3R2LmNvbS9qbWFya3MvYm94L3BsYXlWaWRlby5waHA/cGxheVVybD1ydG1wOi8vcXVpbnplbGl2ZWZzLmZwbGl2ZS5uZXQvcXVpbnplbGl2ZS1saXZlL3NreXNwb3J0czMuc3RyZWFtP3NlY3VyaXR5dHlwZT0y'),''))
 #    match.append((base64.b64decode('U2t5IFNwb3J0IDQ='),'manual',base64.b64decode('aHR0cDovL2pweG1sLmphZG9vdHYuY29tL3Z1eG1sLnBocC9qYWRvb3htbC9wbGF5LzMxNQ=='),''))
@@ -1100,8 +1104,8 @@ def get_ferrari_url(page_data):
     print 'page_data2',page_data2
     patt='(http.*)'
     if 'adsid=' in page_data2:
-        page_data=re.compile(patt).findall(page_data2)[0]
-        page_data2=getUrl(page_data);
+        page_data2=re.compile(patt).findall(page_data2)[0]
+        page_data2=getUrl(page_data2);
     else:
         return page_data
 
@@ -1140,6 +1144,12 @@ def PlayOtherUrl ( url ):
     progress.update( 10, "", "Finding links..", "" )
 
     direct=False
+    
+    
+    if "ebound:" in url:
+        PlayLiveLink(url.split('ebound:')[1])
+        return
+    
     if url==base64.b64decode('aHR0cDovL2xpdmUuYXJ5emluZGFnaS50di8=') or url==base64.b64decode('aHR0cDovL2xpdmUuYXJ5cXR2LnR2Lw=='):
         req = urllib2.Request(url)
 #        req.add_header('User-Agent', base64.b64decode('VmVyaXNtby1CbGFja1VJXygyLjQuNy41LjguMC4zNCk=')) 
@@ -1157,7 +1167,7 @@ def PlayOtherUrl ( url ):
         curlpatth='<source src="(.*?)"'
         progress.update( 50, "", "Preparing url..", "" )
         dag_url =re.findall(curlpatth,link)[0]
-    elif 'dag1.asx' not in url and 'hdcast.org' not in url and '?securitytype=2' not in url and 'bernardotv.club' not in url:
+    elif 'dag1.asx' not in url and 'hdcast.org' not in url and '?securitytype=2' not in url and 'bernardotv.club' not in url and 'imob.dunyanews.tv' not in url:
         if '/play/' in url:
             code=base64.b64decode('MDAwNkRDODUz')+binascii.b2a_hex(os.urandom(2))[:3]
             url+=base64.b64decode('L1VTLzEv')+code
@@ -1266,7 +1276,8 @@ def AddChannelsFromEbound():
 	match.append(('Channel 92','channel92','manual'))
 	match.append(('Geo Super','geosuper','manual'))
 	match.append(('Bol News','bol','manual'))
-    
+	match.append(('Capital News','capitaltv','manual'))
+	match.append(('Dawn News','dawn','manual'))    
 	match.append(('Quran TV Urdu','aHR0cDovL2lzbDEuaXNsYW00cGVhY2UuY29tL1F1cmFuVXJkdVRW','gen'))
 
 	match.append(('Channel 24','cnRtcDovL2RzdHJlYW1vbmUuY29tOjE5MzUvbGl2ZS8gcGxheXBhdGg9Y2l0eTQyIHN3ZlVybD1odHRwOi8vZHN0cmVhbW9uZS5jb20vanAvandwbGF5ZXIuZmxhc2guc3dmIHBhZ2VVcmw9aHR0cDovL2RzdHJlYW1vbmUuY29tL2NpdHk0Mi9pZnJhbWUuaHRtbCB0aW1lb3V0PTIw','gen'))
