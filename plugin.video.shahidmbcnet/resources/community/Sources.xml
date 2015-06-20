@@ -17,7 +17,7 @@
 <sname>livetv.tn</sname>
 <colour>yellow</colour>
 <baseurl>http://www.livetv.tn/</baseurl>
-<enabled>False</enabled>
+<enabled>True</enabled>
 <urlfile>livetvUrls.xml</urlfile>
 <imageurl>http://www.livetv.tn/images/logoc.png</imageurl>
 <processor>livetvPlayer.py</processor>
