@@ -5,8 +5,11 @@
     <setting label="32012" type="text"   id="proxyName" default=""  enable="!eq(-1,false)"  />
       
      <setting type="sep"/>
-        <setting label="32014" type="labelenum" id="DefaultCDN" values="Default|l3|xdn|ak" default="Default"/>
-     	 
+			<setting label="32108" type="text" id="ShahidVodLogin" values="" default=""/>
+			<setting label="32109" type="text" id="ShahidVodPwd" values="" default=""/>  
+
+     <setting label="32014" type="labelenum" id="DefaultCDN" values="Default|l3|xdn|ak" default="Default"/>
+
      </category>
 <category label="32015">
  <setting label="32020" type="bool"   id="playFirstChannel" default="false"/>

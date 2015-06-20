@@ -7,6 +7,7 @@ import json
 import traceback
 import os
 import sys
+import cookielib
 from BeautifulSoup import BeautifulStoneSoup, BeautifulSoup, BeautifulSOAP, Tag,NavigableString
 try:
   from lxmlERRRORRRR import etree
@@ -41,6 +42,9 @@ addonArt = os.path.join(addonPath,'resources/images')
 communityStreamPath = os.path.join(addonPath,'resources')
 communityStreamPath =os.path.join(communityStreamPath,'community')
 profile_path =  xbmc.translatePath(selfAddon.getAddonInfo('profile'))
+
+ShahidCOOKIEFILE = communityStreamPath+'/ShahidVodCookie.lwp'
+
  
 mainurl='http://shahid.mbc.net'
 apikey='AIzaSyCl5mHLlE0mwsyG4uvNHu5k1Ej1LQ_3RO4'
@@ -50,13 +54,18 @@ def getMainUrl():
 	#check setting and see if we have proxy define, ifso, use that
 	isProxyEnabled=defaultCDN=selfAddon.getSetting( "isProxyEnabled" )
 	proxyAddress=defaultCDN=selfAddon.getSetting( "proxyName" )
+	applySSL=True    
 	if isProxyEnabled:#if its not None
 		#print 'isProxyEnabled',isProxyEnabled,proxyAddress
 		if isProxyEnabled=="true":
 			#print 'its enabled'
+			applySSL=False 
 			rMain=proxyAddress
 		#else: #print 'Proxy not enable'
-	return rMain#.replace('http:','https:')
+	if applySSL: 
+		return rMain.replace('http:','https:')
+	else:
+		return rMain#.replace('http:','https:')
 	
 	
 	
@@ -1178,39 +1187,181 @@ def import_module(name, package=None):
         name = _resolve_name(name[level:], package, level)
     __import__(name)
     return sys.modules[name]
-	
+def getUrl(url, cookieJar=None,post=None,referer=None,isJsonPost=False, acceptsession=None):
+
+	cookie_handler = urllib2.HTTPCookieProcessor(cookieJar)
+	opener = urllib2.build_opener(cookie_handler, urllib2.HTTPBasicAuthHandler(), urllib2.HTTPHandler())
+	#opener = urllib2.install_opener(opener)
+	req = urllib2.Request(url)
+	req.add_header('User-Agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36')
+	if isJsonPost:
+		req.add_header('Content-Type','application/json')
+	if acceptsession:
+		req.add_header('Accept-Session',acceptsession)
+        
+	if referer:
+		req.add_header('Referer',referer)
+	response = opener.open(req,post,timeout=30)
+	link=response.read()
+	response.close()
+	return link;
+    
+def performShahidLogin(pDialog=None):
+    try:
+        cookieJar=cookielib.LWPCookieJar()
+        userName=selfAddon.getSetting( "ShahidVodLogin" )
+        password=selfAddon.getSetting( "ShahidVodPwd" )
+        pDialog.update(10, 'login being processed stage 0')
+
+        html_text=getUrl(getMainUrl()+"/arContent/getPlayerContent-param-.id-0.type-player.html",cookieJar,referer='https://shahid.mbc.net/ar/widgets.html?widget=login')
+        
+
+        post={'email':userName,'password':password}
+        post = json.dumps(post)
+        #post = urllib.urlencode(post)
+        import uuid
+        json_text=getUrl(getMainUrl()+"/wd/service/users/login?"+str(uuid.uuid4()),cookieJar,post,referer='https://shahid.mbc.net/ar/widgets.html?widget=login', isJsonPost=True)
+        cookieJar.save (ShahidCOOKIEFILE,ignore_discard=True)
+        pDialog.update(20, 'login processed stage 1')
+        print repr(cookieJar)
+        acceptsessionVal=''
+        for index, cookie in enumerate(cookieJar):
+            print cookie.name, cookie.path
+            if cookie.name=='JSESSIONID' and 'api-new' in cookie.path :
+                acceptsessionVal=cookie.value
+        print 'acceptsessionVal',acceptsessionVal
+        html_text=getUrl(getMainUrl()+"/wd/service/payment/getDefaultPaymentsInstrument?"+str(uuid.uuid4()),cookieJar,None,referer='https://shahid.mbc.net/ar/widgets.html?widget=login', isJsonPost=True,acceptsession=acceptsessionVal)
+
+        pDialog.update(30, 'login being processed stage 3')
+        userDetails = json.loads(json_text)
+        userDetails=userDetails["user"]
+            
+        firstName=userDetails["firstName"]#firstName
+        lastName=userDetails["lastName"]#lastName
+        userName=userDetails["userName"]#userName
+        csg_user_name=userDetails["userName"]#userName
+        subscriberId=userDetails["id"] #id
+
+        
+        post={'firstName':firstName,'lastName':lastName,'userName':userName,'csg_user_name':csg_user_name,'subscriberId':subscriberId,'sessionId':acceptsessionVal}
+        post = urllib.urlencode(post)
+        html_text=getUrl(getMainUrl()+"/populateContext",cookieJar,post,referer='https://shahid.mbc.net/ar/widgets.html?widget=login')
+
+        pDialog.update(40, 'login being processed stage 4')
+
+        cookieJar.save (ShahidCOOKIEFILE,ignore_discard=True)
+        pDialog.update(45, 'login being processed')
+        
+        return shouldShahidforceLogin(cookieJar)==False
+    except:
+        traceback.print_exc(file=sys.stdout)
+        return False
+        
+def shouldShahidforceLogin(cookieJar=None):
+    try:
+        url=getMainUrl()
+        if not cookieJar:
+            cookieJar=getShahidCookieJar()
+#        import uuid
+        html_txt=getUrl(getMainUrl()+"/arContent/getPlayerContent-param-.id-108122.type-player.html?",cookieJar,None,acceptsession=None)
+        #html_txt=getUrl(url,cookieJar)
+        
+            
+        if not 'shahid.net/mediaDelivery/media' in html_txt:
+            return True
+        else:
+            return False
+    except:
+        traceback.print_exc(file=sys.stdout)
+    return True
+    
+def getShahidCookieJar():
+    cookieJar=None
+    try:
+        cookieJar = cookielib.LWPCookieJar()
+        cookieJar.load(ShahidCOOKIEFILE,ignore_discard=True)
+    except: 
+        cookieJar=None
+
+    if not cookieJar:
+        cookieJar = cookielib.LWPCookieJar()
+
+    return cookieJar
+
+def processProxyLogin():
+    userName=selfAddon.getSetting( "ShahidVodLogin" )
+    password=selfAddon.getSetting( "ShahidVodPwd" )
+    post={'user':userName,'pwd':password}
+    post = urllib.urlencode(post)
+
+    html_txt=getUrl(getMainUrl()+"/proxychecklogin.php?",None,post)
+    
+    return cookielib.LWPCookieJar()
+
+
+def processShahidLogin(pDialog=None):
+    loginName=selfAddon.getSetting( "ShahidVodLogin" )
+    pDialog.update(10, 'Checking login status')
+
+    if not loginName=="":
+        if selfAddon.getSetting( "isProxyEnabled" )=="true":
+            return processProxyLogin()
+        if shouldShahidforceLogin():
+            if performShahidLogin(pDialog):
+                print 'done login'
+            else:
+                print 'login failed??'
+        else:
+            print 'Login not forced.. perhaps reusing the session'
+        cookie_jar=getShahidCookieJar()
+    else:
+        cookie_jar=cookielib.LWPCookieJar()
+    pDialog.update(50, 'login processed')
+
+    return cookie_jar
+            
 def PlayShowLink ( url ): 
-#	url = tabURL.replace('%s',channelName);
 	pDialog = xbmcgui.DialogProgress()
 	ret = pDialog.create('Shahid', 'Trying to resolve the url')
+	processShahidLogin(pDialog)
+	cookiejar=getShahidCookieJar();
+#	url = tabURL.replace('%s',channelName);
+
 	line1 = "Finding stream"
 	time = 500  #in miliseconds
 #	line1 = "Playing video Link"
 #	xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, time, __icon__))
 #	print url
-	req = urllib2.Request(url)
-	req.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36')
-	response = urllib2.urlopen(req)
-	link=response.read()
-	response.close()
+
+#	req = urllib2.Request(url)
+#	req.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36')
+#	response = urllib2.urlopen(req)
+#	link=response.read()
+#	response.close()
+
+	link=getUrl(url)
+
 #	print url
-	pDialog.update(20, 'reading the page')
+	pDialog.update(60, 'reading the page')
 
 	#print "PlayLINK"
 	playURL= match =re.findall('id  : "(.*?)",\s*pricingPlanId  : "(.*?)"', link)
 	videoID=match[0][0]# check if not found then try other methods
 	paymentID=match[0][1]
-	playlistURL=getMainUrl()+"/arContent/getPlayerContent-param-.id-%s.type-playegr.html" % ( videoID)
+#	playlistURL=getMainUrl()+"/arContent/getPlayerContent-param-.id-%s.type-playegr.html" % ( videoID)
 #	print playlistURL    
-#	playlistURL=getMainUrl()+"/arContent/getPlayerContent-param-.id-%s.type-player.pricingPlanId-%s.html" % ( videoID,paymentID)    
-	req = urllib2.Request(playlistURL)
-	req.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36')
-	response = urllib2.urlopen(req)
-	link=response.read()
+	playlistURL=getMainUrl()+"/arContent/getPlayerContent-param-.id-%s.type-player.html?" % ( videoID)    
+#	'''req = urllib2.Request(playlistURL)
+#	req.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36')
+#	response = urllib2.urlopen(req)
+#	link=response.read()
+#'''
+	link=getUrl(playlistURL,cookiejar)
+
 	print link
-	pDialog.update(60, 'Linked fetched')
+	pDialog.update(70, 'Linked fetched')
 #	print link
-	response.close()
+	#response.close()
 	patt='({.*})'
 	link=re.findall(patt, link)[0]
 	jsonData=json.loads(link)
