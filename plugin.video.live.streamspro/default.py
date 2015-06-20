@@ -1664,6 +1664,8 @@ def askCaptchaNew(imageregex,html_page,cookieJar,m):
         req.add_header('Referer', m['refer'])
     if 'agent' in m:
         req.add_header('User-agent', m['agent'])
+    if 'accept' in m:
+        req.add_header('Accept', m['accept'])
     if 'setcookie' in m:
         print 'adding cookie',m['setcookie']
         req.add_header('Cookie', m['setcookie'])
@@ -1671,7 +1673,7 @@ def askCaptchaNew(imageregex,html_page,cookieJar,m):
     #cookie_handler = urllib2.HTTPCookieProcessor(cookieJar)
     #opener = urllib2.build_opener(cookie_handler, urllib2.HTTPBasicAuthHandler(), urllib2.HTTPHandler())
     #opener = urllib2.install_opener(opener)
-    urllib2.urlopen(req)
+    #urllib2.urlopen(req)
     response = urllib2.urlopen(req)
 
     localFile.write(response.read())

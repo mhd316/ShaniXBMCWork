@@ -1,3 +1,6 @@
+Version 1.7.5
+fixed captchanew function and support accept there
+
 Version 1.7.4
 added accept param for regex
 
