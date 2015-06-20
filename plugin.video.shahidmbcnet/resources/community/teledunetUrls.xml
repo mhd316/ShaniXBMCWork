@@ -250,5 +250,10 @@
 	<streaminginfo><cname>TNN</cname><url>tnn</url></streaminginfo>
 	<streaminginfo><cname>Ten</cname><url>ten</url></streaminginfo>
 	<streaminginfo><cname>Toktok</cname><url>toktok_cinema</url></streaminginfo>
-	
+	<streaminginfo><cname>Echorouk Benna</cname><url>echorouk_benna_tv</url></streaminginfo>
+	<streaminginfo><cname>Iraq Watania</cname><url>iraq_watania</url></streaminginfo>
+	<streaminginfo><cname>Kurdmax</cname><url>kurdmax</url></streaminginfo>
+	<streaminginfo><cname>Cima metro</cname><url>cima_metro</url></streaminginfo>
+	<streaminginfo><cname>Mystro</cname><url>mystro_tv</url></streaminginfo>
+
 </streamingInfos>
