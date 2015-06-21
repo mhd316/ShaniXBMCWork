@@ -118,7 +118,7 @@ def PlayStream(sourceEtree, urlSoup, name, url):
 					print servers_array
 					server_pat="(rtmp:.*?),"
 					servers_array=re.findall(server_pat, servers_array)
-					rtmp=servers_array[2] 
+					rtmp=servers_array[0] 
 #					rtmp="rtmp://www.teledunet.com:1935/live2"
                     
 #					rtmp='%s/%s'%(servers_selected,channelId)
@@ -158,7 +158,7 @@ def PlayStream(sourceEtree, urlSoup, name, url):
    
 #		print 'rtmpstring',liveLink,rtmp
 #		liveLink=liveLink%(rtmp,channelId,match,channelId,channelId)
-		liveLinkdummy=liveLink%(rtmp,channelId,access_iddummy,freeCH,selfAddon.getSetting( "teledunetTvLogin" ),'')
+		liveLinkdummy=liveLink%(rtmp,'',access_id,freeCH,selfAddon.getSetting( "teledunetTvLogin" ),'')
 		liveLink=liveLink%(rtmp,channelId,access_id,freeCH,selfAddon.getSetting( "teledunetTvLogin" ),token)
 
                 
@@ -193,7 +193,7 @@ def PlayStream(sourceEtree, urlSoup, name, url):
 			player.pdialogue=pDialog
 			if pDialog.iscanceled():
 				break
-			if totalTried==2:
+			if 1==2 and totalTried==2:
 				if len(randomuser)==0:
 					break
 				else:
@@ -432,6 +432,11 @@ def getChannelHTML(cid):
 
         newURL='http://www.teledunet.com/mobile/'
         link=getUrl(newURL,cookie_jar ,None,'http://www.teledunet.com/')
+        post={'rndval':rnd}
+        post = urllib.urlencode(post)
+        link=getUrl(newURL,cookie_jar ,post,'http://www.teledunet.com/')
+        link=getUrl(newURL,cookie_jar ,None,'http://www.teledunet.com/')
+
         if newod1:
             link+='fromspacer('+newod1+")"
         
