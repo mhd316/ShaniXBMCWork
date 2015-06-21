@@ -37,184 +37,136 @@ cache2Hr              = StorageServer.StorageServer(cache_table,1)
 teledunet_htmlfile='TeledunetchannelList.html'
 profile_path =  xbmc.translatePath(selfAddon.getAddonInfo('profile'))
 def PlayStream(sourceEtree, urlSoup, name, url):
-	try:
-		channelId = urlSoup.url.text
-		pDialog = xbmcgui.DialogProgress()
-		pDialog.create('XBMC', 'Communicating with Teledunet')
-		pDialog.update(10, 'fetching channel page')
-		loginName=selfAddon.getSetting( "teledunetTvLogin" )
+    try:
+        channelId = urlSoup.url.text
+        pDialog = xbmcgui.DialogProgress()
+        pDialog.create('XBMC', 'Communicating with Teledunet')
+        pDialog.update(10, 'fetching channel page')
+        loginName=selfAddon.getSetting( "teledunetTvLogin" )
 
-		
-		
-
-		if 1==1:
-			newURL='http://www.teledunet.com/mobile/'
-			print 'newURL',newURL
-			#req = urllib2.Request(newURL)
-			#req.add_header('User-Agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36')
-			#req.add_header('Referer',newURL)
-			#response = urllib2.urlopen(req)
-			#link=response.read()
-			#response.close()
-			token=''
-			try:
-				link=None
-				result = getChannelHTML(channelId);#cache2Hr.cacheFunction(getChannelHTML)
-				
-				if result:
-					link=result['link']
-					token=result['token']
-					mainpage=result['mainpage']
+        howMaytimes=2    
+        totalTried=0
+        doDummy=False           
+        while totalTried<howMaytimes:
+            totalTried+=1
+            if 1==1:
+                newURL='http://www.teledunet.com/mobile/'
+                print 'newURL',newURL
+                token=''
+                try:
+                    link=None
+                    result = getChannelHTML(channelId);#cache2Hr.cacheFunction(getChannelHTML)
                     
-					print 'file_exists',len(link)
-				else:
-					print 'cache or the url failed!!'
-				#file_exists=cache2Hr.get('MainChannelPage')
+                    if result:
+                        link=result['link']
+                        token=result['token']
+                        mainpage=result['mainpage']
+                        
+                        print 'file_exists',len(link)
+                    else:
+                        print 'cache or the url failed!!'
+                    rtmp =re.findall(('rtmp://(.*?)/%s\''%channelId), link)
+                    if len(rtmp)==0:
+                        print 'creating it manually'
+                        rtmp='rtmp://127.0.0.1:1935/live/%s'%channelId
+                    else:
+                        rtmp=rtmp[0]               
+                    print 'rtmp1',rtmp
+                    rtmp='rtmp://%s/%s'%(rtmp,channelId)
+                    print 'rtmp2',rtmp
+                    if '127.0.0.1' in rtmp:
+                        server_pat='Array\((.*?)\);'
+                        servers_array=re.findall(server_pat, link)[0].replace('\'','')+','
+                        print servers_array
+                        server_pat="(rtmp:.*?),"
+                        servers_array=re.findall(server_pat, servers_array)
+                        rtmp=servers_array[0] 
+                except:
+                    clearFileCache()            
+                    traceback.print_exc(file=sys.stdout)
+                    print 'trying backup'
+                    try:
+                        link=getUrl("http://pastebin.com/raw.php?i=z66yHXcG", getCookieJar())
+                        rtmp =re.findall(('rtmp://(.*?)/%s\''%channelId), link)[0]
+                        rtmp='rtmp://%s/%s'%(rtmp,channelId)
+                    except:
+                        traceback.print_exc(file=sys.stdout)
+                        rtmp='rtmp://5.196.84.28:1935/live/%s'%(channelId)
+                        print 'error in channel using hardcoded value'
+            pDialog.update(80, 'trying to play')
+            liveLink= sourceEtree.findtext('rtmpstring');
+            freeCH='2m'
+            ip_patt="ip='(.*?)';"
+            dz_patt="dz='(.*?)';"
+            today = datetime.datetime.now()
+            v1 = 234*(366-(today - datetime.datetime(today.year, 1, 1)).days + 0);
+            v2 = 222; #something wrong in calc, may be timezone?
+            dz=re.findall(dz_patt, link)[0]        
+            ip=re.findall(ip_patt, link)[0]
+            ip2=''.join(ip.split('.')[0:4])
+            print 'dz',	dz        
+            access_id=str(((365-int(dz))*long(ip2)*v1)+v2)
+            access_id='?id1='+access_id
+            access_iddummy='?id1=1'
 
-				#if file_exists and file_exists=='yes':
-				#	print 'it says use local file'
-				#	link=getStoredFile(teledunet_htmlfile)
-				
-				#if link==None:
-				#	print 'Oopps, not using local file'
-				#	if not loginName=="":
-				#		if shouldforceLogin():
-				#			if performLogin():
-				#				print 'done login'
-				#			else:
-				#				print 'login failed??'
-				#		else:
-				#			print 'Login not forced.. perhaps reusing the session'
-				#	else:
-				#		print 'login name not defined'
+       
+            liveLinkdummy=liveLink%(rtmp,'',access_id,freeCH,selfAddon.getSetting( "teledunetTvLogin" ),'')
+            liveLink=liveLink%(rtmp,channelId,access_id,freeCH,selfAddon.getSetting( "teledunetTvLogin" ),token)
 
-					
-				#	link=getUrl(newURL,getCookieJar() ,None,'http://www.teledunet.com/')
-					#if storeInFile(link,teledunet_htmlfile):
-					#	cache2Hr.set('MainChannelPage','yes')
-					#	print 'Stored in local file',cache2Hr.get('MainChannelPage')
-					
-#				if 'fromspacer' in link:
-#					match =re.findall('fromspacer\((.*?)\)', link)
-#				else:
-#					match =re.findall('aut=\'\?id0=(.*?)\'', link)
-#				print match
-#				timesegment=str(long(float(match[0])))#
-#				if timesegment=="0":#
-#					print 1/0; #produce error
-#				print 'link',link
-				rtmp =re.findall(('rtmp://(.*?)/%s\''%channelId), link)
-				if len(rtmp)==0:
-					print 'creating it manually'
-					rtmp='rtmp://127.0.0.1:1935/live/%s'%channelId
-				else:
-					rtmp=rtmp[0]               
-				print 'rtmp1',rtmp
-				rtmp='rtmp://%s/%s'%(rtmp,channelId)
-				print 'rtmp2',rtmp
-				if '127.0.0.1' in rtmp:
-					server_pat='Array\((.*?)\);'
-					servers_array=re.findall(server_pat, link)[0].replace('\'','')+','
-					print servers_array
-					server_pat="(rtmp:.*?),"
-					servers_array=re.findall(server_pat, servers_array)
-					rtmp=servers_array[0] 
-#					rtmp="rtmp://www.teledunet.com:1935/live2"
                     
-#					rtmp='%s/%s'%(servers_selected,channelId)
-#					print 'servers_selected',servers_selected,rtmp
-				#if '5.135.134.110' in rtmp and 'bein' in channelId:
-				#	rtmp=rtmp.replace('5.135.134.110','www.teledunet.com')
-			except:
-				clearFileCache()            
-				traceback.print_exc(file=sys.stdout)
-				print 'trying backup'
-				try:
-					link=getUrl("http://pastebin.com/raw.php?i=z66yHXcG", getCookieJar())
-					rtmp =re.findall(('rtmp://(.*?)/%s\''%channelId), link)[0]
-					rtmp='rtmp://%s/%s'%(rtmp,channelId)
-				except:
-					traceback.print_exc(file=sys.stdout)
-					rtmp='rtmp://5.196.84.28:1935/live/%s'%(channelId)
-					print 'error in channel using hardcoded value'
-		pDialog.update(80, 'trying to play')
-		liveLink= sourceEtree.findtext('rtmpstring');
-		freeCH='2m'
-#		html=getUrl("http://www.teledunet.com/mobile/access_id.php",getCookieJar())
-#		access_id=html
-		ip_patt="ip='(.*?)';"
-		dz_patt="dz='(.*?)';"
-		today = datetime.datetime.now()
-		v1 = 234*(366-(today - datetime.datetime(today.year, 1, 1)).days + 0);
-		v2 = 222; #something wrong in calc, may be timezone?
-		dz=re.findall(dz_patt, link)[0]        
-		ip=re.findall(ip_patt, link)[0]
-		ip2=''.join(ip.split('.')[0:4])
-		print 'dz',	dz        
-		access_id=str(((365-int(dz))*long(ip2)*v1)+v2)
-		access_id='?id1='+access_id
-		access_iddummy='?id1=1'
+            name+='-Teledunet'
+            print 'liveLink',liveLink
+            pDialog.close()
+#            try:
+#                howMaytimes=int(selfAddon.getSetting( "teledunetRetryCount" ))
+#            except:pass
 
-   
-#		print 'rtmpstring',liveLink,rtmp
-#		liveLink=liveLink%(rtmp,channelId,match,channelId,channelId)
-		liveLinkdummy=liveLink%(rtmp,'',access_id,freeCH,selfAddon.getSetting( "teledunetTvLogin" ),'')
-		liveLink=liveLink%(rtmp,channelId,access_id,freeCH,selfAddon.getSetting( "teledunetTvLogin" ),token)
+            pDialog = xbmcgui.DialogProgress()
+            pDialog.create('XBMC', 'Playing channel')
 
-                
-		name+='-Teledunet'
-		print 'liveLink',liveLink
-		pDialog.close()
-		totalTried=0
-		howMaytimes=15
-		try:
-			howMaytimes=int(selfAddon.getSetting( "teledunetRetryCount" ))
-		except:pass
-
-		pDialog = xbmcgui.DialogProgress()
-		pDialog.create('XBMC', 'Playing channel')
-		howMaytimes=1
-		patt='add_friend=(.*?)\'.*?<img src="premium.png"'
-		res=re.findall(patt, mainpage)
-		randomuser=''
-		if res and len(res)>0:
-			randomuser=res[0]
-			doDummy=False            
-		while totalTried<howMaytimes:
-			liveLinkPlay=liveLink
-			if totalTried==0 and doDummy:
-				liveLinkPlay=liveLinkdummy
-			totalTried+=1
-			pDialog.update((totalTried*100)/howMaytimes, 'Teledunet: Try #' + str(totalTried) +' of ' + str(howMaytimes))
-			listitem = xbmcgui.ListItem( label = str(name), iconImage = "DefaultVideo.png", thumbnailImage = xbmc.getInfoImage( "ListItem.Thumb" ), path=liveLinkPlay )
-			player = CustomPlayer.MyXBMCPlayer()
-			#xbmc.Player().play( liveLink,listitem)
-			start = time.time()  
-			player.pdialogue=pDialog
-			if pDialog.iscanceled():
-				break
-			if 1==2 and totalTried==2:
-				if len(randomuser)==0:
-					break
-				else:
-					liveLinkPlay=re.sub('user=(.*?)&','user=%s&'%randomuser,liveLinkPlay)
-			player.play( liveLinkPlay,listitem)  
-			if pDialog.iscanceled():
-				break
-			#pDialog.close()
-			while player.is_active:
-				xbmc.sleep(200)
-			#return player.urlplayed
-			done = time.time()
-			elapsed = done - start
-			#save file
-			if player.urlplayed and elapsed>=3:
-				return True
-		pDialog.close()
-		return False
-	except:
-		traceback.print_exc(file=sys.stdout)    
-	return False  
+            patt='add_friend=(.*?)\'.*?<img src="premium.png"'
+            res=re.findall(patt, mainpage)
+            randomuser=''
+            if res and len(res)>0:
+                randomuser=res[0]
+      
+#		howMaytimes=2
+#		totalTried=0        
+#		while totalTried<howMaytimes:
+            if 1==1:##instead of while
+                liveLinkPlay=liveLink
+                if totalTried==1 and doDummy:
+                    liveLinkPlay=liveLinkdummy
+                pDialog.update((totalTried*100)/howMaytimes, 'Teledunet: Try #' + str(totalTried) +' of ' + str(howMaytimes))
+                listitem = xbmcgui.ListItem( label = str(name), iconImage = "DefaultVideo.png", thumbnailImage = xbmc.getInfoImage( "ListItem.Thumb" ), path=liveLinkPlay )
+                player = CustomPlayer.MyXBMCPlayer()
+                #xbmc.Player().play( liveLink,listitem)
+                start = time.time()  
+                player.pdialogue=pDialog
+                if pDialog.iscanceled():
+                    break
+                if 1==2 and totalTried==2:
+                    if len(randomuser)==0:
+                        break
+                    else:
+                        liveLinkPlay=re.sub('user=(.*?)&','user=%s&'%randomuser,liveLinkPlay)
+                player.play( liveLinkPlay,listitem)  
+                if pDialog.iscanceled():
+                    break
+                #pDialog.close()
+                while player.is_active:
+                    xbmc.sleep(200)
+                #return player.urlplayed
+                done = time.time()
+                elapsed = done - start
+                #save file
+                if player.urlplayed and elapsed>=3:
+                    return True
+        pDialog.close()
+        return False
+    except:
+        traceback.print_exc(file=sys.stdout)    
+    return False  
 
 
 
