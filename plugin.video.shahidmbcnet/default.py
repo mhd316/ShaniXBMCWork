@@ -215,6 +215,9 @@ def Addtypes():
 	#2 is series=3 are links
 	addDir('Shahid Vod by Channels' ,getMainUrl()+'/ar/channel-browser.html' ,2,addonArt+'/channels.png') #links #2 channels,3 series,4 video entry, 5 play
 	addDir('Shahid Vod by Series' ,getMainUrl()+'/ar/series-browser.html' ,6,addonArt+'/serial.png')
+##stopping it as currently its Drmd!
+##	addDir('Shahid Vod Films' ,getMainUrl()+'/ar/movies.html' ,27,addonArt+'/serial.png')
+
 	#addDir('Streams' ,'streams' ,9,addonArt+'/stream.png')
 	addDir('Shahid Youtube' ,'http://gdata.youtube.com/feeds/api/users/aljadeedonline' ,18,addonArt+'/youtube.png')    
 	addDir('Download Files' ,'cRefresh' ,17,addonArt+'/download-icon.png',isItFolder=False)
@@ -222,6 +225,38 @@ def Addtypes():
 #	addDir('Livetv.tn Login' ,'Livetv' ,24,addonArt+'/setting.png',isItFolder=False) ##
 	return
 
+def AddShahidVodMovietypes():
+	addDir('Best Of Drama' ,getMainUrl()+'/ar/movies/content/04-param-.sort-popular.pageNumber-1.html' ,28,addonArt+'/channels.png') #links #2 channels,3 series,4 video entry, 5 play
+	addDir('Best Of Commedy' ,getMainUrl()+'/ar/movies/content/00-param-.sort-popular.pageNumber-1.html' ,29,addonArt+'/channels.png') #links #2 channels,3 series,4 video entry, 5 play
+	addDir('Best Of Classics' ,getMainUrl()+'/ar/movies/content/01-param-.sort-popular.pageNumber-1.html' ,30,addonArt+'/channels.png') #links #2 channels,3 series,4 video entry, 5 play
+	addDir('Latest Movies' ,getMainUrl()+'/ar/movies/content/0~listing~-param-.ptype-.Id-0.sort-latest.pageNumber-1.html' ,31,addonArt+'/channels.png') #links #2 channels,3 series,4 video entry, 5 play
+#	addDir('Livetv.tn Login' ,'Livetv' ,24,addonArt+'/setting.png',isItFolder=False) ##
+	return
+def AddShahidMovies(url):
+    link=getUrl(url);
+    patt='<img.*alt="(.*?)" src="(.*?)".*\s?.*\s.*\s*.*\/movie\/([0-9]*)'
+    match =re.findall(patt, link, re.UNICODE)
+    totalEnteries=len(match)
+    for cname in match:
+        finalName=cname[0];
+        img=cname[1]
+        addDir(finalName ,cname[2] ,32,img,showContext=False,isItFolder=False)
+'''    print 'Current pg',pageNumber,Fromurl
+    if totalEnteries>=24:
+        match =re.findall('<li class="arrowrgt"><a.*?this, \'(.*?(relatedEpisodeListingDynamic).*?)\'', link, re.UNICODE)
+        if len(match)>0 or mode==7  :
+            if not pageNumber=="":
+                pageNumber=str(int(pageNumber)+1);#parseInt(1)+1;
+            else:
+                pageNumber="1";
+            if mode==7:
+                newurl=(Fromurl.split('pageNumber')[0]+'pageNumber-%s.html')%pageNumber
+            else:
+                newurl=getMainUrl()+match[0][0]+'.sort-number:DESC.pageNumber-%s.html'%pageNumber;
+            print 'next page url',newurl
+            addDir('Next Page' ,newurl ,7,addonArt+'/next.png', False,pageNumber=pageNumber)		#name,url,mode,icon
+'''
+    
 def AddYoutubeLanding(url):
 	if not url.lower().startswith('http'):
 		if url=='LOCAL':
@@ -1342,18 +1377,21 @@ def PlayShowLink ( url ):
 #	link=response.read()
 #	response.close()
 
-	link=getUrl(url)
-
 #	print url
 	pDialog.update(60, 'reading the page')
-
+	if mode==32:
+		#print "PlayLINK"
+		videoID=url
+	else:
 	#print "PlayLINK"
-	playURL= match =re.findall('id  : "(.*?)",\s*pricingPlanId  : "(.*?)"', link)
-	videoID=match[0][0]# check if not found then try other methods
-	paymentID=match[0][1]
+    
+		link=getUrl(url)
+		playURL= match =re.findall('id  : "(.*?)",\s*pricingPlanId  : "(.*?)"', link)
+		videoID=match[0][0]# check if not found then try other methods
+		paymentID=match[0][1]
 #	playlistURL=getMainUrl()+"/arContent/getPlayerContent-param-.id-%s.type-playegr.html" % ( videoID)
 	loginName=selfAddon.getSetting( "ShahidVodLogin" )   
-	if not loginName=="":
+	if not loginName=="" or mode==32:
 		playlistURL=getMainUrl()+"/arContent/getPlayerContent-param-.id-%s.type-player.html?" % ( videoID) 
 		link=getUrl(playlistURL,cookiejar)        
 	else:
@@ -2058,7 +2096,7 @@ try:
 		print "Play url is "+url
 		AddEnteries(url,pageNumber)
 
-	elif mode==5:
+	elif mode==5 or mode==32:
 		PlayShowLink(url)
 	elif mode==8:
 		print "Play url is "+url,mode
@@ -2106,6 +2144,14 @@ try:
 	elif mode==25: #add communutycats
 		print "play youtube url is "+url,mode
 		ShowSources(url);	
+	elif mode==31: #add communutycats
+		print "play youtube url is "+url,mode
+		AddShahidMovies(url);	
+	elif mode==27: #add communutycats
+		print "play youtube url is "+url,mode
+		AddShahidVodMovietypes();	        
+        
+
 #	elif mode==26: #add communutycats
 #		print "play youtube url is "+url,mode
 #		ShowSources(url);	
@@ -2121,5 +2167,5 @@ try:
 			print 'view_mode_id',view_mode_id
 			xbmc.executebuiltin('Container.SetViewMode(%d)' % view_mode_id)
 except: pass
-if not ( mode==5 or mode==10 or mode==8 or mode==11 or mode==16 or mode==17):
+if not ( mode==5 or mode==10 or mode==8 or mode==11 or mode==16 or mode==17 or mode==32):
 	xbmcplugin.endOfDirectory(int(sys.argv[1]))
