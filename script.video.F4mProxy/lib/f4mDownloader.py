@@ -233,14 +233,16 @@ def build_fragments_list(boot_info, startFromFregment=None, live=True):
         #if len(segment_run_table['segment_run'])>2:
         #    segment_to_start=len(segment_run_table['segment_run'])-2;
         if live:
-            if len(boot_info['fragments'][0]['fragments'])>1: #go bit back
-                startFromFregment= boot_info['fragments'][0]['fragments'][-1]['first']
+            startFromFregment=segment_run_table['segment_run'][-1][3]
+#            if len(boot_info['fragments'][0]['fragments'])>1: #go bit back
+#               startFromFregment= boot_info['fragments'][0]['fragments'][-1]['first']
+
         else:
             startFromFregment= boot_info['fragments'][0]['fragments'][0]['first'] #start from begining
             
         #if len(boot_info['fragments'][0]['fragments'])>2: #go little bit back
         #    startFromFregment= boot_info['fragments'][0]['fragments'][-2]['first']
-        
+    print 'startFromFregment',startFromFregment,boot_info,len(boot_info['fragments'][0]['fragments'])
     #print 'segment_to_start',segment_to_start
     for currentIndex in range (segment_to_start,len(segment_run_table['segment_run'])):
         currentSegment=segment_run_table['segment_run'][currentIndex]

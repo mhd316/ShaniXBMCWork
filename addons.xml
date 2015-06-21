@@ -239,7 +239,7 @@
 
 <addon id="script.video.F4mProxy"
 	     name="F4mProxy"
-	     version="2.1.9"
+	     version="2.2.0"
 	     provider-name="Shani">
   <requires>
     <import addon="xbmc.python" version="2.1.0" />
