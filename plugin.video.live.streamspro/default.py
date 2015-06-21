@@ -497,6 +497,9 @@ def getSubChannelItems(name,url,fanart):
 def getItems(items,fanart):
         total = len(items)
         addon_log('Total Items: %s' %total)
+        add_playlist = addon.getSetting('add_playlist')
+        ask_playlist_items =addon.getSetting('ask_playlist_items')
+        use_thumb = addon.getSetting('use_thumb')        
         for item in items:
             isXMLSource=False
             isJsonrpc = False
@@ -672,29 +675,32 @@ def getItems(items,fanart):
                     regexs = parse_regex(reg_item)
                 except:
                     pass            
-           
             try:
                 if len(url) > 1:
                     alt = 0
                     playlist = []
                     for i in url:
-                    	if addon.getSetting('ask_playlist_items') == 'true':
-	                        if regexs:
-	                            playlist.append(i+'&regexs='+regexs)
-	                        elif  any(x in i for x in resolve_url) and  i.startswith('http'):
-	                            playlist.append(i+'&mode=19')                            
-                        else:
-                            playlist.append(i)
-                    if addon.getSetting('add_playlist') == "false":                    
-                            for i in url:
+                            if  add_playlist == "false":
+
                                 alt += 1
-                                addLink(i,'%s) %s' %(alt, name.encode('utf-8', 'ignore')),thumbnail,fanArt,desc,genre,date,True,playlist,regexs,total)                            
-                    else:
-                        addLink('', name.encode('utf-8', 'ignore'),thumbnail,fanArt,desc,genre,date,True,playlist,regexs,total)
+                                addLink(i,'%s) %s' %(alt, name.encode('utf-8', 'ignore')),thumbnail,fanArt,desc,genre,date,True,playlist,regexs,total)
+
+                            elif  add_playlist == "true" and  ask_playlist_items == 'true':
+                                if regexs:
+                                    playlist.append(i+'&regexs='+regexs)
+                                elif  any(x in i for x in resolve_url) and  i.startswith('http'):
+                                    playlist.append(i+'&mode=19')
+                                else:
+                                    playlist.append(i)
+                            else:
+                                playlist.append(i)
+
+                    if len(playlist) > 1:
+                        addLink('', name,thumbnail,fanArt,desc,genre,date,True,playlist,regexs,total)
                 else:
                     if isXMLSource:
                     	addDir(name.encode('utf-8'),ext_url[0].encode('utf-8'),1,thumbnail,fanart,desc,genre,date,None,'source')
-                        #addLink(url[0],name.encode('utf-8', 'ignore'),thumbnail,fanArt,desc,genre,date,True,None,regexs,total)
+
                     elif isJsonrpc:
                         addDir(name.encode('utf-8'),ext_url[0],53,thumbnail,fanart,desc,genre,date,None,'source')
                         #xbmc.executebuiltin("Container.SetViewMode(500)")                    	
@@ -1826,9 +1832,11 @@ def urlsolver(url):
         else:
             resolver = resolved
     return resolver
-def play_playlist(name, mu_playlist):
-        import urlparse
-        if addon.getSetting('ask_playlist_items') == 'true':
+def play_playlist(name, mu_playlist,queueVideo=None):
+        playlist = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
+
+        if addon.getSetting('ask_playlist_items') == 'true' and not queueVideo :
+            import urlparse
             names = []
             for i in mu_playlist:
                 d_name=urlparse.urlparse(i).netloc
@@ -1840,25 +1848,45 @@ def play_playlist(name, mu_playlist):
             index = dialog.select('Choose a video source', names)
             if index >= 0:
                 if "&mode=19" in mu_playlist[index]:
-                    xbmc.Player().play(urlsolver(mu_playlist[index].replace('&mode=19','')))
+                    #playsetresolved (urlsolver(mu_playlist[index].replace('&mode=19','')),name,iconimage,True)
+                    xbmc.Player().play(urlsolver(mu_playlist[index].replace('&mode=19','').replace(';','')))
                 elif "$doregex" in mu_playlist[index] :
-
+                    print mu_playlist[index]
                     sepate = mu_playlist[index].split('&regexs=')
-
+                    print sepate
                     url,setresolved = getRegexParsed(sepate[1], sepate[0])
-                    xbmc.Player().play(url)
+                    url2 = url.replace(';','')
+                    xbmc.Player().play(url2)
+
                 else:
                     url = mu_playlist[index]
                     xbmc.Player().play(url)
-        else:
-            playlist = xbmc.PlayList(1) # 1 means video
+        elif not queueVideo:
+            #playlist = xbmc.PlayList(1) # 1 means video
             playlist.clear()
             item = 0
             for i in mu_playlist:
                 item += 1
                 info = xbmcgui.ListItem('%s) %s' %(str(item),name))
-                playlist.add(i, info)
+                # Don't do this as regex parsed might take longer
+                try:
+                    if "$doregex" in i:
+                        sepate = i.split('&regexs=')
+                        print sepate
+                        url,setresolved = getRegexParsed(sepate[1], sepate[0])
+                    if url:
+                        playlist.add(i, info)
+                    else:
+                        raise
+                except Exception:
+                    playlist.add(i, info)
+                    pass #xbmc.Player().play(url)
+
                 xbmc.executebuiltin('playlist.playoffset(video,0)')
+        else:
+
+                listitem = xbmcgui.ListItem(name)
+                playlist.add(mu_playlist, listitem)
 
 
 def download_file(name, url):
@@ -2022,45 +2050,42 @@ def sendJSON( command):
 
     return uni(data)
     
-def pluginquerybyJSON(url):
-    json_query = uni('{"jsonrpc":"2.0","method":"Files.GetDirectory","params":{"directory":"%s","media":"video","properties":["thumbnail","title","year","dateadded","fanart","rating","season","episode","studio"]},"id":1}') %url
-
+def pluginquerybyJSON(url,give_me_result=None,playlist=False):
+    if 'audio' in url:
+        json_query = uni('{"jsonrpc":"2.0","method":"Files.GetDirectory","params": {"directory":"%s","media":"video", "properties": ["title", "album", "artist", "duration","thumbnail", "year"]}, "id": 1}') %url
+    else:
+        json_query = uni('{"jsonrpc":"2.0","method":"Files.GetDirectory","params":{"directory":"%s","media":"video","properties":[ "plot","playcount","director", "genre","votes","duration","trailer","premiered","thumbnail","title","year","dateadded","fanart","rating","season","episode","studio","mpaa"]},"id":1}') %url
     json_folder_detail = json.loads(sendJSON(json_query))
-    for i in json_folder_detail['result']['files'] :
-        url = i['file']
-        name = removeNonAscii(i['label'])
-        thumbnail = removeNonAscii(i['thumbnail'])
-        try:
+    #print json_folder_detail
+    if give_me_result:
+        return json_folder_detail
+    if json_folder_detail.has_key('error'):
+        return
+    else:
+
+        for i in json_folder_detail['result']['files'] :
+            meta ={}
+            url = i['file']
+            name = removeNonAscii(i['label'])
+            thumbnail = removeNonAscii(i['thumbnail'])
             fanart = removeNonAscii(i['fanart'])
-        except Exception:
-            fanart = ''
-        try:
-            date = i['year']
-        except Exception:
-            date = ''
-        try:
-            episode = i['episode']
-            season = i['season']
-            if episode == -1 or season == -1:
-                description = ''
+            meta = dict((k,v) for k, v in i.iteritems() if not v == '0' or not v == -1 or v == '')
+            meta.pop("file", None)
+            if i['filetype'] == 'file':
+                if playlist:
+                    play_playlist(name,url,queueVideo='1')
+                    continue
+                else:
+                    addLink(url,name,thumbnail,fanart,'','','','',None,'',total=len(json_folder_detail['result']['files']),allinfo=meta)
+                    #xbmc.executebuiltin("Container.SetViewMode(500)")
+                    if i['type'] and i['type'] == 'tvshow' :
+                        xbmcplugin.setContent(int(sys.argv[1]), 'tvshows')
+                    elif i['episode'] > 0 :
+                        xbmcplugin.setContent(int(sys.argv[1]), 'episodes')
+
             else:
-                description = '[COLOR yellow] S' + str(season)+'[/COLOR][COLOR hotpink] E' + str(episode) +'[/COLOR]'
-        except Exception:
-            description = ''
-        try:
-            studio = i['studio']
-            if studio:
-                description += '\n Studio:[COLOR steelblue] ' + studio[0] + '[/COLOR]'
-        except Exception:
-            studio = ''
-
-        if i['filetype'] == 'file':
-            addLink(url,name,thumbnail,fanart,description,'',date,'',None,'',total=len(json_folder_detail['result']['files']))
-            #xbmc.executebuiltin("Container.SetViewMode(500)")
-
-        else:
-            addDir(name,url,53,thumbnail,fanart,description,'',date,'')
-            #xbmc.executebuiltin("Container.SetViewMode(500)")
+                addDir(name,url,53,thumbnail,fanart,'','','','',allinfo=meta)
+        xbmcplugin.endOfDirectory(int(sys.argv[1]))
 
 def addLink(url,name,iconimage,fanart,description,genre,date,showcontext,playlist,regexs,total,setCookie=""):
         #print 'url,name',url,name
@@ -2405,4 +2430,4 @@ elif mode==27:
 elif mode==53:
     addon_log("Requesting JSON-RPC Items")
     pluginquerybyJSON(url)
-    xbmcplugin.endOfDirectory(int(sys.argv[1]))    
+    #xbmcplugin.endOfDirectory(int(sys.argv[1]))    
