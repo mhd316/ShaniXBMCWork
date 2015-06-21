@@ -1,3 +1,6 @@
+Version 1.7.6
+Rolled back changes in 1.7.2 is back on, thanks alibaba!
+
 Version 1.7.5
 fixed captchanew function and support accept there
 
