@@ -6,6 +6,7 @@ import xbmcaddon
 from operator import itemgetter
 import traceback,cookielib
 import base64,os,  binascii
+import CustomPlayer
 
 try:
     import json
@@ -30,6 +31,7 @@ mainurl=base64.b64decode('aHR0cDovL3d3dy56ZW10di5jb20v')
 liveURL=base64.b64decode('aHR0cDovL3d3dy56ZW10di5jb20vbGl2ZS1wYWtpc3RhbmktbmV3cy1jaGFubmVscy8=')
 
 tabURL =base64.b64decode('aHR0cDovL3d3dy5lYm91bmRzZXJ2aWNlcy5jb206ODg4OC91c2Vycy9yZXgvbV9saXZlLnBocD9hcHA9JXMmc3RyZWFtPSVz')
+
 class NoRedirection(urllib2.HTTPErrorProcessor):
    def http_response(self, request, response):
        return response
@@ -1098,28 +1100,48 @@ def revist_dag(page_data):
 
     return final_url
     
-def get_ferrari_url(page_data):
-    print 'get_dag_url2',page_data
+def get_ferrari_url(page_data,progress):
+#    print 'get_dag_url2',page_data
     page_data2=getUrl(page_data);
-    print 'page_data2',page_data2
+#    print 'page_data2',page_data2
     patt='(http.*)'
     if 'adsid=' in page_data2:
         page_data2=re.compile(patt).findall(page_data2)[0]
-        page_data2=getUrl(page_data2);
+        page_data=page_data2;
     else:
         return page_data
 
+    progress.update( 30, "", "Found Ads", "" )
     import uuid
-    playback=str(uuid.uuid1()).upper()
-    links=re.compile(patt).findall(page_data2)
-    headers=[('X-Playback-Session-Id',playback)]
-    for l in links:
-        try:
-                print l
-                page_datatemp=getUrl(l,headers=headers);
-                    
-        except: traceback.print_exc(file=sys.stdout)
-    
+    playback=str(uuid.uuid1()).upper()   
+    i=0
+    addval=0
+    opener = urllib2.build_opener(NoRedirection)
+    while i<3:      
+        if not 'EXT-X-DISCONTINUITY' in page_data2:
+#            print page_data
+            page_data2=getUrl(page_data);
+#            print page_data2
+            links=re.compile(patt).findall(page_data2)
+ #           print links
+            headers=[('X-Playback-Session-Id',playback)]
+            for l in links:
+                addval+=1;
+                progress.update( 30+addval*5, "", "Fetching Ads links #" + str(addval), "" )
+                try:
+                        if 1==1 or 'getDataTracker' in l:
+#                            print 'playing the link'+l
+                            #page_datatemp=getUrl(l,headers=headers,noredirect=True);
+
+                            response = opener.open(l)
+                            
+                except: traceback.print_exc(file=sys.stdout)
+        else:
+            break
+        i+=1
+
+    progress.update( 90, "", "Almost completed" , "" )
+    print 'work done here '+page_data
     return page_data+'|&X-Playback-Session-Id='+playback
     
 def get_dag_url(page_data):
@@ -1224,9 +1246,9 @@ def PlayOtherUrl ( url ):
     
     print 'final_urlllllllllllll',final_url
 
-    if base64.b64decode('amFkb29fdG9rZW4=') in final_url:
+    if base64.b64decode('amFkb29fdG9rZW4=') in final_url or 'elasticbeanstalk' in final_url:
         print 'In Ferari url'
-        final_url=get_ferrari_url(final_url)        
+        final_url=get_ferrari_url(final_url,progress)        
     progress.update( 100, "", "Almost done..", "" )
     print final_url
     listitem = xbmcgui.ListItem( label = str(name), iconImage = "DefaultVideo.png", thumbnailImage = xbmc.getInfoImage( "ListItem.Thumb" ) )
