@@ -39,3 +39,5 @@ support setresolved param
 
 [B]Version 2.1.8[/B]
 icon change
+[B]Version 2.1.9[/B]
+correct bbc links
