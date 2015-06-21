@@ -1,5 +1,13 @@
 <channels>
-
+<channel>
+	<cname>Dubai Quran</cname>
+	<imageurl>http://s21.postimg.org/lsntfqm8j/quranlogo.jpg</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>gulf</category>
+	<category>islam</category>
+	</assignedcategory>
+</channel>	
 <channel>
 	<cname>Kurdmax</cname>
 	<imageurl>http://www.lyngsat-logo.com/hires/kk/kurdmax_tv.png</imageurl>
