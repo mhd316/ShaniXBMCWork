@@ -1400,7 +1400,7 @@ def PlayShowLink ( url ):
 		urltoget='http://api.shahid.net/api/Content/Episode/'+videoID+'/8879?apiKey=sh%40hid0nlin3&hash=b2wMCTHpSmyxGqQjJFOycRmLSex%2BBpTK%2Fooxy6vHaqs%3D'
 		post={'u':urltoget,'encodeURL':'on','allowCookies':'on','stripJS':'on','stripObjects':'on'}
 		post = urllib.urlencode(post)
-		link= getUrl('https://proxyusa.org/includes/process.php?action=update',cJar,post)
+		link= getUrl('http://proxyusa.org/includes/process.php?action=update',cJar,post)
         #	'''req = urllib2.Request(playlistURL)
 #	req.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36')
 #	response = urllib2.urlopen(req)
