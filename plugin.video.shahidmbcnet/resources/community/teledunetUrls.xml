@@ -244,7 +244,7 @@
 	<streaminginfo><cname>Darbaka Aflam</cname><url>darbaka_aflam</url></streaminginfo>
 	<streaminginfo><cname>Ettounsia</cname><url>ettounsia</url></streaminginfo>
 	<streaminginfo><cname>Fox</cname><url>fox</url></streaminginfo>
-	<streaminginfo><cname>Libya Alrasmiya</cname><url>libya_alrasmia</url></streaminginfo>
+	<streaminginfo><cname>Libya Alrasmiya</cname><url>libya_alrasmiya</url></streaminginfo>
 	<streaminginfo><cname>M Tunisia</cname><url>m_tunisia</url></streaminginfo>
 	<streaminginfo><cname>Sada AlBalad Drama</cname><url>sada_albalad_drama</url></streaminginfo>
 	<streaminginfo><cname>TNN</cname><url>tnn</url></streaminginfo>
@@ -257,10 +257,14 @@
 	<streaminginfo><cname>Mystro</cname><url>mystro_tv</url></streaminginfo>
 	<streaminginfo><cname>Sada Al Balad</cname><url>sada_al_balad</url></streaminginfo>
 	<streaminginfo><cname>Al Magharibia</cname><url>cal_magharibia</url></streaminginfo>
-	<streaminginfo><cname>Al Nahar Alyoum</cname><url>calnahar_alyawm</url></streaminginfo>
-	<streaminginfo><cname>Cinema Pro</cname><url>ccinema_pro</url></streaminginfo>
-	<streaminginfo><cname>Dubai Quran</cname><url>cdubai_quran</url></streaminginfo>
-	<streaminginfo><cname>Sama Cinema</cname><url>csama_cinema</url></streaminginfo>
-	<streaminginfo><cname>SHAABIYAT</cname><url>csha3biyat</url></streaminginfo>
+	<streaminginfo><cname>Al Nahar Alyoum</cname><url>alnahar_alyawm</url></streaminginfo>
+	<streaminginfo><cname>Cinema Pro</cname><url>cinema_pro</url></streaminginfo>
+	<streaminginfo><cname>Dubai Quran</cname><url>dubai_quran</url></streaminginfo>
+	<streaminginfo><cname>Sama Cinema</cname><url>sama_cinema</url></streaminginfo>
+	<streaminginfo><cname>SHAABIYAT</cname><url>sha3biyat</url></streaminginfo>
+	<streaminginfo><cname>Aldiyar</cname><url>al_diyar</url></streaminginfo>
+	<streaminginfo><cname>Al Kawthar</cname><url>alkawthar</url></streaminginfo>
+	<streaminginfo><cname>CCTV Arabic</cname><url>cctvt</url></streaminginfo>
+
 
 </streamingInfos>
