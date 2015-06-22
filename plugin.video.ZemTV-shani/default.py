@@ -536,13 +536,13 @@ def getMatchUrl(matchid):
                     matchid,source_sectionid=matchid.split(':')
                     st='Replay'
                     url='https://www.willow.tv/EventMgmt/ReplayURL.asp?mid=%s&userId=%s'%(matchid,userid)
-                    pat='secureurl":"(.*?)".*?priority":%s,'%source_sectionid
+                    pat='secureurl":"(.*?)".*?priority":%s,'%source_sectionid    
                     calltype='RecordOne'     
                 else:
                     returnParts=True
                     st='Replay'
                     url='https://www.willow.tv/EventMgmt/ReplayURL.asp?mid=%s&userId=%s'%(matchid,userid)
-                    pat='"priority":(.+?),'
+                    pat='"priority":(.+?),"title":"(.*?)",'
                     calltype='RecordAll' 
             
             videoPage = getUrl(url,cookieJar=cookieJar)    
@@ -559,8 +559,9 @@ def getMatchUrl(matchid):
                 final_url=re.findall(pat,videoPage)
                 final_url2=''
                 for u in final_url:
-                    final_url2+='Part Number:'+u+'='+u+','
+                    final_url2+='#'+str(u[0]) +' ' +u[1].replace(',','')+'='+u[0]+','
                 final_url=final_url2[:-1]
+  
             final_url= urllib2.unquote(final_url)  
             final_url=final_url.split('debug')[0]
             return final_url
