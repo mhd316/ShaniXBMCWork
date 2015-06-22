@@ -80,7 +80,16 @@ def PlayStream(sourceEtree, urlSoup, name, url):
                         print servers_array
                         server_pat="(rtmp:.*?),"
                         servers_array=re.findall(server_pat, servers_array)
-                        rtmp=servers_array[0] 
+                        spat='server_num=([0-9]*);'
+                        try:
+                            sidtemp=int(re.findall(spat, link)[-1])
+                            print 'sidtemp',sidtemp
+                            if (sidtemp)<len(servers_array): 
+                                servers_array = [servers_array.pop(sidtemp)]+servers_array
+                            print 'servers_array revised',servers_array
+                        except: pass
+                        
+                        rtmp=servers_array[totalTried-1] 
                 except:
                     clearFileCache()            
                     traceback.print_exc(file=sys.stdout)
@@ -110,7 +119,7 @@ def PlayStream(sourceEtree, urlSoup, name, url):
             access_iddummy='?id1=1'
 
        
-            liveLinkdummy=liveLink%(rtmp,'',access_id,freeCH,selfAddon.getSetting( "teledunetTvLogin" ),'')
+            liveLinkdummy=liveLink%(rtmp,'',access_iddummy,freeCH,selfAddon.getSetting( "teledunetTvLogin" ),'')
             liveLink=liveLink%(rtmp,channelId,access_id,freeCH,selfAddon.getSetting( "teledunetTvLogin" ),token)
 
                     
@@ -352,7 +361,7 @@ def getChannelHTML(cid):
         import time
         #currentTime=int(time.time()*1000)
         
-        rnd=time.time()*1000
+        rnd=str(int(time.time()*1000))
         post={'rndval':rnd}
         post = urllib.urlencode(post)
         html=getUrl('http://www.teledunet.com/comment.php?w=100%&pseudo_2=&get_comments=Salon_Publique', cookie_jar,referer='http://www.teledunet.com/',post=post)
@@ -384,7 +393,12 @@ def getChannelHTML(cid):
 
         newURL='http://www.teledunet.com/mobile/'
         link=getUrl(newURL,cookie_jar ,None,'http://www.teledunet.com/')
-        post={'rndval':rnd}
+        post={'rndval':str(rnd)}
+
+#1434990709582
+#1434991032915
+
+        link=getUrl('http://www.teledunet.com/pay/',cookie_jar ,None,'http://www.teledunet.com/')
         post = urllib.urlencode(post)
         link=getUrl(newURL,cookie_jar ,post,'http://www.teledunet.com/')
         link=getUrl(newURL,cookie_jar ,None,'http://www.teledunet.com/')
