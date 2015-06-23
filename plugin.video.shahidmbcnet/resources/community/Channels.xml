@@ -620,22 +620,6 @@
 	</assignedcategory>
 </channel>
 <channel>
-	<cname>Alatlas</cname>
-	<imageurl>http://s10.postimg.org/b8a7m2iex/AL_ATLAS_LOGO_TEST.png</imageurl>
-	<enabled>True</enabled>
-	<assignedcategory>
-	<category>dzair</category>
-	</assignedcategory>
-</channel>
-<channel>
-	<cname>Amana</cname>
-	<imageurl>http://www.lyngsat-logo.com/hires/aa/amana_tv_dz.png</imageurl>
-	<enabled>True</enabled>
-	<assignedcategory>
-	<category>dzair</category>
-	</assignedcategory>
-</channel>
-<channel>
 	<cname>Kawaliss</cname>
 	<imageurl>http://s14.postimg.org/f9x9xte7l/Kawaliss.png</imageurl>
 	<enabled>True</enabled>
