@@ -128,13 +128,13 @@ def getBBCUrl(urlToFetch):
     birates=re.findall(regstring, text)
     birates=[(int(j),f) for f,j in birates]
     birates=sorted(birates, key=lambda f: f[0])
-    urlsel=''
+    ratesel, urlsel=birates[0]
+
     for r, url in birates:
         if r<=bitRate:
             ratesel, urlsel=r, url 
         else:
             break
-    if urlsel=='': urlsel=birates[1]
     print 'xxxxxxxxx',ratesel, urlsel
     return urlsel
     
