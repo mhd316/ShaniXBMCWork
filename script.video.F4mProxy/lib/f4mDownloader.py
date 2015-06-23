@@ -761,7 +761,7 @@ class F4MDownloader():
 
         try:
             retries=0
-            while retries<=5:
+            while retries<=10:
 
                 if self.g_stopEvent and self.g_stopEvent.isSet():
                         return

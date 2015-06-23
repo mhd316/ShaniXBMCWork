@@ -54,3 +54,5 @@ Query string problem
 
 [B]Version 2.2.0[/B]
 Fixed for BBC, now picking up last fragement of last segment
+[B]Version 2.2.1[/B]
+updated the retry
