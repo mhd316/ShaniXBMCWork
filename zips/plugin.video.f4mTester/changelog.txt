@@ -41,3 +41,6 @@ support setresolved param
 icon change
 [B]Version 2.1.9[/B]
 correct bbc links
+[B]Version 2.2.0[/B]
+Introduced settings for BBC birate
+

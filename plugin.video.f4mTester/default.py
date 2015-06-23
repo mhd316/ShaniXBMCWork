@@ -8,6 +8,13 @@ import base64
 #from t0mm0.common.net import Net
 import urlparse
 import xbmcplugin
+import cookielib
+
+__addon__       = xbmcaddon.Addon()
+__addonname__   = __addon__.getAddonInfo('name')
+__icon__        = __addon__.getAddonInfo('icon')
+addon_id = 'plugin.video.f4mTester'
+selfAddon = xbmcaddon.Addon(id=addon_id)
 
 #addon = Addon('plugin.video.f4mTester', sys.argv)
 #net = Net()
@@ -92,6 +99,46 @@ def playF4mLink(url,name,proxy=None,use_proxy_for_chunks=False,auth_string=None,
     
     return   
     
+def getUrl(url, cookieJar=None,post=None,referer=None,isJsonPost=False, acceptsession=None):
+
+    cookie_handler = urllib2.HTTPCookieProcessor(cookieJar)
+    opener = urllib2.build_opener(cookie_handler, urllib2.HTTPBasicAuthHandler(), urllib2.HTTPHandler())
+    #opener = urllib2.install_opener(opener)
+    req = urllib2.Request(url)
+    req.add_header('User-Agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36')
+    if isJsonPost:
+        req.add_header('Content-Type','application/json')
+    if acceptsession:
+        req.add_header('Accept-Session',acceptsession)
+        
+    if referer:
+        req.add_header('Referer',referer)
+    response = opener.open(req,post,timeout=30)
+    link=response.read()
+    response.close()
+    return link;
+
+def getBBCUrl(urlToFetch):
+    text=getUrl(urlToFetch)
+    bitRate="1500"
+    overrideBitrate=selfAddon.getSetting( "bbcBitRateMax" )
+    if overrideBitrate<>"": bitRate=overrideBitrate
+    bitRate=int(bitRate)
+    regstring='href="(.*?)" bitrate="(.*?)"'
+    birates=re.findall(regstring, text)
+    birates=[(int(j),f) for f,j in birates]
+    birates=sorted(birates, key=lambda f: f[0])
+    urlsel=''
+    for r, url in birates:
+        if r<=bitRate:
+            ratesel, urlsel=r, url 
+        else:
+            break
+    if urlsel=='': urlsel=birates[1]
+    print 'xxxxxxxxx',ratesel, urlsel
+    return urlsel
+    
+    
 def GUIEditExportName(name):
 
     exit = True 
@@ -115,23 +162,25 @@ def GUIEditExportName(name):
     return(name)
     
 if mode ==None:
-    
-    videos=[['http://vs-hds-uk-live.bbcfmt.vo.llnwd.net/pool_5/live/bbc_one_london/bbc_one_london.isml/bbc_one_london-audio_2%3d96000-video%3d1374000.f4m|Referer=http://www.bbc.co.uk/iplayer/live/bbcone&X-Requested-With=ShockwaveFlash/18.0.0.160','bbc1 (uk) 1500kbps','http://www.parker1.co.uk/myth/icons/tv/bbc1.png',0,'',False],
-    ['http://vs-hds-uk-live.bbcfmt.vo.llnwd.net/pool_5/live/bbc_two_hd/bbc_two_hd.isml/bbc_two_hd-audio_2%3d96000-video%3d1374000.f4m|Referer=http://www.bbc.co.uk/iplayer/live/bbctwo&X-Requested-With=ShockwaveFlash/18.0.0.160','bbc2 (uk) 1500kbps','http://www.parker1.co.uk/myth/icons/tv/bbc2.png',0,'',False],
-    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/bbc3/bbc3_1500.f4m','bbc3 (uk) 1500kbps [link not valid]','',0,'',False],
-    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/bbc4/bbc4_1500.f4m','bbc4 (uk) 1500kbps [link not valid]','',0,'',False],
-#    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/cbbc/cbbc_1500.f4m','cbbc (uk) 1500kbps','',0,'',False],
+
+    videos=[[getBBCUrl('http://a.files.bbci.co.uk/media/live/manifests/hds/pc/llnw/bbc_one_hd.f4m') +'|Referer=http://www.bbc.co.uk/iplayer/live/bbcone&X-Requested-With=ShockwaveFlash/18.0.0.160','bbc1 (uk)','http://www.parker1.co.uk/myth/icons/tv/bbc1.png',0,'',False],
+    [getBBCUrl('http://a.files.bbci.co.uk/media/live/manifests/hds/pc/llnw/bbc_two_hd.f4m')+'|Referer=http://www.bbc.co.uk/iplayer/live/bbctwo&X-Requested-With=ShockwaveFlash/18.0.0.160','bbc2 (uk)','http://www.parker1.co.uk/myth/icons/tv/bbc2.png',0,'',False],
+    [getBBCUrl('http://a.files.bbci.co.uk/media/live/manifests/hds/pc/llnw/bbc_three_hd.f4m')+'|Referer=http://www.bbc.co.uk/iplayer/live/bbctwo&X-Requested-With=ShockwaveFlash/18.0.0.160','bbc3 (uk)','http://www.parker1.co.uk/myth/icons/tv/bbc3.png',0,'',False],
+    [getBBCUrl('http://a.files.bbci.co.uk/media/live/manifests/hds/pc/llnw/bbc_four_hd.f4m')+'|Referer=http://www.bbc.co.uk/iplayer/live/bbctwo&X-Requested-With=ShockwaveFlash/18.0.0.160','bbc4 (uk)','http://www.parker1.co.uk/myth/icons/tv/bbc4.png',0,'',False],
+    [getBBCUrl('http://a.files.bbci.co.uk/media/live/manifesto/audio_video/simulcast/hds/uk/pc/llnw/bbc_news24.f4m')+'|Referer=http://www.bbc.co.uk/iplayer/live/bbctwo&X-Requested-With=ShockwaveFlash/18.0.0.160','bbc news (uk)','http://www.parker1.co.uk/myth/icons/tv/bbcnews.png',0,'',False],
+    [getBBCUrl('http://a.files.bbci.co.uk/media/live/manifesto/audio_video/simulcast/hds/uk/pc/llnw/bbc_parliament.f4m')+'|Referer=http://www.bbc.co.uk/iplayer/live/bbctwo&X-Requested-With=ShockwaveFlash/18.0.0.160','bbc parliment (uk)','',0,'',False],
+    #    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/cbbc/cbbc_1500.f4m','cbbc (uk) 1500kbps','',0,'',False],
 #    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/cbeebies/cbeebies_1500.f4m','cbeebeies (uk) 1500kbps','',0,'',False],
-    ['http://vs-hds-uk-live.edgesuite.net/pool_1/live/bbc_parliament/bbc_parliament.isml/bbc_parliament-audio_2%3d96000-video%3d1374000.f4m|Referer=http://www.bbc.co.uk/iplayer/live/bbcparliament&X-Requested-With=ShockwaveFlash/18.0.0.160','bbc parliment (uk) 1500kbps','',0,'',False],
-    ['http://vs-hds-uk-live.bbcfmt.vo.llnwd.net/pool_5/live/bbc_news_channel_hd/bbc_news_channel_hd.isml/bbc_news_channel_hd-audio_2%3d96000-video%3d1374000.f4m|Referer=http://www.bbc.co.uk/iplayer/live/bbcnews&X-Requested-With=ShockwaveFlash/18.0.0.160','bbc news (uk) 1500kbps','',0,'',False],
-    ['http://vs-hds-uk-live.bbcfmt.vo.llnwd.net/pool_5/live/bbc_one_london/bbc_one_london.isml/bbc_one_london-audio_2%3d96000-video%3d1374000.f4m|Referer=http://www.bbc.co.uk/iplayer/live/bbcone&X-Requested-With=ShockwaveFlash/18.0.0.160&X-Forwarded-For=212.58.241.131','bbc1 (outside uk) 1500kbps','http://www.parker1.co.uk/myth/icons/tv/bbc1.png',0,'',False],
-    ['http://vs-hds-uk-live.bbcfmt.vo.llnwd.net/pool_5/live/bbc_two_hd/bbc_two_hd.isml/bbc_two_hd-audio_2%3d96000-video%3d1374000.f4m|Referer=http://www.bbc.co.uk/iplayer/live/bbctwo&X-Requested-With=ShockwaveFlash/18.0.0.160','bbc2 (outside uk) 1500kbps','http://www.parker1.co.uk/myth/icons/tv/bbc2.png',0,'',False],
-    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/bbc3/bbc3_1500.f4m|X-Forwarded-For=212.58.241.131','bbc3 (outside uk) 1500kbps [link not valid]','',0,'',False],
-    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/bbc4/bbc4_1500.f4m|X-Forwarded-For=212.58.241.131','bbc4 (outside uk) 1500kbps [link not valid]','',0,'',False],
+#    ['http://vs-hds-uk-live.edgesuite.net/pool_1/live/bbc_parliament/bbc_parliament.isml/bbc_parliament-audio_2%3d96000-video%3d1374000.f4m|Referer=http://www.bbc.co.uk/iplayer/live/bbcparliament&X-Requested-With=ShockwaveFlash/18.0.0.160','bbc parliment (uk) 1500kbps','',0,'',False],
+#    ['http://vs-hds-uk-live.bbcfmt.vo.llnwd.net/pool_5/live/bbc_news_channel_hd/bbc_news_channel_hd.isml/bbc_news_channel_hd-audio_2%3d96000-video%3d1374000.f4m|Referer=http://www.bbc.co.uk/iplayer/live/bbcnews&X-Requested-With=ShockwaveFlash/18.0.0.160','bbc news (uk) 1500kbps','',0,'',False],
+#    ['http://vs-hds-uk-live.bbcfmt.vo.llnwd.net/pool_5/live/bbc_one_london/bbc_one_london.isml/bbc_one_london-audio_2%3d96000-video%3d1374000.f4m|Referer=http://www.bbc.co.uk/iplayer/live/bbcone&X-Requested-With=ShockwaveFlash/18.0.0.160&X-Forwarded-For=212.58.241.131','bbc1 (outside uk) 1500kbps','http://www.parker1.co.uk/myth/icons/tv/bbc1.png',0,'',False],
+#    ['http://vs-hds-uk-live.bbcfmt.vo.llnwd.net/pool_5/live/bbc_two_hd/bbc_two_hd.isml/bbc_two_hd-audio_2%3d96000-video%3d1374000.f4m|Referer=http://www.bbc.co.uk/iplayer/live/bbctwo&X-Requested-With=ShockwaveFlash/18.0.0.160','bbc2 (outside uk) 1500kbps','http://www.parker1.co.uk/myth/icons/tv/bbc2.png',0,'',False],
+#    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/bbc3/bbc3_1500.f4m|X-Forwarded-For=212.58.241.131','bbc3 (outside uk) 1500kbps [link not valid]','',0,'',False],
+#    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/bbc4/bbc4_1500.f4m|X-Forwarded-For=212.58.241.131','bbc4 (outside uk) 1500kbps [link not valid]','',0,'',False],
 #    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/cbbc/cbbc_1500.f4m|X-Forwarded-For=212.58.241.131','cbbc (outside uk) 1500kbps','',0,'',False],
 #    ['http://zaphod-live.bbc.co.uk.edgesuite.net/hds-live/livepkgr/_definst_/cbeebies/cbeebies_1500.f4m|X-Forwarded-For=212.58.241.131','cbeebeies (outside uk) 1500kbps','',0,'',False],
-    ['http://vs-hds-uk-live.edgesuite.net/pool_1/live/bbc_parliament/bbc_parliament.isml/bbc_parliament-audio_2%3d96000-video%3d1374000.f4m|Referer=http://www.bbc.co.uk/iplayer/live/bbcparliament&X-Requested-With=ShockwaveFlash/18.0.0.160|X-Forwarded-For=212.58.241.131','bbc parliment (outside uk) 1500kbps','',0,'',False],
-    ['http://vs-hds-uk-live.bbcfmt.vo.llnwd.net/pool_5/live/bbc_news_channel_hd/bbc_news_channel_hd.isml/bbc_news_channel_hd-audio_2%3d96000-video%3d1374000.f4m|Referer=http://www.bbc.co.uk/iplayer/live/bbcnews&X-Requested-With=ShockwaveFlash/18.0.0.160&X-Forwarded-For=212.58.241.131','bbc news (outside uk) 1500kbps','',0,'',False],
+#    ['http://vs-hds-uk-live.edgesuite.net/pool_1/live/bbc_parliament/bbc_parliament.isml/bbc_parliament-audio_2%3d96000-video%3d1374000.f4m|Referer=http://www.bbc.co.uk/iplayer/live/bbcparliament&X-Requested-With=ShockwaveFlash/18.0.0.160|X-Forwarded-For=212.58.241.131','bbc parliment (outside uk) 1500kbps','',0,'',False],
+#    ['http://vs-hds-uk-live.bbcfmt.vo.llnwd.net/pool_5/live/bbc_news_channel_hd/bbc_news_channel_hd.isml/bbc_news_channel_hd-audio_2%3d96000-video%3d1374000.f4m|Referer=http://www.bbc.co.uk/iplayer/live/bbcnews&X-Requested-With=ShockwaveFlash/18.0.0.160&X-Forwarded-For=212.58.241.131','bbc news (outside uk) 1500kbps','',0,'',False],
     ['http://nhkworld-hds-live1.hds1.fmslive.stream.ne.jp/hds-live/nhkworld-hds-live1/_definst_/livestream/nhkworld-live-128.f4m','nhk 128','',0,'',False],
     ['http://nhkworld-hds-live1.hds1.fmslive.stream.ne.jp/hds-live/nhkworld-hds-live1/_definst_/livestream/nhkworld-live-256.f4m','nhk 256','',0,'',False],
     ['http://nhkworld-hds-live1.hds1.fmslive.stream.ne.jp/hds-live/nhkworld-hds-live1/_definst_/livestream/nhkworld-live-512.f4m','nhk 512','',0,'',False],
