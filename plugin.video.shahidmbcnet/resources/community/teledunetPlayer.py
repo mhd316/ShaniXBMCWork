@@ -12,7 +12,7 @@ import datetime
 import time
 import sys
 import CustomPlayer
-
+import random
 try:    
 	import StorageServer
 except:
@@ -104,7 +104,7 @@ def PlayStream(sourceEtree, urlSoup, name, url):
                         print 'error in channel using hardcoded value'
             pDialog.update(80, 'trying to play')
             liveLink= sourceEtree.findtext('rtmpstring');
-            freeCH='2m'
+            freeCH=channelId#'2m'
             ip_patt="ip='(.*?)';"
             dz_patt="dz='(.*?)';"
             today = datetime.datetime.now()
@@ -113,6 +113,7 @@ def PlayStream(sourceEtree, urlSoup, name, url):
             dz=re.findall(dz_patt, link)[0]        
             ip=re.findall(ip_patt, link)[0]
             ip2=''.join(ip.split('.')[0:4])
+            token=str(long(ip2)*len(channelId)+int(0 +random.random() *5))
             print 'dz',	dz        
             access_id=str(((365-int(dz))*long(ip2)*v1)+v2)
             access_id='?id1='+access_id
@@ -384,8 +385,9 @@ def getChannelHTML(cid):
             if 'id1' in html:
                 newod1=re.findall('id1=(.*)', html)[0]
         token=''
-        import random
+
         token=str(   int('11' +  str(int(999999 +random.random() * (99999999 - 999999)))) * 3353);
+#        token=str(   int('11' +  str(int(999999 +random.random() * (99999999 - 999999)))) * 3353);
         
 #        post=None
 #        testUrl='http://www.teledunet.com/mobile//player.swf?id0=%s&channel=abu_dhabi_drama&user=&token=%s'%(newod1,token) 
