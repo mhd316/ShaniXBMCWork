@@ -89,7 +89,7 @@ def PlayStream(sourceEtree, urlSoup, name, url):
                             print 'servers_array revised',servers_array
                         except: pass
                         
-                        rtmp=servers_array[totalTried-1] 
+                        rtmp=servers_array[0]#totalTried-1] 
                 except:
                     clearFileCache()            
                     traceback.print_exc(file=sys.stdout)
@@ -122,8 +122,9 @@ def PlayStream(sourceEtree, urlSoup, name, url):
        
             liveLinkdummy=liveLink%(rtmp,'',access_iddummy,freeCH,selfAddon.getSetting( "teledunetTvLogin" ),'')
             liveLink=liveLink%(rtmp,channelId,access_id,freeCH,selfAddon.getSetting( "teledunetTvLogin" ),token)
-
-                    
+            patt='swfUrl=(.*?) '
+            swf=re.findall(patt, liveLink)[0]
+            getUrl(swf)
             name+='-Teledunet'
             print 'liveLink',liveLink
             pDialog.close()
