@@ -113,7 +113,7 @@ def PlayStream(sourceEtree, urlSoup, name, url):
             dz=re.findall(dz_patt, link)[0]        
             ip=re.findall(ip_patt, link)[0]
             ip2=''.join(ip.split('.')[0:4])
-            token=str(long(ip2)*len(channelId)+int(0 +random.random() *5))
+            token=str(long(ip2)*len(channelId)*55+int(0 +random.random() *5))
             print 'dz',	dz        
             access_id=str(((365-int(dz))*long(ip2)*v1)+v2)
             access_id='?id1='+access_id
