@@ -1660,6 +1660,10 @@ def askCaptchaNew(imageregex,html_page,cookieJar,m):
         captcha_url=re.compile(imageregex).findall(html_page)[0]
     else:
         captcha_url=html_page
+        if 'oneplay.tv/embed' in html_page:
+            import oneplay
+            page_=getUrl(html_page,cookieJar=cookieJar)
+            captcha_url=oneplay.getCaptchaUrl(page_)
 
     local_captcha = os.path.join(profile, str(iid)+"captcha.jpg" )
     localFile = open(local_captcha, "wb")
