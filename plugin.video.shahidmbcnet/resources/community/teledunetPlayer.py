@@ -113,15 +113,16 @@ def PlayStream(sourceEtree, urlSoup, name, url):
             dz=re.findall(dz_patt, link)[0]        
             ip=re.findall(ip_patt, link)[0]
             ip2=''.join(ip.split('.')[0:4])
-            token=str(long(ip2)*len(channelId)*55+int(0 +random.random() *5))
+            token=str(long(ip2)*len(channelId)*int(dz)+int(0 +random.random() *10))
             print 'dz',	dz        
             access_id=str(((365-int(dz))*long(ip2)*v1)+v2)
             access_id='?id1='+access_id
             access_iddummy='?id1=1'
 
        
-            liveLinkdummy=liveLink%(rtmp,'',access_iddummy,freeCH,selfAddon.getSetting( "teledunetTvLogin" ),'')
-            liveLink=liveLink%(rtmp,channelId,access_id,freeCH,selfAddon.getSetting( "teledunetTvLogin" ),token)
+            liveLinkdummy=liveLink%(rtmp,'',freeCH,selfAddon.getSetting( "teledunetTvLogin" ),'')
+#            liveLink=liveLink%(rtmp,channelId,access_id,freeCH,selfAddon.getSetting( "teledunetTvLogin" ),token)
+            liveLink=liveLink%(rtmp,channelId,freeCH,selfAddon.getSetting( "teledunetTvLogin" ),token)
             patt='swfUrl=(.*?) '
             swf=re.findall(patt, liveLink)[0]
             getUrl(swf)
