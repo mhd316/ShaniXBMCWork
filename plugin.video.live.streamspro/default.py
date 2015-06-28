@@ -47,7 +47,6 @@ profile = xbmc.translatePath(addon.getAddonInfo('profile').decode('utf-8'))
 home = xbmc.translatePath(addon.getAddonInfo('path').decode('utf-8'))
 favorites = os.path.join(profile, 'favorites')
 history = os.path.join(profile, 'history')
-
 REV = os.path.join(profile, 'list_revision')
 icon = os.path.join(home, 'icon.png')
 FANART = os.path.join(home, 'fanart.jpg')
@@ -1044,9 +1043,12 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
                         val=askCaptcha(m,link,cookieJar)
                         #print 'url and val',url,val
                         url = url.replace("$doregex[" + k + "]", val)
-                    elif m['expre'].startswith('$pyFunction:'):
+                    elif m['expre'].startswith('$pyFunction:') or '#$pyFunction' in m['expre']:
                         #print 'expeeeeeeeeeeeeeeeeeee',m['expre']
-                        val=doEval(m['expre'].split('$pyFunction:')[1],link,cookieJar,m)
+                        if m['expre'].startswith('$pyFunction:'):
+                            val=doEval(m['expre'].split('$pyFunction:')[1],link,cookieJar,m)
+                        else:
+                            val=doEvalFunction(m['expre'],link,cookieJar,m)
                         if 'ActivateWindow' in m['expre']: return 
                         print 'still hre'
                         print 'url k val',url,k,val
@@ -1529,7 +1531,20 @@ def doEval(fun_call,page_data,Cookie_Jar,m):
     print ret_val
     #exec('ret_val=1+1')
     return str(ret_val)
-    
+
+def doEvalFunction(fun_call,page_data,Cookie_Jar,m):
+    print 'doEvalFunction'
+    ret_val=''
+    if functions_dir not in sys.path:
+        sys.path.append(functions_dir)
+    f=open(functions_dir+"/LSProdynamicCode.py","w")
+    f.write(fun_call);
+    f.close()
+    import LSProdynamicCode
+    ret_val=LSProdynamicCode.GetLSProData(page_data,Cookie_Jar,m)
+    return str(ret_val)
+
+        
 def processRecaptcha(url):
 	html_text=getUrl(url)
 	recapChallenge=""
