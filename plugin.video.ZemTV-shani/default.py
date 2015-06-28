@@ -973,12 +973,12 @@ def AddEnteries(type):
             traceback.print_exc(file=sys.stdout)
     return
 
-def AddChannelsFromOthers(ctype):
+def AddChannelsFromOthers(cctype):
     main_ch='(<section_name>Pakistani<\/section_name>.*?<\/section>)'
 
-    if ctype==2:
+    if cctype==2:
         main_ch='(<section_name>Hindi<\/section_name>.*?<\/section>)'
-    if ctype==3:
+    if cctype==3:
         main_ch='(<section_name>Punjabi<\/section_name>.*?<\/section>)'
         
 
@@ -1031,7 +1031,7 @@ def AddChannelsFromOthers(ctype):
         except: pass
         
     if 1==1:
-        if ctype==1:
+        if cctype==1:
             match.append(('Ary digital','manual','cid:475',''))
             match.append(('Ary digital','manual','cid:981',''))
             match.append(('Ary digital Europe','manual','cid:587',''))
@@ -1052,7 +1052,7 @@ def AddChannelsFromOthers(ctype):
             match.append((base64.b64decode('RGF3biBuZXdzICh3ZWJzaXRlKQ=='),'manual',base64.b64decode('ZWJvdW5kOmRhd24='),''))
 
 
-        elif ctype==2:
+        elif cctype==2:
             match.append(('Color','manual','cid:316',''))
 
         
