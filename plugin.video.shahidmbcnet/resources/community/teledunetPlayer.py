@@ -81,6 +81,9 @@ def PlayStream(sourceEtree, urlSoup, name, url):
                         server_pat="(rtmp:.*?),"
                         servers_array=re.findall(server_pat, servers_array)
                         spat='server_num=([0-9]*);'
+                        spatt_for_default='(?!if\(pays).*\sserver_num=(.*?);'
+                        patt_for_geo='pays=\'(.*?)\';'
+                        spatt_for_geo='(if\(pays=="fr"\)\sserver_num=(.*?);'
                         try:
                             sidtemp=int(re.findall(spat, link)[-1])
                             print 'sidtemp',sidtemp
