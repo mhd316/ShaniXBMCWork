@@ -1,3 +1,6 @@
+B]Version 3.5.8[/B]
+Added punjabi channels
+
 B]Version 3.5.7[/B]
 smart cric fix
 

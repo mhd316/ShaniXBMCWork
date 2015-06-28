@@ -172,6 +172,7 @@ def Addtypes():
 	addDir('Shows' ,'Shows' ,2,'')
 	addDir('Pakistani Live Channels' ,'PakLive' ,2,'')
 	addDir('Indian Live Channels' ,'IndianLive' ,2,'')
+	addDir('Punjabi Live Channels' ,'PunjabiLive' ,2,'')
 	addDir('Sports' ,'Live' ,13,'')
 	addDir('Settings' ,'Live' ,6,'',isItFolder=False)
 	return
@@ -965,22 +966,26 @@ def AddEnteries(type):
             except: pass
         addDir(Colored('Other sources','ZM',True) ,'ZEMTV' ,10,'', False, True,isItFolder=False)
         try:
-            AddChannelsFromOthers(isPakistani)
+            ctype=1 if type=='Pakistani Live Channels' else ( 2 if type=='Indian Live Channels' else 3)
+            AddChannelsFromOthers(ctype)
         except:
             print 'somethingwrong'
             traceback.print_exc(file=sys.stdout)
     return
 
-def AddChannelsFromOthers(isPakistani):
+def AddChannelsFromOthers(ctype):
     main_ch='(<section_name>Pakistani<\/section_name>.*?<\/section>)'
 
-    if not isPakistani:
+    if ctype==2:
         main_ch='(<section_name>Hindi<\/section_name>.*?<\/section>)'
+    if ctype==3:
+        main_ch='(<section_name>Punjabi<\/section_name>.*?<\/section>)'
+        
 
     patt='<item><name>(.*?)<.*?<link>(.*?)<.*?albumart>(.*?)<'
     match=[]    
     if 1==2:#enable it
-        if isPakistani:
+        if ctype==1:
             url=base64.b64decode("aHR0cDovL2pweG1sLmphZG9vdHYuY29tL3Z1eG1sLnBocC9qYWRvb3htbC9pdGVtcy8xMzE0LyVkLw==")
         else:
             url=base64.b64decode("aHR0cDovL2pweG1sLmphZG9vdHYuY29tL3Z1eG1sLnBocC9qYWRvb3htbC9pdGVtcy8xMzE1LyVkLw==")
@@ -1026,7 +1031,7 @@ def AddChannelsFromOthers(isPakistani):
         except: pass
         
     if 1==1:
-        if isPakistani:
+        if ctype==1:
             match.append(('Ary digital','manual','cid:475',''))
             match.append(('Ary digital','manual','cid:981',''))
             match.append(('Ary digital Europe','manual','cid:587',''))
@@ -1047,11 +1052,11 @@ def AddChannelsFromOthers(isPakistani):
             match.append((base64.b64decode('RGF3biBuZXdzICh3ZWJzaXRlKQ=='),'manual',base64.b64decode('ZWJvdW5kOmRhd24='),''))
 
 
-        else:
+        elif ctype==2:
             match.append(('Color','manual','cid:316',''))
 
         
-    match.append((base64.b64decode('U2t5IFNwb3J0IDE='),'manual',base64.b64decode('aHR0cDovL2pweG1sLmphZG9vdHYuY29tL3Z1eG1sLnBocC9qYWRvb3htbC9wbGF5LzMxNg=='),''))
+#    match.append((base64.b64decode('U2t5IFNwb3J0IDE='),'manual',base64.b64decode('aHR0cDovL2pweG1sLmphZG9vdHYuY29tL3Z1eG1sLnBocC9qYWRvb3htbC9wbGF5LzMxNg=='),''))
      
 #    match.append((base64.b64decode('U2t5IFNwb3J0IDI='),'manual',base64.b64decode('aHR0cDovL2pweG1sLmphZG9vdHYuY29tL3Z1eG1sLnBocC9qYWRvb3htbC9wbGF5LzMyNg=='),''))
 #    match.append((base64.b64decode('U2t5IFNwb3J0IDM='),'manual',base64.b64decode('aHR0cDovL215amFkb290di5qYWRvb3R2LmNvbS9qbWFya3MvYm94L3BsYXlWaWRlby5waHA/cGxheVVybD1ydG1wOi8vcXVpbnplbGl2ZWZzLmZwbGl2ZS5uZXQvcXVpbnplbGl2ZS1saXZlL3NreXNwb3J0czMuc3RyZWFtP3NlY3VyaXR5dHlwZT0y'),''))
