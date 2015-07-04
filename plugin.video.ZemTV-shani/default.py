@@ -7,7 +7,26 @@ from operator import itemgetter
 import traceback,cookielib
 import base64,os,  binascii
 import CustomPlayer
-
+try:
+    from lxmlERRRORRRR import etree
+    print("running with lxml.etree")
+except ImportError:
+    try:
+        import xml.etree.ElementTree as etree
+        print("running with ElementTree on Python 2.5+")
+    except ImportError:
+        try:
+        # normal cElementTree install
+            import cElementTree as etree
+            print("running with cElementTree")
+        except ImportError:
+            try:
+            # normal ElementTree install
+                import elementtree.ElementTree as etree
+                print("running with ElementTree")
+            except ImportError:
+                print("Failed to import ElementTree from any known place")
+          
 try:
     import json
 except:
@@ -283,8 +302,8 @@ def AddSports(url):
     addDir('WatchCric.com (requires new rtmp)-Live matches only' ,base64.b64decode('aHR0cDovL3d3dy53YXRjaGNyaWMubmV0Lw==' ),16,'') #blocking as the rtmp requires to be updated to send gaolVanusPobeleVoKosat
     addDir('c247.tv-P3G.Tv (requires new rtmp)' ,'P3G'  ,30,'')
     addDir('Willow.Tv (login required)' ,base64.b64decode('aHR0cDovL3d3dy53aWxsb3cudHYv') ,19,'')
-    addDir('SSS events' ,'sss',34,'')
-
+    addDir('Super Sports' ,'sss',34,'')
+    addDir('PV2 Sports' ,'sss',36,'')
 
 def PlayPopeLive(url):
     playlist = xbmc.PlayList(1)
@@ -351,7 +370,15 @@ def GetSSSEvents(url):
         except: traceback.print_exc(file=sys.stdout)
         
     except: traceback.print_exc(file=sys.stdout)
-    
+def AddPv2Sports(url=None):
+    xmldata=getPV2Url()
+    sources=etree.fromstring(xmldata)
+    ret=[]
+    for source in sources.findall('items'):
+        if source.findtext('programCategory').lower()=='sports':
+            cname=source.findtext('programTitle')
+            cid=source.findtext('programURL')
+            addDir(cname ,base64.b64encode(cid),37,'', False, True,isItFolder=False)
 
 def AddPopeLive(url):
     try:
@@ -1050,6 +1077,11 @@ def AddChannelsFromOthers(cctype):
             match.append((base64.b64decode('RHVueWEgKHdlYnNpdGUp'),'manual',base64.b64decode('aHR0cDovL2ltb2IuZHVueWFuZXdzLnR2OjE5MzUvbGl2ZS9zbWlsOnN0cmVhbS5zbWlsL3BsYXlsaXN0Lm0zdTg='),''))
             match.append((base64.b64decode('Q2FwaXRhbCAod2Vic2l0ZSk='),'manual',base64.b64decode('ZWJvdW5kOmNhcGl0YWx0dg=='),''))
             match.append((base64.b64decode('RGF3biBuZXdzICh3ZWJzaXRlKQ=='),'manual',base64.b64decode('ZWJvdW5kOmRhd24='),''))
+            match.append((base64.b64decode('Qm9sIHYy'),'manual',base64.b64decode('cHYyOkJvbCBOZXdz'),''))
+            match.append((base64.b64decode('R2VvIE5ld3MgdjI='),'manual',base64.b64decode('cHYyOkdlbyBOZXdz'),''))
+            match.append((base64.b64decode('R2VvIEVudGVydGFpbm1lbiB2Mg=='),'manual',base64.b64decode('cHYyOkdlbyBFbnRlcnRhaW5tZW4='),''))
+            match.append((base64.b64decode('R2VvIEthaGFuaSB2Mg=='),'manual',base64.b64decode('cHYyOkdlbyBrYWhhbmk='),''))
+            match.append((base64.b64decode('R2VvIFRleiB2Mg=='),'manual',base64.b64decode('cHYyOkdlbyB0ZXp6'),''))
 
 
         elif cctype==2:
@@ -1164,6 +1196,31 @@ def get_dag_url(page_data):
     final_url = final_url.replace(' ', '%20')
 
     return final_url
+
+def getPV2Url():
+    req = urllib2.Request( base64.b64decode('aHR0cDovL2FwcC5keW5ucy5jb20vaXB0dnBhbm5lbC9vdXRwdXQucGhwL3BsYXlsaXN0P3R5cGU9eG1sJmRldmljZVNuPXBha2luZGlhaGR0djIwMTU='))
+    req.add_header('Authorization', base64.b64decode('QmFzaWMgWVdSdGFXNWhiSGQ1Y3pwd1lYTnpZWEpoYVc0PQ==')) 
+    response = urllib2.urlopen(req)
+    link=response.read()
+    return link
+def getPV2Auth():
+    req = urllib2.Request( base64.b64decode('aHR0cDovL2hhc2guZHlubnMuY29tL2tleXMvYXBwc19zZWN1cmUucGhw'))
+    req.add_header('Authorization', base64.b64decode('QmFzaWMgWTJodmNHbGhianBoY21GcGJtRnNkMkY1YzJkaGJtUjE=')) 
+    response = urllib2.urlopen(req)
+    link=response.read()
+    return link
+    
+def PlayPV2Link(url):
+
+    if not mode==37:
+        xmldata=getPV2Url()
+        urlToPlay=re.findall(url+'.*?programURL\\>(.*?)\\<',xmldata)[0]
+    else:
+        urlToPlay=base64.b64decode(url)
+    urlToPlay+=getPV2Auth()
+    listitem = xbmcgui.ListItem( label = str(name), iconImage = "DefaultVideo.png", thumbnailImage = xbmc.getInfoImage( "ListItem.Thumb" ) )
+    print "playing stream name: " + str(name) 
+    xbmc.Player( xbmc.PLAYER_CORE_AUTO ).play( urlToPlay, listitem)    
     
 def PlayOtherUrl ( url ):
     url=base64.b64decode(url)
@@ -1178,7 +1235,9 @@ def PlayOtherUrl ( url ):
     if "ebound:" in url:
         PlayLiveLink(url.split('ebound:')[1])
         return
-    
+    if "pv2:" in url:
+        PlayPV2Link(url.split('pv2:')[1])
+        return    
     if url==base64.b64decode('aHR0cDovL2xpdmUuYXJ5emluZGFnaS50di8=') or url==base64.b64decode('aHR0cDovL2xpdmUuYXJ5cXR2LnR2Lw=='):
         req = urllib2.Request(url)
 #        req.add_header('User-Agent', base64.b64decode('VmVyaXNtby1CbGFja1VJXygyLjQuNy41LjguMC4zNCk=')) 
@@ -1946,15 +2005,19 @@ try:
 	elif mode==35 :
 		print "Play url is "+url
 		PlaySSSEvent(url)                
-
-
+	elif mode==36 :
+		print "Play url is "+url
+		AddPv2Sports(url) 
+	elif mode==37 :
+		print "Play url is "+url
+		PlayPV2Link(url) 
         
 except:
 	print 'somethingwrong'
 	traceback.print_exc(file=sys.stdout)
 	
 
-if not ( (mode==3 or mode==4 or mode==9 or mode==11 or mode==15 or mode==21 or mode==22 or mode==27 or mode==33 or mode==35)  )  :
+if not ( (mode==3 or mode==4 or mode==9 or mode==11 or mode==15 or mode==21 or mode==22 or mode==27 or mode==33 or mode==35 or mode==37)  )  :
 	if mode==144:
 		xbmcplugin.endOfDirectory(int(sys.argv[1]),updateListing=True)
 	else:

@@ -202,13 +202,15 @@
 
 <addon id="plugin.video.ZemTV-shani"
        name="ZemTV.com"
-       version="3.5.9"
+       version="3.6.0"
        provider-name="shani">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
 	<import addon="script.module.urlresolver" version="1.0.0"/>
 	<import addon="plugin.video.youtube" version="2.9.2"/>
        <import addon="script.module.simplejson" />
+       	<import addon="script.module.elementtree" version="1.2.8"/>
+
 
     <import addon="plugin.video.f4mTester" version="2.1.7"/>
 
