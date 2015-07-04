@@ -19,3 +19,5 @@ B]Version 1.0.3[/B]
 - changed url
 [B]Version 1.0.8[/B]
 - icon changed
+[B]Version 1.0.9[/B]
+- fixed play

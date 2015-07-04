@@ -119,16 +119,16 @@ def getLiveUrl(url):
     #print zzUrl,'zzURL'
     progress.update( 70, "", "Finding links..", "" )
 
-    link=getURL(zzUrl,referer=url, mobile=True).result;
+    link=getURL(zzUrl,referer=url, mobile=False).result;
     #print link,zzUrl
     #link=zzUrl
     progress.update( 90, "", "Finding links..", "" )
     #match= re.findall('SWFObject\(\'(.*?)\',.*file\',\'(.*?)\'.*streamer\',\'(.*?)\'', link, re.DOTALL)
-    #match= re.findall('href="(http.*?playlist.*?)"', link)
+    match= re.findall('href="(http.*?playlist.*?)"', link)
     #print match
    
     #link=getURL(match[0][0],referer=url, mobile=True).result;
-    match= re.findall('(http.*?)\\s', link, re.DOTALL)
+#    match= re.findall('(http.*?)\\s', link, re.DOTALL)
     print match
     progress.update( 100, "", "Finding links..", "" )
 
