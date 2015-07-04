@@ -1079,7 +1079,7 @@ def AddChannelsFromOthers(cctype):
             match.append((base64.b64decode('RGF3biBuZXdzICh3ZWJzaXRlKQ=='),'manual',base64.b64decode('ZWJvdW5kOmRhd24='),''))
             match.append((base64.b64decode('Qm9sIHYy'),'manual',base64.b64decode('cHYyOkJvbCBOZXdz'),''))
             match.append((base64.b64decode('R2VvIE5ld3MgdjI='),'manual',base64.b64decode('cHYyOkdlbyBOZXdz'),''))
-            match.append((base64.b64decode('R2VvIEVudGVydGFpbm1lbiB2Mg=='),'manual',base64.b64decode('cHYyOkdlbyBFbnRlcnRhaW5tZW4='),''))
+            match.append((base64.b64decode('R2VvIEVudGVydGFpbm1lbnQgdjI='),'manual',base64.b64decode('cHYyOkdlbyBFbnRlcnRhaW5tZW50'),''))
             match.append((base64.b64decode('R2VvIEthaGFuaSB2Mg=='),'manual',base64.b64decode('cHYyOkdlbyBrYWhhbmk='),''))
             match.append((base64.b64decode('R2VvIFRleiB2Mg=='),'manual',base64.b64decode('cHYyOkdlbyB0ZXp6'),''))
 
@@ -1214,7 +1214,7 @@ def PlayPV2Link(url):
 
     if not mode==37:
         xmldata=getPV2Url()
-        urlToPlay=re.findall(url+'.*?programURL\\>(.*?)\\<',xmldata)[0]
+        urlToPlay=re.findall(url+'..programTitle.*?programURL\\>(.*?)\\<',xmldata)[0]
     else:
         urlToPlay=base64.b64decode(url)
     urlToPlay+=getPV2Auth()
