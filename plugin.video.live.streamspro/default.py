@@ -572,12 +572,21 @@ def getItems(items,fanart):
                 elif len(item('utube')) >0:
                     for i in item('utube'):
                         if not i.string == None:
-                            if len(i.string) == 11:
-                                utube = 'plugin://plugin.video.youtube/play/?video_id='+ i.string 
-                            elif i.string.startswith('PL') and not '&order=' in i.string :
+                            if ' ' in i.string :
+                                utube = 'plugin://plugin.video.youtube/search/?q='+ urllib.quote_plus(i.string)
+                                isJsonrpc=utube
+                            elif len(i.string) == 11:
+                                utube = 'plugin://plugin.video.youtube/play/?video_id='+ i.string
+                            elif (i.string.startswith('PL') and not '&order=' in i.string) or i.string.startswith('UU'):
                                 utube = 'plugin://plugin.video.youtube/play/?&order=default&playlist_id=' + i.string
-                            else:
-                                utube = 'plugin://plugin.video.youtube/play/?playlist_id=' + i.string 
+                            elif i.string.startswith('PL') or i.string.startswith('UU'):
+                                utube = 'plugin://plugin.video.youtube/play/?playlist_id=' + i.string
+                            elif i.string.startswith('UC') and len(i.string) > 12:
+                                utube = 'plugin://plugin.video.youtube/channel/' + i.string + '/'
+                                isJsonrpc=utube
+                            elif not i.string.startswith('UC') and not (i.string.startswith('PL'))  :
+                                utube = 'plugin://plugin.video.youtube/user/' + i.string + '/'
+                                isJsonrpc=utube
                     url.append(utube)
                 elif len(item('imdb')) >0:
                     for i in item('imdb'):
@@ -602,15 +611,17 @@ def getItems(items,fanart):
                     for i in item('ftv'):
                         if not i.string == None:
                             ftv = 'plugin://plugin.video.F.T.V/?name='+urllib.quote(name) +'&url=' +i.string +'&mode=125&ch_fanart=na'
-                        url.append(ftv)                        
+                        url.append(ftv)
+                elif len(item('urlsolve')) >0:
+                    for i in item('urlsolve'):
+                        if not i.string == None:
+                            resolver = i.string +'&mode=19'
+                            url.append(resolver)                        
                 if len(url) < 1:
                     raise
             except:
                 addon_log('Error <link> element, Passing:'+name.encode('utf-8', 'ignore'))
                 continue
-                
-            isXMLSource=False
-
             try:
                 isXMLSource = item('externallink')[0].string
             except: pass
@@ -624,7 +635,9 @@ def getItems(items,fanart):
                 isJsonrpc = item('jsonrpc')[0].string
             except: pass
             if isJsonrpc:
+            
                 ext_url=[isJsonrpc]
+                print 'JSON-RPC ext_url',ext_url
                 isJsonrpc=True
             else:
                 isJsonrpc=False            
@@ -838,10 +851,6 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
         doRegexs = re.compile('\$doregex\[([^\]]*)\]').findall(url)
         #print 'doRegexs',doRegexs,regexs
         setresolved=True
-              
- 
-
-
         for k in doRegexs:
             if k in regexs:
                 #print 'processing ' ,k
@@ -1814,29 +1823,11 @@ def rmFavorite(name):
         xbmc.executebuiltin("XBMC.Container.Refresh")
 
 def urlsolver(url):
-    if addon.getSetting('Updatecommonresolvers') == 'true':
-        l = os.path.join(home,'genesisresolvers.py')
-        if xbmcvfs.exists(l):
-            os.remove(l)
-
-        genesis_url = 'https://raw.githubusercontent.com/lambda81/lambda-addons/master/plugin.video.genesis/commonresolvers.py'
-        th= urllib.urlretrieve(genesis_url,l)
-        addon.setSetting('Updatecommonresolvers', 'false')
-    try:
-        import genesisresolvers
-    except Exception:
-        xbmc.executebuiltin("XBMC.Notification(LiveStreamsPro,Please enable Update Commonresolvers to Play in Settings. - ,10000)")
-
-    resolved=genesisresolvers.get(url).result
-    if url == resolved or resolved is None:
-        #import
-        xbmc.executebuiltin("XBMC.Notification(LiveStreamsPro,Using Urlresolver module.. - ,5000)")
-        import urlresolver
-        host = urlresolver.HostedMediaFile(url)
-        if host:
-            resolver = urlresolver.resolve(url)
-            resolved = resolver
-    if resolved :
+    import urlresolver
+    host = urlresolver.HostedMediaFile(url)
+    if host:
+        resolver = urlresolver.resolve(url)
+        resolved = resolver
         if isinstance(resolved,list):
             for k in resolved:
                 quality = addon.getSetting('quality')
@@ -1850,6 +1841,8 @@ def urlsolver(url):
                     break
         else:
             resolver = resolved
+    else:
+    	xbmc.executebuiltin("XBMC.Notification(LiveStreamsPro,Urlresolver donot support this domain. - ,5000)")
     return resolver
 def play_playlist(name, mu_playlist,queueVideo=None):
         playlist = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
@@ -1920,7 +1913,7 @@ def download_file(name, url):
             addSource(os.path.join(addon.getSetting('save_location'), name))
 
 
-def addDir(name,url,mode,iconimage,fanart,description,genre,date,credits,showcontext=False):
+def addDir(name,url,mode,iconimage,fanart,description,genre,date,credits,showcontext=False,allinfo={}):
         u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)+"&fanart="+urllib.quote_plus(fanart)
         ok=True
         if date == '':
@@ -1928,7 +1921,10 @@ def addDir(name,url,mode,iconimage,fanart,description,genre,date,credits,showcon
         else:
             description += '\n\nDate: %s' %date
         liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=iconimage)
-        liz.setInfo(type="Video", infoLabels={ "Title": name, "Plot": description, "Genre": genre, "dateadded": date, "credits": credits })
+        if len(allinfo) <1 :
+            liz.setInfo(type="Video", infoLabels={ "Title": name, "Plot": description, "Genre": genre, "dateadded": date, "credits": credits })
+        else:
+            liz.setInfo(type="Video", infoLabels= allinfo)        
         liz.setProperty("Fanart_Image", fanart)
         if showcontext:
             contextMenu = []
@@ -2106,7 +2102,7 @@ def pluginquerybyJSON(url,give_me_result=None,playlist=False):
                 addDir(name,url,53,thumbnail,fanart,'','','','',allinfo=meta)
         xbmcplugin.endOfDirectory(int(sys.argv[1]))
 
-def addLink(url,name,iconimage,fanart,description,genre,date,showcontext,playlist,regexs,total,setCookie=""):
+def addLink(url,name,iconimage,fanart,description,genre,date,showcontext,playlist,regexs,total,setCookie="",allinfo={}):
         #print 'url,name',url,name
         contextMenu =[]
         try:
@@ -2159,7 +2155,11 @@ def addLink(url,name,iconimage,fanart,description,genre,date,showcontext,playlis
         else:
             description += '\n\nDate: %s' %date
         liz=xbmcgui.ListItem(name, iconImage="DefaultVideo.png", thumbnailImage=iconimage)
-        liz.setInfo(type="Video", infoLabels={ "Title": name, "Plot": description, "Genre": genre, "dateadded": date })
+        if len(allinfo) <1:
+            liz.setInfo(type="Video", infoLabels={ "Title": name, "Plot": description, "Genre": genre, "dateadded": date })
+
+        else:
+            liz.setInfo(type="Video", infoLabels=allinfo)        
         liz.setProperty("Fanart_Image", fanart)
         if (not play_list) and not any(x in url for x in g_ignoreSetResolved):#  (not url.startswith('plugin://plugin.video.f4mTester')):
             if regexs:
