@@ -1,3 +1,6 @@
+Version 1.8.0
+resolver rearranged
+
 Version 1.7.9
 functions support in LSPro xml file
 
