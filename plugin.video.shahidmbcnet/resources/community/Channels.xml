@@ -1,4 +1,14 @@
 <channels>
+	<channel>
+	<cname>Sakinah</cname>
+	<imageurl>http://sakinahcenter.com/images/pasted%20svg%20138965x52_poster_.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>gulf</category>
+	<category>islam</category>
+	</assignedcategory>
+</channel>	
+
 <channel>
 	<cname>Dubai Quran</cname>
 	<imageurl>http://s21.postimg.org/lsntfqm8j/quranlogo.jpg</imageurl>
