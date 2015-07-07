@@ -247,7 +247,7 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
             if '$get_cookies$' in url:
                 url=url.replace('$get_cookies$',getCookiesString(cookieJar))   
             
-            if recursiveCall: return url
+    if recursiveCall: return url
     print 'final url',url
     return url
 def getCookiesString(cookieJar):
