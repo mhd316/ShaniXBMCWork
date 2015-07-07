@@ -8,7 +8,15 @@
 	<category>islam</category>
 	</assignedcategory>
 </channel>	
-
+<channel>
+	<cname>Canal J</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/cc/canal_j_fr.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>french</category>
+	<category>kids</category>
+	</assignedcategory>
+</channel>
 <channel>
 	<cname>Dubai Quran</cname>
 	<imageurl>http://s21.postimg.org/lsntfqm8j/quranlogo.jpg</imageurl>
