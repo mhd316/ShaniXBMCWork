@@ -7213,12 +7213,12 @@
     	</assignedcategory>
 </channel>	
 <channel>
-	<cname>Planet Plus</cname>
-	<imageurl>http://www.lyngsat-logo.com/hires/aa/animal_planet_east.png</imageurl>
+	<cname>Planete Plus</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/pp/planete_plus.png</imageurl>
 	<enabled>True</enabled>
 	<assignedcategory>
 	<category>french</category>
-    </assignedcategory>
+	</assignedcategory>
 </channel>	
 <channel>
 	<cname>Planete Thalassa</cname>
