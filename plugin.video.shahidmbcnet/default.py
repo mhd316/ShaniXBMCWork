@@ -38,6 +38,7 @@ __icon__        = __addon__.getAddonInfo('icon')
 addon_id = 'plugin.video.shahidmbcnet'
 selfAddon = xbmcaddon.Addon(id=addon_id)
 addonPath = xbmcaddon.Addon().getAddonInfo("path")
+addonversion =xbmcaddon.Addon().getAddonInfo("version")
 addonArt = os.path.join(addonPath,'resources/images')
 communityStreamPath = os.path.join(addonPath,'resources')
 communityStreamPath =os.path.join(communityStreamPath,'community')
@@ -355,7 +356,7 @@ def checkAndRefresh():
 			RefreshResources(True)
 	except: pass
 
-def RefreshResources(auto=False):
+def RefreshResources(auto=False, fNameOnly=None):
 #	print Fromurl
 	pDialog = xbmcgui.DialogProgress()
 	if auto:
@@ -375,10 +376,12 @@ def RefreshResources(auto=False):
 	resources=soup('file')
 	fileno=1
 	totalFile = len(resources)
-	
+	import hashlib
 	for rfile in resources:
+		if pDialog.iscanceled(): return
 		progr = (fileno*80)/totalFile
 		fname = rfile['fname']
+		if fNameOnly and not fname==fNameOnly: continue
 		remoteUrl=None
 		try:
 			remoteUrl = rfile['url']
@@ -391,13 +394,29 @@ def RefreshResources(auto=False):
 			fileToDownload = remoteUrl
 		else:
 			fileToDownload = baseUrlForDownload+fname
+		fileHash=hashlib.md5(fileToDownload+addonversion).hexdigest()
+		lastFileTime=selfAddon.getSetting( "Etagid"+fileHash)  
+		if lastFileTime=="": lastFileTime=None
+		resCode=200
 		#print fileToDownload
+		eTag=None        
 		try:
 			req = urllib2.Request(fileToDownload)
 			req.add_header('User-Agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36')
+			if lastFileTime:
+				req.add_header('If-None-Match',lastFileTime)
 			response = urllib2.urlopen(req)
-			data=response.read()
-		except: data=''
+			resCode=response.getcode()
+			print 'resCode',resCode
+			if resCode<>304:
+				try:
+					eTag=response.info().getheader('Etag')
+				except: pass
+				data=response.read()
+		except Exception as e: 
+			s = str(e)
+			if 'Not Modified'.lower() in s.lower(): resCode=304
+			data=''
 		if len(data)>0:
 			try:
 				if isBase64: 
@@ -410,8 +429,12 @@ def RefreshResources(auto=False):
 		if len(data)>0:
 			with open(os.path.join(communityStreamPath, fname), "wb") as filewriter:
 				filewriter.write(data)
+				if eTag:
+					selfAddon.setSetting( id="Etagid"+fileHash ,value=eTag)    
 			pDialog.update(20+progr, 'imported ...'+fname)
-		else:
+		elif resCode==304:
+			pDialog.update(20+progr, 'No Change.. skipping.'+fname)
+		else:            
 			pDialog.update(20+progr, 'Failed..zero byte.'+fname)
 		fileno+=1
 	pDialog.close()
