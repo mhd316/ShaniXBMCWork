@@ -407,7 +407,6 @@ def RefreshResources(auto=False, fNameOnly=None):
 				req.add_header('If-None-Match',lastFileTime)
 			response = urllib2.urlopen(req)
 			resCode=response.getcode()
-			print 'resCode',resCode
 			if resCode<>304:
 				try:
 					eTag=response.info().getheader('Etag')
