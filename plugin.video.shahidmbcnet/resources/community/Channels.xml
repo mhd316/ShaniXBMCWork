@@ -1,5 +1,23 @@
 <channels>
-	<channel>
+<channel>
+	<cname>Infosport Plus</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/cc/canalplus_fr_infosport_plus.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>french</category>
+	<category>sports</category>
+	</assignedcategory>
+</channel>
+<channel>
+	<cname>Foot Plus</cname>
+	<imageurl>http://www.lyngsat-logo.com/hires/cc/canalsat_fr_foot_plus.png</imageurl>
+	<enabled>True</enabled>
+	<assignedcategory>
+	<category>french</category>
+	<category>sports</category>
+	</assignedcategory>
+</channel>
+<channel>
 	<cname>Sakinah</cname>
 	<imageurl>http://sakinahcenter.com/images/pasted%20svg%20138965x52_poster_.png</imageurl>
 	<enabled>True</enabled>
