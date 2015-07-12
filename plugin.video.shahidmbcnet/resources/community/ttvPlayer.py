@@ -39,7 +39,7 @@ def PlayStream(sourceEtree, urlSoup, name, url):
 		pDialog.create('XBMC', 'Communicating with ttv')
 		import base64
 		if 1==1:
-			liveLink=base64.b64decode('aHR0cDovLzE3Ni41My4yMS45OTo4MDgyL1RWJXM=')%channelId
+			liveLink=base64.b64decode('aHR0cDovLzE4OC45My4yMzQuMTEyOjgwODIvVFYlcw==')%channelId
 			pDialog.create('XBMC', 'Playing channel')
 			listitem = xbmcgui.ListItem( label = str(name), iconImage = "DefaultVideo.png", thumbnailImage = xbmc.getInfoImage( "ListItem.Thumb" ), path=liveLink )
 			player = CustomPlayer.MyXBMCPlayer()
