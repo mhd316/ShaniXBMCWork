@@ -34,3 +34,4 @@
 	<file fname="../../default.py" /> 
 	<file fname="IPTVPlanetUrls.xml" url="https://raw.githubusercontent.com/allouch89/ShaniXBMCdatabase/master/IPTVPlanetUrls.xml"/> 
 </resources>
+   <file fname="http://www.ar.beinsports.net/connect/bein-sports-news"/>
